@@ -4,12 +4,20 @@ using UnityEngine;
 
 public class Figther : MonoBehaviour
 {
+    [Header("Parts Life")]
     public string _name;
     public float MaxLife;
     public float HeadLife;
     public float RightLife;
     public float LeftLife;
     public float LegsLife;
+
+    [Header("Stamina")]
+    public float Stamina;
+    public float MaxStamina;
+    public float StaminaRefresh;
+
+    [Header("Animations")]
     public bool UpAttack;
     public bool AimUp;
     public bool RightAttack;
@@ -19,51 +27,69 @@ public class Figther : MonoBehaviour
     public bool DownAttack;
     public bool AimDown;
     public bool Dodgeing;
-    public bool IsPlayer;
     public Animator _anim;
+
+    [Header("Para el FightControler")]
+    public bool IsPlayer;
+
+    [Header("Mesh para el selector de Color")]
+    public SkinnedMeshRenderer body;
+
+    [Header("Damage Particles")]
+    public GameObject _headSmoke;
+    public GameObject _RightSmoke;
+    public GameObject _LeftSmoke;
+    public GameObject _LegsSmoke;
+
+    [Header("Sparks Particles")]
+    public GameObject _headSpark;
+    public GameObject _RightSpark;
+    public GameObject _LeftSpark;
+    public GameObject _LegsSpark;
+
     void Start()
     {
-
+        Stamina=MaxStamina;
+    }
+    private void Update()
+    {
+        _anim.speed = Stamina / MaxStamina;
+        if(Stamina <= MaxStamina)
+        {
+            Stamina += StaminaRefresh * Time.deltaTime;
+        }
     }
 
     public void UpperAttack()
     {
         if(!Dodgeing && !UpAttack && !RightAttack && !LeftAttack && !DownAttack)
         {
-            Debug.Log(_name +" UP ATTACK");
             UpAttack = true;
             AimUp = true;
-            _anim.SetBool("UpAttack", true);
         }
     }
     public void RightHook()
     {
         if (!Dodgeing && !UpAttack && !RightAttack && !LeftAttack && !DownAttack)
         {
-            Debug.Log(_name + " RIGHT ATTACK");
             RightAttack = true;
             AimRight = true;
-            _anim.SetBool("RightAttack", true);
         }
     }
     public void LeftHook()
     {
         if (!Dodgeing && !UpAttack && !RightAttack && !LeftAttack && !DownAttack)
         {
-            Debug.Log(_name + " LEFT ATTACK");
             LeftAttack = true;
             AimLeft = true;
-            _anim.SetBool("LeftAttack", true);
         }
     }
     public void DownerAttack()
     {
         if (!Dodgeing && !UpAttack && !RightAttack && !LeftAttack && !DownAttack)
         {
-            Debug.Log(_name + " DOWN ATTACK");
             DownAttack = true;
             AimDown = true;
-            _anim.SetBool("DownAttak", true);
         }
     }
 
@@ -96,40 +122,51 @@ public class Figther : MonoBehaviour
         AimDown = false;
         Dodgeing = false;
     }
+    public void nextAnim()
+    {
+        if (UpAttack) _anim.SetBool("UpAttack", true);
+        if (RightAttack) _anim.SetBool("RightAttack", true);
+        if (LeftAttack) _anim.SetBool("LeftAttack", true);
+        if (DownAttack) _anim.SetBool("DownAttak", true);
+    }
     public void takeHeadDamage()
     {
+        if (CheckDamage()) return;
         if (Dodgeing) return;
         restAttack();
+        if (HeadLife <= 0) return;
         HeadLife -= 10;
         MaxLife -= 10;
-        if (CheckDamage()) return;
         _anim.SetTrigger("Damaged");
     }
     public void takeRightDamage()
     {
+        if (CheckDamage()) return;
         if (Dodgeing) return;
         restAttack();
+        if (RightLife <= 0) return;
         RightLife -= 10;
         MaxLife -= 10;
-        if (CheckDamage()) return;
         _anim.SetTrigger("Damaged");
     }
     public void takeLeftDamage()
     {
+        if (CheckDamage()) return;
         if (Dodgeing) return;
         restAttack();
+        if(LeftLife<=0) return;
         LeftLife -= 10;
         MaxLife -= 10;
-        if (CheckDamage()) return;
         _anim.SetTrigger("Damaged");
     }
     public void takeLegsDamage()
     {
+        if (CheckDamage()) return;
         if (Dodgeing) return;
         restAttack();
+        if (LegsLife <= 0) return;
         LegsLife -= 10;
         MaxLife -= 10;
-        if (CheckDamage()) return;
         _anim.SetTrigger("Damaged");
     }
 
@@ -141,6 +178,17 @@ public class Figther : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    public void ColorChange(Color color1,Color color2)
+    {
+        body.material.SetColor("_Color1", color1);
+        body.material.SetColor("_Color2", color2);
+    }
+
+    public void FallDown()
+    {
+        FightControler.Instance.SetDownFighter(this);
     }
 
     public void AttackEffect()

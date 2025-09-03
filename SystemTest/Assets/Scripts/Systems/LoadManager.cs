@@ -11,6 +11,7 @@ public class LoadManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
+            DontDestroyOnLoad(this);
         }
         else
         {
@@ -19,28 +20,37 @@ public class LoadManager : MonoBehaviour
     }
     public void LoadRing()
     {
-        DataSaver.Instance.LoadLifes();
-        SceneManager.LoadSceneAsync(1);
-        DataSaver.Instance.SaveLife();
+        DataSaver.Instance.SaveLvl();
+        DataSaver.Instance.LoadLvl();
+        SceneManager.LoadSceneAsync(4);
+    }
+    public void Round2()
+    {
+        DataSaver.Instance.LoadTimer();
+        SceneManager.LoadSceneAsync(4);
     }
     public void LoadMenu()
     {
-        DataSaver.Instance.LoadLifes();
+        DataSaver.Instance.LoadLvl();
+        DataSaver.Instance.SaveLvl();
         SceneManager.LoadSceneAsync(0);
-        DataSaver.Instance.SaveLife();
     }
 
-    public void LoadStatus()
+    public void LoadIntermision()
     {
-        DataSaver.Instance.LoadLifes();
-        SceneManager.LoadSceneAsync(1);
-        DataSaver.Instance.SaveLife();
+        DataSaver.Instance.SaveTimer();
+        LifeTraker.Instance.UpdateLife();
+        DataSaver.Instance.LoadLvl();
+        DataSaver.Instance.SaveLvl();
+        SceneManager.LoadSceneAsync(3);
     }
 
-    public void LoadDown()
+    public void LoadKO()
     {
-        DataSaver.Instance.LoadLifes();
-        SceneManager.LoadSceneAsync(1);
-        DataSaver.Instance.SaveLife();
+        DataSaver.Instance.SaveTimer();
+        LifeTraker.Instance.UpdateLife();
+        DataSaver.Instance.SaveLvl();
+        DataSaver.Instance.LoadLvl();
+        SceneManager.LoadSceneAsync(2);
     }
 }

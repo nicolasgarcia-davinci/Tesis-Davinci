@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class FightControler : MonoBehaviour
@@ -22,13 +23,28 @@ public class FightControler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        _Player.ColorChange(ColorCordination.Instance.color1, ColorCordination.Instance.color2);
+        _Player.MaxLife = LifeTraker.Instance.pOverHealt;
+        _Player.HeadLife = LifeTraker.Instance.pHead;
+        _Player.RightLife = LifeTraker.Instance.pRight;
+        _Player.LeftLife = LifeTraker.Instance.pLeft;
+        _Player.LegsLife = LifeTraker.Instance.pLegs;
+        _Enemy.MaxLife = LifeTraker.Instance.eOverHealt;
+        _Enemy.HeadLife = LifeTraker.Instance.eHead;
+        _Enemy.RightLife = LifeTraker.Instance.eRight;
+        _Enemy.LeftLife = LifeTraker.Instance.eLeft;
+        _Enemy.LegsLife = LifeTraker.Instance.eLegs;
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+    public void SetDownFighter(Figther loser)
+    {
+        if (loser.IsPlayer) LifeTraker.Instance.IsEnemy = false;
+        LoadManager.Instance.LoadKO();
     }
 
     public void CheckAttack(Figther attacker)
@@ -48,5 +64,6 @@ public class FightControler : MonoBehaviour
             if (attacker.AimLeft) _Player.takeLeftDamage();
             if (attacker.AimDown) _Player.takeLegsDamage();
         }
+        attacker.Stamina -= 10;
     }
 }

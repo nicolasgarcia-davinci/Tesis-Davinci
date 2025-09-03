@@ -6,36 +6,30 @@ using TMPro;
 
 public class ButtomAction : MonoBehaviour
 {
-    public string _labelText;
-    public TextMeshProUGUI _label;
+    [SerializeField] string _labelText;
+    [SerializeField] TextMeshProUGUI _label;
     public GameObject _selector;
     public MenuNavigation _miMenu;
     public bool _isSelected;
+    public int _targetID;
     public ButtomType _thisType;
     
-    void Start()
+    public void Start()
     {
         _selector.SetActive(false);
         _label.text = _labelText;
         _miMenu = GetComponentInParent<MenuNavigation>();
     }
 
-    void Update()
+    public virtual void Update()
     {
         if(Input.GetKeyDown(KeyCode.Space) && _isSelected)
         {  
-            if(_thisType == ButtomType.NavButtom)
-            {
-                ChangeMenu();
-            }
-            if (_thisType == ButtomType.LoadStage)
-            {
-                LoadManager.Instance.LoadRing();
-            }
-            if (_thisType == ButtomType.LoadMenu)
-            {
-                LoadManager.Instance.LoadMenu();
-            }
+            if(_thisType == ButtomType.NavButtom) ChangeMenu();
+
+            if (_thisType == ButtomType.LoadStage) LoadManager.Instance.LoadRing();
+
+            if (_thisType == ButtomType.LoadMenu) LoadManager.Instance.LoadMenu();
 
         }
     }
@@ -53,10 +47,10 @@ public class ButtomAction : MonoBehaviour
 
     public void ChangeMenu()
     {
-        _miMenu.Menu();
+        _miMenu.Menu(_targetID);
     }
 }
 public enum ButtomType
 {
-    NavButtom, LoadStage ,LoadMenu
+    NavButtom, LoadStage ,LoadMenu,Color1,Color2
 }

@@ -7,7 +7,6 @@ public class MenuNavigation : MonoBehaviour
     public ButtomAction[] _menu;
     public MenuControler _controler;
     public int ID;
-    public int TargetID;
     public int Index;
     // Start is called before the first frame update
     void Start()
@@ -21,9 +20,9 @@ public class MenuNavigation : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.UpArrow)) CycleUp();
         if (Input.GetKeyDown(KeyCode.DownArrow)) CycleDown();
     }
-    public void Menu()
+    public void Menu(int target)
     {
-        _controler.ChangeWindow(ID,TargetID);
+        _controler.ChangeWindow(ID,target);
     }
 
     public void CycleUp()

@@ -20,6 +20,14 @@ public class AIControler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(Input.GetKeyDown(KeyCode.Keypad5))
+        {
+            _AttackInterval = 0.5f;
+        }
+        if (Input.GetKeyDown(KeyCode.Keypad7))
+        {
+            _AttackInterval = 10;
+        }
         _timer += Time.deltaTime;
         if(_timer>=_AttackInterval)
         {

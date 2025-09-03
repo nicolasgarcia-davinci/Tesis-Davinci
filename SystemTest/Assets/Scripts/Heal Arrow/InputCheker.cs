@@ -26,7 +26,10 @@ public class InputCheker : MonoBehaviour
         foreach (ArrowGroup group in CollectionsOnScreen)
         {
             if (Index >= group.Secuence.Length)
-                return;
+            {
+                Index = 0;
+                group.perfect = true;
+            }
             if (!group.perfect)
                 continue;
             if (group.Secuence[Index].IsUp && group.perfect)
@@ -45,7 +48,10 @@ public class InputCheker : MonoBehaviour
         foreach (ArrowGroup group in CollectionsOnScreen)
         {
             if (Index >= group.Secuence.Length)
-                return;
+            {
+                Index = 0;
+                group.perfect = true;
+            }
             if (!group.perfect)
                 continue;
             if (group.Secuence[Index].IsRight && group.perfect)
@@ -65,7 +71,10 @@ public class InputCheker : MonoBehaviour
         foreach (ArrowGroup group in CollectionsOnScreen)
         {
             if (Index >= group.Secuence.Length)
-                return;
+            {
+                Index = 0;
+                group.perfect = true;
+            }
             if (!group.perfect)
                 continue;
             if (group.Secuence[Index].IsLeft && group.perfect)
@@ -84,7 +93,10 @@ public class InputCheker : MonoBehaviour
         foreach (ArrowGroup group in CollectionsOnScreen)
         {
             if (Index >= group.Secuence.Length)
-                return;
+            {
+                Index = 0;
+                group.perfect = true;
+            }
             if (!group.perfect)
                 continue;
             if (group.Secuence[Index].IsDown && group.perfect)

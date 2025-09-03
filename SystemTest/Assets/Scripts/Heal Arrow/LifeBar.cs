@@ -13,9 +13,7 @@ public class LifeBar : MonoBehaviour
 
     public void UpdateLife(float current, float max)
     {
-        lifeBar.fillAmount = currentHealth / maxHealth;
-        currentHealth = current;
-        maxHealth = max;
+        lifeBar.fillAmount = current / max;
     }
     
     public void Heal()
