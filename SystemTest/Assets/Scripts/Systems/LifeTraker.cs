@@ -21,6 +21,7 @@ public class LifeTraker : MonoBehaviour
     public int BtlLvl;
 
     public bool IsEnemy;
+    public bool ResetTimer;
     private void Awake()
     {
         if (Instance == null)

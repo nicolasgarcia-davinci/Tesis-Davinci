@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class FightControler : MonoBehaviour
@@ -44,6 +43,7 @@ public class FightControler : MonoBehaviour
     public void SetDownFighter(Figther loser)
     {
         if (loser.IsPlayer) LifeTraker.Instance.IsEnemy = false;
+        else LifeTraker.Instance.IsEnemy = true;
         LoadManager.Instance.LoadKO();
     }
 
@@ -59,11 +59,27 @@ public class FightControler : MonoBehaviour
 
         if (!attacker.IsPlayer)
         {
-            if (attacker.AimUp) _Player.takeHeadDamage();
-            if (attacker.AimRight) _Player.takeRightDamage();
-            if (attacker.AimLeft) _Player.takeLeftDamage();
-            if (attacker.AimDown) _Player.takeLegsDamage();
+            if (attacker.AimUp)
+            {
+                _Player.takeHeadDamage();
+                CamaraSpin.Instance.DownSpin();
+            }
+            if (attacker.AimRight)
+            {
+                _Player.takeRightDamage();
+                CamaraSpin.Instance.RightSpin();
+            }
+            if (attacker.AimLeft)
+            {
+                _Player.takeLeftDamage();
+                CamaraSpin.Instance.LeftSpin();
+            }
+            if (attacker.AimDown)
+            {
+                _Player.takeLegsDamage();
+                CamaraSpin.Instance.UpSpin();
+            }
         }
-        attacker.Stamina -= 10;
+        attacker.Stamina -= 5;
     }
 }

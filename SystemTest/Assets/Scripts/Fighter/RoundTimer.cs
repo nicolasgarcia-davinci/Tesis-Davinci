@@ -19,7 +19,11 @@ public class RoundTimer : MonoBehaviour
     void Start()
     {
         DataSaver.Instance.LoadTimer();
-        if (_timer == 0) _timer = _RoundTime;
+        if (_timer == 0 || LifeTraker.Instance.ResetTimer)
+        {
+            _timer = _RoundTime;
+            LifeTraker.Instance.ResetTimer = false;
+        }
         StartCoroutine(CountDown());
     }
 

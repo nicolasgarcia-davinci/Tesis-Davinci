@@ -16,7 +16,6 @@ public class ButtomAction : MonoBehaviour
     
     public void Start()
     {
-        _selector.SetActive(false);
         _label.text = _labelText;
         _miMenu = GetComponentInParent<MenuNavigation>();
     }
@@ -31,6 +30,7 @@ public class ButtomAction : MonoBehaviour
 
             if (_thisType == ButtomType.LoadMenu) LoadManager.Instance.LoadMenu();
 
+            if(_thisType == ButtomType.Quit) Application.Quit();
         }
     }
 
@@ -52,5 +52,5 @@ public class ButtomAction : MonoBehaviour
 }
 public enum ButtomType
 {
-    NavButtom, LoadStage ,LoadMenu,Color1,Color2
+    NavButtom, LoadStage ,LoadMenu,Color1,Color2, Quit
 }

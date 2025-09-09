@@ -47,9 +47,13 @@ public class Figther : MonoBehaviour
     public GameObject _LeftSpark;
     public GameObject _LegsSpark;
 
+
+    public GameObject _Spark;
+
     void Start()
     {
         Stamina=MaxStamina;
+        _anim = GetComponentInChildren<Animator>();
     }
     private void Update()
     {
@@ -138,6 +142,7 @@ public class Figther : MonoBehaviour
         HeadLife -= 10;
         MaxLife -= 10;
         _anim.SetTrigger("Damaged");
+        _Spark.SetActive(true);
     }
     public void takeRightDamage()
     {
@@ -148,6 +153,7 @@ public class Figther : MonoBehaviour
         RightLife -= 10;
         MaxLife -= 10;
         _anim.SetTrigger("Damaged");
+        _Spark.SetActive(true);
     }
     public void takeLeftDamage()
     {
@@ -158,6 +164,7 @@ public class Figther : MonoBehaviour
         LeftLife -= 10;
         MaxLife -= 10;
         _anim.SetTrigger("Damaged");
+        _Spark.SetActive(true);
     }
     public void takeLegsDamage()
     {
@@ -168,6 +175,7 @@ public class Figther : MonoBehaviour
         LegsLife -= 10;
         MaxLife -= 10;
         _anim.SetTrigger("Damaged");
+        _Spark.SetActive(true);
     }
 
     public bool CheckDamage()

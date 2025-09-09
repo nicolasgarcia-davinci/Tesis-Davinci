@@ -11,7 +11,7 @@ public class MenuNavigation : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        _menu[0].Select();
     }
 
     // Update is called once per frame

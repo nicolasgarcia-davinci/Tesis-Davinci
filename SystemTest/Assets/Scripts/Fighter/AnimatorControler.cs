@@ -10,7 +10,8 @@ public class AnimatorControler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        _boss=GetComponentInParent<Figther>();
+        _ko=GetComponentInParent<Fallen>();
     }
 
     public void CallForReset()

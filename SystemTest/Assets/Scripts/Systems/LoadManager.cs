@@ -20,14 +20,14 @@ public class LoadManager : MonoBehaviour
     }
     public void LoadRing()
     {
-        DataSaver.Instance.SaveLvl();
+        LifeTraker.Instance.ResetTimer = true;
         DataSaver.Instance.LoadLvl();
-        SceneManager.LoadSceneAsync(4);
+        SceneManager.LoadSceneAsync(1);
     }
     public void Round2()
     {
         DataSaver.Instance.LoadTimer();
-        SceneManager.LoadSceneAsync(4);
+        SceneManager.LoadSceneAsync(1);
     }
     public void LoadMenu()
     {
