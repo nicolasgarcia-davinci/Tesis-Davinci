@@ -67,12 +67,12 @@ public class FightControler : MonoBehaviour
             if (attacker.AimRight)
             {
                 _Player.takeRightDamage();
-                CamaraSpin.Instance.RightSpin();
+                CamaraSpin.Instance.LeftSpin();
             }
             if (attacker.AimLeft)
             {
                 _Player.takeLeftDamage();
-                CamaraSpin.Instance.LeftSpin();
+                CamaraSpin.Instance.RightSpin();
             }
             if (attacker.AimDown)
             {
@@ -80,6 +80,6 @@ public class FightControler : MonoBehaviour
                 CamaraSpin.Instance.UpSpin();
             }
         }
-        attacker.Stamina -= 5;
+        attacker.Stamina -= 10;
     }
 }

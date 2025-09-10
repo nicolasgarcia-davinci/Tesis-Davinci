@@ -18,9 +18,9 @@ public class PlayerControler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.W)) Character.UpperAttack();
-        if (Input.GetKeyDown(KeyCode.D)) Character.RightHook();
-        if (Input.GetKeyDown(KeyCode.A)) Character.LeftHook();
-        if (Input.GetKeyDown(KeyCode.S)) Character.DownerAttack();
+        if (Input.GetKeyDown(KeyCode.UpArrow)) Character.UpperAttack();
+        if (Input.GetKeyDown(KeyCode.RightArrow)) Character.RightHook();
+        if (Input.GetKeyDown(KeyCode.LeftArrow)) Character.LeftHook();
+        if (Input.GetKeyDown(KeyCode.DownArrow)) Character.DownerAttack();
     }
 }
