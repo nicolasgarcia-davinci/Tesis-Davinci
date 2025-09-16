@@ -31,7 +31,12 @@ public class RoundTimer : MonoBehaviour
     public IEnumerator CountDown()
     {
         _counter.text = _timer.ToString();
-        if (_timer == 0) LoadManager.Instance.LoadIntermision();
+        if (_timer == 0)
+        {
+            LifeTraker.Instance.RundCounter++;
+            LifeTraker.Instance.ResetTimer = true;
+            LoadManager.Instance.LoadIntermision();
+        }
         yield return new WaitForSeconds(1);
         _timer--;
         StartCoroutine(CountDown());

@@ -20,12 +20,16 @@ public class Figther : MonoBehaviour
     [Header("Animations")]
     public bool UpAttack;
     public bool AimUp;
+    public bool UpDodge;
     public bool RightAttack;
     public bool AimRight;
+    public bool RightDodge;
     public bool LeftAttack;
     public bool AimLeft;
+    public bool LeftDodge;
     public bool DownAttack;
     public bool AimDown;
+    public bool DownDodge;
     public bool Dodgeing;
     public Animator _anim;
 
@@ -36,24 +40,52 @@ public class Figther : MonoBehaviour
     public SkinnedMeshRenderer body;
 
     [Header("Damage Particles")]
-    public GameObject _headSmoke;
-    public GameObject _RightSmoke;
-    public GameObject _LeftSmoke;
-    public GameObject _LegsSmoke;
+    public GameObject _HeadGlich;
+    public GameObject _RightGlich;
+    public GameObject _LeftGlich;
+    public GameObject _LegsGlich;
+
+    [Header("Crash Particles")]
+    public GameObject _HeadCrash;
+    public GameObject _RightCrash;
+    public GameObject _LeftCrash;
+    public GameObject _LegsCrash;
+    public bool HeadCrashbool;
+    public bool RightCrashbool;
+    public bool LeftCrashbool;
+    public bool LegsCrashbool;
 
     [Header("Sparks Particles")]
-    public GameObject _headSpark;
+    public GameObject _HeadSpark;
     public GameObject _RightSpark;
     public GameObject _LeftSpark;
     public GameObject _LegsSpark;
 
 
-    public GameObject _Spark;
-
     void Start()
     {
         Stamina=MaxStamina;
         _anim = GetComponentInChildren<Animator>();
+        if (RightLife > 0)
+        {
+            RightCrashbool = false;
+            //_RightSpark.gameObject.SetActive(false);
+        }
+        if (HeadLife > 0)
+        {
+            HeadCrashbool = false;
+            //_HeadSpark.gameObject.SetActive(false);
+        }
+        if (LeftLife > 0)
+        {
+            LeftCrashbool = false;
+            //_LeftSpark.gameObject.SetActive(false);
+        }
+        if (LegsLife > 0)
+        {
+            LegsCrashbool = false;
+            //_LegsSpark.gameObject.SetActive(false);
+        }
     }
     private void Update()
     {
@@ -70,6 +102,7 @@ public class Figther : MonoBehaviour
         {
             UpAttack = true;
             AimUp = true;
+            FightControler.Instance.IADefender(this);
         }
     }
     public void RightHook()
@@ -78,6 +111,7 @@ public class Figther : MonoBehaviour
         {
             RightAttack = true;
             AimRight = true;
+            FightControler.Instance.IADefender(this);
         }
     }
     public void LeftHook()
@@ -86,6 +120,7 @@ public class Figther : MonoBehaviour
         {
             LeftAttack = true;
             AimLeft = true;
+            FightControler.Instance.IADefender(this);
         }
     }
     public void DownerAttack()
@@ -94,16 +129,48 @@ public class Figther : MonoBehaviour
         {
             DownAttack = true;
             AimDown = true;
+            FightControler.Instance.IADefender(this);
         }
     }
 
-    public void Dodge()
+    public void DodgeUp()
     {
         if(!Dodgeing && !UpAttack && !RightAttack && !LeftAttack && !DownAttack)
         {
-            Debug.Log(_name + " IS DOEGING");
+            Debug.Log(_name + " DodgingUp");
             Dodgeing = true;
-            _anim.SetBool("Dodge", true);
+            UpDodge = true;
+            _anim.SetTrigger("UpDodge");
+        }
+    }
+    public void DodgeRight()
+    {
+        if (!Dodgeing && !UpAttack && !RightAttack && !LeftAttack && !DownAttack)
+        {
+            Debug.Log(_name + " DodgingRight");
+            Dodgeing = true;
+            RightDodge = true;
+            _anim.SetTrigger("RightDodge"); ;
+        }
+    }
+    public void DodgeLeft()
+    {
+        if (!Dodgeing && !UpAttack && !RightAttack && !LeftAttack && !DownAttack)
+        {
+            Debug.Log(_name + " DodgingLeft");
+            Dodgeing = true;
+            LeftDodge = true;
+            _anim.SetTrigger("LeftDodge");
+        }
+    }
+    public void DodgeDown()
+    {
+        if (!Dodgeing && !UpAttack && !RightAttack && !LeftAttack && !DownAttack)
+        {
+            Debug.Log(_name + " DodgingDown");
+            Dodgeing = true;
+            DownDodge = true;
+            _anim.SetTrigger("DownDodge");
         }
     }
 
@@ -125,6 +192,10 @@ public class Figther : MonoBehaviour
         AimLeft = false;
         AimDown = false;
         Dodgeing = false;
+        UpDodge = false;
+        RightDodge = false;
+        LeftDodge = false;
+        DownDodge = false;
     }
     public void nextAnim()
     {
@@ -135,47 +206,71 @@ public class Figther : MonoBehaviour
     }
     public void takeHeadDamage()
     {
+        if (UpDodge) return;
         if (CheckDamage()) return;
-        if (Dodgeing) return;
         restAttack();
-        if (HeadLife <= 0) return;
+        _HeadGlich.gameObject.SetActive(true);
+        if (HeadLife <= 0 && HeadCrashbool) return;
+        if (HeadLife <= 0 && ! HeadCrashbool)
+        {
+            HeadCrashbool = true;
+            _HeadCrash.gameObject.SetActive(true);
+            //_HeadSpark.gameObject.SetActive(true);
+        }
         HeadLife -= 10;
         MaxLife -= 10;
         _anim.SetTrigger("Damaged");
-        _Spark.SetActive(true);
     }
     public void takeRightDamage()
     {
+        if (RightDodge) return;
         if (CheckDamage()) return;
-        if (Dodgeing) return;
         restAttack();
-        if (RightLife <= 0) return;
+        _RightGlich.gameObject.SetActive(true);
+        if (RightLife <= 0 && RightCrashbool) return;
+        if (RightLife <= 0 && !RightCrashbool)
+        {
+            RightCrashbool = true;
+            _RightCrash.gameObject.SetActive(true);
+            //_RightSpark.gameObject.SetActive(true);
+        }
         RightLife -= 10;
         MaxLife -= 10;
         _anim.SetTrigger("Damaged");
-        _Spark.SetActive(true);
     }
     public void takeLeftDamage()
     {
+        if (LeftDodge) return;
         if (CheckDamage()) return;
-        if (Dodgeing) return;
         restAttack();
-        if(LeftLife<=0) return;
+        _LeftGlich.gameObject.SetActive(true);
+        if (LeftLife <= 0 && LeftCrashbool) return;
+        if (LeftLife <= 0 && !LeftCrashbool)
+        {
+            LeftCrashbool = true;
+            _LeftCrash.gameObject.SetActive(true);
+            //_LeftSpark.gameObject.SetActive(true);
+        }
         LeftLife -= 10;
         MaxLife -= 10;
         _anim.SetTrigger("Damaged");
-        _Spark.SetActive(true);
     }
     public void takeLegsDamage()
     {
+        if (DownDodge) return;
         if (CheckDamage()) return;
-        if (Dodgeing) return;
         restAttack();
-        if (LegsLife <= 0) return;
+        _LegsGlich.gameObject.SetActive(true);
+        if (LegsLife <= 0 && LegsCrashbool) return;
+        if (LegsLife <= 0 && !LegsCrashbool)
+        {
+            LegsCrashbool = true;
+            _LegsCrash.gameObject.SetActive(true);
+            //_LegsSpark.gameObject.SetActive(true);
+        }
         LegsLife -= 10;
         MaxLife -= 10;
         _anim.SetTrigger("Damaged");
-        _Spark.SetActive(true);
     }
 
     public bool CheckDamage()

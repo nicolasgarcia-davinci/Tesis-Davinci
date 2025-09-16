@@ -22,5 +22,9 @@ public class PlayerControler : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.RightArrow)) Character.RightHook();
         if (Input.GetKeyDown(KeyCode.LeftArrow)) Character.LeftHook();
         if (Input.GetKeyDown(KeyCode.DownArrow)) Character.DownerAttack();
+        if (Input.GetKeyDown(KeyCode.W)) Character.DodgeUp();
+        if (Input.GetKeyDown(KeyCode.D)) Character.DodgeRight();
+        if (Input.GetKeyDown(KeyCode.A)) Character.DodgeLeft();
+        if (Input.GetKeyDown(KeyCode.S)) Character.DodgeDown();
     }
 }

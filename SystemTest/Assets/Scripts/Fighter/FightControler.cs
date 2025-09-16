@@ -7,6 +7,7 @@ public class FightControler : MonoBehaviour
     public static FightControler Instance;
     public Figther _Player;
     public Figther _Enemy;
+    public AIControler _Controler;
 
     private void Awake()
     {
@@ -39,6 +40,11 @@ public class FightControler : MonoBehaviour
     void Update()
     {
         
+    }
+    public void IADefender(Figther attacker)
+    {
+        if (attacker == _Player)
+            _Controler.IAPrediction(_Player.AimUp, _Player.AimRight, _Player.AimLeft, _Player.AimDown);
     }
     public void SetDownFighter(Figther loser)
     {

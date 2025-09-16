@@ -15,6 +15,7 @@ public class AIControler : MonoBehaviour
         Character.LeftLife = LifeTraker.Instance.eLeft;
         Character.LegsLife = LifeTraker.Instance.eLegs;
         FightControler.Instance._Enemy = Character;
+        FightControler.Instance._Controler = this;
     }
 
     // Update is called once per frame
@@ -38,6 +39,17 @@ public class AIControler : MonoBehaviour
             if (attackNum <= 3 && attackNum > 2) Character.LeftHook();
             if (attackNum <= 4 && attackNum > 3) Character.DownerAttack();
         }
-        
+    }
+
+    public void IAPrediction(bool Up, bool Right, bool Left, bool Down)
+    {
+        float DodgeNum = Random.Range(0, 100);
+        if(DodgeNum>70)
+        {
+            if (Up) Character.DodgeUp();
+            if (Right) Character.DodgeRight();
+            if (Left) Character.DodgeLeft();
+            if (Down) Character.DodgeDown();
+        }
     }
 }
