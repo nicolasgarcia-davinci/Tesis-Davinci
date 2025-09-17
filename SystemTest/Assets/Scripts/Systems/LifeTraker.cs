@@ -19,6 +19,9 @@ public class LifeTraker : MonoBehaviour
     public float eLegs;
     public float RundCounter = 1;
 
+    public int PlayerKO;
+    public int EnemyKO;
+
     public int BtlLvl;
 
     public bool IsEnemy;
@@ -47,6 +50,21 @@ public class LifeTraker : MonoBehaviour
         eRight=FightControler.Instance._Enemy.RightLife;
         eLeft=FightControler.Instance._Enemy.LeftLife;
         eLegs=FightControler.Instance._Enemy.LegsLife;
+    }
+
+    public void Reset()
+    {
+        pOverHealt = MaxHealt;
+        pHead = MaxHealt;
+        pRight = MaxHealt;
+        pLeft = MaxHealt;
+        pLegs = MaxHealt;
+        eOverHealt = MaxHealt;
+        eHead = MaxHealt;
+        eRight = MaxHealt;
+        eLeft = MaxHealt;
+        eLegs = MaxHealt;
+        RundCounter = 1;
     }
 
     // Update is called once per frame

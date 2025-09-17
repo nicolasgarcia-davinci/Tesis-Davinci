@@ -18,6 +18,12 @@ public class Fallen : MonoBehaviour
     public GetUpPlayer _player;
     public AIGetUp _ai;
 
+
+    [Header("Mesh y materials")]
+    public SkinnedMeshRenderer body;
+    public Material PMaterial;
+    public Material EMaterial;
+
     public Image _bar;
 
     public GameObject _rightArrow;
@@ -48,6 +54,12 @@ public class Fallen : MonoBehaviour
         _leftArrow.SetActive(!_left);
         _bar.fillAmount = _actualBar / _maxBar;
         Play();
+        if(_isEnemy)body.material = EMaterial;
+        if(!_isEnemy)
+        {
+            body.material = PMaterial;
+            ColorChange(ColorCordination.Instance.color1, ColorCordination.Instance.color2);
+        }
     }
 
     public void CheckLeft()
@@ -96,5 +108,10 @@ public class Fallen : MonoBehaviour
     public void Stop()
     {
         _fallen.speed = 0;
+    }
+    public void ColorChange(Color color1, Color color2)
+    {
+        body.material.SetColor("_Color1", color1);
+        body.material.SetColor("_Color2", color2);
     }
 }

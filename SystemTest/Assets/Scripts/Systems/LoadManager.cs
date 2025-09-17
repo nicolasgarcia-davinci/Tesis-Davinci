@@ -21,6 +21,7 @@ public class LoadManager : MonoBehaviour
     public void LoadRing()
     {
         LifeTraker.Instance.ResetTimer = true;
+        LifeTraker.Instance.Reset();
         DataSaver.Instance.LoadLvl();
         SceneManager.LoadSceneAsync(1);
     }
