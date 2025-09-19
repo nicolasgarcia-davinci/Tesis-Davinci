@@ -115,16 +115,21 @@ public class InputCheker : MonoBehaviour
     {
         if (Index >= CollectionsOnScreen[0].Secuence.Length)
         {
-            foreach (ArrowGroup group in CollectionsOnScreen)
+            StartCoroutine(DelayRestar());
+        }
+    }
+    public IEnumerator DelayRestar()
+    {
+        yield return new WaitForSeconds(0.5f);
+        foreach (ArrowGroup group in CollectionsOnScreen)
+        {
+            if (group.perfect)
             {
-                if(group.perfect)
-                {
-                    group.partlifeIndicator.Heal();
-                }
-                group.perfect = true;
-                foreach (Arrow flecha in group.Secuence)
-                    flecha.ChangeToNormal();
+                group.partlifeIndicator.Heal();
             }
+            group.perfect = true;
+            foreach (Arrow flecha in group.Secuence)
+                flecha.ChangeToNormal();
         }
     }
 }
