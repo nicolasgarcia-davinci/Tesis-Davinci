@@ -65,22 +65,22 @@ public class FightControler : MonoBehaviour
 
         if (!attacker.IsPlayer)
         {
-            if (attacker.AimUp)
+            if (attacker.AimUp && !_Player.UpDodge)
             {
                 _Player.takeHeadDamage();
                 CamaraSpin.Instance.DownSpin();
             }
-            if (attacker.AimRight)
+            if (attacker.AimRight && !_Player.RightDodge)
             {
                 _Player.takeRightDamage();
                 CamaraSpin.Instance.LeftSpin();
             }
-            if (attacker.AimLeft)
+            if (attacker.AimLeft && !_Player.LeftDodge)
             {
                 _Player.takeLeftDamage();
                 CamaraSpin.Instance.RightSpin();
             }
-            if (attacker.AimDown)
+            if (attacker.AimDown && !_Player.DownDodge)
             {
                 _Player.takeLegsDamage();
                 CamaraSpin.Instance.UpSpin();

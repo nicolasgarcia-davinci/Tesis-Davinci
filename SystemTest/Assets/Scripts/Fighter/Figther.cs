@@ -69,22 +69,22 @@ public class Figther : MonoBehaviour
         if (RightLife > 0)
         {
             RightCrashbool = false;
-            //_RightSpark.gameObject.SetActive(false);
+            _RightSpark.gameObject.SetActive(false);
         }
         if (HeadLife > 0)
         {
             HeadCrashbool = false;
-            //_HeadSpark.gameObject.SetActive(false);
+            _HeadSpark.gameObject.SetActive(false);
         }
         if (LeftLife > 0)
         {
             LeftCrashbool = false;
-            //_LeftSpark.gameObject.SetActive(false);
+            _LeftSpark.gameObject.SetActive(false);
         }
         if (LegsLife > 0)
         {
             LegsCrashbool = false;
-            //_LegsSpark.gameObject.SetActive(false);
+            _LegsSpark.gameObject.SetActive(false);
         }
     }
     private void Update()
@@ -206,7 +206,7 @@ public class Figther : MonoBehaviour
     }
     public void takeHeadDamage()
     {
-        if (UpDodge) return;
+        //if (UpDodge) return;
         if (CheckDamage()) return;
         restAttack();
         _HeadGlich.gameObject.SetActive(true);
@@ -215,7 +215,7 @@ public class Figther : MonoBehaviour
         {
             HeadCrashbool = true;
             _HeadCrash.gameObject.SetActive(true);
-            //_HeadSpark.gameObject.SetActive(true);
+            _HeadSpark.gameObject.SetActive(true);
         }
         HeadLife -= 10;
         MaxLife -= 10;
@@ -223,16 +223,16 @@ public class Figther : MonoBehaviour
     }
     public void takeRightDamage()
     {
-        if (RightDodge) return;
+        //if (RightDodge) return;
         if (CheckDamage()) return;
         restAttack();
-        _RightGlich.gameObject.SetActive(true);
+        _LeftGlich.gameObject.SetActive(true);
         if (RightLife <= 0 && RightCrashbool) return;
         if (RightLife <= 0 && !RightCrashbool)
         {
             RightCrashbool = true;
-            _RightCrash.gameObject.SetActive(true);
-            //_RightSpark.gameObject.SetActive(true);
+            _LeftCrash.gameObject.SetActive(true);
+            _RightSpark.gameObject.SetActive(true);
         }
         RightLife -= 10;
         MaxLife -= 10;
@@ -240,16 +240,16 @@ public class Figther : MonoBehaviour
     }
     public void takeLeftDamage()
     {
-        if (LeftDodge) return;
+        //if (LeftDodge) return;
         if (CheckDamage()) return;
         restAttack();
-        _LeftGlich.gameObject.SetActive(true);
+        _RightGlich.gameObject.SetActive(true);
         if (LeftLife <= 0 && LeftCrashbool) return;
         if (LeftLife <= 0 && !LeftCrashbool)
         {
             LeftCrashbool = true;
-            _LeftCrash.gameObject.SetActive(true);
-            //_LeftSpark.gameObject.SetActive(true);
+            _RightCrash.gameObject.SetActive(true);
+            _LeftSpark.gameObject.SetActive(true);
         }
         LeftLife -= 10;
         MaxLife -= 10;
@@ -257,7 +257,7 @@ public class Figther : MonoBehaviour
     }
     public void takeLegsDamage()
     {
-        if (DownDodge) return;
+        //if (DownDodge) return;
         if (CheckDamage()) return;
         restAttack();
         _LegsGlich.gameObject.SetActive(true);
@@ -266,7 +266,7 @@ public class Figther : MonoBehaviour
         {
             LegsCrashbool = true;
             _LegsCrash.gameObject.SetActive(true);
-            //_LegsSpark.gameObject.SetActive(true);
+            _LegsSpark.gameObject.SetActive(true);
         }
         LegsLife -= 10;
         MaxLife -= 10;

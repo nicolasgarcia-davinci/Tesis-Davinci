@@ -6,15 +6,24 @@ using TMPro;
 public class EnterRound : PreView
 {
     [SerializeField] TextMeshProUGUI RoundMessage;
-    // Start is called before the first frame update
+    [SerializeField] TMP_FontAsset RoundFont;
+    [SerializeField] TMP_FontAsset ReturnFont;
+
     void Start()
     {
-        if (LifeTraker.Instance.ResetTimer) RoundMessage.text = "Round " + LifeTraker.Instance.RundCounter;
-        else RoundMessage.text = "Back in the Ring";
+        if (LifeTraker.Instance.ResetTimer)
+        {
+            RoundMessage.text = "Round " + LifeTraker.Instance.RundCounter;
+            RoundMessage.font = RoundFont;
+        }
+        else
+        { 
+            RoundMessage.text = "Back in the Ring";
+            RoundMessage.font = ReturnFont;
+        }
         StartCoroutine(Clock());
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (_timer == 0)
