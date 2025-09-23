@@ -207,7 +207,9 @@ public class Figther : MonoBehaviour
     public void takeHeadDamage()
     {
         //if (UpDodge) return;
+        MaxLife -= 10;
         if (CheckDamage()) return;
+        if(HeadLife>0) HeadLife -= 10;
         restAttack();
         _HeadGlich.gameObject.SetActive(true);
         if (HeadLife <= 0 && HeadCrashbool) return;
@@ -217,14 +219,18 @@ public class Figther : MonoBehaviour
             _HeadCrash.gameObject.SetActive(true);
             _HeadSpark.gameObject.SetActive(true);
         }
-        HeadLife -= 10;
-        MaxLife -= 10;
+        _anim.ResetTrigger("UpDodge");
+        _anim.ResetTrigger("RightDodge");
+        _anim.ResetTrigger("LeftDodge");
+        _anim.ResetTrigger("DownDodge");
         _anim.SetTrigger("Damaged");
     }
     public void takeRightDamage()
     {
         //if (RightDodge) return;
+        MaxLife -= 10;
         if (CheckDamage()) return;
+        if (RightLife > 0) RightLife -= 10;
         restAttack();
         _LeftGlich.gameObject.SetActive(true);
         if (RightLife <= 0 && RightCrashbool) return;
@@ -234,14 +240,18 @@ public class Figther : MonoBehaviour
             _LeftCrash.gameObject.SetActive(true);
             _RightSpark.gameObject.SetActive(true);
         }
-        RightLife -= 10;
-        MaxLife -= 10;
+        _anim.ResetTrigger("UpDodge");
+        _anim.ResetTrigger("RightDodge");
+        _anim.ResetTrigger("LeftDodge");
+        _anim.ResetTrigger("DownDodge");
         _anim.SetTrigger("Damaged");
     }
     public void takeLeftDamage()
     {
         //if (LeftDodge) return;
+        MaxLife -= 10;
         if (CheckDamage()) return;
+        if (LeftLife > 0) LeftLife -= 10;
         restAttack();
         _RightGlich.gameObject.SetActive(true);
         if (LeftLife <= 0 && LeftCrashbool) return;
@@ -251,14 +261,18 @@ public class Figther : MonoBehaviour
             _RightCrash.gameObject.SetActive(true);
             _LeftSpark.gameObject.SetActive(true);
         }
-        LeftLife -= 10;
-        MaxLife -= 10;
+        _anim.ResetTrigger("UpDodge");
+        _anim.ResetTrigger("RightDodge");
+        _anim.ResetTrigger("LeftDodge");
+        _anim.ResetTrigger("DownDodge");
         _anim.SetTrigger("Damaged");
     }
     public void takeLegsDamage()
     {
         //if (DownDodge) return;
+        MaxLife -= 10;
         if (CheckDamage()) return;
+        if (LegsLife > 0) LegsLife -= 10;
         restAttack();
         _LegsGlich.gameObject.SetActive(true);
         if (LegsLife <= 0 && LegsCrashbool) return;
@@ -268,8 +282,10 @@ public class Figther : MonoBehaviour
             _LegsCrash.gameObject.SetActive(true);
             _LegsSpark.gameObject.SetActive(true);
         }
-        LegsLife -= 10;
-        MaxLife -= 10;
+        _anim.ResetTrigger("UpDodge");
+        _anim.ResetTrigger("RightDodge");
+        _anim.ResetTrigger("LeftDodge");
+        _anim.ResetTrigger("DownDodge");
         _anim.SetTrigger("Damaged");
     }
 
