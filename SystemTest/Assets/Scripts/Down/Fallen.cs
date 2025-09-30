@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class Fallen : MonoBehaviour
 {
     public Animator _fallen;
+    public float _defaultBar;
     public float _maxBar;
     public float _actualBar;
 
@@ -46,9 +47,17 @@ public class Fallen : MonoBehaviour
     void Start()
     {
 
-        if(LifeTraker.Instance.IsEnemy) _isEnemy=true;
+        if(LifeTraker.Instance.IsEnemy)
+        {
+            _isEnemy=true;
+            _maxBar=_defaultBar*LifeTraker.Instance.EnemyKO;
+        }
         if(_isEnemy) _ai.gameObject.SetActive(true);
-        else _player.gameObject.SetActive(true);
+        else
+        {
+            _player.gameObject.SetActive(true);
+            _maxBar = _defaultBar * LifeTraker.Instance.PlayerKO;
+        }
         _fallen = GetComponentInChildren<Animator>();
         _rightArrow.SetActive(!_rigth);
         _leftArrow.SetActive(!_left);

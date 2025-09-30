@@ -48,8 +48,16 @@ public class FightControler : MonoBehaviour
     }
     public void SetDownFighter(Figther loser)
     {
-        if (loser.IsPlayer) LifeTraker.Instance.IsEnemy = false;
-        else LifeTraker.Instance.IsEnemy = true;
+        if (loser.IsPlayer)
+        {
+            LifeTraker.Instance.IsEnemy = false;
+            LifeTraker.Instance.PlayerKO++;
+        }
+        else
+        {
+            LifeTraker.Instance.IsEnemy = true;
+            LifeTraker.Instance.EnemyKO++;
+        }
         LoadManager.Instance.LoadKO();
     }
 

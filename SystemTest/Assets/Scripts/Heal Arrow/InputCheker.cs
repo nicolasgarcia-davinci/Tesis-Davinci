@@ -8,15 +8,12 @@ public class InputCheker : MonoBehaviour
     public ArrowGroup[] CollectionsOnScreen;
     public int Index=0;
     public Image BackGround;
-    public Sprite Default;
-    public Sprite RUp;
-    public Sprite RRight;
-    public Sprite RLeft;
-    public Sprite RLegs;
+
+    public RestAnim player;
     // Start is called before the first frame update
     void Start()
     {
-        BackGround.sprite = Default;
+
     }
 
     // Update is called once per frame
@@ -42,7 +39,7 @@ public class InputCheker : MonoBehaviour
             if (group.Secuence[Index].IsUp && group.perfect)
                 group.Secuence[Index].ChangeToCorrect();
             if(Index==0)
-            BackGround.sprite = RUp;
+                player.SetRepairUp();
             if (!group.Secuence[Index].IsUp && group.perfect)
             {
                 group.Secuence[Index].ChangeToWrong();
@@ -66,7 +63,7 @@ public class InputCheker : MonoBehaviour
             if (group.Secuence[Index].IsRight && group.perfect)
                 group.Secuence[Index].ChangeToCorrect();
             if (Index == 0)
-                BackGround.sprite = RRight;
+                player.SetRepairRight();
             if (!group.Secuence[Index].IsRight && group.perfect)
             {
                 group.Secuence[Index].ChangeToWrong();
@@ -91,7 +88,7 @@ public class InputCheker : MonoBehaviour
             if (group.Secuence[Index].IsLeft && group.perfect)
                 group.Secuence[Index].ChangeToCorrect();
             if (Index == 0)
-                BackGround.sprite = RLeft;
+                player.SetRepairLeft();
             if (!group.Secuence[Index].IsLeft && group.perfect)
             {
                 group.Secuence[Index].ChangeToWrong();
@@ -115,7 +112,7 @@ public class InputCheker : MonoBehaviour
             if (group.Secuence[Index].IsDown && group.perfect)
                 group.Secuence[Index].ChangeToCorrect();
             if (Index == 0)
-                BackGround.sprite = RLegs;
+                player.SetRepairDown();
             if (!group.Secuence[Index].IsDown && group.perfect)
             {
                 group.Secuence[Index].ChangeToWrong();
@@ -152,7 +149,7 @@ public class InputCheker : MonoBehaviour
             foreach (Arrow flecha in group.Secuence)
                 flecha.ChangeToNormal();
         }
-        BackGround.sprite = Default;
-        Index= 0;
+        player.ResetRepair();
+        Index = 0;
     }
 }

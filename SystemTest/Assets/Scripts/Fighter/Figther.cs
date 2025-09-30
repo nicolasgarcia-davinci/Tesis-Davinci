@@ -98,7 +98,7 @@ public class Figther : MonoBehaviour
 
     public void UpperAttack()
     {
-        if(!Dodgeing && !UpAttack && !RightAttack && !LeftAttack && !DownAttack)
+        if(!Dodgeing && !UpAttack && !RightAttack && !LeftAttack && !DownAttack && HeadLife>0)
         {
             UpAttack = true;
             AimUp = true;
@@ -107,7 +107,7 @@ public class Figther : MonoBehaviour
     }
     public void RightHook()
     {
-        if (!Dodgeing && !UpAttack && !RightAttack && !LeftAttack && !DownAttack)
+        if (!Dodgeing && !UpAttack && !RightAttack && !LeftAttack && !DownAttack && LeftLife > 0)
         {
             RightAttack = true;
             AimRight = true;
@@ -116,7 +116,7 @@ public class Figther : MonoBehaviour
     }
     public void LeftHook()
     {
-        if (!Dodgeing && !UpAttack && !RightAttack && !LeftAttack && !DownAttack)
+        if (!Dodgeing && !UpAttack && !RightAttack && !LeftAttack && !DownAttack && RightLife > 0)
         {
             LeftAttack = true;
             AimLeft = true;
@@ -125,7 +125,7 @@ public class Figther : MonoBehaviour
     }
     public void DownerAttack()
     {
-        if (!Dodgeing && !UpAttack && !RightAttack && !LeftAttack && !DownAttack)
+        if (!Dodgeing && !UpAttack && !RightAttack && !LeftAttack && !DownAttack && LegsLife > 0)
         {
             DownAttack = true;
             AimDown = true;
@@ -313,5 +313,9 @@ public class Figther : MonoBehaviour
     public void AttackEffect()
     {
         FightControler.Instance.CheckAttack(this);
+    }
+    public void IAInputCheck()
+    {
+        FightControler.Instance.IADefender(this);
     }
 }

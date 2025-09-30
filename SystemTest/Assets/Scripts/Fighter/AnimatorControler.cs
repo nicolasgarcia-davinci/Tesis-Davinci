@@ -22,7 +22,11 @@ public class AnimatorControler : MonoBehaviour
     {
         _boss.EndReset();
     }
-    
+    public void Flee()
+    {
+        _boss.IAInputCheck();
+    }
+
     public void CallAttack()
     {
         _boss.AttackEffect();
