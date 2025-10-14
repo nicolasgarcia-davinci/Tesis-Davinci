@@ -113,6 +113,7 @@ public class Fallen : MonoBehaviour
     public void Play()
     {
         _fallen.speed = 1;
+        CamPos.Instance.changePos();
     }
     public void Stop()
     {

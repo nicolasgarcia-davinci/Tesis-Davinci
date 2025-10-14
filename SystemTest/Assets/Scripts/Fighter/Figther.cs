@@ -46,20 +46,28 @@ public class Figther : MonoBehaviour
     public GameObject _LegsGlich;
 
     [Header("Crash Particles")]
-    public GameObject _HeadCrash;
-    public GameObject _RightCrash;
-    public GameObject _LeftCrash;
-    public GameObject _LegsCrash;
+    //public GameObject _HeadCrash;
+    //public GameObject _RightCrash;
+    //public GameObject _LeftCrash;
+    //public GameObject _LegsCrash;
+    public GameObject[] _HeadCrash;
+    public GameObject[] _RightCrash;
+    public GameObject[] _LeftCrash;
+    public GameObject[] _LegsCrash;
     public bool HeadCrashbool;
     public bool RightCrashbool;
     public bool LeftCrashbool;
     public bool LegsCrashbool;
 
     [Header("Sparks Particles")]
-    public GameObject _HeadSpark;
-    public GameObject _RightSpark;
-    public GameObject _LeftSpark;
-    public GameObject _LegsSpark;
+    //public GameObject _HeadSpark;
+    //public GameObject _RightSpark;
+    //public GameObject _LeftSpark;
+    //public GameObject _LegsSpark;
+    public GameObject[] _HeadSpark;
+    public GameObject[] _RightSpark;
+    public GameObject[] _LeftSpark;
+    public GameObject[] _LegsSpark;
 
 
     void Start()
@@ -69,22 +77,26 @@ public class Figther : MonoBehaviour
         if (RightLife > 0)
         {
             RightCrashbool = false;
-            _RightSpark.gameObject.SetActive(false);
+            //_RightSpark.gameObject.SetActive(false);
+            DeActivateSet(_RightSpark);
         }
         if (HeadLife > 0)
         {
             HeadCrashbool = false;
-            _HeadSpark.gameObject.SetActive(false);
+            //_HeadSpark.gameObject.SetActive(false);
+            DeActivateSet(_HeadSpark);
         }
         if (LeftLife > 0)
         {
             LeftCrashbool = false;
-            _LeftSpark.gameObject.SetActive(false);
+            //_LeftSpark.gameObject.SetActive(false);
+            DeActivateSet(_LeftSpark);
         }
         if (LegsLife > 0)
         {
             LegsCrashbool = false;
-            _LegsSpark.gameObject.SetActive(false);
+            //_LegsSpark.gameObject.SetActive(false);
+            DeActivateSet(_LegsSpark);
         }
     }
     private void Update()
@@ -216,8 +228,10 @@ public class Figther : MonoBehaviour
         if (HeadLife <= 0 && ! HeadCrashbool)
         {
             HeadCrashbool = true;
-            _HeadCrash.gameObject.SetActive(true);
-            _HeadSpark.gameObject.SetActive(true);
+            //_HeadCrash.gameObject.SetActive(true);
+            //_HeadSpark.gameObject.SetActive(true);
+            ActivateSet(_HeadCrash);
+            ActivateSet(_HeadSpark);
         }
         _anim.ResetTrigger("UpDodge");
         _anim.ResetTrigger("RightDodge");
@@ -237,8 +251,10 @@ public class Figther : MonoBehaviour
         if (RightLife <= 0 && !RightCrashbool)
         {
             RightCrashbool = true;
-            _LeftCrash.gameObject.SetActive(true);
-            _RightSpark.gameObject.SetActive(true);
+            //_LeftCrash.gameObject.SetActive(true);
+            //_RightSpark.gameObject.SetActive(true);
+            ActivateSet(_LeftCrash);
+            ActivateSet(_RightSpark);
         }
         _anim.ResetTrigger("UpDodge");
         _anim.ResetTrigger("RightDodge");
@@ -258,8 +274,10 @@ public class Figther : MonoBehaviour
         if (LeftLife <= 0 && !LeftCrashbool)
         {
             LeftCrashbool = true;
-            _RightCrash.gameObject.SetActive(true);
-            _LeftSpark.gameObject.SetActive(true);
+            //_RightCrash.gameObject.SetActive(true);
+            //_LeftSpark.gameObject.SetActive(true);
+            ActivateSet(_RightCrash);
+            ActivateSet(_LeftSpark);
         }
         _anim.ResetTrigger("UpDodge");
         _anim.ResetTrigger("RightDodge");
@@ -279,8 +297,10 @@ public class Figther : MonoBehaviour
         if (LegsLife <= 0 && !LegsCrashbool)
         {
             LegsCrashbool = true;
-            _LegsCrash.gameObject.SetActive(true);
-            _LegsSpark.gameObject.SetActive(true);
+            //_LegsCrash.gameObject.SetActive(true);
+            //_LegsSpark.gameObject.SetActive(true);
+            ActivateSet(_LegsCrash);
+            ActivateSet(_LegsSpark);
         }
         _anim.ResetTrigger("UpDodge");
         _anim.ResetTrigger("RightDodge");
@@ -317,5 +337,20 @@ public class Figther : MonoBehaviour
     public void IAInputCheck()
     {
         FightControler.Instance.IADefender(this);
+    }
+
+    public void ActivateSet(GameObject[] set)
+    {
+        foreach (GameObject item in set)
+        {
+            item.SetActive(true);
+        }
+    }
+    public void DeActivateSet(GameObject[] set)
+    {
+        foreach (GameObject item in set)
+        {
+            item.SetActive(false);
+        }
     }
 }
