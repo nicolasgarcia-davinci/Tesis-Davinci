@@ -62,7 +62,6 @@ public class Fallen : MonoBehaviour
         _rightArrow.SetActive(!_rigth);
         _leftArrow.SetActive(!_left);
         _bar.fillAmount = _actualBar / _maxBar;
-        Play();
         if(_isEnemy)body.material = EMaterial;
         if(!_isEnemy)
         {
@@ -123,5 +122,6 @@ public class Fallen : MonoBehaviour
     {
         body.material.SetColor("_Color1", color1);
         body.material.SetColor("_Color2", color2);
+        body.material.SetFloat("_Transparencia", 1);
     }
 }

@@ -11,6 +11,7 @@ public class RestAnim : MonoBehaviour
     {
         body.material.SetColor("_Color1", ColorCordination.Instance.color1);
         body.material.SetColor("_Color2", ColorCordination.Instance.color2);
+        body.material.SetFloat("_Transparencia", 1);
     }
 
     // Update is called once per frame

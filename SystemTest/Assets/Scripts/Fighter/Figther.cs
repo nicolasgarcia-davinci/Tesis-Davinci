@@ -101,8 +101,7 @@ public class Figther : MonoBehaviour
     }
     private void Update()
     {
-        _anim.speed = Stamina / MaxStamina;
-        if(Stamina <= MaxStamina)
+        if(Stamina < MaxStamina)
         {
             Stamina += StaminaRefresh * Time.deltaTime;
         }
@@ -114,6 +113,7 @@ public class Figther : MonoBehaviour
         {
             UpAttack = true;
             AimUp = true;
+            _anim.speed = Stamina / MaxStamina;
             FightControler.Instance.IADefender(this);
         }
     }
@@ -123,6 +123,7 @@ public class Figther : MonoBehaviour
         {
             RightAttack = true;
             AimRight = true;
+            _anim.speed = Stamina / MaxStamina;
             FightControler.Instance.IADefender(this);
         }
     }
@@ -132,6 +133,7 @@ public class Figther : MonoBehaviour
         {
             LeftAttack = true;
             AimLeft = true;
+            _anim.speed = Stamina / MaxStamina;
             FightControler.Instance.IADefender(this);
         }
     }
@@ -141,6 +143,7 @@ public class Figther : MonoBehaviour
         {
             DownAttack = true;
             AimDown = true;
+            _anim.speed = Stamina / MaxStamina;
             FightControler.Instance.IADefender(this);
         }
     }
@@ -149,6 +152,7 @@ public class Figther : MonoBehaviour
     {
         if(!Dodgeing && !UpAttack && !RightAttack && !LeftAttack && !DownAttack)
         {
+
             Debug.Log(_name + " DodgingUp");
             Dodgeing = true;
             UpDodge = true;
@@ -196,6 +200,7 @@ public class Figther : MonoBehaviour
         _anim.SetBool("LeftAttack", false);
         DownAttack = false;
         _anim.SetBool("DownAttak", false);
+        _anim.speed = 1;
     }
     public void EndReset()
     {
@@ -224,20 +229,22 @@ public class Figther : MonoBehaviour
         if(HeadLife>0) HeadLife -= 10;
         restAttack();
         _HeadGlich.gameObject.SetActive(true);
+        _anim.ResetTrigger("UpDodge");
+        _anim.ResetTrigger("RightDodge");
+        _anim.ResetTrigger("LeftDodge");
+        _anim.ResetTrigger("DownDodge");
+        _anim.SetTrigger("Damaged");
+
         if (HeadLife <= 0 && HeadCrashbool) return;
         if (HeadLife <= 0 && ! HeadCrashbool)
         {
+            FightControler.Instance.stopFrame();
             HeadCrashbool = true;
             //_HeadCrash.gameObject.SetActive(true);
             //_HeadSpark.gameObject.SetActive(true);
             ActivateSet(_HeadCrash);
             ActivateSet(_HeadSpark);
         }
-        _anim.ResetTrigger("UpDodge");
-        _anim.ResetTrigger("RightDodge");
-        _anim.ResetTrigger("LeftDodge");
-        _anim.ResetTrigger("DownDodge");
-        _anim.SetTrigger("Damaged");
     }
     public void takeRightDamage()
     {
@@ -247,20 +254,21 @@ public class Figther : MonoBehaviour
         if (RightLife > 0) RightLife -= 10;
         restAttack();
         _LeftGlich.gameObject.SetActive(true);
+        _anim.ResetTrigger("UpDodge");
+        _anim.ResetTrigger("RightDodge");
+        _anim.ResetTrigger("LeftDodge");
+        _anim.ResetTrigger("DownDodge");
+        _anim.SetTrigger("Damaged");
         if (RightLife <= 0 && RightCrashbool) return;
         if (RightLife <= 0 && !RightCrashbool)
         {
+            FightControler.Instance.stopFrame();
             RightCrashbool = true;
             //_LeftCrash.gameObject.SetActive(true);
             //_RightSpark.gameObject.SetActive(true);
             ActivateSet(_LeftCrash);
             ActivateSet(_RightSpark);
         }
-        _anim.ResetTrigger("UpDodge");
-        _anim.ResetTrigger("RightDodge");
-        _anim.ResetTrigger("LeftDodge");
-        _anim.ResetTrigger("DownDodge");
-        _anim.SetTrigger("Damaged");
     }
     public void takeLeftDamage()
     {
@@ -270,20 +278,21 @@ public class Figther : MonoBehaviour
         if (LeftLife > 0) LeftLife -= 10;
         restAttack();
         _RightGlich.gameObject.SetActive(true);
+        _anim.ResetTrigger("UpDodge");
+        _anim.ResetTrigger("RightDodge");
+        _anim.ResetTrigger("LeftDodge");
+        _anim.ResetTrigger("DownDodge");
+        _anim.SetTrigger("Damaged");
         if (LeftLife <= 0 && LeftCrashbool) return;
         if (LeftLife <= 0 && !LeftCrashbool)
         {
+            FightControler.Instance.stopFrame();
             LeftCrashbool = true;
             //_RightCrash.gameObject.SetActive(true);
             //_LeftSpark.gameObject.SetActive(true);
             ActivateSet(_RightCrash);
             ActivateSet(_LeftSpark);
         }
-        _anim.ResetTrigger("UpDodge");
-        _anim.ResetTrigger("RightDodge");
-        _anim.ResetTrigger("LeftDodge");
-        _anim.ResetTrigger("DownDodge");
-        _anim.SetTrigger("Damaged");
     }
     public void takeLegsDamage()
     {
@@ -293,20 +302,21 @@ public class Figther : MonoBehaviour
         if (LegsLife > 0) LegsLife -= 10;
         restAttack();
         _LegsGlich.gameObject.SetActive(true);
+        _anim.ResetTrigger("UpDodge");
+        _anim.ResetTrigger("RightDodge");
+        _anim.ResetTrigger("LeftDodge");
+        _anim.ResetTrigger("DownDodge");
+        _anim.SetTrigger("Damaged");
         if (LegsLife <= 0 && LegsCrashbool) return;
         if (LegsLife <= 0 && !LegsCrashbool)
         {
+            FightControler.Instance.stopFrame();
             LegsCrashbool = true;
             //_LegsCrash.gameObject.SetActive(true);
             //_LegsSpark.gameObject.SetActive(true);
             ActivateSet(_LegsCrash);
             ActivateSet(_LegsSpark);
         }
-        _anim.ResetTrigger("UpDodge");
-        _anim.ResetTrigger("RightDodge");
-        _anim.ResetTrigger("LeftDodge");
-        _anim.ResetTrigger("DownDodge");
-        _anim.SetTrigger("Damaged");
     }
 
     public bool CheckDamage()
@@ -352,5 +362,18 @@ public class Figther : MonoBehaviour
         {
             item.SetActive(false);
         }
+    }
+
+    public IEnumerator BreakStop()
+    {
+        _anim.speed = 0;
+        Debug.Log("Freeze");
+        yield return new WaitForSeconds (1);
+        _anim.speed = 1;
+        Debug.Log("UnFreeze");
+    }
+    public void FreezeFrame()
+    {
+        StartCoroutine(BreakStop());
     }
 }
