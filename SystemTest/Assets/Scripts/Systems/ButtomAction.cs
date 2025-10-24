@@ -31,6 +31,10 @@ public class ButtomAction : MonoBehaviour
             if (_thisType == ButtomType.LoadMenu) LoadManager.Instance.LoadMenu();
 
             if(_thisType == ButtomType.Quit) Application.Quit();
+
+            if (_thisType == ButtomType.Return) ChangeMenu();
+
+            if (_thisType == ButtomType.Continue) LoadManager.Instance.LoadGym();
         }
     }
 
@@ -52,5 +56,5 @@ public class ButtomAction : MonoBehaviour
 }
 public enum ButtomType
 {
-    NavButtom, LoadStage ,LoadMenu,Color1,Color2, Quit
+    NavButtom, LoadStage ,LoadMenu,Color1,Color2, Quit, Return ,Continue, RoboBoxer, RoboDrill
 }
