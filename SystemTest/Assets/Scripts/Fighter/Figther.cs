@@ -78,24 +78,28 @@ public class Figther : MonoBehaviour
         {
             RightCrashbool = false;
             //_RightSpark.gameObject.SetActive(false);
+            RightCrashbool =true;
             DeActivateSet(_RightSpark);
         }
         if (HeadLife > 0)
         {
             HeadCrashbool = false;
             //_HeadSpark.gameObject.SetActive(false);
+            HeadCrashbool = true;
             DeActivateSet(_HeadSpark);
         }
         if (LeftLife > 0)
         {
             LeftCrashbool = false;
             //_LeftSpark.gameObject.SetActive(false);
+            LeftCrashbool=true;
             DeActivateSet(_LeftSpark);
         }
         if (LegsLife > 0)
         {
             LegsCrashbool = false;
             //_LegsSpark.gameObject.SetActive(false);
+            LeftCrashbool=true;
             DeActivateSet(_LegsSpark);
         }
     }
