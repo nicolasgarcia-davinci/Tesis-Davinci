@@ -20,6 +20,7 @@ public class LoadManager : MonoBehaviour
     }
     public void LoadRing()
     {
+        VignetControler.Instance.DeActivate();
         LifeTraker.Instance.ResetTimer = true;
         LifeTraker.Instance.Reset();
         DataSaver.Instance.LoadLvl();
@@ -28,6 +29,7 @@ public class LoadManager : MonoBehaviour
     public void LoadGym()
     {
         //check
+        VignetControler.Instance.DeActivate();
         LifeTraker.Instance.ResetTimer = true;
         LifeTraker.Instance.Reset();
         DataSaver.Instance.LoadLvl();
@@ -58,6 +60,7 @@ public class LoadManager : MonoBehaviour
     }
     public void Round2()
     {
+        VignetControler.Instance.DeActivate();
         DataSaver.Instance.LoadTimer();
         SceneManager.LoadSceneAsync(1);
     }

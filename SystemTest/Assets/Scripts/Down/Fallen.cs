@@ -52,9 +52,14 @@ public class Fallen : MonoBehaviour
             _isEnemy=true;
             _maxBar=_defaultBar*LifeTraker.Instance.EnemyKO;
         }
-        if(_isEnemy) _ai.gameObject.SetActive(true);
+        if(_isEnemy)
+        {
+            VignetControler.Instance.ActivateEnemyColor();
+            _ai.gameObject.SetActive(true);
+        }
         else
         {
+            VignetControler.Instance.ActivatePlayerColor();
             _player.gameObject.SetActive(true);
             _maxBar = _defaultBar * LifeTraker.Instance.PlayerKO;
         }
