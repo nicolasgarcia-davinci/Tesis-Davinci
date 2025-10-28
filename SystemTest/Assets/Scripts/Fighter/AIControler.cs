@@ -33,11 +33,11 @@ public class AIControler : MonoBehaviour
         if(_timer>=_AttackInterval)
         {
             _timer = 0;
-            float attackNum = Random.Range(0,4);
-            if (attackNum <= 1) Character.UpperAttack();
-            if (attackNum <= 2 && attackNum > 1) Character.RightHook();
-            if (attackNum <= 3 && attackNum > 2) Character.LeftHook();
-            if (attackNum <= 4 && attackNum > 3) Character.DownerAttack();
+            float attackNum = Random.Range(0,100);
+            if (attackNum <= 25) Character.UpperAttack();
+            if (attackNum <= 50 && attackNum > 25) Character.RightHook();
+            if (attackNum <= 75 && attackNum > 50) Character.LeftHook();
+            if (attackNum <= 100 && attackNum > 75) Character.DownerAttack();
         }
     }
 

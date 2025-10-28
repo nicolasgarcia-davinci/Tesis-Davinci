@@ -6,7 +6,7 @@ public class RestAnim : MonoBehaviour
 {
     public Animator Anim;
     public SkinnedMeshRenderer body;
-    // Start is called before the first frame update
+
     void Start()
     {
         body.material.SetColor("_Color1", ColorCordination.Instance.color1);
@@ -14,11 +14,6 @@ public class RestAnim : MonoBehaviour
         body.material.SetFloat("_Transparencia", 1);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     public void SetRepairUp()
     {
         Anim.SetBool("RepairUp", true);

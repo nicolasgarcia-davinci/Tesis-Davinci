@@ -234,8 +234,11 @@ public class Figther : MonoBehaviour
         _anim.ResetTrigger("LeftDodge");
         _anim.ResetTrigger("DownDodge");
         _anim.SetTrigger("Damaged");
-
-        if (HeadLife <= 0 && HeadCrashbool) return;
+        if (HeadLife <= 0 && HeadCrashbool)
+        {
+            FightControler.Instance.camSpinDOWN(this);
+            return;
+        }
         if (HeadLife <= 0 && ! HeadCrashbool)
         {
             FightControler.Instance.stopFrame();
@@ -244,7 +247,9 @@ public class Figther : MonoBehaviour
             //_HeadSpark.gameObject.SetActive(true);
             ActivateSet(_HeadCrash);
             ActivateSet(_HeadSpark);
+            return;
         }
+        FightControler.Instance.camSpinDOWN(this);
     }
     public void takeRightDamage()
     {
@@ -259,7 +264,11 @@ public class Figther : MonoBehaviour
         _anim.ResetTrigger("LeftDodge");
         _anim.ResetTrigger("DownDodge");
         _anim.SetTrigger("Damaged");
-        if (RightLife <= 0 && RightCrashbool) return;
+        if (RightLife <= 0 && RightCrashbool)
+        {
+            FightControler.Instance.camSpinLEFT(this);
+            return;
+        }
         if (RightLife <= 0 && !RightCrashbool)
         {
             FightControler.Instance.stopFrame();
@@ -268,7 +277,9 @@ public class Figther : MonoBehaviour
             //_RightSpark.gameObject.SetActive(true);
             ActivateSet(_LeftCrash);
             ActivateSet(_RightSpark);
+            return;
         }
+        FightControler.Instance.camSpinLEFT(this);
     }
     public void takeLeftDamage()
     {
@@ -283,7 +294,11 @@ public class Figther : MonoBehaviour
         _anim.ResetTrigger("LeftDodge");
         _anim.ResetTrigger("DownDodge");
         _anim.SetTrigger("Damaged");
-        if (LeftLife <= 0 && LeftCrashbool) return;
+        if (LeftLife <= 0 && LeftCrashbool)
+        {
+            FightControler.Instance.camSpinRIGHT(this);
+            return;
+        }
         if (LeftLife <= 0 && !LeftCrashbool)
         {
             FightControler.Instance.stopFrame();
@@ -292,7 +307,9 @@ public class Figther : MonoBehaviour
             //_LeftSpark.gameObject.SetActive(true);
             ActivateSet(_RightCrash);
             ActivateSet(_LeftSpark);
+            return;
         }
+        FightControler.Instance.camSpinRIGHT(this);
     }
     public void takeLegsDamage()
     {
@@ -307,7 +324,11 @@ public class Figther : MonoBehaviour
         _anim.ResetTrigger("LeftDodge");
         _anim.ResetTrigger("DownDodge");
         _anim.SetTrigger("Damaged");
-        if (LegsLife <= 0 && LegsCrashbool) return;
+        if (LegsLife <= 0 && LegsCrashbool)
+        {
+            FightControler.Instance.camSpinUP(this);
+            return;
+        } 
         if (LegsLife <= 0 && !LegsCrashbool)
         {
             FightControler.Instance.stopFrame();
@@ -316,7 +337,9 @@ public class Figther : MonoBehaviour
             //_LegsSpark.gameObject.SetActive(true);
             ActivateSet(_LegsCrash);
             ActivateSet(_LegsSpark);
+            return;
         }
+        FightControler.Instance.camSpinUP(this);
     }
 
     public bool CheckDamage()
@@ -367,10 +390,8 @@ public class Figther : MonoBehaviour
     public IEnumerator BreakStop()
     {
         _anim.speed = 0;
-        Debug.Log("Freeze");
-        yield return new WaitForSeconds (1);
+        yield return new WaitForSeconds (0.5f);
         _anim.speed = 1;
-        Debug.Log("UnFreeze");
     }
     public void FreezeFrame()
     {

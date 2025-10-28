@@ -77,28 +77,40 @@ public class FightControler : MonoBehaviour
             {
                 _Player.takeHeadDamage();
                 if (_Player.HeadLife == 0) return;
-                CamaraSpin.Instance.DownSpin();
             }
             if (attacker.AimRight && !_Player.RightDodge)
             {
                 _Player.takeRightDamage();
                 if (_Player.RightLife == 0) return;
-                CamaraSpin.Instance.LeftSpin();
             }
             if (attacker.AimLeft && !_Player.LeftDodge)
             {
                 _Player.takeLeftDamage();
                 if (_Player.LeftLife == 0) return;
-                CamaraSpin.Instance.RightSpin();
             }
             if (attacker.AimDown && !_Player.DownDodge)
             {
                 _Player.takeLegsDamage();
-                if (_Player.LegsLife == 0) return;
-                CamaraSpin.Instance.UpSpin();
+                if (_Player.LegsLife == 0) return;  
             }
         }
         attacker.Stamina -= 10;
+    }
+    public void camSpinUP(Figther smack)
+    {
+        if ( smack == _Player ) CamaraSpin.Instance.UpSpin();
+    }
+    public void camSpinDOWN(Figther smack)
+    {
+        if (smack == _Player) CamaraSpin.Instance.DownSpin();
+    }
+    public void camSpinRIGHT(Figther smack)
+    {
+        if (smack == _Player) CamaraSpin.Instance.RightSpin();
+    }
+    public void camSpinLEFT(Figther smack)
+    {
+        if (smack == _Player) CamaraSpin.Instance.LeftSpin();
     }
     public void stopFrame()
     {
