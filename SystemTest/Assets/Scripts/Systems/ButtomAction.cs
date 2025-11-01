@@ -10,6 +10,7 @@ public class ButtomAction : MonoBehaviour
     [SerializeField] TextMeshProUGUI _label;
     public GameObject _selector;
     public MenuNavigation _miMenu;
+    public MenuRobo _Display;
     public bool _isSelected;
     public int _targetID;
     public ButtomType _thisType;
@@ -35,6 +36,26 @@ public class ButtomAction : MonoBehaviour
             if (_thisType == ButtomType.Return) ChangeMenu();
 
             if (_thisType == ButtomType.Continue) LoadManager.Instance.LoadGym();
+
+            if (_thisType == ButtomType.NextLvl)
+            {
+                LifeTraker.Instance.Dificulty++;
+                LoadManager.Instance.LoadGym();
+            }
+
+                if (_thisType == ButtomType.RoboBoxer)
+            {
+                LifeTraker.Instance.PlayerRobo=RoboType.Boxer;
+                _Display.ActivateBoxer();
+                ChangeMenu();
+            }
+
+            if (_thisType == ButtomType.RoboDrill)
+            {
+                LifeTraker.Instance.PlayerRobo = RoboType.Drill;
+                _Display.ActivateDrill();
+                ChangeMenu();
+            }
         }
     }
 
@@ -56,5 +77,5 @@ public class ButtomAction : MonoBehaviour
 }
 public enum ButtomType
 {
-    NavButtom, LoadStage ,LoadMenu,Color1,Color2, Quit, Return ,Continue, RoboBoxer, RoboDrill
+    NavButtom, LoadStage, LoadMenu, Color1, Color2, Quit, Return, Continue, NextLvl , RoboBoxer, RoboDrill
 }

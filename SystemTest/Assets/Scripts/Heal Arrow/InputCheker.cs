@@ -10,10 +10,19 @@ public class InputCheker : MonoBehaviour
     public Image BackGround;
 
     public RestAnim player;
-    // Start is called before the first frame update
-    void Start()
-    {
 
+    public static InputCheker Instance;
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(this);
+        }
     }
 
     // Update is called once per frame

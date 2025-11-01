@@ -4,25 +4,28 @@ using UnityEngine;
 
 public class DownManager : MonoBehaviour
 {
-    public Fallen _fighter;
+    public Fallen _Boxer;
+    public Fallen _Drill;
     public GetUp _clock;
 
     public GameObject _Loose;
     public GameObject _Win;
-    // Start is called before the first frame update
+
     void Start()
     {
-        
+        if(LifeTraker.Instance.PlayerRobo==RoboType.Boxer)_Boxer.gameObject.SetActive(true);
+        if(LifeTraker.Instance.PlayerRobo==RoboType.Drill)_Drill.gameObject.SetActive(true);
     }
 
-    // Update is called once per frame
+
+
     void Update()
     {
         if(_clock._timer==0)
         {
-            _fighter._gameOver = true;
-            if(_fighter._isEnemy) _Win.SetActive(true);
-            if(!_fighter._isEnemy) _Loose.SetActive(true);
+            _Boxer._gameOver = true;
+            if(_Boxer._isEnemy) _Win.SetActive(true);
+            if(!_Boxer._isEnemy) _Loose.SetActive(true);
         }
     }
 }

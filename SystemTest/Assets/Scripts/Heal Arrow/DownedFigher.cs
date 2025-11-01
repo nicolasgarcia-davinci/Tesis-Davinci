@@ -6,6 +6,7 @@ public class DownedFigher : MonoBehaviour
 {
     public ArrowGroup[] _bodyIndicators;
     public bool IsPlayer;
+    public RepairSpawner _spawner;
 
     void Update()
     {
@@ -13,6 +14,7 @@ public class DownedFigher : MonoBehaviour
     }
     void Start()
     {
+        _spawner.SpawnPlayer();
         if(!LifeTraker.Instance.IsEnemy)
         {
             IsPlayer = true;

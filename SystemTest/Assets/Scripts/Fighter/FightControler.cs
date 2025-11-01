@@ -8,6 +8,7 @@ public class FightControler : MonoBehaviour
     public Figther _Player;
     public Figther _Enemy;
     public AIControler _Controler;
+    public PlayerSpawner _Spawner;
 
     private void Awake()
     {
@@ -20,27 +21,12 @@ public class FightControler : MonoBehaviour
             Destroy(this);
         }
     }
-    // Start is called before the first frame update
+
     void Start()
     {
-        _Player.ColorChange(ColorCordination.Instance.color1, ColorCordination.Instance.color2);
-        _Player.MaxLife = LifeTraker.Instance.pOverHealt;
-        _Player.HeadLife = LifeTraker.Instance.pHead;
-        _Player.RightLife = LifeTraker.Instance.pRight;
-        _Player.LeftLife = LifeTraker.Instance.pLeft;
-        _Player.LegsLife = LifeTraker.Instance.pLegs;
-        _Enemy.MaxLife = LifeTraker.Instance.eOverHealt;
-        _Enemy.HeadLife = LifeTraker.Instance.eHead;
-        _Enemy.RightLife = LifeTraker.Instance.eRight;
-        _Enemy.LeftLife = LifeTraker.Instance.eLeft;
-        _Enemy.LegsLife = LifeTraker.Instance.eLegs;
+        _Spawner.SpawnPlayer();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     public void IADefender(Figther attacker)
     {
         if (attacker == _Player)

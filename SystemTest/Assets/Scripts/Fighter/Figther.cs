@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class Figther : MonoBehaviour
 {
@@ -46,10 +47,6 @@ public class Figther : MonoBehaviour
     public GameObject _LegsGlich;
 
     [Header("Crash Particles")]
-    //public GameObject _HeadCrash;
-    //public GameObject _RightCrash;
-    //public GameObject _LeftCrash;
-    //public GameObject _LegsCrash;
     public GameObject[] _HeadCrash;
     public GameObject[] _RightCrash;
     public GameObject[] _LeftCrash;
@@ -60,10 +57,6 @@ public class Figther : MonoBehaviour
     public bool LegsCrashbool;
 
     [Header("Sparks Particles")]
-    //public GameObject _HeadSpark;
-    //public GameObject _RightSpark;
-    //public GameObject _LeftSpark;
-    //public GameObject _LegsSpark;
     public GameObject[] _HeadSpark;
     public GameObject[] _RightSpark;
     public GameObject[] _LeftSpark;
@@ -72,33 +65,31 @@ public class Figther : MonoBehaviour
 
     void Start()
     {
+        if (IsPlayer) ColorChange(ColorCordination.Instance.color1, ColorCordination.Instance.color2);
         Stamina=MaxStamina;
+        SetLife();
         _anim = GetComponentInChildren<Animator>();
         if (RightLife > 0)
         {
             RightCrashbool = false;
-            //_RightSpark.gameObject.SetActive(false);
             RightCrashbool =true;
             DeActivateSet(_RightSpark);
         }
         if (HeadLife > 0)
         {
             HeadCrashbool = false;
-            //_HeadSpark.gameObject.SetActive(false);
             HeadCrashbool = true;
             DeActivateSet(_HeadSpark);
         }
         if (LeftLife > 0)
         {
             LeftCrashbool = false;
-            //_LeftSpark.gameObject.SetActive(false);
             LeftCrashbool=true;
             DeActivateSet(_LeftSpark);
         }
         if (LegsLife > 0)
         {
             LegsCrashbool = false;
-            //_LegsSpark.gameObject.SetActive(false);
             LeftCrashbool=true;
             DeActivateSet(_LegsSpark);
         }
@@ -108,6 +99,26 @@ public class Figther : MonoBehaviour
         if(Stamina < MaxStamina)
         {
             Stamina += StaminaRefresh * Time.deltaTime;
+        }
+    }
+
+    public void SetLife() 
+    {
+        if (IsPlayer)
+        {
+            MaxLife = LifeTraker.Instance.pOverHealt;
+            HeadLife = LifeTraker.Instance.pHead;
+            RightLife = LifeTraker.Instance.pRight;
+            LeftLife = LifeTraker.Instance.pLeft;
+            LegsLife = LifeTraker.Instance.pLegs;
+        }
+        if (!IsPlayer)
+        {
+            MaxLife = LifeTraker.Instance.eOverHealt;
+            HeadLife = LifeTraker.Instance.eHead;
+            RightLife = LifeTraker.Instance.eRight;
+            LeftLife = LifeTraker.Instance.eLeft;
+            LegsLife = LifeTraker.Instance.eLegs;
         }
     }
 
@@ -247,8 +258,6 @@ public class Figther : MonoBehaviour
         {
             FightControler.Instance.stopFrame();
             HeadCrashbool = true;
-            //_HeadCrash.gameObject.SetActive(true);
-            //_HeadSpark.gameObject.SetActive(true);
             ActivateSet(_HeadCrash);
             ActivateSet(_HeadSpark);
             return;
@@ -277,8 +286,6 @@ public class Figther : MonoBehaviour
         {
             FightControler.Instance.stopFrame();
             RightCrashbool = true;
-            //_LeftCrash.gameObject.SetActive(true);
-            //_RightSpark.gameObject.SetActive(true);
             ActivateSet(_LeftCrash);
             ActivateSet(_RightSpark);
             return;
@@ -307,8 +314,6 @@ public class Figther : MonoBehaviour
         {
             FightControler.Instance.stopFrame();
             LeftCrashbool = true;
-            //_RightCrash.gameObject.SetActive(true);
-            //_LeftSpark.gameObject.SetActive(true);
             ActivateSet(_RightCrash);
             ActivateSet(_LeftSpark);
             return;
@@ -337,8 +342,6 @@ public class Figther : MonoBehaviour
         {
             FightControler.Instance.stopFrame();
             LegsCrashbool = true;
-            //_LegsCrash.gameObject.SetActive(true);
-            //_LegsSpark.gameObject.SetActive(true);
             ActivateSet(_LegsCrash);
             ActivateSet(_LegsSpark);
             return;
