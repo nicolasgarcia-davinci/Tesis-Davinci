@@ -77,6 +77,7 @@ public class Fallen : MonoBehaviour
 
     public void CheckLeft()
     {
+        if(_gameOver) return;
         if (!_left)
         {
             _actualBar++;
@@ -84,8 +85,9 @@ public class Fallen : MonoBehaviour
             _bar.fillAmount = _actualBar / _maxBar;
             if (_actualBar == _maxBar)
             {
-                if(LifeTraker.Instance.IsEnemy) LifeTraker.Instance.eOverHealt = 70;
+                if(LifeTraker.Instance.IsEnemy) LifeTraker.Instance.eOverHealt = 10;
                 else LifeTraker.Instance.pOverHealt = 70;
+                if (LifeTraker.Instance.Dificulty == 2) LoadManager.Instance.Round2Gym();
                 LoadManager.Instance.Round2();
             }
             _left = true;
@@ -96,6 +98,7 @@ public class Fallen : MonoBehaviour
     }
     public void Checkright()
     {
+        if (_gameOver) return;
         if (!_rigth)
         {
             _actualBar++;
@@ -103,8 +106,9 @@ public class Fallen : MonoBehaviour
             _bar.fillAmount = _actualBar / _maxBar;
             if (_actualBar == _maxBar)
             {
-                if (LifeTraker.Instance.IsEnemy) LifeTraker.Instance.eOverHealt = 70;
+                if (LifeTraker.Instance.IsEnemy) LifeTraker.Instance.eOverHealt = 10;
                 else LifeTraker.Instance.pOverHealt = 70;
+                if(LifeTraker.Instance.Dificulty==2) LoadManager.Instance.Round2Gym();
                 LoadManager.Instance.Round2();
             }
             _rigth = true;

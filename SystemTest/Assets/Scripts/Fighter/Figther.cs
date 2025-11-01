@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class Figther : MonoBehaviour
@@ -65,7 +66,11 @@ public class Figther : MonoBehaviour
 
     void Start()
     {
-        if (IsPlayer) ColorChange(ColorCordination.Instance.color1, ColorCordination.Instance.color2);
+        if (IsPlayer && LifeTraker.Instance.Dificulty==2)
+        {
+            ColorChange(ColorCordination.Instance.color1, ColorCordination.Instance.color2);
+            gameObject.transform.Rotate(new Vector3(0, -90, 0));
+        }
         Stamina=MaxStamina;
         SetLife();
         _anim = GetComponentInChildren<Animator>();

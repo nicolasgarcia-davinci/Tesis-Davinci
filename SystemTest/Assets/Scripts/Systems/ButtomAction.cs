@@ -56,6 +56,11 @@ public class ButtomAction : MonoBehaviour
                 _Display.ActivateDrill();
                 ChangeMenu();
             }
+            if(_thisType==ButtomType.NextLvl)
+            {
+                LifeTraker.Instance.Dificulty=2;
+                LoadManager.Instance.LoadGym();
+            }
         }
     }
 

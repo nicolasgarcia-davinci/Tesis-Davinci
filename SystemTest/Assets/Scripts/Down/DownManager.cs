@@ -13,8 +13,10 @@ public class DownManager : MonoBehaviour
 
     void Start()
     {
-        if(LifeTraker.Instance.PlayerRobo==RoboType.Boxer)_Boxer.gameObject.SetActive(true);
-        if(LifeTraker.Instance.PlayerRobo==RoboType.Drill)_Drill.gameObject.SetActive(true);
+        if(LifeTraker.Instance.PlayerRobo==RoboType.Boxer && !LifeTraker.Instance.IsEnemy)_Boxer.gameObject.SetActive(true);
+        if(LifeTraker.Instance.Dificulty==1 && LifeTraker.Instance.IsEnemy)_Boxer.gameObject.SetActive(true);
+        if (LifeTraker.Instance.PlayerRobo == RoboType.Drill && !LifeTraker.Instance.IsEnemy) _Drill.gameObject.SetActive(true);
+        if (LifeTraker.Instance.Dificulty == 2 && LifeTraker.Instance.IsEnemy) _Drill.gameObject.SetActive(true);
     }
 
 

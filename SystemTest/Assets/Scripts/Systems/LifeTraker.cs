@@ -60,12 +60,14 @@ public class LifeTraker : MonoBehaviour
         pRight = MaxHealt;
         pLeft = MaxHealt;
         pLegs = MaxHealt;
-        eOverHealt = MaxHealt*Dificulty;
+        eOverHealt = MaxHealt * Dificulty;
         eHead = MaxHealt * Dificulty;
         eRight = MaxHealt * Dificulty;
         eLeft = MaxHealt * Dificulty;
         eLegs = MaxHealt * Dificulty;
         RundCounter = 1;
+        PlayerKO=0;
+        EnemyKO=0;
     }
 }
 

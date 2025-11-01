@@ -23,7 +23,6 @@ public class LoadManager : MonoBehaviour
         VignetControler.Instance.DeActivate();
         LifeTraker.Instance.ResetTimer = true;
         LifeTraker.Instance.Reset();
-        DataSaver.Instance.LoadLvl();
         SceneManager.LoadSceneAsync(1);
     }
     public void LoadGym()
@@ -32,7 +31,6 @@ public class LoadManager : MonoBehaviour
         VignetControler.Instance.DeActivate();
         LifeTraker.Instance.ResetTimer = true;
         LifeTraker.Instance.Reset();
-        DataSaver.Instance.LoadLvl();
         SceneManager.LoadSceneAsync(4);
     }
     public void LoadGymKo()
@@ -40,8 +38,6 @@ public class LoadManager : MonoBehaviour
         //check
         DataSaver.Instance.SaveTimer();
         LifeTraker.Instance.UpdateLife();
-        DataSaver.Instance.SaveLvl();
-        DataSaver.Instance.LoadLvl();
         SceneManager.LoadSceneAsync(5);
     }
     public void LoadGymRest()
@@ -49,25 +45,21 @@ public class LoadManager : MonoBehaviour
         //check
         DataSaver.Instance.SaveTimer();
         LifeTraker.Instance.UpdateLife();
-        DataSaver.Instance.LoadLvl();
-        DataSaver.Instance.SaveLvl();
         SceneManager.LoadSceneAsync(6);
     }
     public void Round2Gym()
     {
+        VignetControler.Instance.DeActivate();
         DataSaver.Instance.LoadTimer();
         SceneManager.LoadSceneAsync(4);
     }
     public void Round2()
     {
         VignetControler.Instance.DeActivate();
-        DataSaver.Instance.LoadTimer();
         SceneManager.LoadSceneAsync(1);
     }
     public void LoadMenu()
     {
-        DataSaver.Instance.LoadLvl();
-        DataSaver.Instance.SaveLvl();
         SceneManager.LoadSceneAsync(0);
     }
     public void Reaload()
@@ -79,8 +71,6 @@ public class LoadManager : MonoBehaviour
     {
         DataSaver.Instance.SaveTimer();
         LifeTraker.Instance.UpdateLife();
-        DataSaver.Instance.LoadLvl();
-        DataSaver.Instance.SaveLvl();
         SceneManager.LoadSceneAsync(3);
     }
 
@@ -88,8 +78,6 @@ public class LoadManager : MonoBehaviour
     {
         DataSaver.Instance.SaveTimer();
         LifeTraker.Instance.UpdateLife();
-        DataSaver.Instance.SaveLvl();
-        DataSaver.Instance.LoadLvl();
         SceneManager.LoadSceneAsync(2);
     }
 }
