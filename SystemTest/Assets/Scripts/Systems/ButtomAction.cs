@@ -34,6 +34,7 @@ public class ButtomAction : MonoBehaviour
 
     public IEnumerator Action()
     {
+        _selector.Hit();
 
         yield return new WaitForSeconds(activationdelay);
 
