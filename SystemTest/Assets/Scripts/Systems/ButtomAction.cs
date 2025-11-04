@@ -8,10 +8,12 @@ public class ButtomAction : MonoBehaviour
 {
     [SerializeField] string _labelText;
     [SerializeField] TextMeshProUGUI _label;
-    public GameObject _selector;
+    public GloveAnim _selector;
     public MenuNavigation _miMenu;
     public MenuRobo _Display;
+    public float activationdelay;
     public bool _isSelected;
+    public bool _Activated;
     public int _targetID;
     public ButtomType _thisType;
     
@@ -23,55 +25,70 @@ public class ButtomAction : MonoBehaviour
 
     public virtual void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space) && _isSelected)
+        if(Input.GetKeyDown(KeyCode.Space) && _isSelected && !_Activated)
         {  
-            if(_thisType == ButtomType.NavButtom) ChangeMenu();
+            _Activated = true;
+            StartCoroutine(Action());
+        }
+    }
 
-            if (_thisType == ButtomType.LoadStage) LoadManager.Instance.LoadRing();
+    public IEnumerator Action()
+    {
 
-            if (_thisType == ButtomType.LoadMenu) LoadManager.Instance.LoadMenu();
+        yield return new WaitForSeconds(activationdelay);
 
-            if(_thisType == ButtomType.Quit) Application.Quit();
+        _selector.gameObject.SetActive(false);
 
-            if (_thisType == ButtomType.Return) ChangeMenu();
+        if (_thisType == ButtomType.NavButtom) ChangeMenu();
 
-            if (_thisType == ButtomType.Continue) LoadManager.Instance.LoadGym();
+        if (_thisType == ButtomType.LoadStage) LoadManager.Instance.LoadRing();
 
-            if (_thisType == ButtomType.NextLvl)
-            {
-                LifeTraker.Instance.Dificulty++;
-                LoadManager.Instance.LoadGym();
-            }
+        if (_thisType == ButtomType.LoadMenu) LoadManager.Instance.LoadMenu();
 
-                if (_thisType == ButtomType.RoboBoxer)
-            {
-                LifeTraker.Instance.PlayerRobo=RoboType.Boxer;
-                _Display.ActivateBoxer();
-                ChangeMenu();
-            }
+        if (_thisType == ButtomType.Quit) Application.Quit();
 
-            if (_thisType == ButtomType.RoboDrill)
-            {
-                LifeTraker.Instance.PlayerRobo = RoboType.Drill;
-                _Display.ActivateDrill();
-                ChangeMenu();
-            }
-            if(_thisType==ButtomType.NextLvl)
-            {
-                LifeTraker.Instance.Dificulty=2;
-                LoadManager.Instance.LoadGym();
-            }
+        if (_thisType == ButtomType.Return) ChangeMenu();
+
+        if (_thisType == ButtomType.Continue)
+        {
+            LifeTraker.Instance.Dificulty = 2;
+            LoadManager.Instance.LoadGym();
+        }
+
+        if (_thisType == ButtomType.NextLvl)
+        {
+            LifeTraker.Instance.Dificulty = 2;
+            LoadManager.Instance.LoadGym();
+        }
+
+        if (_thisType == ButtomType.RoboBoxer)
+        {
+            LifeTraker.Instance.PlayerRobo = RoboType.Boxer;
+            _Display.ActivateBoxer();
+            ChangeMenu();
+        }
+
+        if (_thisType == ButtomType.RoboDrill)
+        {
+            LifeTraker.Instance.PlayerRobo = RoboType.Drill;
+            _Display.ActivateDrill();
+            ChangeMenu();
+        }
+        if (_thisType == ButtomType.NextLvl)
+        {
+            LifeTraker.Instance.Dificulty = 2;
+            LoadManager.Instance.LoadGym();
         }
     }
 
     public void Select()
     {
-        _selector.SetActive(true);
+        _selector.gameObject.SetActive(true);
         _isSelected = true;
     }
     public void DeSelect()
     {
-        _selector.SetActive(false);
+        _selector.gameObject.SetActive(false);
         _isSelected = false;
     }
 

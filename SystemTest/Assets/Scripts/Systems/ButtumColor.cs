@@ -19,11 +19,13 @@ public class ButtumColor : ButtomAction
         {
             if (_thisType == ButtomType.Color1)
             {
+                DeSelect();
                 ColorCordination.Instance.color1= color;
                 ChangeMenu();
             }
             if (_thisType == ButtomType.Color2)
             {
+                DeSelect();
                 ColorCordination.Instance.color2 = color;
                 ChangeMenu();
             }

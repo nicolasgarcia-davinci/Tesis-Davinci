@@ -18,7 +18,7 @@ public class LifeTraker : MonoBehaviour
     public float eLeft;
     public float eLegs;
     public float RundCounter = 1;
-    public float Dificulty = 1;
+    public float Dificulty;
 
     public int PlayerKO;
     public int EnemyKO;
