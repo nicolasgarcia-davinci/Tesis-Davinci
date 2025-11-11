@@ -22,10 +22,13 @@ public class Fallen : MonoBehaviour
 
     [Header("Mesh y materials")]
     public SkinnedMeshRenderer body;
-    public Material PMaterial;
-    public Material EMaterial;
+    public Material DrillMaterial;
+    public Material BoxerMaterial;
+    public Material EBMaterial;
+    public Material EDMaterial;
 
     public Image _bar;
+    public Color _Invisible;
 
     public GameObject _rightArrow;
     public GameObject _leftArrow;
@@ -47,15 +50,18 @@ public class Fallen : MonoBehaviour
     void Start()
     {
 
-        if(LifeTraker.Instance.IsEnemy)
+        if (LifeTraker.Instance.IsEnemy)
         {
-            _isEnemy=true;
-            _maxBar=_defaultBar*LifeTraker.Instance.EnemyKO;
+            _isEnemy = true;
+            _maxBar = _defaultBar * LifeTraker.Instance.EnemyKO;
+            _bar.color = _Invisible;
         }
-        if(_isEnemy)
+        if (_isEnemy)
         {
             VignetControler.Instance.ActivateEnemyColor();
             _ai.gameObject.SetActive(true);
+            _rightArrow.SetActive(false);
+            _leftArrow.SetActive(false);
         }
         else
         {
@@ -64,20 +70,28 @@ public class Fallen : MonoBehaviour
             _maxBar = _defaultBar * LifeTraker.Instance.PlayerKO;
         }
         _fallen = GetComponentInChildren<Animator>();
-        _rightArrow.SetActive(!_rigth);
-        _leftArrow.SetActive(!_left);
-        _bar.fillAmount = _actualBar / _maxBar;
-        if(_isEnemy)body.material = EMaterial;
-        if(!_isEnemy)
+        if (!_isEnemy)
         {
-            body.material = PMaterial;
+            _rightArrow.SetActive(!_rigth);
+            _leftArrow.SetActive(!_left);
+        }
+        _bar.fillAmount = _actualBar / _maxBar;
+        if (_isEnemy)
+        {
+            if (LifeTraker.Instance.Dificulty == 2) body.material = EDMaterial;
+            else body.material = EBMaterial;
+        }
+        if (!_isEnemy)
+        {
+            if (LifeTraker.Instance.PlayerRobo == RoboType.Boxer) body.material = BoxerMaterial;
+            if (LifeTraker.Instance.PlayerRobo == RoboType.Drill) body.material = DrillMaterial;
             ColorChange(ColorCordination.Instance.color1, ColorCordination.Instance.color2);
         }
     }
 
     public void CheckLeft()
     {
-        if(_gameOver) return;
+        if (_gameOver) return;
         if (!_left)
         {
             _actualBar++;
@@ -85,13 +99,14 @@ public class Fallen : MonoBehaviour
             _bar.fillAmount = _actualBar / _maxBar;
             if (_actualBar == _maxBar)
             {
-                if(LifeTraker.Instance.IsEnemy) LifeTraker.Instance.eOverHealt = 10;
+                if (LifeTraker.Instance.IsEnemy) LifeTraker.Instance.eOverHealt = 10;
                 else LifeTraker.Instance.pOverHealt = 70;
                 if (LifeTraker.Instance.Dificulty == 2) LoadManager.Instance.Round2Gym();
                 LoadManager.Instance.Round2();
             }
             _left = true;
             _rigth = false;
+            if (_isEnemy) return;
             _rightArrow.SetActive(!_rigth);
             _leftArrow.SetActive(!_left);
         }
@@ -108,11 +123,12 @@ public class Fallen : MonoBehaviour
             {
                 if (LifeTraker.Instance.IsEnemy) LifeTraker.Instance.eOverHealt = 10;
                 else LifeTraker.Instance.pOverHealt = 70;
-                if(LifeTraker.Instance.Dificulty==2) LoadManager.Instance.Round2Gym();
+                if (LifeTraker.Instance.Dificulty == 2) LoadManager.Instance.Round2Gym();
                 LoadManager.Instance.Round2();
             }
             _rigth = true;
             _left = false;
+            if (_isEnemy) return;
             _rightArrow.SetActive(!_rigth);
             _leftArrow.SetActive(!_left);
         }

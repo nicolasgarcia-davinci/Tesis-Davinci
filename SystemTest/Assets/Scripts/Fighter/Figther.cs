@@ -65,18 +65,14 @@ public class Figther : MonoBehaviour
 
     void Start()
     {
-        if (IsPlayer && LifeTraker.Instance.Dificulty==2)
-        {
-            ColorChange(ColorCordination.Instance.color1, ColorCordination.Instance.color2);
-            gameObject.transform.Rotate(new Vector3(0, -90, 0));
-        }
-        Stamina=MaxStamina;
+        ColorChange(ColorCordination.Instance.color1, ColorCordination.Instance.color2);
+        Stamina = MaxStamina;
         SetLife();
         _anim = GetComponentInChildren<Animator>();
         if (RightLife > 0)
         {
             RightCrashbool = false;
-            RightCrashbool =true;
+            RightCrashbool = true;
             DeActivateSet(_RightSpark);
         }
         if (HeadLife > 0)
@@ -88,13 +84,13 @@ public class Figther : MonoBehaviour
         if (LeftLife > 0)
         {
             LeftCrashbool = false;
-            LeftCrashbool=true;
+            LeftCrashbool = true;
             DeActivateSet(_LeftSpark);
         }
         if (LegsLife > 0)
         {
             LegsCrashbool = false;
-            LeftCrashbool=true;
+            LeftCrashbool = true;
             DeActivateSet(_LegsSpark);
         }
     }

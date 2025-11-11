@@ -4,22 +4,19 @@ using UnityEngine;
 
 public class RepairSpawner : MonoBehaviour
 {
-    public RestAnim _Boxer;
-    public RestAnim _Drill;
-    public Transform SpawnPos;
+    public GameObject _Boxer;
+    public GameObject _Drill;
 
     public void SpawnPlayer()
     {
         if (LifeTraker.Instance.PlayerRobo == RoboType.Boxer)
         {
-            var player = Instantiate(_Boxer);
-            player.transform.position = SpawnPos.position;
+            _Boxer.SetActive(true);
         }
 
         if (LifeTraker.Instance.PlayerRobo == RoboType.Drill)
         {
-            var player = Instantiate(_Drill);
-            player.transform.position = SpawnPos.position;
+            _Drill.SetActive(true);
         }
     }
 }

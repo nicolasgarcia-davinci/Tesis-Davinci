@@ -14,21 +14,31 @@ public class ButtumColor : ButtomAction
 
     public override void Update()
     {
-        base.Update();
-        if (Input.GetKeyDown(KeyCode.Space) && _isSelected)
+        if (Input.GetKeyDown(KeyCode.Space) && _isSelected && !_Activated)
         {
-            if (_thisType == ButtomType.Color1)
-            {
-                DeSelect();
-                ColorCordination.Instance.color1= color;
-                ChangeMenu();
-            }
-            if (_thisType == ButtomType.Color2)
-            {
-                DeSelect();
-                ColorCordination.Instance.color2 = color;
-                ChangeMenu();
-            }
+            _Activated = true;
+            StartCoroutine(SetColor());
         }
-    }  
+    }
+    public IEnumerator SetColor()
+    {
+        _selector.Hit();
+
+        yield return new WaitForSeconds(activationdelay);
+
+        _selector.gameObject.SetActive(false);
+
+        if (_thisType == ButtomType.Color1)
+        {
+            DeSelect();
+            ColorCordination.Instance.color1 = color;
+            ChangeMenu();
+        }
+        if (_thisType == ButtomType.Color2)
+        {
+            DeSelect();
+            ColorCordination.Instance.color2 = color;
+            ChangeMenu();
+        }
+    }
 }
