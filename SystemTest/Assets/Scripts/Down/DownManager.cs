@@ -34,6 +34,7 @@ public class DownManager : MonoBehaviour
         if(_clock._timer==0)
         {
             _Boxer._gameOver = true;
+            _Drill._gameOver = true;
             if(_Boxer._isEnemy) _Win.SetActive(true);
             if(!_Boxer._isEnemy) _Loose.SetActive(true);
         }
