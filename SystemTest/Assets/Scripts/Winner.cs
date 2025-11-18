@@ -8,6 +8,7 @@ public class Winner : MonoBehaviour
     public Material Player;
     public Material Enemy;
     public GameObject Win;
+    public GameObject Lose;
     void Start()
     {
         if (LifeTraker.Instance.IsEnemy)
@@ -20,6 +21,7 @@ public class Winner : MonoBehaviour
         if (!LifeTraker.Instance.IsEnemy)
         {
             body.material = Enemy;
+            Lose.SetActive(true);
         }
     }
 }
