@@ -98,7 +98,7 @@ public class Fallen : MonoBehaviour
             _bar.fillAmount = _actualBar / _maxBar;
             if (_actualBar == _maxBar)
             {
-                if (LifeTraker.Instance.IsEnemy) LifeTraker.Instance.eOverHealt = 10;
+                if (LifeTraker.Instance.IsEnemy) LifeTraker.Instance.eOverHealt = 70;
                 else LifeTraker.Instance.pOverHealt = 70;
                 if (LifeTraker.Instance.Dificulty == 2) LoadManager.Instance.Round2Gym();
                 LoadManager.Instance.Round2();
@@ -120,7 +120,7 @@ public class Fallen : MonoBehaviour
             _bar.fillAmount = _actualBar / _maxBar;
             if (_actualBar == _maxBar)
             {
-                if (LifeTraker.Instance.IsEnemy) LifeTraker.Instance.eOverHealt = 10;
+                if (LifeTraker.Instance.IsEnemy) LifeTraker.Instance.eOverHealt = 70;
                 else LifeTraker.Instance.pOverHealt = 70;
                 if (LifeTraker.Instance.Dificulty == 2) LoadManager.Instance.Round2Gym();
                 else LoadManager.Instance.Round2();
