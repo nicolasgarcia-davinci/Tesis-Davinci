@@ -1,0 +1,25 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Winner : MonoBehaviour
+{
+    public SkinnedMeshRenderer body;
+    public Material Player;
+    public Material Enemy;
+    public GameObject Win;
+    void Start()
+    {
+        if (LifeTraker.Instance.IsEnemy)
+        {
+            body.material = Player;
+            body.material.SetColor("_Color1", ColorCordination.Instance.color1);
+            body.material.SetColor("_Color2", ColorCordination.Instance.color2);
+            Win.SetActive(true);
+        }
+        if (!LifeTraker.Instance.IsEnemy)
+        {
+            body.material = Enemy;
+        }
+    }
+}

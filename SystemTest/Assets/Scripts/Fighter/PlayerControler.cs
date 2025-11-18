@@ -5,15 +5,18 @@ using UnityEngine;
 public class PlayerControler : MonoBehaviour
 {
     public Figther Character;
+    public bool IsPaused;
 
     void Start()
     {
         FightControler.Instance._Player = Character;
+        FightControler.Instance._Control = this;
     }
 
 
     void Update()
     {
+        if (IsPaused) return;
         if (Input.GetKeyDown(KeyCode.UpArrow)) Character.UpperAttack();
         if (Input.GetKeyDown(KeyCode.RightArrow)) Character.RightHook();
         if (Input.GetKeyDown(KeyCode.LeftArrow)) Character.LeftHook();
@@ -22,5 +25,15 @@ public class PlayerControler : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.D)) Character.DodgeRight();
         if (Input.GetKeyDown(KeyCode.A)) Character.DodgeLeft();
         if (Input.GetKeyDown(KeyCode.S)) Character.DodgeDown();
+    }
+    public void Pause()
+    {
+        IsPaused = true;
+        Character.Pause();
+    }
+    public void UnPause()
+    {
+        IsPaused = false;
+        Character.UnPause();   
     }
 }

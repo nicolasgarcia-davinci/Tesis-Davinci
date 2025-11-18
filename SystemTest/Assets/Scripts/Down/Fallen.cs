@@ -46,7 +46,6 @@ public class Fallen : MonoBehaviour
             Destroy(this);
         }
     }
-    // Start is called before the first frame update
     void Start()
     {
 
@@ -124,7 +123,7 @@ public class Fallen : MonoBehaviour
                 if (LifeTraker.Instance.IsEnemy) LifeTraker.Instance.eOverHealt = 10;
                 else LifeTraker.Instance.pOverHealt = 70;
                 if (LifeTraker.Instance.Dificulty == 2) LoadManager.Instance.Round2Gym();
-                LoadManager.Instance.Round2();
+                else LoadManager.Instance.Round2();
             }
             _rigth = true;
             _left = false;

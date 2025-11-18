@@ -27,6 +27,10 @@ public class DownManager : MonoBehaviour
 
     void Update()
     {
+        if(Input.GetKeyDown(KeyCode.Q))
+        {
+            LoadManager.Instance.GameOver();
+        }
         if(_clock._timer==0)
         {
             _Boxer._gameOver = true;

@@ -8,7 +8,11 @@ public class FightControler : MonoBehaviour
     public Figther _Player;
     public Figther _Enemy;
     public AIControler _Controler;
+    public PlayerControler _Control;
     public PlayerSpawner _Spawner;
+    public RoundTimer _RT;
+    public GameObject PauseMenu;
+    public bool IsPaused;
 
     private void Awake()
     {
@@ -104,5 +108,29 @@ public class FightControler : MonoBehaviour
     {
         _Player.FreezeFrame();
         _Enemy.FreezeFrame();
+    }
+    public void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.P))
+        {
+            if(IsPaused) UnPause();
+            if(!IsPaused) Pause();
+        }
+    }
+    public void Pause()
+    {
+        _Control.Pause();
+        _Controler.Pause();
+        _RT.Pause();
+        PauseMenu.SetActive(true);
+        IsPaused = true;
+    }
+    public void UnPause()
+    {
+        _Control.UnPause();
+        _Controler.UnPause();
+        _RT.UnPause();
+        PauseMenu.SetActive(false);
+        IsPaused = false;
     }
 }

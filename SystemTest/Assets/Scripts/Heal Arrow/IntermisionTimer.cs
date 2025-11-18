@@ -16,7 +16,8 @@ public class IntermisionTimer : MonoBehaviour
     public IEnumerator CountDown()
     {
         _counter.text = _timer.ToString();
-        if (_timer == 0) LoadManager.Instance.Round2();
+        if (_timer == 0 && LifeTraker.Instance.Dificulty==1) LoadManager.Instance.Round2();
+        if (_timer == 0 && LifeTraker.Instance.Dificulty==2) LoadManager.Instance.Round2Gym();
         yield return new WaitForSeconds(1);
         _timer--;
         StartCoroutine(CountDown());

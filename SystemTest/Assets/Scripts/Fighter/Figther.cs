@@ -404,4 +404,13 @@ public class Figther : MonoBehaviour
     {
         StartCoroutine(BreakStop());
     }
+
+    public void Pause()
+    {
+        _anim.speed = 0;
+    }
+    public void UnPause()
+    {
+        _anim.speed = 1;
+    }
 }

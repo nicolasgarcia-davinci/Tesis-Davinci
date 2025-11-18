@@ -60,11 +60,19 @@ public class LoadManager : MonoBehaviour
     }
     public void LoadMenu()
     {
+        LifeTraker.Instance.Dificulty = 1;
         SceneManager.LoadSceneAsync(0);
     }
     public void Reaload()
     {
-        //SceneManager.LoadSceneAsync();
+        if(LifeTraker.Instance.Dificulty == 1)
+        {
+            LoadRing();
+        }
+        if (LifeTraker.Instance.Dificulty == 2)
+        {
+            LoadGym();
+        }
     }
 
     public void LoadIntermision()
@@ -79,5 +87,10 @@ public class LoadManager : MonoBehaviour
         DataSaver.Instance.SaveTimer();
         LifeTraker.Instance.UpdateLife();
         SceneManager.LoadSceneAsync(2);
+    }
+    public void GameOver()
+    {
+        VignetControler.Instance.DeActivate();
+        SceneManager.LoadSceneAsync(7);
     }
 }

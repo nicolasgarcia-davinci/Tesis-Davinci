@@ -33,12 +33,32 @@ public class RoundTimer : MonoBehaviour
         _counter.text = _timer.ToString();
         if (_timer == 0)
         {
+            if(LifeTraker.Instance.Dificulty==1)
+            {
             LifeTraker.Instance.RundCounter++;
             LifeTraker.Instance.ResetTimer = true;
             LoadManager.Instance.LoadIntermision();
+            }
+            if (LifeTraker.Instance.Dificulty == 2)
+            {
+                LifeTraker.Instance.RundCounter++;
+                LifeTraker.Instance.ResetTimer = true;
+                LoadManager.Instance.LoadGymRest();
+            }
         }
         yield return new WaitForSeconds(1);
         _timer--;
+        StartCoroutine(CountDown());
+    }
+
+    public void Pause()
+    {
+        StopAllCoroutines();
+        StopCoroutine(CountDown());
+        _counter.text = "";
+    }
+    public void UnPause()
+    {
         StartCoroutine(CountDown());
     }
 }

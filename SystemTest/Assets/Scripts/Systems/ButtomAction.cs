@@ -40,7 +40,17 @@ public class ButtomAction : MonoBehaviour
 
         _selector.gameObject.SetActive(false);
 
-        if (_thisType == ButtomType.NavButtom) ChangeMenu();
+        if (_thisType == ButtomType.NavButtom)
+        {
+            _Activated = false;
+            ChangeMenu();
+        }
+
+        if (_thisType == ButtomType.Resume)
+        {
+            _Activated = false;
+            FightControler.Instance.UnPause();
+        }
 
         if (_thisType == ButtomType.LoadStage) LoadManager.Instance.LoadRing();
 
@@ -48,7 +58,11 @@ public class ButtomAction : MonoBehaviour
 
         if (_thisType == ButtomType.Quit) Application.Quit();
 
-        if (_thisType == ButtomType.Return) ChangeMenu();
+        if (_thisType == ButtomType.Return)
+        {
+            _Activated = false;
+            ChangeMenu();
+        }
 
         if (_thisType == ButtomType.Continue)
         {
@@ -64,6 +78,7 @@ public class ButtomAction : MonoBehaviour
 
         if (_thisType == ButtomType.RoboBoxer)
         {
+            _Activated = false;
             LifeTraker.Instance.PlayerRobo = RoboType.Boxer;
             _Display.ActivateBoxer();
             ChangeMenu();
@@ -71,6 +86,7 @@ public class ButtomAction : MonoBehaviour
 
         if (_thisType == ButtomType.RoboDrill)
         {
+            _Activated = false;
             LifeTraker.Instance.PlayerRobo = RoboType.Drill;
             _Display.ActivateDrill();
             ChangeMenu();
@@ -100,5 +116,5 @@ public class ButtomAction : MonoBehaviour
 }
 public enum ButtomType
 {
-    NavButtom, LoadStage, LoadMenu, Color1, Color2, Quit, Return, Continue, NextLvl , RoboBoxer, RoboDrill
+    NavButtom, LoadStage, LoadMenu, Color1, Color2, Quit, Return, Continue, NextLvl , RoboBoxer, RoboDrill, Resume
 }

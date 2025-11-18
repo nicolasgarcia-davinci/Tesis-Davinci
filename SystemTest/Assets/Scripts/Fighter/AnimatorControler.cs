@@ -7,7 +7,6 @@ public class AnimatorControler : MonoBehaviour
 
     public Figther _boss;
     public Fallen _ko;
-    // Start is called before the first frame update
     void Start()
     {
         _boss=GetComponentInParent<Figther>();

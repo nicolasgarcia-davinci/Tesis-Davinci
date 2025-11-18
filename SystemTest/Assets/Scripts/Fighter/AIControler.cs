@@ -7,7 +7,8 @@ public class AIControler : MonoBehaviour
     public Figther Character;
     public float _timer;
     public float _AttackInterval;
-    // Start is called before the first frame update
+    public bool IsPaused;
+
     void Start()
     {
         Character.HeadLife = LifeTraker.Instance.eHead;
@@ -18,17 +19,10 @@ public class AIControler : MonoBehaviour
         FightControler.Instance._Controler = this;
     }
 
-    // Update is called once per frame
+
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Keypad5))
-        {
-            _AttackInterval = 0.5f;
-        }
-        if (Input.GetKeyDown(KeyCode.Keypad7))
-        {
-            _AttackInterval = 10;
-        }
+        if (IsPaused) return;
         _timer += Time.deltaTime;
         if(_timer>=_AttackInterval)
         {
@@ -51,5 +45,15 @@ public class AIControler : MonoBehaviour
             if (Left) Character.DodgeLeft();
             if (Down) Character.DodgeDown();
         }
+    }
+    public void Pause()
+    {
+        IsPaused = true;
+        Character.Pause(); 
+    }
+    public void UnPause()
+    {
+        IsPaused = false;
+        Character.UnPause();
     }
 }
