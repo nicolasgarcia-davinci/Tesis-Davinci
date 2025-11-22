@@ -20,12 +20,12 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
+  m_AmbientSkyColor: {r: 0, g: 0, b: 0, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 0
-  m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
+  m_AmbientMode: 3
+  m_SubtractiveShadowColor: {r: 0, g: 0, b: 0, a: 1}
   m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.105323315, g: 0.10383779, b: 0.08215958, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -9566,13 +9566,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1498996895992037533, guid: 42f86b1dd8f6c2b41bfc3fde738d3059, type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6698441419757015479, guid: 42f86b1dd8f6c2b41bfc3fde738d3059, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.7
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 6698441419757015479, guid: 42f86b1dd8f6c2b41bfc3fde738d3059, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 35.7
+      value: 41.000004
       objectReference: {fileID: 0}
     - target: {fileID: 6698441419757015479, guid: 42f86b1dd8f6c2b41bfc3fde738d3059, type: 3}
       propertyPath: m_LocalPosition.z
@@ -11363,7 +11367,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &898598412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11729,13 +11733,17 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5685070967062437424, guid: a97195b0ff588e64ca6f0a0f54185d8f, type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8496488696882993373, guid: a97195b0ff588e64ca6f0a0f54185d8f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 8496488696882993373, guid: a97195b0ff588e64ca6f0a0f54185d8f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 32.1
+      value: 41
       objectReference: {fileID: 0}
     - target: {fileID: 8496488696882993373, guid: a97195b0ff588e64ca6f0a0f54185d8f, type: 3}
       propertyPath: m_LocalPosition.z
