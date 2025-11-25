@@ -11,6 +11,8 @@ public class Arrow : MonoBehaviour
     public bool IsRight;
     public bool IsLeft;
     public Image theSprite;
+    public Animator animator;
+
 
     public Color Normal;
     public Color Correct;
@@ -19,6 +21,7 @@ public class Arrow : MonoBehaviour
     public void ChangeToCorrect()
     {
         theSprite.color = Correct;
+        animator.SetBool("Activated", true);
     }
     public void ChangeToWrong()
     {
@@ -27,5 +30,6 @@ public class Arrow : MonoBehaviour
     public void ChangeToNormal()
     {
         theSprite.color = Normal;
+        animator.SetBool("Activated", false);
     }
 }

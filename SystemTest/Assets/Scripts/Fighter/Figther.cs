@@ -363,6 +363,7 @@ public class Figther : MonoBehaviour
     {
         body.material.SetColor("_Color1", color1);
         body.material.SetColor("_Color2", color2);
+        body.material.SetFloat("_Transparencia", 0.85f);
     }
 
     public void FallDown()

@@ -124,6 +124,7 @@ public class FightControler : MonoBehaviour
         _RT.Pause();
         PauseMenu.SetActive(true);
         IsPaused = true;
+        Pixelation.Instance.Pixelate();
     }
     public void UnPause()
     {
@@ -132,5 +133,6 @@ public class FightControler : MonoBehaviour
         _RT.UnPause();
         PauseMenu.SetActive(false);
         IsPaused = false;
+        Pixelation.Instance.HighDefinition();
     }
 }

@@ -62,6 +62,7 @@ public class LoadManager : MonoBehaviour
     {
         LifeTraker.Instance.Dificulty = 1;
         SceneManager.LoadSceneAsync(0);
+        Pixelation.Instance.HighDefinition();
     }
     public void Reaload()
     {

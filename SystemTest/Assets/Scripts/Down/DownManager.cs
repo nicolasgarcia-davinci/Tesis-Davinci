@@ -8,9 +8,6 @@ public class DownManager : MonoBehaviour
     public Fallen _Drill;
     public GetUp _clock;
 
-    public GameObject _Loose;
-    public GameObject _Win;
-
     public GameObject enemyLight;
     public GameObject playerLight;
     void Start()
@@ -35,8 +32,7 @@ public class DownManager : MonoBehaviour
         {
             _Boxer._gameOver = true;
             _Drill._gameOver = true;
-            if(_Boxer._isEnemy) _Win.SetActive(true);
-            if(!_Boxer._isEnemy) _Loose.SetActive(true);
+            LoadManager.Instance.GameOver();
         }
     }
 }
