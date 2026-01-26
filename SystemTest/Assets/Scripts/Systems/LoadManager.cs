@@ -89,6 +89,24 @@ public class LoadManager : MonoBehaviour
         LifeTraker.Instance.UpdateLife();
         SceneManager.LoadSceneAsync(2);
     }
+
+    public void LoadEnter()
+    {
+        SceneManager.LoadSceneAsync(8);
+    }
+
+    public void ToLVL()
+    {
+        if(LifeTraker.Instance.Dificulty == 1)
+        {
+            LoadRing();
+        }
+        else if (LifeTraker.Instance.Dificulty == 2)
+        {
+            LoadGym();
+        }
+    }
+
     public void GameOver()
     {
         VignetControler.Instance.DeActivate();

@@ -52,7 +52,7 @@ public class ButtomAction : MonoBehaviour
             FightControler.Instance.UnPause();
         }
 
-        if (_thisType == ButtomType.LoadStage) LoadManager.Instance.LoadRing();
+        if (_thisType == ButtomType.LoadStage) LoadManager.Instance.LoadEnter();
 
         if (_thisType == ButtomType.LoadMenu) LoadManager.Instance.LoadMenu();
 
@@ -67,7 +67,7 @@ public class ButtomAction : MonoBehaviour
         if (_thisType == ButtomType.Continue)
         {
             LifeTraker.Instance.Dificulty = 2;
-            LoadManager.Instance.LoadGym();
+            LoadManager.Instance.LoadEnter();
         }
 
         if (_thisType == ButtomType.NextLvl)
