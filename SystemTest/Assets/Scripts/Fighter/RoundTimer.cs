@@ -8,6 +8,8 @@ public class RoundTimer : MonoBehaviour
     public float _timer;
     public float _RoundTime;
     [SerializeField] TextMeshProUGUI _counter;
+    public Color endTime;
+    public Animator _animator;
 
     public static RoundTimer instance;
 
@@ -31,6 +33,11 @@ public class RoundTimer : MonoBehaviour
     public IEnumerator CountDown()
     {
         _counter.text = _timer.ToString();
+        if(_timer <= 10)
+        {
+            _counter.color = endTime;
+            _animator.SetTrigger("Pulse");
+        }
         if (_timer == 0)
         {
             if(LifeTraker.Instance.Dificulty==1)

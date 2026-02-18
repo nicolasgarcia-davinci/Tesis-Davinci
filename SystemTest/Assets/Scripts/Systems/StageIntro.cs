@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,6 +9,7 @@ public class StageIntro : MonoBehaviour
     public GameObject Stage1;
     public GameObject Stage2;
     public RawImage StartLabel;
+    public TextMeshProUGUI lab;
     public Color Transparency;
     public bool toTranparent;
     public float BlinkInterval;
@@ -33,12 +35,14 @@ public class StageIntro : MonoBehaviour
         if(toTranparent)
         {
             Transparency.a -= transparancyRate;
-            StartLabel.color = Transparency; 
+            //StartLabel.color = Transparency; 
+            lab.color = Transparency;
         }
         if(!toTranparent)
         {
             Transparency.a += transparancyRate;
-            StartLabel.color = Transparency;
+            //StartLabel.color = Transparency;
+            lab.color = Transparency;
         }
     }
    public IEnumerator TextFlash()
