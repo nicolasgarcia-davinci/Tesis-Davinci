@@ -8,7 +8,6 @@ public class StageIntro : MonoBehaviour
 {
     public GameObject Stage1;
     public GameObject Stage2;
-    public RawImage StartLabel;
     public TextMeshProUGUI lab;
     public Color Transparency;
     public bool toTranparent;
@@ -35,13 +34,11 @@ public class StageIntro : MonoBehaviour
         if(toTranparent)
         {
             Transparency.a -= transparancyRate;
-            //StartLabel.color = Transparency; 
             lab.color = Transparency;
         }
         if(!toTranparent)
         {
             Transparency.a += transparancyRate;
-            //StartLabel.color = Transparency;
             lab.color = Transparency;
         }
     }

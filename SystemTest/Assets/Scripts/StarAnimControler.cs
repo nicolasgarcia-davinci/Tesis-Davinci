@@ -5,18 +5,41 @@ using UnityEngine;
 public class StarAnimControler : MonoBehaviour
 {
     public GameObject screen;
-    void Start()
+    public Animator animator;
+    public int timeToIntro;
+    public void stopanim()
     {
-
+        animator.speed = 0;
     }
-
-    // Update is called once per frame
-    void Update()
+    public void Fanfare()
     {
-
+        StartCoroutine(FinalStop());
     }
-    public void Activate()
+    public void Check1()
     {
+        if(LifeTraker.Instance.Dificulty == 1)
+        {
+            stopanim();
+            StartCoroutine(ScreenDisplay());
+        }
+    }
+    public void Check2()
+    {
+        if (LifeTraker.Instance.Dificulty == 2)
+        {
+            stopanim();
+            StartCoroutine(ScreenDisplay());
+        }
+    }
+    public IEnumerator ScreenDisplay()
+    {
+        yield return new WaitForSeconds(timeToIntro);
         screen.SetActive(true);
+    }
+    public IEnumerator FinalStop()
+    {
+        stopanim();
+        yield return new WaitForSeconds(timeToIntro);
+        //to END
     }
 }

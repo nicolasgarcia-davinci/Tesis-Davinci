@@ -28,6 +28,7 @@ public class MenuControler : MonoBehaviour
             if (menu.ID == Open)
             {
                 menu.gameObject.SetActive(true);
+                menu.act2();
             }
         }
     }

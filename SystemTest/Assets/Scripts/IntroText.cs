@@ -1,0 +1,54 @@
+using System.Collections;
+using System.Collections.Generic;
+using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class IntroText : MonoBehaviour
+{
+    public TextMeshProUGUI start;
+    public Color Transparency;
+    public Color endcolor;
+    public bool toTranparent; 
+    public bool HasEnded; 
+    public float BlinkInterval;
+    public float transparancyRate;
+    public Animator menu;
+    public MenuNavigation men;
+    // Start is called before the first frame update
+    void Start()
+    {
+        StartCoroutine(TextFlash());
+    }
+
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            HasEnded = true;
+            menu.SetBool("HasIntro", true);
+            StopAllCoroutines();
+            start.color = endcolor;
+        }
+        if (toTranparent && !HasEnded)
+        {
+            Transparency.a -= transparancyRate;
+            start.color = Transparency;
+        }
+        if (!toTranparent && !HasEnded)
+        {
+            Transparency.a += transparancyRate;
+            start.color = Transparency;
+        }
+    }
+    public IEnumerator TextFlash()
+    {
+        toTranparent = true;
+        yield return new WaitForSeconds(BlinkInterval);
+        toTranparent = false;
+        yield return new WaitForSeconds(BlinkInterval);
+        StartCoroutine(TextFlash());
+    }
+}

@@ -8,6 +8,7 @@ public class MenuNavigation : MonoBehaviour
     public MenuControler _controler;
     public int ID;
     public int Index;
+    public bool hasEnter;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,14 +16,26 @@ public class MenuNavigation : MonoBehaviour
         {
             menu.DeSelect();  
         }
-        _menu[0].Select();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(!hasEnter)
+        {
+            hasEnter = true;
+            act2();
+        }
         if (Input.GetKeyDown(KeyCode.UpArrow)) CycleUp();
         if (Input.GetKeyDown(KeyCode.DownArrow)) CycleDown();
+    }
+    public void act1()
+    {
+        _menu[0].DeSelect();
+    }
+    public void act2()
+    {
+        _menu[0].Select();
     }
     public void Menu(int target)
     {
