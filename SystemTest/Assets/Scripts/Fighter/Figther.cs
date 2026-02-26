@@ -34,6 +34,9 @@ public class Figther : MonoBehaviour
     public bool Dodgeing;
     public Animator _anim;
 
+    public AudioSource Source;
+    public AudioClip Miss,Ouch;
+
     [Header("Para el FightControler")]
     public bool IsPlayer;
 
@@ -238,7 +241,11 @@ public class Figther : MonoBehaviour
     }
     public void takeHeadDamage()
     {
-        //if (UpDodge) return;
+        //if (UpDodge)
+        //{
+        //Source.PlayOneShot(Miss);
+        //return;
+        //}
         MaxLife -= 10;
         if (CheckDamage()) return;
         if(HeadLife>0) HeadLife -= 10;
@@ -266,7 +273,11 @@ public class Figther : MonoBehaviour
     }
     public void takeRightDamage()
     {
-        //if (RightDodge) return;
+        //if (RightDodge)
+        //{
+        //Source.PlayOneShot(Miss);
+        //return;
+        //}
         MaxLife -= 10;
         if (CheckDamage()) return;
         if (RightLife > 0) RightLife -= 10;
@@ -294,7 +305,11 @@ public class Figther : MonoBehaviour
     }
     public void takeLeftDamage()
     {
-        //if (LeftDodge) return;
+        //if (LeftDodge)
+        //{
+        //Source.PlayOneShot(Miss);
+        //return;
+        //}
         MaxLife -= 10;
         if (CheckDamage()) return;
         if (LeftLife > 0) LeftLife -= 10;
@@ -322,7 +337,11 @@ public class Figther : MonoBehaviour
     }
     public void takeLegsDamage()
     {
-        //if (DownDodge) return;
+        //if (DownDodge)
+        //{
+        //Source.PlayOneShot(Miss);
+        //return;
+        //}
         MaxLife -= 10;
         if (CheckDamage()) return;
         if (LegsLife > 0) LegsLife -= 10;
@@ -356,6 +375,7 @@ public class Figther : MonoBehaviour
             _anim.SetTrigger("Die");
             return true;
         }
+        Source.PlayOneShot(Ouch);
         return false;
     }
 

@@ -9,8 +9,6 @@ public class MenuColors : MonoBehaviour
     {
         ColorChange();
     }
-
-    // Update is called once per frame
     void Update()
     {
         ColorChange();

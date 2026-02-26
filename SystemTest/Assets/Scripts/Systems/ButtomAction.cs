@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
+using static UnityEngine.Rendering.DebugUI;
 
 public class ButtomAction : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class ButtomAction : MonoBehaviour
     public MenuNavigation _miMenu;
     public MenuRobo _Display;
     public float activationdelay;
+    [Range(.01f, 1f)] public float Volume;
+    public Slider VolumeSlider;
     public bool _isSelected;
     public bool _Activated;
     public int _targetID;
@@ -19,7 +22,13 @@ public class ButtomAction : MonoBehaviour
     
     public void Start()
     {
-        _label.text = _labelText;
+        if(_label!=null) _label.text = _labelText;
+
+        if (VolumeSlider!=null)
+        {
+            VolumeSlider.value = Volume;
+        }
+
         _miMenu = GetComponentInParent<MenuNavigation>();
     }
 
@@ -29,6 +38,32 @@ public class ButtomAction : MonoBehaviour
         {  
             _Activated = true;
             StartCoroutine(Action());
+        }
+
+        if(Input.GetKeyDown(KeyCode.LeftArrow) && _isSelected)
+        {
+            if (_thisType == ButtomType.EVolume || _thisType == ButtomType.SVolume || _thisType == ButtomType.MVolume)
+            {
+                Volume-= 0.01f;
+                if (Volume < 0) Volume = 0;
+                VolumeSlider.value = Volume;
+                if (_thisType == ButtomType.MVolume) StageSound.instance.GameMixer.SetFloat("MasterVolume", Mathf.Log10(Volume) * 20);
+                if(_thisType == ButtomType.SVolume) StageSound.instance.GameMixer.SetFloat("MusicVolume", Mathf.Log10(Volume) * 20);
+                if(_thisType == ButtomType.EVolume) StageSound.instance.GameMixer.SetFloat("SoundsVolume", Mathf.Log10(Volume) * 20);
+
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.RightArrow) && _isSelected)
+        {
+            if (_thisType == ButtomType.EVolume || _thisType == ButtomType.SVolume || _thisType == ButtomType.MVolume)
+            {
+                Volume += 0.01f;
+                if (Volume > 1) Volume = 1;
+                VolumeSlider.value = Volume;
+                if (_thisType == ButtomType.MVolume) StageSound.instance.GameMixer.SetFloat("MasterVolume", Mathf.Log10(Volume) * 20);
+                if (_thisType == ButtomType.SVolume) StageSound.instance.GameMixer.SetFloat("MusicVolume", Mathf.Log10(Volume) * 20);
+                if (_thisType == ButtomType.EVolume) StageSound.instance.GameMixer.SetFloat("SoundsVolume", Mathf.Log10(Volume) * 20);
+            }
         }
     }
 
@@ -116,5 +151,5 @@ public class ButtomAction : MonoBehaviour
 }
 public enum ButtomType
 {
-    NavButtom, LoadStage, LoadMenu, Color1, Color2, Quit, Return, Continue, NextLvl , RoboBoxer, RoboDrill, Resume
+    NavButtom, LoadStage, LoadMenu, Color1, Color2, Quit, Return, Continue, NextLvl, RoboBoxer, RoboDrill, Resume, MVolume, EVolume, SVolume 
 }

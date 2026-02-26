@@ -64,6 +64,12 @@ public class RoundTimer : MonoBehaviour
         StopCoroutine(CountDown());
         _counter.text = "";
     }
+
+    public void Stop()
+    {
+        StopAllCoroutines();
+        StopCoroutine(CountDown());
+    }
     public void UnPause()
     {
         StartCoroutine(CountDown());

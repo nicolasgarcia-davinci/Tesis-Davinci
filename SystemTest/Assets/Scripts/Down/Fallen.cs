@@ -33,6 +33,9 @@ public class Fallen : MonoBehaviour
     public GameObject _rightArrow;
     public GameObject _leftArrow;
 
+    public AudioClip Succes;
+    public AudioSource Sound;
+
     public static Fallen Instance;
 
     private void Awake()
@@ -98,14 +101,23 @@ public class Fallen : MonoBehaviour
             _bar.fillAmount = _actualBar / _maxBar;
             if (_actualBar == _maxBar)
             {
-                if (LifeTraker.Instance.IsEnemy) LifeTraker.Instance.eOverHealt = 70;
+                if (LifeTraker.Instance.IsEnemy) 
+                    LifeTraker.Instance.eOverHealt = 70;
                 else LifeTraker.Instance.pOverHealt = 70;
-                if (LifeTraker.Instance.Dificulty == 2) LoadManager.Instance.Round2Gym();
-                LoadManager.Instance.Round2();
+                
+                if (LifeTraker.Instance.Dificulty == 2)
+                {
+                    Sound.PlayOneShot(Succes);
+                    LoadManager.Instance.Round2Gym();
+                }
+
+                    Sound.PlayOneShot(Succes);
+                    LoadManager.Instance.Round2();
             }
             _left = true;
             _rigth = false;
-            if (_isEnemy) return;
+            if (_isEnemy) 
+                return;
             _rightArrow.SetActive(!_rigth);
             _leftArrow.SetActive(!_left);
         }
@@ -120,14 +132,25 @@ public class Fallen : MonoBehaviour
             _bar.fillAmount = _actualBar / _maxBar;
             if (_actualBar == _maxBar)
             {
-                if (LifeTraker.Instance.IsEnemy) LifeTraker.Instance.eOverHealt = 70;
+                if (LifeTraker.Instance.IsEnemy) 
+                    LifeTraker.Instance.eOverHealt = 70;
                 else LifeTraker.Instance.pOverHealt = 70;
-                if (LifeTraker.Instance.Dificulty == 2) LoadManager.Instance.Round2Gym();
-                else LoadManager.Instance.Round2();
+                
+                if (LifeTraker.Instance.Dificulty == 2)
+                {
+                    Sound.PlayOneShot(Succes);
+                    LoadManager.Instance.Round2Gym();
+                }
+
+                Sound.PlayOneShot(Succes);
+                LoadManager.Instance.Round2();
             }
             _rigth = true;
             _left = false;
-            if (_isEnemy) return;
+
+            if (_isEnemy) 
+                return;
+
             _rightArrow.SetActive(!_rigth);
             _leftArrow.SetActive(!_left);
         }
