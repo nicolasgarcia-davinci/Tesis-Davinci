@@ -35,7 +35,7 @@ public class Figther : MonoBehaviour
     public Animator _anim;
 
     public AudioSource Source;
-    public AudioClip Miss,Ouch;
+    public AudioClip Miss,Ouch,Kaboom;
 
     [Header("Para el FightControler")]
     public bool IsPlayer;
@@ -265,6 +265,7 @@ public class Figther : MonoBehaviour
         {
             FightControler.Instance.stopFrame();
             HeadCrashbool = true;
+            Source.PlayOneShot(Kaboom);
             ActivateSet(_HeadCrash);
             ActivateSet(_HeadSpark);
             return;
@@ -297,6 +298,7 @@ public class Figther : MonoBehaviour
         {
             FightControler.Instance.stopFrame();
             RightCrashbool = true;
+            Source.PlayOneShot(Kaboom);
             ActivateSet(_LeftCrash);
             ActivateSet(_RightSpark);
             return;
@@ -329,6 +331,7 @@ public class Figther : MonoBehaviour
         {
             FightControler.Instance.stopFrame();
             LeftCrashbool = true;
+            Source.PlayOneShot(Kaboom);
             ActivateSet(_RightCrash);
             ActivateSet(_LeftSpark);
             return;
@@ -361,6 +364,7 @@ public class Figther : MonoBehaviour
         {
             FightControler.Instance.stopFrame();
             LegsCrashbool = true;
+            Source.PlayOneShot(Kaboom);
             ActivateSet(_LegsCrash);
             ActivateSet(_LegsSpark);
             return;

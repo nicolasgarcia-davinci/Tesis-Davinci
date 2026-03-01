@@ -18,6 +18,8 @@ public class ButtomAction : MonoBehaviour
     public bool _isSelected;
     public bool _Activated;
     public int _targetID;
+    public AudioSource Sound;
+    public AudioClip ActSound;
     public ButtomType _thisType;
     
     public void Start()
@@ -70,6 +72,7 @@ public class ButtomAction : MonoBehaviour
     public IEnumerator Action()
     {
         _selector.Hit();
+        Sound.PlayOneShot(ActSound);
 
         yield return new WaitForSeconds(activationdelay);
 
