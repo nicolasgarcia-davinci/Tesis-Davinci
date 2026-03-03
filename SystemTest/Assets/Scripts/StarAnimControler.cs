@@ -40,6 +40,6 @@ public class StarAnimControler : MonoBehaviour
     {
         stopanim();
         yield return new WaitForSeconds(timeToIntro);
-        //to END
+        LoadManager.Instance.ENDGAME();
     }
 }

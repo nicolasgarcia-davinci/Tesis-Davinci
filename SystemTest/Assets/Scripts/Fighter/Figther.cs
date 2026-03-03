@@ -132,7 +132,7 @@ public class Figther : MonoBehaviour
             UpAttack = true;
             AimUp = true;
             _anim.speed = Stamina / MaxStamina;
-            FightControler.Instance.IADefender(this);
+            //FightControler.Instance.IADefender(this);
         }
     }
     public void RightHook()
@@ -142,7 +142,7 @@ public class Figther : MonoBehaviour
             RightAttack = true;
             AimRight = true;
             _anim.speed = Stamina / MaxStamina;
-            FightControler.Instance.IADefender(this);
+            //FightControler.Instance.IADefender(this);
         }
     }
     public void LeftHook()
@@ -152,7 +152,7 @@ public class Figther : MonoBehaviour
             LeftAttack = true;
             AimLeft = true;
             _anim.speed = Stamina / MaxStamina;
-            FightControler.Instance.IADefender(this);
+            //FightControler.Instance.IADefender(this);
         }
     }
     public void DownerAttack()
@@ -162,7 +162,7 @@ public class Figther : MonoBehaviour
             DownAttack = true;
             AimDown = true;
             _anim.speed = Stamina / MaxStamina;
-            FightControler.Instance.IADefender(this);
+            //FightControler.Instance.IADefender(this);
         }
     }
 
@@ -222,15 +222,15 @@ public class Figther : MonoBehaviour
     }
     public void EndReset()
     {
-        AimUp = false;
-        AimRight = false;
-        AimLeft = false;
-        AimDown = false;
         Dodgeing = false;
         UpDodge = false;
         RightDodge = false;
         LeftDodge = false;
         DownDodge = false;
+        AimDown = false;
+        AimLeft = false;
+        AimRight = false;
+        AimUp = false;
     }
     public void nextAnim()
     {
@@ -241,11 +241,11 @@ public class Figther : MonoBehaviour
     }
     public void takeHeadDamage()
     {
-        //if (UpDodge)
-        //{
-        //Source.PlayOneShot(Miss);
-        //return;
-        //}
+        if (UpDodge)
+        {
+        Source.PlayOneShot(Miss);
+        return;
+        }
         MaxLife -= 10;
         if (CheckDamage()) return;
         if(HeadLife>0) HeadLife -= 10;
@@ -274,11 +274,11 @@ public class Figther : MonoBehaviour
     }
     public void takeRightDamage()
     {
-        //if (RightDodge)
-        //{
-        //Source.PlayOneShot(Miss);
-        //return;
-        //}
+        if (RightDodge)
+        {
+        Source.PlayOneShot(Miss);
+        return;
+        }
         MaxLife -= 10;
         if (CheckDamage()) return;
         if (RightLife > 0) RightLife -= 10;
@@ -307,11 +307,11 @@ public class Figther : MonoBehaviour
     }
     public void takeLeftDamage()
     {
-        //if (LeftDodge)
-        //{
-        //Source.PlayOneShot(Miss);
-        //return;
-        //}
+        if (LeftDodge)
+        {
+        Source.PlayOneShot(Miss);
+        return;
+        }
         MaxLife -= 10;
         if (CheckDamage()) return;
         if (LeftLife > 0) LeftLife -= 10;
@@ -340,11 +340,11 @@ public class Figther : MonoBehaviour
     }
     public void takeLegsDamage()
     {
-        //if (DownDodge)
-        //{
-        //Source.PlayOneShot(Miss);
-        //return;
-        //}
+        if (DownDodge)
+        {
+        Source.PlayOneShot(Miss);
+        return;
+        }
         MaxLife -= 10;
         if (CheckDamage()) return;
         if (LegsLife > 0) LegsLife -= 10;

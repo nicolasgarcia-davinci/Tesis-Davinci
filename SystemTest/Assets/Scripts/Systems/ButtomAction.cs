@@ -105,8 +105,16 @@ public class ButtomAction : MonoBehaviour
 
         if (_thisType == ButtomType.Continue)
         {
-            LifeTraker.Instance.Dificulty = 2;
-            LoadManager.Instance.LoadEnter();
+            if(LifeTraker.Instance.Dificulty == 2)
+            {
+                LifeTraker.Instance.Dificulty = 3;
+                LoadManager.Instance.LoadEnter();
+            }
+            if(LifeTraker.Instance.Dificulty == 1)
+            {
+                LifeTraker.Instance.Dificulty = 2;
+                LoadManager.Instance.LoadEnter();
+            }
         }
 
         if (_thisType == ButtomType.NextLvl)

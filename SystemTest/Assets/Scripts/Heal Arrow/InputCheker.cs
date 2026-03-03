@@ -7,6 +7,8 @@ public class InputCheker : MonoBehaviour
 {
     public ArrowGroup[] CollectionsOnScreen;
     public int Index=0;
+    public AudioSource Jingle;
+    public AudioClip Correct,Wrong;
 
     public RestAnim player;
 
@@ -152,6 +154,7 @@ public class InputCheker : MonoBehaviour
             if (group.perfect)
             {
                 group.partlifeIndicator.Heal();
+                Jingle.PlayOneShot(Correct);
             }
             group.perfect = true;
             foreach (Arrow flecha in group.Secuence)

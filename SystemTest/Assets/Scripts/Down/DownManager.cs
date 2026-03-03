@@ -7,6 +7,8 @@ public class DownManager : MonoBehaviour
     public Fallen _Boxer;
     public Fallen _Drill;
     public GetUp _clock;
+    public AudioSource _AudioSource;
+    public AudioClip Lose;
 
     public GameObject enemyLight;
     public GameObject playerLight;
@@ -30,6 +32,7 @@ public class DownManager : MonoBehaviour
         }
         if(_clock._timer==0)
         {
+            _AudioSource.PlayOneShot(Lose);
             _Boxer._gameOver = true;
             _Drill._gameOver = true;
             LoadManager.Instance.GameOver();

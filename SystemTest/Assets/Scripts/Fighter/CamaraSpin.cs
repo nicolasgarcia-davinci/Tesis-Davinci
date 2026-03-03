@@ -8,6 +8,7 @@ public class CamaraSpin : MonoBehaviour
 
     public float SpinDuration;
     public float SpinPower;
+    public GameObject Camara;
 
     public bool _spinLeft;
     public bool _spinRight;
@@ -27,18 +28,14 @@ public class CamaraSpin : MonoBehaviour
     }
     void Update()
     {
-        //if (Input.GetKeyDown(KeyCode.W)) StartCoroutine(UpSide());  
-        //if (Input.GetKeyDown(KeyCode.A)) StartCoroutine(LeftSide());  
-        //if (Input.GetKeyDown(KeyCode.D)) StartCoroutine(RightSide());  
-        //if (Input.GetKeyDown(KeyCode.S)) StartCoroutine(DownSide());  
         if(_spinLeft)
-            gameObject.transform.Rotate(new Vector3(0, SpinPower * Time.deltaTime, 0));
+            Camara.transform.Rotate(new Vector3(0, SpinPower * Time.deltaTime, 0));
         if (_spinRight)
-            gameObject.transform.Rotate(new Vector3(0, -SpinPower * Time.deltaTime, 0));
+            Camara.transform.Rotate(new Vector3(0, -SpinPower * Time.deltaTime, 0));
         if(_spinUp)
-            gameObject.transform.Rotate(new Vector3(SpinPower * Time.deltaTime, 0 , 0));
+            Camara.transform.Rotate(new Vector3(SpinPower * Time.deltaTime, 0 , 0));
         if (_spinDown)
-            gameObject.transform.Rotate(new Vector3(-SpinPower * Time.deltaTime, 0 , 0));
+            Camara.transform.Rotate(new Vector3(-SpinPower * Time.deltaTime, 0 , 0));
     }
     public void UpSpin()
     {

@@ -113,4 +113,6 @@ public class LoadManager : MonoBehaviour
         VignetControler.Instance.DeActivate();
         SceneManager.LoadSceneAsync(7);
     }
+    public void ENDGAME()
+    { SceneManager.LoadSceneAsync(9);}
 }
