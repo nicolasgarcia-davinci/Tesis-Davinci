@@ -7,7 +7,6 @@ public class InputCheker : MonoBehaviour
 {
     public ArrowGroup[] CollectionsOnScreen;
     public int Index=0;
-    public Image BackGround;
 
     public RestAnim player;
 

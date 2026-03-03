@@ -27,7 +27,7 @@ public class StageIntro : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(Input.anyKeyDown)
         {
             LoadManager.Instance.ToLVL();
         }

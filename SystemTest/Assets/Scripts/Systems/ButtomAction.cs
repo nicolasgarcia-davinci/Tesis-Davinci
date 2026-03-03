@@ -42,6 +42,7 @@ public class ButtomAction : MonoBehaviour
             StartCoroutine(Action());
         }
 
+        if(Input.GetKey(KeyCode.LeftArrow) && _isSelected)
         if(Input.GetKeyDown(KeyCode.LeftArrow) && _isSelected)
         {
             if (_thisType == ButtomType.EVolume || _thisType == ButtomType.SVolume || _thisType == ButtomType.MVolume)

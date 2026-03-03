@@ -51,6 +51,7 @@ public class LoadManager : MonoBehaviour
     {
         VignetControler.Instance.DeActivate();
         DataSaver.Instance.LoadTimer();
+        Debug.Log("sasa");
         SceneManager.LoadSceneAsync(4);
     }
     public void Round2()

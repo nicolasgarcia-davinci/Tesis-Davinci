@@ -105,10 +105,11 @@ public class Fallen : MonoBehaviour
                     LifeTraker.Instance.eOverHealt = 70;
                 else LifeTraker.Instance.pOverHealt = 70;
                 
-                if (LifeTraker.Instance.Dificulty == 2)
+                if (LifeTraker.Instance.Dificulty > 2)
                 {
                     Sound.PlayOneShot(Succes);
                     LoadManager.Instance.Round2Gym();
+                    return;
                 }
 
                     Sound.PlayOneShot(Succes);
@@ -136,10 +137,11 @@ public class Fallen : MonoBehaviour
                     LifeTraker.Instance.eOverHealt = 70;
                 else LifeTraker.Instance.pOverHealt = 70;
                 
-                if (LifeTraker.Instance.Dificulty == 2)
+                if (LifeTraker.Instance.Dificulty > 1)
                 {
                     Sound.PlayOneShot(Succes);
                     LoadManager.Instance.Round2Gym();
+                    return;
                 }
 
                 Sound.PlayOneShot(Succes);

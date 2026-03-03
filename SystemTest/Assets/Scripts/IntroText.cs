@@ -22,7 +22,7 @@ public class IntroText : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.anyKeyDown)
         {
             HasEnded = true;
             menu.SetBool("HasIntro", true);
