@@ -88,22 +88,6 @@ public class FightControler : MonoBehaviour
         }
         attacker.Stamina -= 10;
     }
-    public void camSpinUP(Figther smack)
-    {
-        if ( smack == _Player ) CamaraSpin.Instance.UpSpin();
-    }
-    public void camSpinDOWN(Figther smack)
-    {
-        if (smack == _Player) CamaraSpin.Instance.DownSpin();
-    }
-    public void camSpinRIGHT(Figther smack)
-    {
-        if (smack == _Player) CamaraSpin.Instance.RightSpin();
-    }
-    public void camSpinLEFT(Figther smack)
-    {
-        if (smack == _Player) CamaraSpin.Instance.LeftSpin();
-    }
     public void stopFrame()
     {
         _Player.FreezeFrame();

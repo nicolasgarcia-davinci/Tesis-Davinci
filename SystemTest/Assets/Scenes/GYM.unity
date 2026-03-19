@@ -6858,58 +6858,6 @@ MonoBehaviour:
   _timer: 0
   _AttackInterval: 3
   IsPaused: 0
---- !u!1 &464222775
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 464222777}
-  - component: {fileID: 464222776}
-  m_Layer: 0
-  m_Name: Camara Spin
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &464222776
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 464222775}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 412d35769ec2ade42b8d030141e2cb01, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SpinDuration: 0.25
-  SpinPower: 200
-  Camara: {fileID: 853023779}
-  _spinLeft: 0
-  _spinRight: 0
-  _spinUp: 0
-  _spinDown: 0
---- !u!4 &464222777
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 464222775}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.02312356, z: 0, w: 0.9997326}
-  m_LocalPosition: {x: 15.53, y: 23.3, z: 100.17}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 853023782}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 2.65, z: 0}
 --- !u!1001 &470635545
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12257,12 +12205,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 853023779}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.0681432, y: -0.902991, z: 0.15597357, w: 0.39450717}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.07173164, y: -0.8936272, z: 0.15435617, w: 0.4152821}
+  m_LocalPosition: {x: 15.53, y: 23.3, z: 100.17}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 464222777}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 19.6, y: -132.8, z: 0}
 --- !u!114 &853023783
 MonoBehaviour:
@@ -112943,7 +112891,7 @@ VFXRenderer:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 464222777}
+  - {fileID: 853023782}
   - {fileID: 422873595}
   - {fileID: 241620971}
   - {fileID: 330820133}

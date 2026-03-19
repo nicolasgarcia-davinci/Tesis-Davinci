@@ -248,7 +248,11 @@ public class Figther : MonoBehaviour
         }
         MaxLife -= 10;
         if (CheckDamage()) return;
-        if(HeadLife>0) HeadLife -= 10;
+        if(HeadLife>0) 
+        {
+            HeadLife -= 10;
+            Debug.Log(HeadLife);
+        }
         restAttack();
         _HeadGlich.gameObject.SetActive(true);
         _anim.ResetTrigger("UpDodge");
@@ -258,7 +262,6 @@ public class Figther : MonoBehaviour
         _anim.SetTrigger("Damaged");
         if (HeadLife <= 0 && HeadCrashbool)
         {
-            FightControler.Instance.camSpinDOWN(this);
             return;
         }
         if (HeadLife <= 0 && ! HeadCrashbool)
@@ -270,7 +273,6 @@ public class Figther : MonoBehaviour
             ActivateSet(_HeadSpark);
             return;
         }
-        FightControler.Instance.camSpinDOWN(this);
     }
     public void takeRightDamage()
     {
@@ -281,7 +283,11 @@ public class Figther : MonoBehaviour
         }
         MaxLife -= 10;
         if (CheckDamage()) return;
-        if (RightLife > 0) RightLife -= 10;
+        if (RightLife > 0) 
+        {
+            RightLife -= 10;
+            Debug.Log(RightLife);
+        }
         restAttack();
         _LeftGlich.gameObject.SetActive(true);
         _anim.ResetTrigger("UpDodge");
@@ -291,7 +297,6 @@ public class Figther : MonoBehaviour
         _anim.SetTrigger("Damaged");
         if (RightLife <= 0 && RightCrashbool)
         {
-            FightControler.Instance.camSpinLEFT(this);
             return;
         }
         if (RightLife <= 0 && !RightCrashbool)
@@ -303,7 +308,7 @@ public class Figther : MonoBehaviour
             ActivateSet(_RightSpark);
             return;
         }
-        FightControler.Instance.camSpinLEFT(this);
+
     }
     public void takeLeftDamage()
     {
@@ -314,7 +319,11 @@ public class Figther : MonoBehaviour
         }
         MaxLife -= 10;
         if (CheckDamage()) return;
-        if (LeftLife > 0) LeftLife -= 10;
+        if (LeftLife > 0) 
+        {
+            LeftLife -= 10;
+            Debug.Log(LeftLife);
+        }
         restAttack();
         _RightGlich.gameObject.SetActive(true);
         _anim.ResetTrigger("UpDodge");
@@ -324,7 +333,6 @@ public class Figther : MonoBehaviour
         _anim.SetTrigger("Damaged");
         if (LeftLife <= 0 && LeftCrashbool)
         {
-            FightControler.Instance.camSpinRIGHT(this);
             return;
         }
         if (LeftLife <= 0 && !LeftCrashbool)
@@ -336,7 +344,6 @@ public class Figther : MonoBehaviour
             ActivateSet(_LeftSpark);
             return;
         }
-        FightControler.Instance.camSpinRIGHT(this);
     }
     public void takeLegsDamage()
     {
@@ -347,7 +354,11 @@ public class Figther : MonoBehaviour
         }
         MaxLife -= 10;
         if (CheckDamage()) return;
-        if (LegsLife > 0) LegsLife -= 10;
+        if (LegsLife > 0)
+        {
+            LegsLife -= 10;
+            Debug.Log(LegsLife);
+        }
         restAttack();
         _LegsGlich.gameObject.SetActive(true);
         _anim.ResetTrigger("UpDodge");
@@ -357,7 +368,6 @@ public class Figther : MonoBehaviour
         _anim.SetTrigger("Damaged");
         if (LegsLife <= 0 && LegsCrashbool)
         {
-            FightControler.Instance.camSpinUP(this);
             return;
         } 
         if (LegsLife <= 0 && !LegsCrashbool)
@@ -369,17 +379,19 @@ public class Figther : MonoBehaviour
             ActivateSet(_LegsSpark);
             return;
         }
-        FightControler.Instance.camSpinUP(this);
     }
 
     public bool CheckDamage()
     {
+        
         if (MaxLife <= 0)
         {
             _anim.SetTrigger("Die");
+            Debug.Log("Moriste flaco");
             return true;
         }
         Source.PlayOneShot(Ouch);
+        Debug.Log(MaxLife);
         return false;
     }
 

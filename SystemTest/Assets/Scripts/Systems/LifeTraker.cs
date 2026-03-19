@@ -29,6 +29,9 @@ public class LifeTraker : MonoBehaviour
     public RoboType PlayerRobo;
     private void Awake()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        
         if (Instance == null)
         {
             Instance = this;
