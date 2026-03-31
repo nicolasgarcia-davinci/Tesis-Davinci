@@ -14,6 +14,8 @@ public class InputCheker : MonoBehaviour
 
     public static InputCheker Instance;
 
+    bool check;
+
     private void Awake()
     {
         if (Instance == null)
@@ -29,6 +31,7 @@ public class InputCheker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(check) return;
         if (Input.GetKeyDown(KeyCode.UpArrow)) CheckUp();
         if (Input.GetKeyDown(KeyCode.RightArrow)) CheckRight();
         if (Input.GetKeyDown(KeyCode.LeftArrow)) CheckLeft();
@@ -148,6 +151,7 @@ public class InputCheker : MonoBehaviour
     }
     public IEnumerator DelayRestar()
     {
+        check = true;
         yield return new WaitForSeconds(0.5f);
         foreach (ArrowGroup group in CollectionsOnScreen)
         {
@@ -162,5 +166,6 @@ public class InputCheker : MonoBehaviour
         }
         player.ResetRepair();
         Index = 0;
+        check = false;
     }
 }
