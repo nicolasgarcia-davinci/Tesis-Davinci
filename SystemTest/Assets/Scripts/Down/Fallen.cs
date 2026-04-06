@@ -40,6 +40,9 @@ public class Fallen : MonoBehaviour
     public AudioClip Succes;
     public AudioSource Sound;
 
+    public GetUp _timer;
+    public bool _hasBeenSet;
+
     public static Fallen Instance;
 
     private void Awake()
@@ -55,7 +58,15 @@ public class Fallen : MonoBehaviour
     }
     void Start()
     {
-
+        Set();
+    }
+    public void Update()
+    {
+        if(!_hasBeenSet) Set();
+    }
+    public void Set()
+    {
+        _hasBeenSet = true;
         if (LifeTraker.Instance.IsEnemy)
         {
             _isEnemy = true;
@@ -66,8 +77,8 @@ public class Fallen : MonoBehaviour
         {
             VignetControler.Instance.ActivateEnemyColor();
             _ai.gameObject.SetActive(true);
-           //_rightArrow.SetActive(false);
-           //_leftArrow.SetActive(false);
+            //_rightArrow.SetActive(false);
+            //_leftArrow.SetActive(false);
         }
         else
         {
@@ -114,6 +125,8 @@ public class Fallen : MonoBehaviour
 
             Sound.PlayOneShot(Succes);
             LoadManager.Instance.Round2();
+            _timer.Set();
+            _hasBeenSet = false;
             TransitToFight.gameObject.SetActive(true);
         }
         
@@ -137,6 +150,8 @@ public class Fallen : MonoBehaviour
 
             Sound.PlayOneShot(Succes);
             LoadManager.Instance.Round2();
+            _timer.Set();
+            _hasBeenSet = false;
             TransitToFight.gameObject.SetActive(true);
         }
     }
@@ -159,6 +174,8 @@ public class Fallen : MonoBehaviour
 
             Sound.PlayOneShot(Succes);
             LoadManager.Instance.Round2();
+            _timer.Set();
+            _hasBeenSet = false;
             TransitToFight.gameObject.SetActive(true);
         }
     }
@@ -181,6 +198,8 @@ public class Fallen : MonoBehaviour
 
             Sound.PlayOneShot(Succes);
             LoadManager.Instance.Round2();
+            _timer.Set();
+            _hasBeenSet = false;
             TransitToFight.gameObject.SetActive(true);
         }
     }

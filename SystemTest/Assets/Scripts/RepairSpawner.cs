@@ -18,5 +18,10 @@ public class RepairSpawner : MonoBehaviour
         {
             _Drill.SetActive(true);
         }
+    } 
+    public void DesPawn()
+    {
+        _Boxer.SetActive(false);
+        _Drill.SetActive(false);
     }
 }

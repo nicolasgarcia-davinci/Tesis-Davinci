@@ -18,8 +18,8 @@ public class DownManager : MonoBehaviour
         if(LifeTraker.Instance.Dificulty==1 && LifeTraker.Instance.IsEnemy)_Boxer.gameObject.SetActive(true);
         if (LifeTraker.Instance.PlayerRobo == RoboType.Drill && !LifeTraker.Instance.IsEnemy) _Drill.gameObject.SetActive(true);
         if (LifeTraker.Instance.Dificulty == 2 && LifeTraker.Instance.IsEnemy) _Drill.gameObject.SetActive(true);
-        if(LifeTraker.Instance.IsEnemy) enemyLight.SetActive(true);
-        if(!LifeTraker.Instance.IsEnemy) playerLight.SetActive(true);
+        //if(LifeTraker.Instance.IsEnemy) enemyLight.SetActive(true);
+        //if(!LifeTraker.Instance.IsEnemy) playerLight.SetActive(true);
     }
 
 

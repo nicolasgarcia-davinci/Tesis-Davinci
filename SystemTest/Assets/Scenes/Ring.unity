@@ -23691,6 +23691,8 @@ MonoBehaviour:
   EDMaterial: {fileID: 2100000, guid: 673986adb90beb04c9ef2b18f1ac4785, type: 2}
   Succes: {fileID: 8300000, guid: 7dc0b8e034db23247950ecc819c2ae61, type: 3}
   Sound: {fileID: 5491830764661313682}
+  _timer: {fileID: 2512088370613507474}
+  _hasBeenSet: 0
 --- !u!1 &1105894215087958562
 GameObject:
   m_ObjectHideFlags: 0
@@ -29655,8 +29657,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _timer: 10
+  _IntermisionDuration: 10
   _counter: {fileID: 5821371535367407905}
   TransitToFight: {fileID: 279250695}
+  spawner: {fileID: 5364950511077927958}
+  _hasUpdated: 0
 --- !u!1 &1602454979626584371
 GameObject:
   m_ObjectHideFlags: 0
@@ -46348,6 +46353,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _timer: 20
+  _KOTime: 20
+  _hasUpdated: 0
   _counter: {fileID: 1411239696543162655}
 --- !u!198 &2534020527097923291
 ParticleSystem:
@@ -63465,6 +63472,7 @@ MonoBehaviour:
   Stamina: 0
   MaxStamina: 100
   StaminaRefresh: 2
+  _hasbeenset: 0
   UpAttack: 0
   AimUp: 0
   UpDodge: 0
@@ -92576,6 +92584,8 @@ MonoBehaviour:
   EDMaterial: {fileID: 2100000, guid: 673986adb90beb04c9ef2b18f1ac4785, type: 2}
   Succes: {fileID: 8300000, guid: 7dc0b8e034db23247950ecc819c2ae61, type: 3}
   Sound: {fileID: 7271206562952899778}
+  _timer: {fileID: 2512088370613507474}
+  _hasBeenSet: 0
 --- !u!1 &5883488514522556780
 GameObject:
   m_ObjectHideFlags: 0
@@ -133165,6 +133175,7 @@ MonoBehaviour:
   TransitToKO: {fileID: 886376531}
   PauseMenu: {fileID: 274433044}
   IsPaused: 0
+  HasSpawned: 0
 --- !u!1 &8831660252564135376
 GameObject:
   m_ObjectHideFlags: 0
@@ -143346,7 +143357,6 @@ SceneRoots:
   - {fileID: 298082993}
   - {fileID: 8069939130639880812}
   - {fileID: 1138192872779158493}
-  - {fileID: 1636296054}
   - {fileID: 1910144803}
   - {fileID: 1214681634}
   - {fileID: 1537888542}
@@ -143358,3 +143368,4 @@ SceneRoots:
   - {fileID: 5003189450098590137}
   - {fileID: 2000253636}
   - {fileID: 1513945503}
+  - {fileID: 1636296054}

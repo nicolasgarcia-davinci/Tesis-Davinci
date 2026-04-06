@@ -13,6 +13,8 @@ public class RoundTimer : MonoBehaviour
 
     public GameObject TransitToRepair;
 
+    public bool _hasUpdated;
+
     public static RoundTimer instance;
 
     private void Awake()
@@ -28,12 +30,34 @@ public class RoundTimer : MonoBehaviour
             _timer = _RoundTime;
             LifeTraker.Instance.ResetTimer = false;
         }
+        _hasUpdated = true;
         StartCoroutine(CountDown());
+    }
+    public void Update()
+    {
+        if(!_hasUpdated)
+            LaunchTimer();
+    }
+    public void LaunchTimer()
+    {
+        DataSaver.Instance.LoadTimer();
+        if (_timer <= 0 || LifeTraker.Instance.ResetTimer)
+        {
+            _timer = _RoundTime;
+            LifeTraker.Instance.ResetTimer = false;
+        }
+        _hasUpdated = true;
+        StartCoroutine(CountDown());
+    }
+    public void SetUpdate()
+    {
+        _hasUpdated = false;
     }
 
 
     public IEnumerator CountDown()
     {
+        _hasUpdated=true;
         _counter.text = _timer.ToString();
         if(_timer <= 10)
         {
@@ -47,6 +71,8 @@ public class RoundTimer : MonoBehaviour
                 LifeTraker.Instance.RundCounter++;
                 LifeTraker.Instance.ResetTimer = true;
                 LoadManager.Instance.LoadIntermision();
+                SetUpdate();
+                FightControler.Instance.Prep();
                 TransitToRepair.SetActive(true);
             }
             if (LifeTraker.Instance.Dificulty == 2)

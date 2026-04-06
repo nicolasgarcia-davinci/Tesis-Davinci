@@ -18,6 +18,8 @@ public class Figther : MonoBehaviour
     public float MaxStamina;
     public float StaminaRefresh;
 
+    public bool _hasbeenset;
+
     [Header("Animations")]
     public bool UpAttack;
     public bool AimUp;
@@ -70,6 +72,19 @@ public class Figther : MonoBehaviour
     {
         ColorChange(ColorCordination.Instance.color1, ColorCordination.Instance.color2);
         Stamina = MaxStamina;
+        Set();
+        
+    }
+    private void Update()
+    {
+        if(Stamina < MaxStamina)
+        {
+            Stamina += StaminaRefresh * Time.deltaTime;
+        }
+    }
+
+    public void Set()
+    {
         SetLife();
         _anim = GetComponentInChildren<Animator>();
         if (RightLife > 0)
@@ -96,14 +111,12 @@ public class Figther : MonoBehaviour
             LeftCrashbool = true;
             DeActivateSet(_LegsSpark);
         }
+        Stamina = MaxStamina;
+        _anim = GetComponentInChildren<Animator>();
+        _hasbeenset = true;
     }
-    private void Update()
-    {
-        if(Stamina < MaxStamina)
-        {
-            Stamina += StaminaRefresh * Time.deltaTime;
-        }
-    }
+
+
 
     public void SetLife() 
     {

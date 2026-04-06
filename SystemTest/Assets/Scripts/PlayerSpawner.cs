@@ -20,4 +20,9 @@ public class PlayerSpawner : MonoBehaviour
             _Drill.SetActive(true);
         }
     }
+    public void Despawn()
+    {
+        _Boxer.SetActive(false);
+        _Drill.SetActive(false);
+    }
 }
