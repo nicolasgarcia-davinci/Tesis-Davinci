@@ -11,6 +11,8 @@ public class RoundTimer : MonoBehaviour
     public Color endTime;
     public Animator _animator;
 
+    public GameObject TransitToRepair;
+
     public static RoundTimer instance;
 
     private void Awake()
@@ -21,7 +23,7 @@ public class RoundTimer : MonoBehaviour
     void Start()
     {
         DataSaver.Instance.LoadTimer();
-        if (_timer == 0 || LifeTraker.Instance.ResetTimer)
+        if (_timer <= 0 || LifeTraker.Instance.ResetTimer)
         {
             _timer = _RoundTime;
             LifeTraker.Instance.ResetTimer = false;
@@ -42,9 +44,10 @@ public class RoundTimer : MonoBehaviour
         {
             if(LifeTraker.Instance.Dificulty==1)
             {
-            LifeTraker.Instance.RundCounter++;
-            LifeTraker.Instance.ResetTimer = true;
-            LoadManager.Instance.LoadIntermision();
+                LifeTraker.Instance.RundCounter++;
+                LifeTraker.Instance.ResetTimer = true;
+                LoadManager.Instance.LoadIntermision();
+                TransitToRepair.SetActive(true);
             }
             if (LifeTraker.Instance.Dificulty == 2)
             {

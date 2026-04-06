@@ -21,6 +21,8 @@ public class Fallen : MonoBehaviour
 
     public DDInputCheck _Cheker;
 
+    public GameObject TransitToFight;
+
 
     [Header("Mesh y materials")]
     public SkinnedMeshRenderer body;
@@ -112,6 +114,7 @@ public class Fallen : MonoBehaviour
 
             Sound.PlayOneShot(Succes);
             LoadManager.Instance.Round2();
+            TransitToFight.gameObject.SetActive(true);
         }
         
     }
@@ -134,6 +137,7 @@ public class Fallen : MonoBehaviour
 
             Sound.PlayOneShot(Succes);
             LoadManager.Instance.Round2();
+            TransitToFight.gameObject.SetActive(true);
         }
     }
     public void CheckUp()
@@ -155,6 +159,7 @@ public class Fallen : MonoBehaviour
 
             Sound.PlayOneShot(Succes);
             LoadManager.Instance.Round2();
+            TransitToFight.gameObject.SetActive(true);
         }
     }
     public void CheckDown()
@@ -176,6 +181,7 @@ public class Fallen : MonoBehaviour
 
             Sound.PlayOneShot(Succes);
             LoadManager.Instance.Round2();
+            TransitToFight.gameObject.SetActive(true);
         }
     }
 

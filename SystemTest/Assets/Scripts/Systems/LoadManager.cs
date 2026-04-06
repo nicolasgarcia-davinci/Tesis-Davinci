@@ -57,7 +57,7 @@ public class LoadManager : MonoBehaviour
     public void Round2()
     {
         VignetControler.Instance.DeActivate();
-        SceneManager.LoadSceneAsync(1);
+        //SceneManager.LoadSceneAsync(1);
     }
     public void LoadMenu()
     {
@@ -81,14 +81,14 @@ public class LoadManager : MonoBehaviour
     {
         DataSaver.Instance.SaveTimer();
         LifeTraker.Instance.UpdateLife();
-        SceneManager.LoadSceneAsync(3);
+        //SceneManager.LoadSceneAsync(3);
     }
 
     public void LoadKO()
     {
         DataSaver.Instance.SaveTimer();
         LifeTraker.Instance.UpdateLife();
-        SceneManager.LoadSceneAsync(2);
+        //SceneManager.LoadSceneAsync(2);
     }
 
     public void LoadEnter()

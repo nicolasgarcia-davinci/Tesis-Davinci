@@ -72,7 +72,8 @@ public class DDInputCheck : MonoBehaviour
     }
     public void CheckUp()
     {
-            Debug.Log("up");
+        if (check) return;
+        Debug.Log("up");
         if (CollectionsOnScreen[Index].IsUp)
         {
             CollectionsOnScreen[Index].ChangeToCorrect();
@@ -83,7 +84,8 @@ public class DDInputCheck : MonoBehaviour
     }
     public void CheckRight()
     {
-            Debug.Log("right");
+        if (check) return;
+        Debug.Log("right");
         if (CollectionsOnScreen[Index].IsRight)
         {
             CollectionsOnScreen[Index].ChangeToCorrect();
@@ -93,7 +95,8 @@ public class DDInputCheck : MonoBehaviour
     }
     public void CheckLeft()
     {
-            Debug.Log("left");
+        if (check) return;
+        Debug.Log("left");
         if (CollectionsOnScreen[Index].IsLeft)
         {
             CollectionsOnScreen[Index].ChangeToCorrect();
@@ -104,6 +107,7 @@ public class DDInputCheck : MonoBehaviour
     }
     public void CheckDown()
     {
+        if(check)return;
             Debug.Log("left");
         if (CollectionsOnScreen[Index].IsDown)
         {

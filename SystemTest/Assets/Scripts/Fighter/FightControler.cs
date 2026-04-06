@@ -11,6 +11,7 @@ public class FightControler : MonoBehaviour
     public PlayerControler _Control;
     public PlayerSpawner _Spawner;
     public RoundTimer _RT;
+    public GameObject TransitToKO;
     public GameObject PauseMenu;
     public bool IsPaused;
 
@@ -48,7 +49,11 @@ public class FightControler : MonoBehaviour
             LifeTraker.Instance.IsEnemy = true;
             LifeTraker.Instance.EnemyKO++;
         }
-        if(LifeTraker.Instance.Dificulty==1) LoadManager.Instance.LoadKO();
+        if (LifeTraker.Instance.Dificulty == 1)
+        {
+           LoadManager.Instance.LoadKO();
+           TransitToKO.gameObject.SetActive(true);
+        }
         if(LifeTraker.Instance.Dificulty==2) LoadManager.Instance.LoadGymKo();
 
     }
