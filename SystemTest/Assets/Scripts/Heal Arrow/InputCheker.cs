@@ -14,7 +14,7 @@ public class InputCheker : MonoBehaviour
 
     public static InputCheker Instance;
 
-    bool check;
+    bool check=false;
 
     private void Awake()
     {

@@ -7,6 +7,7 @@ public class AIGetUp : MonoBehaviour
 {
     public float _timer;
     public float _interval;
+    public int _attNum;
 
     public void Start()
     {
@@ -20,9 +21,11 @@ public class AIGetUp : MonoBehaviour
             _timer += Time.deltaTime;
             if(_timer > _interval )
             {
-                float attackNum = Random.Range(0, 100);
-                if (attackNum <= 50) Fallen.Instance.CheckLeft();
-                if (attackNum >= 51) Fallen.Instance.Checkright();
+                _attNum = Random.Range(0, 100);
+                if (_attNum <= 25) Fallen.Instance.CheckLeft();
+                if (_attNum <= 50 && _attNum > 25) Fallen.Instance.CheckRight();
+                if (_attNum <= 75 && _attNum > 50) Fallen.Instance.CheckUp();
+                if (_attNum <= 100 && _attNum >= 75) Fallen.Instance.CheckDown();
                 _timer = 0;
             }
         }

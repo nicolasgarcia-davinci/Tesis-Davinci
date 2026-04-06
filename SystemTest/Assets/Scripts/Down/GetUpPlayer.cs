@@ -10,7 +10,11 @@ public class GetUpPlayer : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.LeftArrow)) Fallen.Instance.CheckLeft();
 
-            if (Input.GetKeyDown(KeyCode.RightArrow)) Fallen.Instance.Checkright();
+            if (Input.GetKeyDown(KeyCode.RightArrow)) Fallen.Instance.CheckRight();
+
+            if (Input.GetKeyDown(KeyCode.DownArrow)) Fallen.Instance.CheckDown();
+
+            if (Input.GetKeyDown(KeyCode.UpArrow)) Fallen.Instance.CheckUp();
         }
     }
 }
