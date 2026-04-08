@@ -14,7 +14,6 @@ public class FightControler : MonoBehaviour
     public GameObject TransitToKO;
     public GameObject PauseMenu;
     public bool IsPaused;
-    public bool HasSpawned;
 
     private void Awake()
     {
@@ -31,7 +30,6 @@ public class FightControler : MonoBehaviour
     void Start()
     {
         _Spawner.SpawnPlayer();
-        HasSpawned = true;
     }
 
     public void IADefender(Figther attacker)
@@ -54,19 +52,13 @@ public class FightControler : MonoBehaviour
         if (LifeTraker.Instance.Dificulty == 1)
         {
            LoadManager.Instance.LoadKO();
-           RoundTimer.instance.SetUpdate();
            _Enemy._hasbeenset = false;
            _Player._hasbeenset = false;
-           _RT.SetUpdate();
-           _Spawner.Despawn();
+           StageState.Instance.ResetKO=true;
            TransitToKO.gameObject.SetActive(true);
         }
         if(LifeTraker.Instance.Dificulty==2) LoadManager.Instance.LoadGymKo();
 
-    }
-    public void Prep()
-    {
-        HasSpawned = false;
     }
 
     public void CheckAttack(Figther attacker)
@@ -116,11 +108,13 @@ public class FightControler : MonoBehaviour
             if(IsPaused) UnPause();
             if(!IsPaused) Pause();
         }
-        if(!HasSpawned)
+        if(StageState.Instance.ResetFight)
         {
-            _Spawner.SpawnPlayer();
-            HasSpawned = true;
-            _RT._hasUpdated = false;
+            StageState.Instance.ResetFight=false;
+            StageCam.Instance.GoToFightCam();
+            _RT.LaunchTimer();
+            _Player.SetLife();
+            _Enemy.SetLife();
         }
     }
     public void Pause()

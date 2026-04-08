@@ -46,6 +46,27 @@ public class DDInputCheck : MonoBehaviour
         //if (Input.GetKeyDown(KeyCode.LeftArrow)) CheckLeft();
         //if (Input.GetKeyDown(KeyCode.DownArrow)) CheckDown();
     }
+    public void Restart()
+    {
+        _bar.fillAmount = 0;
+        _actualBar = 0;
+        MaxIndex = 4;
+        if (LifeTraker.Instance.IsEnemy)
+        {
+            _maxBar = _defaultBar * LifeTraker.Instance.EnemyKO;
+            _bar.color = _Invisible;
+        }
+        else
+        {
+            _maxBar = _defaultBar * LifeTraker.Instance.PlayerKO;
+        }
+        _bar.fillAmount = _actualBar / _maxBar;
+        foreach (var item in CollectionsOnScreen)
+        {
+            item.gameObject.SetActive(false);
+        }
+        ActivateSet();
+    }
 
     public void ActivateSet()
     {
@@ -56,8 +77,9 @@ public class DDInputCheck : MonoBehaviour
             CollectionsOnScreen[Index].Randomize();
             Index++;
         }
-        MaxIndex++;
         Index = 0;
+        if(MaxIndex>=CollectionsOnScreen.Length) return; 
+        MaxIndex++;
     }
 
     public void Deactivate()
@@ -126,6 +148,7 @@ public class DDInputCheck : MonoBehaviour
         while (Index < MaxIndex)
         {
             CollectionsOnScreen[Index].ChangeToReset();
+            StageCam.Instance.GoToKOCam();
             Index++;
         }
         Deactivate();

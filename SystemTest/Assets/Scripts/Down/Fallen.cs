@@ -41,7 +41,6 @@ public class Fallen : MonoBehaviour
     public AudioSource Sound;
 
     public GetUp _timer;
-    public bool _hasBeenSet;
 
     public static Fallen Instance;
 
@@ -62,11 +61,16 @@ public class Fallen : MonoBehaviour
     }
     public void Update()
     {
-        if(!_hasBeenSet) Set();
+        if (StageState.Instance.ResetKO)
+        {
+            StageState.Instance.ResetKO = false;
+            Set();
+            _timer.Set();
+        }
     }
     public void Set()
     {
-        _hasBeenSet = true;
+        _Cheker.Restart();
         if (LifeTraker.Instance.IsEnemy)
         {
             _isEnemy = true;
@@ -125,8 +129,8 @@ public class Fallen : MonoBehaviour
 
             Sound.PlayOneShot(Succes);
             LoadManager.Instance.Round2();
-            _timer.Set();
-            _hasBeenSet = false;
+            _timer.StopAllCoroutines();
+            StageState.Instance.ResetFight=true;
             TransitToFight.gameObject.SetActive(true);
         }
         
@@ -150,8 +154,8 @@ public class Fallen : MonoBehaviour
 
             Sound.PlayOneShot(Succes);
             LoadManager.Instance.Round2();
-            _timer.Set();
-            _hasBeenSet = false;
+            _timer.StopAllCoroutines();
+            StageState.Instance.ResetFight = true;
             TransitToFight.gameObject.SetActive(true);
         }
     }
@@ -174,8 +178,8 @@ public class Fallen : MonoBehaviour
 
             Sound.PlayOneShot(Succes);
             LoadManager.Instance.Round2();
-            _timer.Set();
-            _hasBeenSet = false;
+            _timer.StopAllCoroutines();
+            StageState.Instance.ResetFight = true;
             TransitToFight.gameObject.SetActive(true);
         }
     }
@@ -197,9 +201,9 @@ public class Fallen : MonoBehaviour
             }
 
             Sound.PlayOneShot(Succes);
+            _timer.StopAllCoroutines();
             LoadManager.Instance.Round2();
-            _timer.Set();
-            _hasBeenSet = false;
+            StageState.Instance.ResetFight = true;
             TransitToFight.gameObject.SetActive(true);
         }
     }

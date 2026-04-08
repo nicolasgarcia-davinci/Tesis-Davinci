@@ -73,7 +73,7 @@ public class Figther : MonoBehaviour
         ColorChange(ColorCordination.Instance.color1, ColorCordination.Instance.color2);
         Stamina = MaxStamina;
         Set();
-        
+        _anim= GetComponentInChildren<Animator>();
     }
     private void Update()
     {
@@ -86,7 +86,6 @@ public class Figther : MonoBehaviour
     public void Set()
     {
         SetLife();
-        _anim = GetComponentInChildren<Animator>();
         if (RightLife > 0)
         {
             RightCrashbool = false;
@@ -112,7 +111,6 @@ public class Figther : MonoBehaviour
             DeActivateSet(_LegsSpark);
         }
         Stamina = MaxStamina;
-        _anim = GetComponentInChildren<Animator>();
         _hasbeenset = true;
     }
 

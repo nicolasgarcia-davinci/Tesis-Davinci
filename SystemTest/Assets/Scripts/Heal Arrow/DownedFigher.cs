@@ -7,26 +7,34 @@ public class DownedFigher : MonoBehaviour
     public ArrowGroup[] _bodyIndicators;
     public bool IsPlayer;
     public RepairSpawner _spawner;
+    public IntermisionTimer _timer;
 
     void Update()
     {
-
+        if(StageState.Instance.ResetRepair)
+        {
+            StageState.Instance.ResetRepair=false;
+            StageCam.Instance.GoToRepairCam();
+            _timer.LaunchTimer();
+            Set();
+        }
     }
-    void Start()
+
+    public void Set()
     {
         _spawner.SpawnPlayer();
-        if(!LifeTraker.Instance.IsEnemy)
+        if (!LifeTraker.Instance.IsEnemy)
         {
             IsPlayer = true;
         }
-        if(!IsPlayer)
+        if (!IsPlayer)
         {
-           _bodyIndicators[0].partlifeIndicator.UpdateLife(LifeTraker.Instance.eHead, LifeTraker.Instance.MaxHealt);
-           _bodyIndicators[1].partlifeIndicator.UpdateLife(LifeTraker.Instance.eRight, LifeTraker.Instance.MaxHealt);
-           _bodyIndicators[2].partlifeIndicator.UpdateLife(LifeTraker.Instance.eLeft, LifeTraker.Instance.MaxHealt);
-           _bodyIndicators[3].partlifeIndicator.UpdateLife(LifeTraker.Instance.eLegs, LifeTraker.Instance.MaxHealt);
+            _bodyIndicators[0].partlifeIndicator.UpdateLife(LifeTraker.Instance.eHead, LifeTraker.Instance.MaxHealt);
+            _bodyIndicators[1].partlifeIndicator.UpdateLife(LifeTraker.Instance.eRight, LifeTraker.Instance.MaxHealt);
+            _bodyIndicators[2].partlifeIndicator.UpdateLife(LifeTraker.Instance.eLeft, LifeTraker.Instance.MaxHealt);
+            _bodyIndicators[3].partlifeIndicator.UpdateLife(LifeTraker.Instance.eLegs, LifeTraker.Instance.MaxHealt);
         }
-        if(IsPlayer)
+        if (IsPlayer)
         {
             _bodyIndicators[0].partlifeIndicator.UpdateLife(LifeTraker.Instance.pHead, LifeTraker.Instance.MaxHealt);
             _bodyIndicators[1].partlifeIndicator.UpdateLife(LifeTraker.Instance.pRight, LifeTraker.Instance.MaxHealt);
