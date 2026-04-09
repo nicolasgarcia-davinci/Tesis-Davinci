@@ -108,10 +108,15 @@ public class LoadManager : MonoBehaviour
         }
     }
 
+    public void Garage()
+    {
+        SceneManager.LoadSceneAsync(10);
+    }
+
     public void GameOver()
     {
         VignetControler.Instance.DeActivate();
-        SceneManager.LoadSceneAsync(7);
+        //SceneManager.LoadSceneAsync(7);
     }
     public void ENDGAME()
     { SceneManager.LoadSceneAsync(9);}

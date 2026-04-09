@@ -33,6 +33,8 @@ public class RoundTimer : MonoBehaviour
     }
     public void LaunchTimer()
     {
+        _counter.color = Color.white;
+        _animator.SetBool("Pulse", false);
         DataSaver.Instance.LoadTimer();
         if (_timer <= 0 || LifeTraker.Instance.ResetTimer)
         {
@@ -48,7 +50,7 @@ public class RoundTimer : MonoBehaviour
         if(_timer <= 10)
         {
             _counter.color = endTime;
-            _animator.SetTrigger("Pulse");
+            _animator.SetBool("Pulse",true);
         }
         if (_timer == 0)
         {

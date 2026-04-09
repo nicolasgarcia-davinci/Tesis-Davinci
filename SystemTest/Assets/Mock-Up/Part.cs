@@ -6,9 +6,10 @@ public class Part : MonoBehaviour
 {
     public string PartName;
     public string AttName;
-    public Animation AttAnim;
     public float life;
     public float Aspeed;
+
+    public GameObject[] components;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,5 +20,13 @@ public class Part : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void ActiveParts()
+    {
+        foreach (var part in components)
+        {
+            part.gameObject.SetActive(true);
+        }
     }
 }

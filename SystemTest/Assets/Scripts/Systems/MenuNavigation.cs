@@ -18,6 +18,15 @@ public class MenuNavigation : MonoBehaviour
         }
     }
 
+    public void Zero()
+    {
+        foreach (var menu in _menu)
+        {
+            menu.DeSelect();
+        }
+        hasEnter = false;
+    }
+
     // Update is called once per frame
     void Update()
     {

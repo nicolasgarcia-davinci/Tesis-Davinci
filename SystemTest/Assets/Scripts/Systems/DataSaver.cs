@@ -25,7 +25,7 @@ public class DataSaver : MonoBehaviour
     }
     public void LoadLvl()
     {
-        LifeTraker.Instance.Dificulty = PlayerPrefs.GetFloat("_Dificulty");
+        LifeTraker.Instance.Dificulty = PlayerPrefs.GetInt("_Dificulty");
     }
     public void SaveTimer()
     {

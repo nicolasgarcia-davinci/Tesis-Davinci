@@ -20,6 +20,7 @@ public class ButtomAction : MonoBehaviour
     public int _targetID;
     public AudioSource Sound;
     public AudioClip ActSound;
+    public GameObject Asambley;
     public ButtomType _thisType;
     
     public void Start()
@@ -42,7 +43,6 @@ public class ButtomAction : MonoBehaviour
             StartCoroutine(Action());
         }
 
-        if(Input.GetKey(KeyCode.LeftArrow) && _isSelected)
         if(Input.GetKeyDown(KeyCode.LeftArrow) && _isSelected)
         {
             if (_thisType == ButtomType.EVolume || _thisType == ButtomType.SVolume || _thisType == ButtomType.MVolume)
@@ -123,25 +123,19 @@ public class ButtomAction : MonoBehaviour
             LoadManager.Instance.LoadGym();
         }
 
-        if (_thisType == ButtomType.RoboBoxer)
-        {
-            _Activated = false;
-            LifeTraker.Instance.PlayerRobo = RoboType.Boxer;
-            _Display.ActivateBoxer();
-            ChangeMenu();
-        }
-
-        if (_thisType == ButtomType.RoboDrill)
-        {
-            _Activated = false;
-            LifeTraker.Instance.PlayerRobo = RoboType.Drill;
-            _Display.ActivateDrill();
-            ChangeMenu();
-        }
         if (_thisType == ButtomType.NextLvl)
         {
             LifeTraker.Instance.Dificulty = 2;
             LoadManager.Instance.LoadGym();
+        }
+        if(_thisType==ButtomType.ToGarage) LoadManager.Instance.Garage();
+        if(_thisType==ButtomType.Asambley)
+        {
+            _selector.gameObject.SetActive(false);
+            _isSelected = false;
+            //Debug.Log("assbly");
+            Asambley.SetActive(true);
+            _miMenu.gameObject.SetActive(false);
         }
     }
 
@@ -163,5 +157,5 @@ public class ButtomAction : MonoBehaviour
 }
 public enum ButtomType
 {
-    NavButtom, LoadStage, LoadMenu, Color1, Color2, Quit, Return, Continue, NextLvl, RoboBoxer, RoboDrill, Resume, MVolume, EVolume, SVolume 
+    NavButtom, LoadStage, LoadMenu, Color1, Color2, Quit, Return, Continue, NextLvl, Resume, MVolume, EVolume, SVolume, ToGarage, Asambley
 }

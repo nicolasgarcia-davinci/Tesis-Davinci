@@ -11,23 +11,32 @@ public class EnterRound : PreView
 
     void Start()
     {
+        Again();
+    }
+    public void Again()
+    {
         if (LifeTraker.Instance.ResetTimer)
         {
             RoundMessage.text = "Round " + LifeTraker.Instance.RundCounter;
             RoundMessage.font = RoundFont;
-        }
-        else
-        { 
-            RoundMessage.text = "Back in the Ring";
-            RoundMessage.font = ReturnFont;
-        }
-        StartCoroutine(Clock());
+        }     
+            _timer = 3;
+            StartCoroutine(Clock());
     }
 
     void Update()
     {
+        if (StageState.Instance.ResetFight && HasToReset)
+        {
+            HasToReset = false;
+            Again();
+        }
+
         if (_timer == 0)
         {
+            StopAllCoroutines();
+            _timer = 3;
+            HasToReset = true;
             _game.gameObject.SetActive(true);
             this.gameObject.SetActive(false);
         }

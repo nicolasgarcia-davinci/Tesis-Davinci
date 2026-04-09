@@ -9,12 +9,8 @@ public class Refery : MonoBehaviour
     public Winner DrilW;
     public Losser BoxerL;
     public Losser DrillL;
-    public GameObject Gym;
-    public GameObject Garage;
     void Start()
     {
-        if(LifeTraker.Instance.Dificulty==1) Garage.SetActive(true);
-        else if(LifeTraker.Instance.Dificulty==2) Gym.SetActive(true);
         if(LifeTraker.Instance.Dificulty==2 && !LifeTraker.Instance.IsEnemy) DrilW.gameObject.SetActive(true);
         else if(LifeTraker.Instance.PlayerRobo==RoboType.Drill && LifeTraker.Instance.IsEnemy) DrilW.gameObject.SetActive(true);
         else if(LifeTraker.Instance.PlayerRobo==RoboType.Boxer && LifeTraker.Instance.IsEnemy) BoxerW.gameObject.SetActive(true);
