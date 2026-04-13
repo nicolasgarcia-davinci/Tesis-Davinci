@@ -143,6 +143,7 @@ public class Figther : MonoBehaviour
             UpAttack = true;
             AimUp = true;
             _anim.speed = Stamina / MaxStamina;
+            _anim.SetBool("IsAttacking", true);
             //FightControler.Instance.IADefender(this);
         }
     }
@@ -153,6 +154,7 @@ public class Figther : MonoBehaviour
             RightAttack = true;
             AimRight = true;
             _anim.speed = Stamina / MaxStamina;
+            _anim.SetBool("IsAttacking", true);
             //FightControler.Instance.IADefender(this);
         }
     }
@@ -163,6 +165,7 @@ public class Figther : MonoBehaviour
             LeftAttack = true;
             AimLeft = true;
             _anim.speed = Stamina / MaxStamina;
+            _anim.SetBool("IsAttacking", true);
             //FightControler.Instance.IADefender(this);
         }
     }
@@ -173,6 +176,7 @@ public class Figther : MonoBehaviour
             DownAttack = true;
             AimDown = true;
             _anim.speed = Stamina / MaxStamina;
+            _anim.SetBool("IsAttacking", true);
             //FightControler.Instance.IADefender(this);
         }
     }
@@ -181,7 +185,7 @@ public class Figther : MonoBehaviour
     {
         if(!Dodgeing && !UpAttack && !RightAttack && !LeftAttack && !DownAttack)
         {
-
+            _anim.SetTrigger("IsDodging");
             Debug.Log(_name + " DodgingUp");
             Dodgeing = true;
             UpDodge = true;
@@ -192,6 +196,7 @@ public class Figther : MonoBehaviour
     {
         if (!Dodgeing && !UpAttack && !RightAttack && !LeftAttack && !DownAttack)
         {
+            _anim.SetTrigger("IsDodging");
             Debug.Log(_name + " DodgingRight");
             Dodgeing = true;
             RightDodge = true;
@@ -202,6 +207,7 @@ public class Figther : MonoBehaviour
     {
         if (!Dodgeing && !UpAttack && !RightAttack && !LeftAttack && !DownAttack)
         {
+            _anim.SetTrigger("IsDodging");
             Debug.Log(_name + " DodgingLeft");
             Dodgeing = true;
             LeftDodge = true;
@@ -212,6 +218,7 @@ public class Figther : MonoBehaviour
     {
         if (!Dodgeing && !UpAttack && !RightAttack && !LeftAttack && !DownAttack)
         {
+            _anim.SetTrigger("IsDodging");
             Debug.Log(_name + " DodgingDown");
             Dodgeing = true;
             DownDodge = true;
@@ -229,6 +236,7 @@ public class Figther : MonoBehaviour
         _anim.SetBool("LeftAttack", false);
         DownAttack = false;
         _anim.SetBool("DownAttak", false);
+        _anim.SetBool("IsAttacking", false);
         _anim.speed = 1;
     }
     public void EndReset()
