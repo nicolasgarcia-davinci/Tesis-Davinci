@@ -27,16 +27,25 @@ public class IntermisionTimer : MonoBehaviour
     public IEnumerator CountDown()
     {
         _counter.text = _timer.ToString();
-        if (_timer == 0 && LifeTraker.Instance.Dificulty == 1)
-        { 
-           LoadManager.Instance.Round2();
-            LifeTraker.Instance.ResetTimer=true;
+        if (_timer == 0 )
+        {
+            LoadManager.Instance.Round2();
+            LifeTraker.Instance.ResetTimer = true;
             spawner.DesPawn();
-            StageState.Instance.ResetFight=true;
+            StageState.Instance.ResetFight = true;
             TransitToFight.gameObject.SetActive(true);
             StopAllCoroutines();
         }
-        if (_timer == 0 && LifeTraker.Instance.Dificulty==2) LoadManager.Instance.Round2Gym();
+        //if (_timer == 0 && LifeTraker.Instance.Dificulty == 1)
+        //{ 
+        //   LoadManager.Instance.Round2();
+        //    LifeTraker.Instance.ResetTimer=true;
+        //    spawner.DesPawn();
+        //    StageState.Instance.ResetFight=true;
+        //    TransitToFight.gameObject.SetActive(true);
+        //    StopAllCoroutines();
+        //}
+        //if (_timer == 0 && LifeTraker.Instance.Dificulty==2) LoadManager.Instance.Round2Gym();
         yield return new WaitForSeconds(1);
         _timer--;
         StartCoroutine(CountDown());

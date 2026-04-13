@@ -29,6 +29,11 @@ public class DownManager : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Q))
         {
+            _clock.StopAllCoroutines();
+            _AudioSource.PlayOneShot(Lose);
+            _Boxer._gameOver = true;
+            _Drill._gameOver = true;
+            Deafeat.SetActive(true);
             LoadManager.Instance.GameOver();
         }
         if(_clock._timer==0)

@@ -49,15 +49,20 @@ public class FightControler : MonoBehaviour
             LifeTraker.Instance.IsEnemy = true;
             LifeTraker.Instance.EnemyKO++;
         }
-        if (LifeTraker.Instance.Dificulty == 1)
-        {
-           LoadManager.Instance.LoadKO();
-           _Enemy._hasbeenset = false;
-           _Player._hasbeenset = false;
-           StageState.Instance.ResetKO=true;
-           TransitToKO.gameObject.SetActive(true);
-        }
-        if(LifeTraker.Instance.Dificulty==2) LoadManager.Instance.LoadGymKo();
+        //if (LifeTraker.Instance.Dificulty == 1)
+        //{
+        //   LoadManager.Instance.LoadKO();
+        //   _Enemy._hasbeenset = false;
+        //   _Player._hasbeenset = false;
+        //   StageState.Instance.ResetKO=true;
+        //   TransitToKO.gameObject.SetActive(true);
+        //}
+        //if(LifeTraker.Instance.Dificulty==2) LoadManager.Instance.LoadGymKo();
+        LoadManager.Instance.LoadKO();
+        _Enemy._hasbeenset = false;
+        _Player._hasbeenset = false;
+        StageState.Instance.ResetKO = true;
+        TransitToKO.gameObject.SetActive(true);
 
     }
 

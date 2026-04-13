@@ -54,21 +54,28 @@ public class RoundTimer : MonoBehaviour
         }
         if (_timer == 0)
         {
-            if(LifeTraker.Instance.Dificulty==1)
-            {
-                LifeTraker.Instance.RundCounter++;
-                LifeTraker.Instance.ResetTimer = true;
-                LoadManager.Instance.LoadIntermision();
-                StageState.Instance.ResetRepair=true;
-                StopAllCoroutines();
-                TransitToRepair.SetActive(true);
-            }
-            if (LifeTraker.Instance.Dificulty == 2)
-            {
-                LifeTraker.Instance.RundCounter++;
-                LifeTraker.Instance.ResetTimer = true;
-                LoadManager.Instance.LoadGymRest();
-            }
+            LifeTraker.Instance.RundCounter++;
+            LifeTraker.Instance.ResetTimer = true;
+            LoadManager.Instance.LoadIntermision();
+            StageState.Instance.ResetRepair = true;
+            StopAllCoroutines();
+            TransitToRepair.SetActive(true);
+
+            //if (LifeTraker.Instance.Dificulty==1)
+            //{
+            //    LifeTraker.Instance.RundCounter++;
+            //    LifeTraker.Instance.ResetTimer = true;
+            //    LoadManager.Instance.LoadIntermision();
+            //    StageState.Instance.ResetRepair=true;
+            //    StopAllCoroutines();
+            //    TransitToRepair.SetActive(true);
+            //}
+            //if (LifeTraker.Instance.Dificulty == 2)
+            //{
+            //    LifeTraker.Instance.RundCounter++;
+            //    LifeTraker.Instance.ResetTimer = true;
+            //    LoadManager.Instance.LoadGymRest();
+            //}
         }
         yield return new WaitForSeconds(1);
         _timer--;
