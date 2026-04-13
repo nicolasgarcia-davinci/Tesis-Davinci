@@ -41,6 +41,8 @@ public class StageCam : MonoBehaviour
         _startPos = this.transform;
         _startRot = this.transform.rotation;
 
+        _elapsedTime = 0;
+
         while(_elapsedTime < desiredDuration)
         {
             Debug.Log("Entre a la corutina");
@@ -62,7 +64,8 @@ public class StageCam : MonoBehaviour
     public void GoToKOCam()
     {
         if(Index>=KOPos.Length)Index = 0;
-        StopCoroutine(MoveCamera(KOPos[Index - 1]));
+        if(Index <= 0) StopCoroutine(MoveCamera(KOPos[0]));
+        else StopCoroutine(MoveCamera(KOPos[Index - 1]));
         StartCoroutine(MoveCamera(KOPos[Index]));
         Index++;
     }
