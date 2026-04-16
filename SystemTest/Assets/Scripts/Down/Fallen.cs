@@ -122,7 +122,8 @@ public class Fallen : MonoBehaviour
             LoadManager.Instance.Round2();
             _timer.Stop();
             StageState.Instance.ResetFight=true;
-            StageCam.Instance.GoToFightCamFromKO();
+            Play();
+            //StageCam.Instance.GoToFightCamFromKO();
         }
         
     }
@@ -140,7 +141,8 @@ public class Fallen : MonoBehaviour
             LoadManager.Instance.Round2();
             _timer.Stop();
             StageState.Instance.ResetFight = true;
-            StageCam.Instance.GoToFightCamFromKO();
+            Play();
+            //StageCam.Instance.GoToFightCamFromKO();
         }
     }
     public void CheckUp()
@@ -153,11 +155,14 @@ public class Fallen : MonoBehaviour
                 LifeTraker.Instance.eOverHealt = 70;
             else LifeTraker.Instance.pOverHealt = 70;
 
+            _fallen.StartPlayback();
+
             Sound.PlayOneShot(Succes);
             LoadManager.Instance.Round2();
             _timer.Stop();
             StageState.Instance.ResetFight = true;
-            StageCam.Instance.GoToFightCamFromKO();
+            Play();
+            //StageCam.Instance.GoToFightCamFromKO();
         }
     }
     public void CheckDown()
@@ -174,14 +179,14 @@ public class Fallen : MonoBehaviour
             _timer.Stop();
             LoadManager.Instance.Round2();
             StageState.Instance.ResetFight = true;
-            StageCam.Instance.GoToFightCamFromKO();
+            Play();
+            //StageCam.Instance.GoToFightCamFromKO();
         }
     }
 
     public void Play()
     {
         _fallen.speed = 1;
-        CamPos.Instance.changePos();
     }
     public void Stop()
     {

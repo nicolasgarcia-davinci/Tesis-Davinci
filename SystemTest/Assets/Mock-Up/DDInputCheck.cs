@@ -147,7 +147,6 @@ public class DDInputCheck : MonoBehaviour
         while (Index < MaxIndex)
         {
             CollectionsOnScreen[Index].ChangeToReset();
-            StageCam.Instance.GoToKOCam();
             Index++;
         }
         Deactivate();

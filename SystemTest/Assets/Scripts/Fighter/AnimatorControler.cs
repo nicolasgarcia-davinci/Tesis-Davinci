@@ -13,6 +13,11 @@ public class AnimatorControler : MonoBehaviour
         _ko=GetComponentInParent<Fallen>();
     }
 
+    public void BackToTheFight()
+    {
+        StageCam.Instance.GoToFightCamFromKO();
+    }
+
     public void CallForReset()
     {
         _boss.restAttack();

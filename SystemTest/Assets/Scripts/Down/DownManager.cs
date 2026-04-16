@@ -12,7 +12,6 @@ public class DownManager : MonoBehaviour
 
     public GameObject enemyLight;
     public GameObject playerLight;
-    public GameObject Deafeat;
     void Start()
     {
         if(LifeTraker.Instance.PlayerRobo==RoboType.Boxer && !LifeTraker.Instance.IsEnemy)_Boxer.gameObject.SetActive(true);
@@ -33,7 +32,6 @@ public class DownManager : MonoBehaviour
             _AudioSource.PlayOneShot(Lose);
             _Boxer._gameOver = true;
             _Drill._gameOver = true;
-            Deafeat.SetActive(true);
             LoadManager.Instance.GameOver();
         }
         if(_clock._timer==0)
@@ -42,7 +40,6 @@ public class DownManager : MonoBehaviour
             _AudioSource.PlayOneShot(Lose);
             _Boxer._gameOver = true;
             _Drill._gameOver = true;
-            Deafeat.SetActive(true);
             LoadManager.Instance.GameOver();
         }
     }
