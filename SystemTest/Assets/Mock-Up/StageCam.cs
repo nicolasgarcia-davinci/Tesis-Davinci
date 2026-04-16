@@ -12,6 +12,16 @@ public class StageCam : MonoBehaviour
     private Transform _startPos;
     private Quaternion _startRot;
     public int Index;
+
+    public Animator _animator;
+
+    public GameObject Fight;
+    public GameObject FightCurtain;
+    public GameObject Repair;
+    public GameObject KO;
+
+    public IntermisionTimer _intermisionTimer;
+    
     
     public static StageCam Instance;
 
@@ -27,46 +37,79 @@ public class StageCam : MonoBehaviour
         }
     }
 
-    public void GoToFightCam()
+    public void GoToFightCamFromKO()
     {
-        StartCoroutine(MoveCamera(FightPos));
+        _animator.Play("MoveToFightFromKO");
+    }
+    public void GoToFightCamFromRepair()
+    {
+        _animator.Play("MoveTorFightFromRepair");
     }
     public void GoToRepairCam()
     {
-        StartCoroutine(MoveCamera(RepairPos));
+        _animator.Play("MoveToRepair");
     }
 
-    IEnumerator MoveCamera(Transform target)
-    {
-        _startPos = this.transform;
-        _startRot = this.transform.rotation;
-
-        _elapsedTime = 0;
-
-        while(_elapsedTime < desiredDuration)
-        {
-            Debug.Log("Entre a la corutina");
-            float t = _elapsedTime / desiredDuration;
-            t = Mathf.SmoothStep(0,1,t);
-
-            transform.position = Vector3.Lerp(_startPos.position, target.position, t);
-            transform.rotation = Quaternion.Lerp(_startRot, target.rotation, t);
-
-            _elapsedTime += Time.deltaTime;
-            yield return null;
-        }
-
-        Debug.Log("Me movi a la posición correcta");
-        transform.position = target.position;
-        transform.rotation = target.rotation;
-    }
+    //IEnumerator MoveCamera(Transform target)
+    //{
+    //    _startPos = this.transform;
+    //    _startRot = this.transform.rotation;
+    //
+    //    _elapsedTime = 0;
+    //
+    //    while(_elapsedTime < desiredDuration)
+    //    {
+    //        Debug.Log("Entre a la corutina");
+    //        float t = _elapsedTime / desiredDuration;
+    //        t = Mathf.SmoothStep(0,1,t);
+    //
+    //        transform.position = Vector3.Lerp(_startPos.position, target.position, t);
+    //        transform.rotation = Quaternion.Lerp(_startRot, target.rotation, t);
+    //
+    //        _elapsedTime += Time.deltaTime;
+    //        yield return null;
+    //    }
+    //
+    //    Debug.Log("Me movi a la posición correcta");
+    //    transform.position = target.position;
+    //    transform.rotation = target.rotation;
+    //}
 
     public void GoToKOCam()
     {
-        if(Index>=KOPos.Length)Index = 0;
-        if(Index <= 0) StopCoroutine(MoveCamera(KOPos[0]));
-        else StopCoroutine(MoveCamera(KOPos[Index - 1]));
-        StartCoroutine(MoveCamera(KOPos[Index]));
-        Index++;
+        _animator.Play("MoveToKo");
+        LoadManager.Instance.LoadKO();
+        StageState.Instance.ResetKO = true;
+    }
+    //public void Spin()
+    //{
+    //    _animator.Play("KoSpin");
+    //}
+
+    public void TurnOffFight()
+    {
+        Fight.SetActive(false);
+    }
+    public void TurnOffKO()
+    {
+        KO.SetActive(false);
+    }
+    public void TurnOffRepair()
+    {
+        _intermisionTimer.desPawn();
+        Repair.SetActive(false);
+    }
+    public void TurnOnFight()
+    {
+        FightCurtain.SetActive(true);
+    }
+    public void TurnOnKO()
+    {
+        KO.SetActive(true);
+        //Spin();
+    }
+    public void TurnOnRepair()
+    {
+        Repair.SetActive(true);
     }
 }

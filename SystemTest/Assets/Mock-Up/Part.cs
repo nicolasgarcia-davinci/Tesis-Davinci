@@ -6,8 +6,10 @@ public class Part : MonoBehaviour
 {
     public string PartName;
     public string AttName;
-    public float life;
+    public int life;
+    public int Damage;
     public float Aspeed;
+    public AudioClip AttackSound;
 
     public GameObject[] components;
     // Start is called before the first frame update
@@ -27,6 +29,13 @@ public class Part : MonoBehaviour
         foreach (var part in components)
         {
             part.gameObject.SetActive(true);
+        }
+    }
+    public void DeActiveParts()
+    {
+        foreach (var part in components)
+        {
+            part.gameObject.SetActive(false);
         }
     }
 }

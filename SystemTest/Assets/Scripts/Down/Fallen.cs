@@ -21,8 +21,6 @@ public class Fallen : MonoBehaviour
 
     public DDInputCheck _Cheker;
 
-    public GameObject TransitToFight;
-
 
     [Header("Mesh y materials")]
     public SkinnedMeshRenderer body;
@@ -120,18 +118,11 @@ public class Fallen : MonoBehaviour
                 LifeTraker.Instance.eOverHealt = 70;
             else LifeTraker.Instance.pOverHealt = 70;
 
-            //if (LifeTraker.Instance.Dificulty > 2)
-            //{
-            //    Sound.PlayOneShot(Succes);
-            //    LoadManager.Instance.Round2Gym();
-            //    return;
-            //}
-
             Sound.PlayOneShot(Succes);
             LoadManager.Instance.Round2();
-            _timer.StopAllCoroutines();
+            _timer.Stop();
             StageState.Instance.ResetFight=true;
-            TransitToFight.gameObject.SetActive(true);
+            StageCam.Instance.GoToFightCamFromKO();
         }
         
     }
@@ -145,18 +136,11 @@ public class Fallen : MonoBehaviour
                 LifeTraker.Instance.eOverHealt = 70;
             else LifeTraker.Instance.pOverHealt = 70;
 
-            if (LifeTraker.Instance.Dificulty > 2)
-            {
-                Sound.PlayOneShot(Succes);
-                LoadManager.Instance.Round2Gym();
-                return;
-            }
-
             Sound.PlayOneShot(Succes);
             LoadManager.Instance.Round2();
-            _timer.StopAllCoroutines();
+            _timer.Stop();
             StageState.Instance.ResetFight = true;
-            TransitToFight.gameObject.SetActive(true);
+            StageCam.Instance.GoToFightCamFromKO();
         }
     }
     public void CheckUp()
@@ -169,18 +153,11 @@ public class Fallen : MonoBehaviour
                 LifeTraker.Instance.eOverHealt = 70;
             else LifeTraker.Instance.pOverHealt = 70;
 
-            if (LifeTraker.Instance.Dificulty > 2)
-            {
-                Sound.PlayOneShot(Succes);
-                LoadManager.Instance.Round2Gym();
-                return;
-            }
-
             Sound.PlayOneShot(Succes);
             LoadManager.Instance.Round2();
-            _timer.StopAllCoroutines();
+            _timer.Stop();
             StageState.Instance.ResetFight = true;
-            TransitToFight.gameObject.SetActive(true);
+            StageCam.Instance.GoToFightCamFromKO();
         }
     }
     public void CheckDown()
@@ -193,18 +170,11 @@ public class Fallen : MonoBehaviour
                 LifeTraker.Instance.eOverHealt = 70;
             else LifeTraker.Instance.pOverHealt = 70;
 
-            if (LifeTraker.Instance.Dificulty > 2)
-            {
-                Sound.PlayOneShot(Succes);
-                LoadManager.Instance.Round2Gym();
-                return;
-            }
-
             Sound.PlayOneShot(Succes);
-            _timer.StopAllCoroutines();
+            _timer.Stop();
             LoadManager.Instance.Round2();
             StageState.Instance.ResetFight = true;
-            TransitToFight.gameObject.SetActive(true);
+            StageCam.Instance.GoToFightCamFromKO();
         }
     }
 

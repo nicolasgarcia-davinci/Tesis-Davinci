@@ -31,29 +31,29 @@ public class LoadManager : MonoBehaviour
         VignetControler.Instance.DeActivate();
         LifeTraker.Instance.ResetTimer = true;
         LifeTraker.Instance.Reset();
-        SceneManager.LoadSceneAsync(4);
+        SceneManager.LoadSceneAsync(2);
     }
-    public void LoadGymKo()
-    {
-        //check
-        DataSaver.Instance.SaveTimer();
-        LifeTraker.Instance.UpdateLife();
-        SceneManager.LoadSceneAsync(5);
-    }
-    public void LoadGymRest()
-    {
-        //check
-        DataSaver.Instance.SaveTimer();
-        LifeTraker.Instance.UpdateLife();
-        SceneManager.LoadSceneAsync(6);
-    }
-    public void Round2Gym()
-    {
-        VignetControler.Instance.DeActivate();
-        DataSaver.Instance.LoadTimer();
-        Debug.Log("sasa");
-        SceneManager.LoadSceneAsync(4);
-    }
+    //public void LoadGymKo()
+    //{
+    //    //check
+    //    DataSaver.Instance.SaveTimer();
+    //    LifeTraker.Instance.UpdateLife();
+    //    SceneManager.LoadSceneAsync(5);
+    //}
+    //public void LoadGymRest()
+    //{
+    //    //check
+    //    DataSaver.Instance.SaveTimer();
+    //    LifeTraker.Instance.UpdateLife();
+    //    SceneManager.LoadSceneAsync(6);
+    //}
+    //public void Round2Gym()
+    //{
+    //    VignetControler.Instance.DeActivate();
+    //    DataSaver.Instance.LoadTimer();
+    //    Debug.Log("sasa");
+    //    SceneManager.LoadSceneAsync(4);
+    //}
     public void Round2()
     {
         VignetControler.Instance.DeActivate();
@@ -93,7 +93,7 @@ public class LoadManager : MonoBehaviour
 
     public void LoadEnter()
     {
-        SceneManager.LoadSceneAsync(8);
+        SceneManager.LoadSceneAsync(3);
     }
 
     public void ToLVL()
@@ -110,7 +110,7 @@ public class LoadManager : MonoBehaviour
 
     public void Garage()
     {
-        SceneManager.LoadSceneAsync(10);
+        SceneManager.LoadSceneAsync(05);
     }
 
     public void GameOver()
@@ -119,5 +119,5 @@ public class LoadManager : MonoBehaviour
         //SceneManager.LoadSceneAsync(7);
     }
     public void ENDGAME()
-    { SceneManager.LoadSceneAsync(9);}
+    { SceneManager.LoadSceneAsync(4);}
 }

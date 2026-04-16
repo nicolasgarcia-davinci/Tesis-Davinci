@@ -23,4 +23,11 @@ public class GetUp : MonoBehaviour
         _timer--;
         StartCoroutine(CountDown());
     }
+
+    public void Stop()
+    {
+        StopAllCoroutines();
+        _counter.text = "";
+
+    }
 }

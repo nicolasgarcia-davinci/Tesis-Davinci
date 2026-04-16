@@ -69,6 +69,7 @@ public class PartSelector : MonoBehaviour
             LarmsSelected = false;
             LegsSelected = false;
             HeadSelected = false;
+            rArms[RAIndex].gameObject.SetActive(true);
         }
 
         if (SIndex == 1)
@@ -77,6 +78,7 @@ public class PartSelector : MonoBehaviour
             LarmsSelected = true;
             LegsSelected = false;
             HeadSelected = false;
+            lArms[LAIndex].gameObject.SetActive(true);
         }
 
         if (SIndex == 2)
@@ -85,6 +87,7 @@ public class PartSelector : MonoBehaviour
             LarmsSelected = false;
             LegsSelected = true;
             HeadSelected = false;
+            legs[LIndex].gameObject.SetActive(true);
         }
 
         if (SIndex == 3)
@@ -93,6 +96,7 @@ public class PartSelector : MonoBehaviour
             LarmsSelected = false;
             LegsSelected = false;
             HeadSelected = true;
+            heads[HIndex].gameObject.SetActive(true);
         }
     }
     public void SelectUp()

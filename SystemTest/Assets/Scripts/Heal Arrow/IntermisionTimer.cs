@@ -8,7 +8,6 @@ public class IntermisionTimer : MonoBehaviour
     public float _timer;
     public float _IntermisionDuration;
     [SerializeField] TextMeshProUGUI _counter;
-    public GameObject TransitToFight;
     public RepairSpawner spawner;
 
 
@@ -31,10 +30,9 @@ public class IntermisionTimer : MonoBehaviour
         {
             LoadManager.Instance.Round2();
             LifeTraker.Instance.ResetTimer = true;
-            spawner.DesPawn();
             StageState.Instance.ResetFight = true;
-            TransitToFight.gameObject.SetActive(true);
-            StopAllCoroutines();
+            StageCam.Instance.GoToFightCamFromRepair();
+            Stop();
         }
         //if (_timer == 0 && LifeTraker.Instance.Dificulty == 1)
         //{ 
@@ -49,5 +47,14 @@ public class IntermisionTimer : MonoBehaviour
         yield return new WaitForSeconds(1);
         _timer--;
         StartCoroutine(CountDown());
+    }
+
+    public void desPawn()
+    {
+        spawner.DesPawn();
+    }
+    public void Stop()
+    {
+        StopAllCoroutines();
     }
 }

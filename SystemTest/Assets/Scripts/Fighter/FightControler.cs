@@ -58,11 +58,12 @@ public class FightControler : MonoBehaviour
         //   TransitToKO.gameObject.SetActive(true);
         //}
         //if(LifeTraker.Instance.Dificulty==2) LoadManager.Instance.LoadGymKo();
-        LoadManager.Instance.LoadKO();
+        
         _Enemy._hasbeenset = false;
         _Player._hasbeenset = false;
-        StageState.Instance.ResetKO = true;
-        TransitToKO.gameObject.SetActive(true);
+        StageCam.Instance.GoToKOCam();
+        _RT.Stop();
+        //TransitToKO.gameObject.SetActive(true);
 
     }
 
@@ -116,7 +117,7 @@ public class FightControler : MonoBehaviour
         if(StageState.Instance.ResetFight)
         {
             StageState.Instance.ResetFight=false;
-            StageCam.Instance.GoToFightCam();
+            //StageCam.Instance.GoToFightCam();
             _RT.LaunchTimer();
             _Player.SetLife();
             _Enemy.SetLife();

@@ -11,7 +11,6 @@ public class RoundTimer : MonoBehaviour
     public Color endTime;
     public Animator _animator;
 
-    public GameObject TransitToRepair;
 
 
     public static RoundTimer instance;
@@ -59,7 +58,7 @@ public class RoundTimer : MonoBehaviour
             LoadManager.Instance.LoadIntermision();
             StageState.Instance.ResetRepair = true;
             StopAllCoroutines();
-            TransitToRepair.SetActive(true);
+            StageCam.Instance.GoToRepairCam();
 
             //if (LifeTraker.Instance.Dificulty==1)
             //{
@@ -93,6 +92,7 @@ public class RoundTimer : MonoBehaviour
     {
         StopAllCoroutines();
         StopCoroutine(CountDown());
+        _counter.text = "";
     }
     public void UnPause()
     {
