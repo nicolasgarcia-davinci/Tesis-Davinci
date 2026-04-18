@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AnimatorControler : MonoBehaviour
 {
-
+    public CompositeFighter _fighter;
     public Figther _boss;
     public Fallen _ko;
     void Start()
