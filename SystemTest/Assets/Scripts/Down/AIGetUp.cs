@@ -25,7 +25,7 @@ public class AIGetUp : MonoBehaviour
                 if (_attNum <= 25) Fallen.Instance.CheckLeft();
                 if (_attNum <= 50 && _attNum > 25) Fallen.Instance.CheckRight();
                 if (_attNum <= 75 && _attNum > 50) Fallen.Instance.CheckUp();
-                if (_attNum <= 100 && _attNum >= 75) Fallen.Instance.CheckDown();
+                if (_attNum <= 100 && _attNum > 75) Fallen.Instance.CheckDown();
                 _timer = 0;
             }
         }

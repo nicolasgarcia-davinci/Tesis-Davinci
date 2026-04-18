@@ -5,21 +5,19 @@ using UnityEngine;
 
 public class Refery : MonoBehaviour
 {
-    public Winner PlayerWiner;
-    public Winner EnemyWinner;
-    public Losser PlayerLosser;
-    public Losser EnemyLosser;
+    public Winner Winer;
+    public Losser Losser;
     void Start()
     {
-        if (LifeTraker.Instance.IsEnemy)
-        { 
-            PlayerWiner.gameObject.SetActive(true);
-            EnemyLosser.gameObject.SetActive(true);
-        } 
-        else if(!LifeTraker.Instance.IsEnemy)
-        {
-            PlayerLosser.gameObject.SetActive(true);
-            EnemyWinner.gameObject.SetActive(true);
-        }
+        //if (LifeTraker.Instance.IsEnemy)
+        //{ 
+        //    PlayerWiner.gameObject.SetActive(true);
+        //    EnemyLosser.gameObject.SetActive(true);
+        //} 
+        //else if(!LifeTraker.Instance.IsEnemy)
+        //{
+        //    PlayerLosser.gameObject.SetActive(true);
+        //    EnemyWinner.gameObject.SetActive(true);
+        //}
     }
 }

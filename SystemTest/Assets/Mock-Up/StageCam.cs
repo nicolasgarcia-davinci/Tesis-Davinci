@@ -96,7 +96,6 @@ public class StageCam : MonoBehaviour
     }
     public void TurnOffRepair()
     {
-        _intermisionTimer.desPawn();
         Repair.SetActive(false);
     }
     public void TurnOnFight()

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerControler : MonoBehaviour
 {
-    public Figther Character;
+    public CompositeFighter Character;
     public bool IsPaused;
 
     void Start()
@@ -17,10 +17,10 @@ public class PlayerControler : MonoBehaviour
     void Update()
     {
         if (IsPaused) return;
-        if (Input.GetKeyDown(KeyCode.UpArrow)) Character.UpperAttack();
-        if (Input.GetKeyDown(KeyCode.RightArrow)) Character.RightHook();
-        if (Input.GetKeyDown(KeyCode.LeftArrow)) Character.LeftHook();
-        if (Input.GetKeyDown(KeyCode.DownArrow)) Character.DownerAttack();
+        if (Input.GetKeyDown(KeyCode.UpArrow)) Character.Headattack();
+        if (Input.GetKeyDown(KeyCode.RightArrow)) Character.RArmattack();
+        if (Input.GetKeyDown(KeyCode.LeftArrow)) Character.LArmattack();
+        if (Input.GetKeyDown(KeyCode.DownArrow)) Character.Legattack();
         if (Input.GetKeyDown(KeyCode.W)) Character.DodgeUp();
         if (Input.GetKeyDown(KeyCode.D)) Character.DodgeRight();
         if (Input.GetKeyDown(KeyCode.A)) Character.DodgeLeft();

@@ -4,22 +4,12 @@ using UnityEngine;
 
 public class ModelDiplay : MonoBehaviour
 {
-    public GameObject Boxer;
-    public GameObject Drill;
     public EnemyIntro[] oponents;
     public int index;
     public float ToDie;
     void Start()
     {
         ToDie = LifeTraker.Instance.Dificulty;
-        if(LifeTraker.Instance.PlayerRobo==RoboType.Boxer)
-        {
-            Boxer.SetActive(true);
-        }
-        if (LifeTraker.Instance.PlayerRobo == RoboType.Drill)
-        {
-            Drill.SetActive(true);
-        }
         StartCoroutine(EnemyState());
     }
 

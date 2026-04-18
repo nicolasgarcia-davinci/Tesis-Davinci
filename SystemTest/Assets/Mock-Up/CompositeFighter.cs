@@ -17,6 +17,14 @@ public class CompositeFighter : MonoBehaviour
     public Leg Leg;
     public Head Head;
 
+    [Header("Has To Set?")]
+    public bool hasBeenSet=false;
+
+    [Header("Eneregy System")]
+    public float Stamina;
+    public float MaxStamina;
+    public float StaminaRefresh;
+
     [Header("Enemy?")]
     public bool IsEnemy;
 
@@ -25,12 +33,14 @@ public class CompositeFighter : MonoBehaviour
     public bool IsDodgingLeft;
     public bool IsDodgingUp;
     public bool IsDodgingDown;
+    public bool IsDodging;
 
     [Header("Atacks")]
     public bool IsAttackingRight;
     public bool IsAttackingLeft;
     public bool IsAttackingUp;
     public bool IsAttackingDown;
+    public bool IsAttacking;
 
     [Header("Audio")]
     public AudioSource _Audio;
@@ -39,23 +49,29 @@ public class CompositeFighter : MonoBehaviour
     [Header("Animator")]
     public Animator anim;
 
-    [Header("Sparks Particles")]
-    public GameObject[] RarmsHitSpark;
-    public GameObject[] LarmsHitSpark;
-    public GameObject[] LegsHitSpark;
-    public GameObject[] HeadHitSpark;
+    [Header("Damage Particles")]
+    public GameObject RarmsHitSpark;
+    public GameObject LarmsHitSpark;
+    public GameObject LegsHitSpark;
+    public GameObject HeadHitSpark;
 
     [Header("Crash Collection")]
-    public GameObject RarmCrash;
-    public GameObject LarmCrash;
-    public GameObject LegsCrash;
-    public GameObject HeadCrash;
+    public GameObject[] RarmCrash;
+    public GameObject[] LarmCrash;
+    public GameObject[] LegsCrash;
+    public GameObject[] HeadCrash;
 
-    [Header("Bolt Particles")]
-    public GameObject RarmSpark;
-    public GameObject LarmSpark;
-    public GameObject LegsSpark;
-    public GameObject HeadSpark;
+    [Header("Spark Particles")]
+    public GameObject[] RarmSpark;
+    public GameObject[] LarmSpark;
+    public GameObject[] LegsSpark;
+    public GameObject[] HeadSpark;
+
+    [Header("Bool Particles")]
+    public bool HeadBoom;
+    public bool RarmBoom;
+    public bool LarmBoom;
+    public bool LegsBoom;
 
     [Header("Fighter Health")]
     public float OverAllHealth;
@@ -69,15 +85,17 @@ public class CompositeFighter : MonoBehaviour
 
     void Start()
     {
-        Body.material.SetColor("_Color_1", ColorCordination.Instance.color1);
-        Body.material.SetColor("_Color_2", ColorCordination.Instance.color2);
+        Stamina = MaxStamina;
         anim = GetComponent<Animator>();
         if(!IsEnemy)
         {
+           Body.material.SetColor("_Color_1", ColorCordination.Instance.color1);
+           Body.material.SetColor("_Color_2", ColorCordination.Instance.color2);
            Rarm = RarmCollection[LifeTraker.Instance.RarmIndex];
            Larm = LarmCollection[LifeTraker.Instance.LarmIndex];
            Leg = LegCollection[LifeTraker.Instance.LegsIndex];
            Head = HeadCollection[LifeTraker.Instance.HeadIndex];
+           OverAllHealth = LifeTraker.Instance.pOverHealt;
            RarmHealth = Rarm.life;
            LarmHealth = Larm.life;
            LegsHealth = Leg.life;
@@ -89,111 +107,174 @@ public class CompositeFighter : MonoBehaviour
            LifeTraker.Instance.pRight = RarmHealth;
            LifeTraker.Instance.pLeft = LarmHealth;
            LifeTraker.Instance.pLegs = LegsHealth;
-           LifeTraker.Instance.pHead = HeadHealth;   
+           LifeTraker.Instance.pHead = HeadHealth;
+           LifeTraker.Instance.maxHeadHealth = HeadHealth;
+           LifeTraker.Instance.maxRarmHealth = RarmHealth;
+           LifeTraker.Instance.maxLarmHealth = LarmHealth;
+           LifeTraker.Instance.maxLegsHealth = LegsHealth;
         }
         else
         {
+            OverAllHealth = LifeTraker.Instance.eOverHealt*(LifeTraker.Instance.Dificulty);
             RarmHealth = Rarm.life;
             LarmHealth = Larm.life;
             LegsHealth = Leg.life;
             HeadHealth = Head.life;
-            LifeTraker.Instance.eRight = RarmHealth;
-            LifeTraker.Instance.eLeft = LarmHealth;
-            LifeTraker.Instance.eLegs = LegsHealth;
-            LifeTraker.Instance.eHead = HeadHealth;
+            Rarm.ActiveParts();
+            Larm.ActiveParts();
+            Leg.ActiveParts();
+            Head.ActiveParts();
         }
-        Set();
+        //Set();
     }
 
     public void Set()
     {
+        hasBeenSet = true;
+        Stamina = MaxStamina;
         if (!IsEnemy)
         { 
             OverAllHealth = LifeTraker.Instance.pOverHealt;
+
             RarmHealth = LifeTraker.Instance.pRight;
             LarmHealth = LifeTraker.Instance.pLeft;
             LegsHealth = LifeTraker.Instance.pLegs;
             HeadHealth = LifeTraker.Instance.pHead;
-            if(RarmHealth > 0) Rarm.ActiveParts();
-            if (LarmHealth > 0) Larm.ActiveParts();
-            if (LegsHealth > 0) Leg.ActiveParts();
-            if (HeadHealth > 0) Head.ActiveParts();
+
+            if (RarmHealth > 0)
+            {
+                RarmBoom = false;
+                Rarm.ActiveParts();
+            }
+
+            if (LarmHealth > 0)
+            {
+                LarmBoom = false;
+                Larm.ActiveParts();
+            }
+
+            if (LegsHealth > 0)
+            {
+                LegsBoom = false;
+                Leg.ActiveParts();
+            }
+
+            if (HeadHealth > 0)
+            {
+                HeadBoom = false;
+                Head.ActiveParts();
+            }
         }
         else
         {
             OverAllHealth = LifeTraker.Instance.eOverHealt;
-            RarmHealth = LifeTraker.Instance.eRight;
-            LarmHealth = LifeTraker.Instance.eLeft;
-            LegsHealth = LifeTraker.Instance.eLegs;
-            HeadHealth = LifeTraker.Instance.eHead;
         }
     }
 
-    public void AnimBools()
+    public void ResetBools()
     {
-        IsDodgingLeft=false; IsDodgingRight=false; IsDodgingDown=false; IsDodgingUp=false;
+        IsDodgingLeft=false; IsDodgingRight=false; IsDodgingDown=false; IsDodgingUp=false; IsDodging=false;
+        IsAttackingLeft=false; IsAttackingRight=false; IsAttackingDown=false; IsAttackingUp=false; IsAttacking=false;
+    }
+    public void FallDown()
+    {
+        FightControler.Instance.SetDownFighter(this);
+    }
+
+    public void AttackEffect()
+    {
+        FightControler.Instance.CheckAttack(this);
+    }
+    public void IAInputCheck()
+    {
+        FightControler.Instance.IADefender(this);
     }
 
 
     void Update()
     {
-        if(Input.GetKeyUp(KeyCode.A)) LArmattack();
-        if(Input.GetKeyUp(KeyCode.D)) RArmattack();
-        if(Input.GetKeyUp(KeyCode.S)) Legattack();
-        if(Input.GetKeyUp(KeyCode.W)) Headattack();
+        if (Stamina < MaxStamina)
+        {
+            Stamina += StaminaRefresh * Time.deltaTime;
+        }
+        if (!hasBeenSet) Set();
     }
 
     public void DodgeRight()
     {
-        IsDodgingRight=true;
-        anim.SetTrigger("DoedgeRight");
+        if (!IsAttacking && !IsDodging)
+        { 
+            IsDodgingRight=true;
+            IsDodging=true;
+            anim.SetTrigger("DoedgeRight");
+        }
     }
     public void DodgeLeft()
     {
-        IsDodgingLeft = true;
-        anim.SetTrigger("DoedgeLeft");
+        if (!IsAttacking && !IsDodging)
+        {
+            IsDodgingLeft = true;
+            anim.SetTrigger("DoedgeLeft");
+            IsDodging = true;
+        }
     }
     public void DodgeUp()
     {
-        IsDodgingUp = true;
-        anim.SetTrigger("DoedgeUp");
+        if (!IsAttacking && !IsDodging)
+        {
+            IsDodgingUp = true;
+            IsDodging = true;
+            anim.SetTrigger("DoedgeUp");
+        }
     }
     public void DodgeDown()
     {
-        IsDodgingDown = true;
-        anim.SetTrigger("DoedgeRight");
+        if (!IsAttacking && !IsDodging)
+        {
+            IsDodgingDown = true;
+            IsDodging = true;
+            anim.SetTrigger("DoedgeRight");
+        }  
     }
 
     public void LArmattack()
     {
-        if(!IsAttackingDown||!IsAttackingLeft||!IsAttackingRight||!IsAttackingUp)
+        if(!IsAttacking && !IsDodging)
         {
+            anim.speed = Stamina / MaxStamina;
             anim.Play(Larm.AttName);
             IsAttackingLeft=true;
+            IsAttacking = true;
         }    
     }
     public void RArmattack()
     {
-        if (!IsAttackingDown || !IsAttackingLeft || !IsAttackingRight || !IsAttackingUp)
+        if (!IsAttacking && !IsDodging)
         {
+            anim.speed = Stamina / MaxStamina;
             anim.Play(Rarm.AttName);
             IsAttackingRight = true;
+            IsAttacking = true;
         }
     }
     public void Legattack()
     {
-        if (!IsAttackingDown || !IsAttackingLeft || !IsAttackingRight || !IsAttackingUp)
-        { 
+        if (!IsAttacking && !IsDodging)
+        {
+            anim.speed = Stamina / MaxStamina;
             anim.Play(Leg.AttName);
             IsAttackingDown = true;
+            IsAttacking = true;
         }
     }
     public void Headattack()
     {
-        if (!IsAttackingDown || !IsAttackingLeft || !IsAttackingRight || !IsAttackingUp)
+        if (!IsAttacking && !IsDodging)
         {
+            anim.speed = Stamina / MaxStamina;
             anim.Play(Head.AttName);
             IsAttackingUp = true;
+            IsAttacking = true;
         }
     }
 
@@ -201,12 +282,12 @@ public class CompositeFighter : MonoBehaviour
     {
         if (attacker.IsAttackingRight)
         {
-            RightDamage(attacker.Rarm.Damage, attacker.Rarm.AttackSound);
+            LeftDamage(attacker.Rarm.Damage, attacker.Rarm.AttackSound);
             return;
         }
         if (attacker.IsAttackingLeft)
         {
-            LeftDamage(attacker.Larm.Damage, attacker.Larm.AttackSound);
+            RightDamage(attacker.Larm.Damage, attacker.Larm.AttackSound);
             return;
         }
         if (attacker.IsAttackingUp)
@@ -230,12 +311,19 @@ public class CompositeFighter : MonoBehaviour
         }
 
         anim.SetTrigger("TakeDamage");
+        ResetBools();
         _Audio.PlayOneShot(hit);
         if(RarmHealth>0)
-        RarmHealth -= damege;
+            RarmHealth -= damege;
+        RarmsHitSpark.gameObject.SetActive(true);
 
-        if (RarmHealth <= 0)
+        FightControler.Instance.stopFrame();
+
+        if (RarmHealth <= 0 && !RarmBoom)
         {
+            RarmBoom=true;
+            ActivateParticle(RarmCrash);
+            ActivateParticle(RarmSpark);
             Rarm.DeActiveParts();
         }
         BattleHealth(damege);
@@ -249,12 +337,19 @@ public class CompositeFighter : MonoBehaviour
         }
 
         anim.SetTrigger("TakeDamage");
+        ResetBools();
         _Audio.PlayOneShot(hit);
         if (LarmHealth > 0)
             LarmHealth -= damege;
+        LarmsHitSpark.gameObject.SetActive(true);
+
+        FightControler.Instance.stopFrame();
 
         if (LarmHealth <= 0)
         {
+            LarmBoom = true;
+            ActivateParticle(LarmCrash);
+            ActivateParticle(LarmSpark);
             Larm.DeActiveParts();
         }
         BattleHealth(damege);
@@ -268,12 +363,19 @@ public class CompositeFighter : MonoBehaviour
         }
 
         anim.SetTrigger("TakeDamage");
+        ResetBools();
         _Audio.PlayOneShot(hit);
         if (LegsHealth > 0)
             LegsHealth -= damege;
+        LegsHitSpark.gameObject.SetActive(true);
+
+        FightControler.Instance.stopFrame();
 
         if (LegsHealth <= 0)
         {
+            LegsBoom = true;
+            ActivateParticle(LegsCrash);
+            ActivateParticle(LegsSpark);
             Leg.DeActiveParts();
         }
         BattleHealth(damege);
@@ -287,12 +389,19 @@ public class CompositeFighter : MonoBehaviour
         }
 
         anim.SetTrigger("TakeDamage");
+        ResetBools();
         _Audio.PlayOneShot(hit);
         if (HeadHealth > 0)
             HeadHealth -= damege;
+        HeadHitSpark.gameObject.SetActive(true);
+
+        FightControler.Instance.stopFrame();
 
         if (HeadHealth <= 0)
         {
+            HeadBoom = true;
+            ActivateParticle(HeadCrash);
+            ActivateParticle(HeadSpark);
             Head.DeActiveParts();
         }
         BattleHealth(damege);
@@ -305,6 +414,39 @@ public class CompositeFighter : MonoBehaviour
         {
             anim.SetTrigger("KO");
         }
+    }
+    public IEnumerator BreakStop()
+    {
+        anim.speed = 0;
+        yield return new WaitForSeconds(0.5f);
+        anim.speed = 1;
+    }
+    public void FreezeFrame()
+    {
+        StartCoroutine(BreakStop());
+    }
+    public void ActivateParticle(GameObject[] set)
+    {
+        foreach (GameObject item in set)
+        {
+            item.SetActive(true);
+        }
+    }
+    public void DeActivateParticle(GameObject[] set)
+    {
+        foreach (GameObject item in set)
+        {
+            item.SetActive(false);
+        }
+    }
+
+    public void Pause()
+    {
+        anim.speed = 0;
+    }
+    public void UnPause()
+    {
+        anim.speed = 1;
     }
 
 }

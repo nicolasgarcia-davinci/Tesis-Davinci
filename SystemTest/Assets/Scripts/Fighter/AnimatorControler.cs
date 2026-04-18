@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class AnimatorControler : MonoBehaviour
 {
-    public CompositeFighter _fighter;
-    public Figther _boss;
+    //public CompositeFighter _fighter;
+    //public Figther _boss;
     public Fallen _ko;
     void Start()
     {
-        _boss=GetComponentInParent<Figther>();
+        //_boss=GetComponentInParent<Figther>();
         _ko=GetComponentInParent<Fallen>();
     }
 
@@ -20,28 +20,28 @@ public class AnimatorControler : MonoBehaviour
 
     public void CallForReset()
     {
-        _boss.restAttack();
+        //_boss.restAttack();
     }
     public void endAnim()
     {
-        _boss.EndReset();
+        //_boss.EndReset();
     }
     public void Flee()
     {
-        _boss.IAInputCheck();
+        //_boss.IAInputCheck();
     }
 
     public void CallAttack()
     {
-        _boss.AttackEffect();
+        //_boss.AttackEffect();
     }
     public void goToAnim()
     {
-        _boss.nextAnim();
+        //_boss.nextAnim();
     }
     public void knokOut()
     {
-        _boss.FallDown();
+        //_boss.FallDown();
     }
     public void PauseAnimation()
     {

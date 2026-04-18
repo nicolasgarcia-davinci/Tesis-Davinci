@@ -39,11 +39,7 @@ public class DDInputCheck : MonoBehaviour
 
     void Update()
     {
-        //if (check) return;
-        //if (Input.GetKeyDown(KeyCode.UpArrow)) CheckUp();
-        //if (Input.GetKeyDown(KeyCode.RightArrow)) CheckRight();
-        //if (Input.GetKeyDown(KeyCode.LeftArrow)) CheckLeft();
-        //if (Input.GetKeyDown(KeyCode.DownArrow)) CheckDown();
+
     }
     public void Restart()
     {
@@ -142,6 +138,7 @@ public class DDInputCheck : MonoBehaviour
         check = true;
         _actualBar += 30;
         _bar.fillAmount = _actualBar / _maxBar;
+        Fallen.Instance.Twith();
         yield return new WaitForSeconds(0.5f);
         Index = 0;
         while (Index < MaxIndex)

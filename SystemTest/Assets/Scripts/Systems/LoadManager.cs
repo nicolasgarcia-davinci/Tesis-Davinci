@@ -33,31 +33,9 @@ public class LoadManager : MonoBehaviour
         LifeTraker.Instance.Reset();
         SceneManager.LoadSceneAsync(2);
     }
-    //public void LoadGymKo()
-    //{
-    //    //check
-    //    DataSaver.Instance.SaveTimer();
-    //    LifeTraker.Instance.UpdateLife();
-    //    SceneManager.LoadSceneAsync(5);
-    //}
-    //public void LoadGymRest()
-    //{
-    //    //check
-    //    DataSaver.Instance.SaveTimer();
-    //    LifeTraker.Instance.UpdateLife();
-    //    SceneManager.LoadSceneAsync(6);
-    //}
-    //public void Round2Gym()
-    //{
-    //    VignetControler.Instance.DeActivate();
-    //    DataSaver.Instance.LoadTimer();
-    //    Debug.Log("sasa");
-    //    SceneManager.LoadSceneAsync(4);
-    //}
     public void Round2()
     {
         VignetControler.Instance.DeActivate();
-        //SceneManager.LoadSceneAsync(1);
     }
     public void LoadMenu()
     {

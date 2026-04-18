@@ -82,6 +82,7 @@ public class ButtomAction : MonoBehaviour
         if (_thisType == ButtomType.NavButtom)
         {
             _Activated = false;
+            _isSelected = false;
             ChangeMenu();
         }
 
@@ -133,6 +134,7 @@ public class ButtomAction : MonoBehaviour
         {
             _selector.gameObject.SetActive(false);
             _isSelected = false;
+            _Activated = false;
             //Debug.Log("assbly");
             Asambley.SetActive(true);
             _miMenu.gameObject.SetActive(false);

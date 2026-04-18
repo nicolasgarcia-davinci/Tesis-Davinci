@@ -5,13 +5,14 @@ using UnityEngine;
 public class FightControler : MonoBehaviour
 {
     public static FightControler Instance;
-    public Figther _Player;
-    public Figther _Enemy;
+
+    public CompositeFighter _Player;
+    public CompositeFighter _Enemy;
+
     public AIControler _Controler;
     public PlayerControler _Control;
-    public PlayerSpawner _Spawner;
+
     public RoundTimer _RT;
-    public GameObject TransitToKO;
     public GameObject PauseMenu;
     public bool IsPaused;
 
@@ -29,17 +30,17 @@ public class FightControler : MonoBehaviour
 
     void Start()
     {
-        _Spawner.SpawnPlayer();
+
     }
 
-    public void IADefender(Figther attacker)
+    public void IADefender(CompositeFighter attacker)
     {
         if (attacker == _Player)
-            _Controler.IAPrediction(_Player.AimUp, _Player.AimRight, _Player.AimLeft, _Player.AimDown);
+            _Controler.IAPrediction(_Player.IsAttackingUp, _Player.IsAttackingRight, _Player.IsAttackingLeft, _Player.IsAttackingDown);
     }
-    public void SetDownFighter(Figther loser)
+    public void SetDownFighter(CompositeFighter loser)
     {
-        if (loser.IsPlayer)
+        if (!loser.IsEnemy)
         {
             LifeTraker.Instance.IsEnemy = false;
             LifeTraker.Instance.PlayerKO++;
@@ -49,56 +50,36 @@ public class FightControler : MonoBehaviour
             LifeTraker.Instance.IsEnemy = true;
             LifeTraker.Instance.EnemyKO++;
         }
-        //if (LifeTraker.Instance.Dificulty == 1)
-        //{
-        //   LoadManager.Instance.LoadKO();
-        //   _Enemy._hasbeenset = false;
-        //   _Player._hasbeenset = false;
-        //   StageState.Instance.ResetKO=true;
-        //   TransitToKO.gameObject.SetActive(true);
-        //}
-        //if(LifeTraker.Instance.Dificulty==2) LoadManager.Instance.LoadGymKo();
-        
-        _Enemy._hasbeenset = false;
-        _Player._hasbeenset = false;
+
+        LifeTraker.Instance.pOverHealt = _Player.OverAllHealth;
+        LifeTraker.Instance.pHead      = _Player.Head.life;
+        LifeTraker.Instance.pRight     = _Player.Rarm.life;
+        LifeTraker.Instance.pLeft      = _Player.Larm.life;
+        LifeTraker.Instance.pLegs      = _Player.Leg.life;
+
+
+        LifeTraker.Instance.eOverHealt = _Enemy.OverAllHealth;
+        LifeTraker.Instance.eHead      = _Enemy.Head.life;
+        LifeTraker.Instance.eRight     = _Enemy.Rarm.life;
+        LifeTraker.Instance.eLeft      = _Enemy.Larm.life;
+        LifeTraker.Instance.eLegs      = _Enemy.Leg.life;
+
+        //_Enemy.hasBeenSet = false;
+        //_Player.hasBeenSet = false;
         StageCam.Instance.GoToKOCam();
         _RT.Stop();
-        //TransitToKO.gameObject.SetActive(true);
-
     }
 
-    public void CheckAttack(Figther attacker)
+    public void CheckAttack(CompositeFighter attacker)
     {
-        if(attacker.IsPlayer)
+        if(attacker = _Player)
         {
-            if (attacker.AimUp) _Enemy.takeHeadDamage();
-            if (attacker.AimRight) _Enemy.takeRightDamage();
-            if (attacker.AimLeft) _Enemy.takeLeftDamage();
-            if (attacker.AimDown) _Enemy.takeLegsDamage();
+            _Enemy.CheckAttack(attacker);
         }
 
-        if (!attacker.IsPlayer)
+        if (attacker = _Enemy)
         {
-            if (attacker.AimUp && !_Player.UpDodge)
-            {
-                _Player.takeHeadDamage();
-                if (_Player.HeadLife == 0) return;
-            }
-            if (attacker.AimRight && !_Player.RightDodge)
-            {
-                _Player.takeRightDamage();
-                if (_Player.RightLife == 0) return;
-            }
-            if (attacker.AimLeft && !_Player.LeftDodge)
-            {
-                _Player.takeLeftDamage();
-                if (_Player.LeftLife == 0) return;
-            }
-            if (attacker.AimDown && !_Player.DownDodge)
-            {
-                _Player.takeLegsDamage();
-                if (_Player.LegsLife == 0) return;  
-            }
+            _Player.CheckAttack(attacker);
         }
         attacker.Stamina -= 10;
     }
@@ -111,16 +92,23 @@ public class FightControler : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.P))
         {
-            if(IsPaused) UnPause();
-            if(!IsPaused) Pause();
+            if(IsPaused)
+            {
+                UnPause();
+                return;
+            }
+            if (!IsPaused)
+            {
+                Pause();
+                return;
+            }
         }
         if(StageState.Instance.ResetFight)
         {
-            StageState.Instance.ResetFight=false;
-            //StageCam.Instance.GoToFightCam();
+            StageState.Instance.ResetFight = false;
             _RT.LaunchTimer();
-            _Player.SetLife();
-            _Enemy.SetLife();
+            _Player.Set();
+            _Enemy.Set();
         }
     }
     public void Pause()
@@ -141,4 +129,5 @@ public class FightControler : MonoBehaviour
         IsPaused = false;
         Pixelation.Instance.HighDefinition();
     }
+
 }

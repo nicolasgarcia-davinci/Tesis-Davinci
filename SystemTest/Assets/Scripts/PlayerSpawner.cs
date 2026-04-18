@@ -10,15 +10,7 @@ public class PlayerSpawner : MonoBehaviour
 
     public void SpawnPlayer()
     {
-        if (LifeTraker.Instance.PlayerRobo == RoboType.Boxer)
-        {
-            _Boxer.SetActive(true);
-        }
-
-        if (LifeTraker.Instance.PlayerRobo == RoboType.Drill)
-        {
-            _Drill.SetActive(true);
-        }
+        
     }
     public void Despawn()
     {

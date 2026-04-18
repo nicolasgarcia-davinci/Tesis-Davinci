@@ -32,12 +32,14 @@ public class ButtumColor : ButtomAction
         {
             DeSelect();
             ColorCordination.Instance.color1 = color;
+            _Activated = false;
             ChangeMenu();
         }
         if (_thisType == ButtomType.Color2)
         {
             DeSelect();
             ColorCordination.Instance.color2 = color;
+            _Activated = false;
             ChangeMenu();
         }
     }

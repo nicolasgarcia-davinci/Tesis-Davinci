@@ -16,16 +16,7 @@ public class DDArrow : MonoBehaviour
     public RawImage body;
     void Start()
     {
-        //float direction = Random.Range(0, 4);
-        //if (direction == 0 && direction<1) IsUp = true;
-        //if (direction == 1 && direction<2) IsDown = true;
-        //if (direction == 2 && direction<3) IsRight = true;
-        //if (direction == 3 && direction<=4) IsLeft = true;
-        //
-        //if(IsUp) body.rectTransform.rotation = Quaternion.AngleAxis(0,new Vector3(0,0,1));
-        //if(IsDown) body.rectTransform.rotation = Quaternion.AngleAxis(180, new Vector3(0, 0, 1));
-        //if (IsRight) body.rectTransform.rotation = Quaternion.AngleAxis(270, new Vector3(0, 0, 1));
-        //if (IsLeft) body.rectTransform.rotation = Quaternion.AngleAxis(90, new Vector3(0, 0, 1));
+        
     }
 
     public void Randomize()

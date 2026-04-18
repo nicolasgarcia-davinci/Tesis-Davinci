@@ -90,25 +90,25 @@ public class Figther : MonoBehaviour
         {
             RightCrashbool = false;
             RightCrashbool = true;
-            DeActivateSet(_RightSpark);
+            DeActivateParticle(_RightSpark);
         }
         if (HeadLife > 0)
         {
             HeadCrashbool = false;
             HeadCrashbool = true;
-            DeActivateSet(_HeadSpark);
+            DeActivateParticle(_HeadSpark);
         }
         if (LeftLife > 0)
         {
             LeftCrashbool = false;
             LeftCrashbool = true;
-            DeActivateSet(_LeftSpark);
+            DeActivateParticle(_LeftSpark);
         }
         if (LegsLife > 0)
         {
             LegsCrashbool = false;
             LeftCrashbool = true;
-            DeActivateSet(_LegsSpark);
+            DeActivateParticle(_LegsSpark);
         }
         Stamina = MaxStamina;
         _hasbeenset = true;
@@ -129,10 +129,6 @@ public class Figther : MonoBehaviour
         if (!IsPlayer)
         {
             MaxLife = LifeTraker.Instance.eOverHealt;
-            HeadLife = LifeTraker.Instance.eHead;
-            RightLife = LifeTraker.Instance.eRight;
-            LeftLife = LifeTraker.Instance.eLeft;
-            LegsLife = LifeTraker.Instance.eLegs;
         }
     }
 
@@ -288,8 +284,8 @@ public class Figther : MonoBehaviour
             FightControler.Instance.stopFrame();
             HeadCrashbool = true;
             Source.PlayOneShot(Kaboom);
-            ActivateSet(_HeadCrash);
-            ActivateSet(_HeadSpark);
+            ActivateParticle(_HeadCrash);
+            ActivateParticle(_HeadSpark);
             return;
         }
     }
@@ -323,8 +319,8 @@ public class Figther : MonoBehaviour
             FightControler.Instance.stopFrame();
             RightCrashbool = true;
             Source.PlayOneShot(Kaboom);
-            ActivateSet(_LeftCrash);
-            ActivateSet(_RightSpark);
+            ActivateParticle(_LeftCrash);
+            ActivateParticle(_RightSpark);
             return;
         }
 
@@ -359,8 +355,8 @@ public class Figther : MonoBehaviour
             FightControler.Instance.stopFrame();
             LeftCrashbool = true;
             Source.PlayOneShot(Kaboom);
-            ActivateSet(_RightCrash);
-            ActivateSet(_LeftSpark);
+            ActivateParticle(_RightCrash);
+            ActivateParticle(_LeftSpark);
             return;
         }
     }
@@ -394,8 +390,8 @@ public class Figther : MonoBehaviour
             FightControler.Instance.stopFrame();
             LegsCrashbool = true;
             Source.PlayOneShot(Kaboom);
-            ActivateSet(_LegsCrash);
-            ActivateSet(_LegsSpark);
+            ActivateParticle(_LegsCrash);
+            ActivateParticle(_LegsSpark);
             return;
         }
     }
@@ -423,26 +419,26 @@ public class Figther : MonoBehaviour
 
     public void FallDown()
     {
-        FightControler.Instance.SetDownFighter(this);
+        //FightControler.Instance.SetDownFighter(this);
     }
 
     public void AttackEffect()
     {
-        FightControler.Instance.CheckAttack(this);
+        //FightControler.Instance.CheckAttack(this);
     }
     public void IAInputCheck()
     {
-        FightControler.Instance.IADefender(this);
+        //FightControler.Instance.IADefender(this);
     }
 
-    public void ActivateSet(GameObject[] set)
+    public void ActivateParticle(GameObject[] set)
     {
         foreach (GameObject item in set)
         {
             item.SetActive(true);
         }
     }
-    public void DeActivateSet(GameObject[] set)
+    public void DeActivateParticle(GameObject[] set)
     {
         foreach (GameObject item in set)
         {

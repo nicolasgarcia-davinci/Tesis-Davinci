@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class DownManager : MonoBehaviour
 {
-    public Fallen _Boxer;
-    public Fallen _Drill;
+    public Fallen _Enemy;
+    public Fallen _Player;
     public GetUp _clock;
     public AudioSource _AudioSource;
     public AudioClip Lose;
@@ -14,10 +14,17 @@ public class DownManager : MonoBehaviour
     public GameObject playerLight;
     void Start()
     {
-        if(LifeTraker.Instance.PlayerRobo==RoboType.Boxer && !LifeTraker.Instance.IsEnemy)_Boxer.gameObject.SetActive(true);
-        if(LifeTraker.Instance.Dificulty==1 && LifeTraker.Instance.IsEnemy)_Boxer.gameObject.SetActive(true);
-        if (LifeTraker.Instance.PlayerRobo == RoboType.Drill && !LifeTraker.Instance.IsEnemy) _Drill.gameObject.SetActive(true);
-        if (LifeTraker.Instance.Dificulty == 2 && LifeTraker.Instance.IsEnemy) _Drill.gameObject.SetActive(true);
+        //if (!LifeTraker.Instance.IsEnemy)
+        //{ 
+        //    _Player.gameObject.SetActive(true);
+        //    return;
+        //}
+        //
+        //if (LifeTraker.Instance.IsEnemy)
+        //{ 
+        //    _Enemy.gameObject.SetActive(true);
+        //    return;
+        //}
         //if(LifeTraker.Instance.IsEnemy) enemyLight.SetActive(true);
         //if(!LifeTraker.Instance.IsEnemy) playerLight.SetActive(true);
     }
@@ -30,16 +37,16 @@ public class DownManager : MonoBehaviour
         {
             _clock.StopAllCoroutines();
             _AudioSource.PlayOneShot(Lose);
-            _Boxer._gameOver = true;
-            _Drill._gameOver = true;
+            _Player._gameOver = true;
+            _Enemy._gameOver = true;
             LoadManager.Instance.GameOver();
         }
         if(_clock._timer==0)
         {
             _clock.StopAllCoroutines();
             _AudioSource.PlayOneShot(Lose);
-            _Boxer._gameOver = true;
-            _Drill._gameOver = true;
+            _Player._gameOver = true;
+            _Enemy._gameOver = true;
             LoadManager.Instance.GameOver();
         }
     }

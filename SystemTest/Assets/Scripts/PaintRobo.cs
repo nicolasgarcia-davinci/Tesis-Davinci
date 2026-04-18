@@ -5,9 +5,28 @@ using UnityEngine;
 public class PaintRobo : MonoBehaviour
 {
     public SkinnedMeshRenderer body;
+    [Header("Part Collection")]
+    public Arm[] RarmCollection;
+    public Arm[] LarmCollection;
+    public Leg[] LegCollection;
+    public Head[] HeadCollection;
+
+    [Header("Active Parts")]
+    public Arm Rarm;
+    public Arm Larm;
+    public Leg Leg;
+    public Head Head;
     // Start is called before the first frame update
     void Start()
     {
+        Rarm = RarmCollection[LifeTraker.Instance.RarmIndex];
+        Larm = LarmCollection[LifeTraker.Instance.LarmIndex];
+        Leg = LegCollection[LifeTraker.Instance.LegsIndex];
+        Head = HeadCollection[LifeTraker.Instance.HeadIndex];
+        Rarm.ActiveParts();
+        Larm.ActiveParts();
+        Leg.ActiveParts();
+        Head.ActiveParts();
         ColorChange();
     }
 
