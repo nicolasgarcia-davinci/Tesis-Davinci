@@ -6889,9 +6889,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1f68d6a2946ebb4eb18e0755cfbaf9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Character: {fileID: 4113030160030453075}
+  Character: {fileID: 0}
   _timer: 0
   _AttackInterval: 3
+  _DodgeChance: 0
   IsPaused: 0
 --- !u!1001 &470635545
 PrefabInstance:
@@ -10865,12 +10866,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _Player: {fileID: 0}
-  _Enemy: {fileID: 4113030160030453075}
+  _Enemy: {fileID: 0}
   _Controler: {fileID: 463641890}
   _Control: {fileID: 0}
-  _Spawner: {fileID: 1857388014}
   _RT: {fileID: 49770679}
-  TransitToKO: {fileID: 901663283259400369}
   PauseMenu: {fileID: 1888362781}
   IsPaused: 0
 --- !u!1 &754444392
@@ -12321,7 +12320,14 @@ MonoBehaviour:
   - {fileID: 8429878238796248823}
   - {fileID: 7948260838342434035}
   - {fileID: 880557594815169190}
+  desiredDuration: 0
   Index: 0
+  _animator: {fileID: 0}
+  Fight: {fileID: 0}
+  FightCurtain: {fileID: 0}
+  Repair: {fileID: 0}
+  KO: {fileID: 0}
+  _intermisionTimer: {fileID: 0}
 --- !u!1 &855484292
 GameObject:
   m_ObjectHideFlags: 0
@@ -26202,6 +26208,10 @@ PrefabInstance:
       propertyPath: ActSound
       value: 
       objectReference: {fileID: 8300000, guid: d946f7046a8eb25409189747da0e8a03, type: 3}
+    - target: {fileID: 6485887818476068163, guid: 997ebcc6575199c4d86a7779e440e67d, type: 3}
+      propertyPath: _thisType
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 7247787208669241864, guid: 997ebcc6575199c4d86a7779e440e67d, type: 3}
       propertyPath: m_Name
       value: Pause Menu
@@ -26306,7 +26316,7 @@ AudioSource:
   m_GameObject: {fileID: 1888362782}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 1932116080009746235, guid: 52c6c16ae32769740871c24bffe89d8d, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -26402,7 +26412,7 @@ AudioSource:
   m_GameObject: {fileID: 1888362783}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 1932116080009746235, guid: 52c6c16ae32769740871c24bffe89d8d, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -26498,7 +26508,7 @@ AudioSource:
   m_GameObject: {fileID: 1888362784}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 1932116080009746235, guid: 52c6c16ae32769740871c24bffe89d8d, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -37883,7 +37893,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92c3bd2352e51df40950ea8e23583bc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _boss: {fileID: 0}
   _ko: {fileID: 5439792040533949679}
 --- !u!1 &1043499016156079372
 GameObject:
@@ -49151,17 +49160,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _fallen: {fileID: 0}
+  RarmCollection: []
+  LarmCollection: []
+  LegCollection: []
+  HeadCollection: []
+  Rarm: {fileID: 0}
+  Larm: {fileID: 0}
+  Leg: {fileID: 0}
+  Head: {fileID: 0}
+  ERarm: {fileID: 0}
+  ELarm: {fileID: 0}
+  ELeg: {fileID: 0}
+  EHead: {fileID: 0}
   _gameOver: 0
   _isEnemy: 0
   _player: {fileID: 2895824388118166302}
   _ai: {fileID: 8776232013196397405}
   _Cheker: {fileID: 2995675934699994907}
-  TransitToFight: {fileID: 3335774020265736270}
   body: {fileID: 2387750102457118362}
-  DrillMaterial: {fileID: 2100000, guid: 2c8e4f92fbcd461468ed0c219c8b62af, type: 2}
-  BoxerMaterial: {fileID: 2100000, guid: 4c907a29848783f4c8f9e12071ac08ee, type: 2}
-  EBMaterial: {fileID: 2100000, guid: ea21bdcaf6b22f340a7c16abc4546122, type: 2}
-  EDMaterial: {fileID: 2100000, guid: 673986adb90beb04c9ef2b18f1ac4785, type: 2}
+  PlayerMaterial: {fileID: 0}
+  EnemyMaterial: {fileID: 0}
   Succes: {fileID: 8300000, guid: 7dc0b8e034db23247950ecc819c2ae61, type: 3}
   Sound: {fileID: 2367987848113177117}
   _timer: {fileID: 7415441420216925005}
@@ -77254,14 +77272,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 825cac08ea3901644bba749ab832fb9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Boxer: {fileID: 5439792040533949679}
-  _Drill: {fileID: 1564577553561363684}
+  _Enemy: {fileID: 0}
+  _Player: {fileID: 0}
   _clock: {fileID: 7415441420216925005}
   _AudioSource: {fileID: 6434328876589936302}
   Lose: {fileID: 8300000, guid: 1c982fa6dc29d07498e0b14aa277b9d4, type: 3}
   enemyLight: {fileID: 0}
   playerLight: {fileID: 0}
-  Deafeat: {fileID: 5934649857397364998}
 --- !u!114 &2928984300718460034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119823,7 +119840,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92c3bd2352e51df40950ea8e23583bc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _boss: {fileID: 4113030160030453075}
   _ko: {fileID: 0}
 --- !u!1 &4597906589954117657
 GameObject:
@@ -119955,7 +119971,7 @@ AudioSource:
   m_GameObject: {fileID: 3439057182021158975}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 1932116080009746235, guid: 52c6c16ae32769740871c24bffe89d8d, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -126090,8 +126106,6 @@ MonoBehaviour:
   - {fileID: 4142115201293560411}
   - {fileID: 2097124498175995515}
   - {fileID: 2928984300718460034}
-  IsPlayer: 0
-  _spawner: {fileID: 7013189347821652716}
   _timer: {fileID: 8139467620294555347}
 --- !u!1 &4985268276685054803
 GameObject:
@@ -126324,10 +126338,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35514c049924c004183a292b3213cf4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BoxerW: {fileID: 2055389300005732107}
-  DrilW: {fileID: 5469177548384187985}
-  BoxerL: {fileID: 1457822533858277211}
-  DrillL: {fileID: 1838437091599097616}
+  Winer: {fileID: 0}
+  Losser: {fileID: 0}
 --- !u!4 &5014979618295575176
 Transform:
   m_ObjectHideFlags: 0
@@ -132367,7 +132379,7 @@ AudioSource:
   m_GameObject: {fileID: 2882495765852138038}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 1932116080009746235, guid: 52c6c16ae32769740871c24bffe89d8d, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -137569,17 +137581,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _fallen: {fileID: 2408705474993946060}
+  RarmCollection: []
+  LarmCollection: []
+  LegCollection: []
+  HeadCollection: []
+  Rarm: {fileID: 0}
+  Larm: {fileID: 0}
+  Leg: {fileID: 0}
+  Head: {fileID: 0}
+  ERarm: {fileID: 0}
+  ELarm: {fileID: 0}
+  ELeg: {fileID: 0}
+  EHead: {fileID: 0}
   _gameOver: 0
   _isEnemy: 0
   _player: {fileID: 7053552804831019278}
   _ai: {fileID: 4442063633699795356}
   _Cheker: {fileID: 2995675934699994907}
-  TransitToFight: {fileID: 3335774020265736270}
   body: {fileID: 6529612380982496921}
-  DrillMaterial: {fileID: 2100000, guid: 1477ee067b5984e438b11b69a13cbea4, type: 2}
-  BoxerMaterial: {fileID: 2100000, guid: 4c907a29848783f4c8f9e12071ac08ee, type: 2}
-  EBMaterial: {fileID: 2100000, guid: ea21bdcaf6b22f340a7c16abc4546122, type: 2}
-  EDMaterial: {fileID: 2100000, guid: 673986adb90beb04c9ef2b18f1ac4785, type: 2}
+  PlayerMaterial: {fileID: 0}
+  EnemyMaterial: {fileID: 0}
   Succes: {fileID: 8300000, guid: 7dc0b8e034db23247950ecc819c2ae61, type: 3}
   Sound: {fileID: 577214214662438477}
   _timer: {fileID: 7415441420216925005}
@@ -139497,7 +139518,7 @@ AudioSource:
   m_GameObject: {fileID: 409120152264619228}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 1932116080009746235, guid: 52c6c16ae32769740871c24bffe89d8d, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -149844,7 +149865,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92c3bd2352e51df40950ea8e23583bc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _boss: {fileID: 0}
   _ko: {fileID: 1564577553561363684}
 --- !u!114 &8000514770281817357
 MonoBehaviour:
@@ -150234,8 +150254,7 @@ MonoBehaviour:
   _timer: 10
   _IntermisionDuration: 10
   _counter: {fileID: 2423061724109415469}
-  TransitToFight: {fileID: 8890223286857423820}
-  spawner: {fileID: 7013189347821652716}
+  _player: {fileID: 0}
 --- !u!1 &8150059574730391492
 GameObject:
   m_ObjectHideFlags: 0
@@ -150605,7 +150624,7 @@ AudioSource:
   m_GameObject: {fileID: 272262849103940439}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 1932116080009746235, guid: 52c6c16ae32769740871c24bffe89d8d, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -166535,7 +166554,7 @@ AudioSource:
   m_GameObject: {fileID: 8939531776734732232}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 1932116080009746235, guid: 52c6c16ae32769740871c24bffe89d8d, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1

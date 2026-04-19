@@ -93,4 +93,9 @@ public class RestAnim : MonoBehaviour
         LegsGlich.SetActive(false);
         HeadGlich.SetActive(false);
     }
+
+    public void CallCam()
+    {
+        StageCam.Instance.GoToFightCamFromRepair();
+    }
 }

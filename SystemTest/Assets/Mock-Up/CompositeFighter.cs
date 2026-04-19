@@ -440,6 +440,18 @@ public class CompositeFighter : MonoBehaviour
         }
     }
 
+    public void CallCam()
+    {
+        if (!IsEnemy)
+        {
+            LifeTraker.Instance.RundCounter++;
+            LifeTraker.Instance.ResetTimer = true;
+            LoadManager.Instance.LoadIntermision();
+            StageState.Instance.ResetRepair = true;
+            StageCam.Instance.GoToRepairCam();
+        }
+    }
+
     public void Pause()
     {
         anim.speed = 0;

@@ -53,12 +53,9 @@ public class RoundTimer : MonoBehaviour
         }
         if (_timer == 0)
         {
-            LifeTraker.Instance.RundCounter++;
-            LifeTraker.Instance.ResetTimer = true;
-            LoadManager.Instance.LoadIntermision();
-            StageState.Instance.ResetRepair = true;
             StopAllCoroutines();
-            StageCam.Instance.GoToRepairCam();
+            FightControler.Instance.ExitStage();
+            //StageCam.Instance.GoToRepairCam();
 
             //if (LifeTraker.Instance.Dificulty==1)
             //{

@@ -66,6 +66,7 @@ public class FightControler : MonoBehaviour
 
         //_Enemy.hasBeenSet = false;
         //_Player.hasBeenSet = false;
+
         StageCam.Instance.GoToKOCam();
         _RT.Stop();
     }
@@ -110,6 +111,12 @@ public class FightControler : MonoBehaviour
             _Player.Set();
             _Enemy.Set();
         }
+    }
+
+    public void ExitStage()
+    {
+        _Player.anim.SetTrigger("Exit Stage");
+        _Enemy.anim.SetTrigger("Exit Stage");
     }
     public void Pause()
     {
