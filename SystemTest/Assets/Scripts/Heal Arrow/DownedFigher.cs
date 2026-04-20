@@ -12,7 +12,7 @@ public class DownedFigher : MonoBehaviour
         if(StageState.Instance.ResetRepair)
         {
             StageState.Instance.ResetRepair=false;
-            StageCam.Instance.GoToRepairCam();
+            //StageCam.Instance.GoToRepairCam(); ANULADO
             _timer.LaunchTimer();
             Set();
         }
@@ -20,7 +20,7 @@ public class DownedFigher : MonoBehaviour
 
     public void Start()
     {
-
+        Set();
     }
 
     public void Set()
