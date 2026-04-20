@@ -110,10 +110,10 @@ public class PartSelector : MonoBehaviour
 
         if (SIndex > Selectors.Length-1)
         {
-            //LifeTraker.Instance.RarmIndex = RAIndex;
-            //LifeTraker.Instance.LarmIndex = LAIndex;
-            //LifeTraker.Instance.LegsIndex = LIndex;
-            //LifeTraker.Instance.HeadIndex = HIndex;
+            LifeTraker.Instance.RarmIndex = RAIndex;
+            LifeTraker.Instance.LarmIndex = LAIndex;
+            LifeTraker.Instance.LegsIndex = LIndex;
+            LifeTraker.Instance.HeadIndex = HIndex;
 
             //_asMenu.gameObject.SetActive(true);
             //_asMenu.Zero();

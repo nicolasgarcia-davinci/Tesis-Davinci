@@ -14,7 +14,7 @@ public class IntermisionTimer : MonoBehaviour
     public void LaunchTimer()
     {
         DataSaver.Instance.LoadTimer();
-        if (_timer <= 0 || LifeTraker.Instance.ResetTimer)
+        if (_timer <= 0 && LifeTraker.Instance.ResetTimer)
         {
             _timer = _IntermisionDuration;
             LifeTraker.Instance.ResetTimer = false;
@@ -26,7 +26,7 @@ public class IntermisionTimer : MonoBehaviour
     public IEnumerator CountDown()
     {
         _counter.text = _timer.ToString();
-        if (_timer == 0 )
+        if (_timer <= 0 )
         {
             LoadManager.Instance.Round2();
             LifeTraker.Instance.ResetTimer = true;

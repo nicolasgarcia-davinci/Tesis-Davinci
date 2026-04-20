@@ -39,7 +39,6 @@ public class StageCam : MonoBehaviour
 
     public void GoToFightCamFromKO()
     {
-        StageState.Instance.ResetFight = true;
         _animator.Play("MoveToFightFromKO");
     }
     public void GoToFightCamFromRepair()
@@ -55,9 +54,9 @@ public class StageCam : MonoBehaviour
 
     public void GoToEndgameCam()
     {
-        _animator.speed = 0;
-        transform.position = FightPos.position;
-        transform.rotation = FightPos.rotation;
+        _animator.Play("EndGame");
+        //transform.position = FightPos.position;
+        //transform.rotation = FightPos.rotation;
     }
 
     #region Codigo Deprecado

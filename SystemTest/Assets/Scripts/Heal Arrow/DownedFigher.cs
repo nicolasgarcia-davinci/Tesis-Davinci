@@ -20,13 +20,7 @@ public class DownedFigher : MonoBehaviour
 
     public void Start()
     {
-        if (StageState.Instance.ResetRepair)
-        {
-            StageState.Instance.ResetRepair = false;
-            StageCam.Instance.GoToRepairCam();
-            _timer.LaunchTimer();
-            Set();
-        }
+
     }
 
     public void Set()
