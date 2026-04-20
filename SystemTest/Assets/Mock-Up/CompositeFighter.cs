@@ -25,6 +25,9 @@ public class CompositeFighter : MonoBehaviour
     public float MaxStamina;
     public float StaminaRefresh;
 
+    [Header("Repairing")]
+    public bool IsRepairing;
+
     [Header("Enemy?")]
     public bool IsEnemy;
 
@@ -132,6 +135,7 @@ public class CompositeFighter : MonoBehaviour
     {
         hasBeenSet = true;
         Stamina = MaxStamina;
+        IsRepairing = false;
         if (!IsEnemy)
         { 
             OverAllHealth = LifeTraker.Instance.pOverHealt;
@@ -202,7 +206,7 @@ public class CompositeFighter : MonoBehaviour
 
     public void DodgeRight()
     {
-        if (!IsAttacking && !IsDodging)
+        if (!IsAttacking && !IsDodging && !IsRepairing)
         { 
             IsDodgingRight=true;
             IsDodging=true;
@@ -211,7 +215,7 @@ public class CompositeFighter : MonoBehaviour
     }
     public void DodgeLeft()
     {
-        if (!IsAttacking && !IsDodging)
+        if (!IsAttacking && !IsDodging && !IsRepairing)
         {
             IsDodgingLeft = true;
             anim.SetTrigger("DoedgeLeft");
@@ -220,7 +224,7 @@ public class CompositeFighter : MonoBehaviour
     }
     public void DodgeUp()
     {
-        if (!IsAttacking && !IsDodging)
+        if (!IsAttacking && !IsDodging && !IsRepairing)
         {
             IsDodgingUp = true;
             IsDodging = true;
@@ -229,7 +233,7 @@ public class CompositeFighter : MonoBehaviour
     }
     public void DodgeDown()
     {
-        if (!IsAttacking && !IsDodging)
+        if (!IsAttacking && !IsDodging && !IsRepairing)
         {
             IsDodgingDown = true;
             IsDodging = true;
@@ -239,7 +243,7 @@ public class CompositeFighter : MonoBehaviour
 
     public void LArmattack()
     {
-        if(!IsAttacking && !IsDodging)
+        if(!IsAttacking && !IsDodging && !IsRepairing)
         {
             anim.speed = Stamina / MaxStamina;
             anim.Play(Larm.AttName);
@@ -249,7 +253,7 @@ public class CompositeFighter : MonoBehaviour
     }
     public void RArmattack()
     {
-        if (!IsAttacking && !IsDodging)
+        if (!IsAttacking && !IsDodging && !IsRepairing)
         {
             anim.speed = Stamina / MaxStamina;
             anim.Play(Rarm.AttName);
@@ -259,7 +263,7 @@ public class CompositeFighter : MonoBehaviour
     }
     public void Legattack()
     {
-        if (!IsAttacking && !IsDodging)
+        if (!IsAttacking && !IsDodging && !IsRepairing)
         {
             anim.speed = Stamina / MaxStamina;
             anim.Play(Leg.AttName);
@@ -269,7 +273,7 @@ public class CompositeFighter : MonoBehaviour
     }
     public void Headattack()
     {
-        if (!IsAttacking && !IsDodging)
+        if (!IsAttacking && !IsDodging && !IsRepairing)
         {
             anim.speed = Stamina / MaxStamina;
             anim.Play(Head.AttName);

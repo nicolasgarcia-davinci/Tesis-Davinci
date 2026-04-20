@@ -115,6 +115,8 @@ public class FightControler : MonoBehaviour
 
     public void ExitStage()
     {
+        _Player.IsRepairing = true;
+        _Enemy.IsRepairing = true;
         _Player.anim.SetTrigger("Exit Stage");
         _Enemy.anim.SetTrigger("Exit Stage");
     }
