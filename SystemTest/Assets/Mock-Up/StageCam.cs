@@ -39,6 +39,7 @@ public class StageCam : MonoBehaviour
 
     public void GoToFightCamFromKO()
     {
+        StageState.Instance.ResetFight = true;
         _animator.Play("MoveToFightFromKO");
     }
     public void GoToFightCamFromRepair()
@@ -48,33 +49,43 @@ public class StageCam : MonoBehaviour
     }
     public void GoToRepairCam()
     {
+        StageState.Instance.ResetRepair = true;
         _animator.Play("MoveToRepair");
     }
 
-    //IEnumerator MoveCamera(Transform target)
-    //{
-    //    _startPos = this.transform;
-    //    _startRot = this.transform.rotation;
-    //
-    //    _elapsedTime = 0;
-    //
-    //    while(_elapsedTime < desiredDuration)
-    //    {
-    //        Debug.Log("Entre a la corutina");
-    //        float t = _elapsedTime / desiredDuration;
-    //        t = Mathf.SmoothStep(0,1,t);
-    //
-    //        transform.position = Vector3.Lerp(_startPos.position, target.position, t);
-    //        transform.rotation = Quaternion.Lerp(_startRot, target.rotation, t);
-    //
-    //        _elapsedTime += Time.deltaTime;
-    //        yield return null;
-    //    }
-    //
-    //    Debug.Log("Me movi a la posición correcta");
-    //    transform.position = target.position;
-    //    transform.rotation = target.rotation;
-    //}
+    public void GoToEndgameCam()
+    {
+        _animator.speed = 0;
+        transform.position = FightPos.position;
+        transform.rotation = FightPos.rotation;
+    }
+
+    #region Codigo Deprecado
+    /*IEnumerator MoveCamera(Transform target)
+    {
+        _startPos = this.transform;
+        _startRot = this.transform.rotation;
+    
+        _elapsedTime = 0;
+    
+        while(_elapsedTime < desiredDuration)
+        {
+            Debug.Log("Entre a la corutina");
+            float t = _elapsedTime / desiredDuration;
+            t = Mathf.SmoothStep(0,1,t);
+    
+            transform.position = Vector3.Lerp(_startPos.position, target.position, t);
+            transform.rotation = Quaternion.Lerp(_startRot, target.rotation, t);
+    
+            _elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+    
+        Debug.Log("Me movi a la posición correcta");
+        transform.position = target.position;
+        transform.rotation = target.rotation;
+    }*/
+    #endregion
 
     public void GoToKOCam()
     {

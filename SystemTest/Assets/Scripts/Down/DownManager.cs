@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class DownManager : MonoBehaviour
 {
-    public Fallen _Enemy;
-    public Fallen _Player;
+    public Fallen Fallen;
     public GetUp _clock;
     public AudioSource _AudioSource;
     public AudioClip Lose;
 
     public GameObject enemyLight;
     public GameObject playerLight;
+
+    public GameObject gameCanvas;
+    public GameObject gameKoState;
     void Start()
     {
         //if (!LifeTraker.Instance.IsEnemy)
@@ -37,16 +39,21 @@ public class DownManager : MonoBehaviour
         {
             _clock.StopAllCoroutines();
             _AudioSource.PlayOneShot(Lose);
-            _Player._gameOver = true;
-            _Enemy._gameOver = true;
+            Fallen._gameOver = true;
+            gameCanvas.SetActive(true);
+            gameKoState.SetActive(false);
+            StageCam.Instance.GoToEndgameCam();
             LoadManager.Instance.GameOver();
         }
-        if(_clock._timer==0)
+        if(_clock._timer <= 0)
         {
+            Debug.Log("UwU");
             _clock.StopAllCoroutines();
             _AudioSource.PlayOneShot(Lose);
-            _Player._gameOver = true;
-            _Enemy._gameOver = true;
+            Fallen._gameOver = true;
+            gameCanvas.SetActive(true);
+            gameKoState.SetActive(false);
+            StageCam.Instance.GoToEndgameCam();
             LoadManager.Instance.GameOver();
         }
     }
