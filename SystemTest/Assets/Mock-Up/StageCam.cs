@@ -43,6 +43,7 @@ public class StageCam : MonoBehaviour
     }
     public void GoToFightCamFromRepair()
     {
+        StageState.Instance.ResetFight = true;
         _animator.Play("MoveTorFightFromRepair");
     }
     public void GoToRepairCam()

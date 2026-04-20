@@ -161,7 +161,7 @@ public class Fallen : MonoBehaviour
             _timer.Stop();
             StageState.Instance.ResetFight=true;
             _fallen.SetTrigger("GetUp");
-            //StageCam.Instance.GoToFightCamFromKO();
+            StageCam.Instance.GoToFightCamFromKO();
         }
         
     }
