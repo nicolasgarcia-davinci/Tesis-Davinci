@@ -330,6 +330,11 @@ public class CompositeFighter : MonoBehaviour
             ActivateParticle(RarmSpark);
             Rarm.DeActiveParts();
         }
+        if(!IsEnemy)
+        {
+            Debug.Log("BrazoChotoDerecho");
+            LifeTraker.Instance.pRight = RarmHealth;
+        }
         BattleHealth(damege);
     }
     public void LeftDamage(int damege, AudioClip hit)
