@@ -86,6 +86,10 @@ public class CompositeFighter : MonoBehaviour
     [Header("Body Paint")]
     public SkinnedMeshRenderer Body;
 
+    [Header("Freeze Frame")]
+    [SerializeField] float lightBlow;
+    [SerializeField] float heavyBlow;
+
     void Start()
     {
         Stamina = MaxStamina;
@@ -321,6 +325,8 @@ public class CompositeFighter : MonoBehaviour
             RarmHealth -= damege;
         RarmsHitSpark.gameObject.SetActive(true);
 
+        LifeTraker.Instance.UpdateLife();
+
         FightControler.Instance.stopFrame();
 
         if (RarmHealth <= 0 && !RarmBoom)
@@ -328,12 +334,13 @@ public class CompositeFighter : MonoBehaviour
             RarmBoom=true;
             ActivateParticle(RarmCrash);
             ActivateParticle(RarmSpark);
+            FightControler.Instance.stopFrameHigh();
             Rarm.DeActiveParts();
         }
         if(!IsEnemy)
         {
             Debug.Log("BrazoChotoDerecho");
-            LifeTraker.Instance.pRight = RarmHealth;
+            LifeTraker.Instance.UpdateLife();
         }
         BattleHealth(damege);
     }
@@ -352,6 +359,8 @@ public class CompositeFighter : MonoBehaviour
             LarmHealth -= damege;
         LarmsHitSpark.gameObject.SetActive(true);
 
+        LifeTraker.Instance.UpdateLife();
+
         FightControler.Instance.stopFrame();
 
         if (LarmHealth <= 0)
@@ -359,7 +368,13 @@ public class CompositeFighter : MonoBehaviour
             LarmBoom = true;
             ActivateParticle(LarmCrash);
             ActivateParticle(LarmSpark);
+            FightControler.Instance.stopFrameHigh();
             Larm.DeActiveParts();
+        }
+        if (!IsEnemy)
+        {
+            Debug.Log("BrazoChotoIzquierdo");
+            LifeTraker.Instance.UpdateLife();
         }
         BattleHealth(damege);
     }
@@ -378,6 +393,8 @@ public class CompositeFighter : MonoBehaviour
             LegsHealth -= damege;
         LegsHitSpark.gameObject.SetActive(true);
 
+        LifeTraker.Instance.UpdateLife();
+
         FightControler.Instance.stopFrame();
 
         if (LegsHealth <= 0)
@@ -385,6 +402,7 @@ public class CompositeFighter : MonoBehaviour
             LegsBoom = true;
             ActivateParticle(LegsCrash);
             ActivateParticle(LegsSpark);
+            FightControler.Instance.stopFrameHigh();
             Leg.DeActiveParts();
         }
         BattleHealth(damege);
@@ -404,6 +422,8 @@ public class CompositeFighter : MonoBehaviour
             HeadHealth -= damege;
         HeadHitSpark.gameObject.SetActive(true);
 
+        LifeTraker.Instance.UpdateLife();
+
         FightControler.Instance.stopFrame();
 
         if (HeadHealth <= 0)
@@ -411,6 +431,7 @@ public class CompositeFighter : MonoBehaviour
             HeadBoom = true;
             ActivateParticle(HeadCrash);
             ActivateParticle(HeadSpark);
+            FightControler.Instance.stopFrameHigh();
             Head.DeActiveParts();
         }
         BattleHealth(damege);
@@ -418,21 +439,25 @@ public class CompositeFighter : MonoBehaviour
 
     public void BattleHealth(int damage)
     {
-        OverAllHealth-= damage;
+        OverAllHealth -= damage;
         if(OverAllHealth<=0)
         {
             anim.SetTrigger("KO");
         }
     }
-    public IEnumerator BreakStop()
+    public IEnumerator BreakStop(float duration)
     {
         anim.speed = 0;
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(duration);
         anim.speed = 1;
     }
-    public void FreezeFrame()
+    public void FreezeFrameLow()
     {
-        StartCoroutine(BreakStop());
+        StartCoroutine(BreakStop(lightBlow));
+    }
+    public void FreezeFrameHigh()
+    {
+        StartCoroutine(BreakStop(heavyBlow));
     }
     public void ActivateParticle(GameObject[] set)
     {

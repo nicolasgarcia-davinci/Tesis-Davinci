@@ -86,8 +86,13 @@ public class FightControler : MonoBehaviour
     }
     public void stopFrame()
     {
-        _Player.FreezeFrame();
-        _Enemy.FreezeFrame();
+        _Player.FreezeFrameLow();
+        _Enemy.FreezeFrameLow();
+    }
+    public void stopFrameHigh()
+    {
+        _Player.FreezeFrameHigh();
+        _Enemy.FreezeFrameHigh();
     }
     public void Update()
     {

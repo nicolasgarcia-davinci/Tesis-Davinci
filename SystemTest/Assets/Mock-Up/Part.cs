@@ -6,7 +6,7 @@ public class Part : MonoBehaviour
 {
     public string PartName;
     public string AttName;
-    public int life;
+    public float life;
     public int Damage;
     public float Aspeed;
     public AudioClip AttackSound;
