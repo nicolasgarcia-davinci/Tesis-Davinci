@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class CompositeFighter : MonoBehaviour
@@ -76,16 +77,11 @@ public class CompositeFighter : MonoBehaviour
     public bool LarmBoom;
     public bool LegsBoom;
 
-    [Header("Fighter Health")]
-    public float OverAllHealth;
-    public float RarmHealth;
-    public float LarmHealth;
-    public float LegsHealth;
-    public float HeadHealth;
-
     [Header("Body Paint")]
     public SkinnedMeshRenderer Body;
 
+    [Header("OverAllHealth")]
+    public float OverAllHealth;
     [Header("Freeze Frame")]
     [SerializeField] float lightBlow;
     [SerializeField] float heavyBlow;
@@ -103,30 +99,23 @@ public class CompositeFighter : MonoBehaviour
            Leg = LegCollection[LifeTraker.Instance.LegsIndex];
            Head = HeadCollection[LifeTraker.Instance.HeadIndex];
            OverAllHealth = LifeTraker.Instance.pOverHealt;
-           RarmHealth = Rarm.life;
-           LarmHealth = Larm.life;
-           LegsHealth = Leg.life;
-           HeadHealth = Head.life;
+
            Rarm.ActiveParts();
            Larm.ActiveParts();
            Leg.ActiveParts();
            Head.ActiveParts();
-           LifeTraker.Instance.pRight = RarmHealth;
-           LifeTraker.Instance.pLeft = LarmHealth;
-           LifeTraker.Instance.pLegs = LegsHealth;
-           LifeTraker.Instance.pHead = HeadHealth;
-           LifeTraker.Instance.maxHeadHealth = HeadHealth;
-           LifeTraker.Instance.maxRarmHealth = RarmHealth;
-           LifeTraker.Instance.maxLarmHealth = LarmHealth;
-           LifeTraker.Instance.maxLegsHealth = LegsHealth;
+           LifeTraker.Instance.pRight = Rarm.life;
+           LifeTraker.Instance.pLeft = Larm.life;
+           LifeTraker.Instance.pLegs = Leg.life;
+           LifeTraker.Instance.pHead = Head.life;
+           LifeTraker.Instance.maxHeadHealth = Head.life;
+           LifeTraker.Instance.maxRarmHealth = Rarm.life;
+           LifeTraker.Instance.maxLarmHealth = Larm.life;
+           LifeTraker.Instance.maxLegsHealth = Leg.life;
         }
         else
         {
             OverAllHealth = LifeTraker.Instance.eOverHealt*(LifeTraker.Instance.Dificulty);
-            RarmHealth = Rarm.life;
-            LarmHealth = Larm.life;
-            LegsHealth = Leg.life;
-            HeadHealth = Head.life;
             Rarm.ActiveParts();
             Larm.ActiveParts();
             Leg.ActiveParts();
@@ -144,30 +133,25 @@ public class CompositeFighter : MonoBehaviour
         { 
             OverAllHealth = LifeTraker.Instance.pOverHealt;
 
-            RarmHealth = LifeTraker.Instance.pRight;
-            LarmHealth = LifeTraker.Instance.pLeft;
-            LegsHealth = LifeTraker.Instance.pLegs;
-            HeadHealth = LifeTraker.Instance.pHead;
-
-            if (RarmHealth > 0)
+            if (Rarm.life > 0)
             {
                 RarmBoom = false;
                 Rarm.ActiveParts();
             }
 
-            if (LarmHealth > 0)
+            if (Larm.life > 0)
             {
                 LarmBoom = false;
                 Larm.ActiveParts();
             }
 
-            if (LegsHealth > 0)
+            if (Leg.life > 0)
             {
                 LegsBoom = false;
                 Leg.ActiveParts();
             }
 
-            if (HeadHealth > 0)
+            if (Head.life > 0)
             {
                 HeadBoom = false;
                 Head.ActiveParts();
@@ -321,15 +305,15 @@ public class CompositeFighter : MonoBehaviour
         anim.SetTrigger("TakeDamage");
         ResetBools();
         _Audio.PlayOneShot(hit);
-        if(RarmHealth>0)
-            RarmHealth -= damege;
+        if(Rarm.life>0)
+            Rarm.life -= damege;
         RarmsHitSpark.gameObject.SetActive(true);
 
         LifeTraker.Instance.UpdateLife();
 
         FightControler.Instance.stopFrame();
 
-        if (RarmHealth <= 0 && !RarmBoom)
+        if (Rarm.life <= 0 && !RarmBoom)
         {
             RarmBoom=true;
             ActivateParticle(RarmCrash);
@@ -355,15 +339,15 @@ public class CompositeFighter : MonoBehaviour
         anim.SetTrigger("TakeDamage");
         ResetBools();
         _Audio.PlayOneShot(hit);
-        if (LarmHealth > 0)
-            LarmHealth -= damege;
+        if (Larm.life > 0)
+            Larm.life -= damege;
         LarmsHitSpark.gameObject.SetActive(true);
 
         LifeTraker.Instance.UpdateLife();
 
         FightControler.Instance.stopFrame();
 
-        if (LarmHealth <= 0)
+        if (Larm.life <= 0)
         {
             LarmBoom = true;
             ActivateParticle(LarmCrash);
@@ -389,15 +373,17 @@ public class CompositeFighter : MonoBehaviour
         anim.SetTrigger("TakeDamage");
         ResetBools();
         _Audio.PlayOneShot(hit);
-        if (LegsHealth > 0)
-            LegsHealth -= damege;
+        if (Leg.life > 0)
+            Leg.life -= damege;
+
+        FightControler.Instance._Enemy.Leg.life -= damege;
         LegsHitSpark.gameObject.SetActive(true);
 
         LifeTraker.Instance.UpdateLife();
 
         FightControler.Instance.stopFrame();
 
-        if (LegsHealth <= 0)
+        if (Leg.life <= 0)
         {
             LegsBoom = true;
             ActivateParticle(LegsCrash);
@@ -418,15 +404,15 @@ public class CompositeFighter : MonoBehaviour
         anim.SetTrigger("TakeDamage");
         ResetBools();
         _Audio.PlayOneShot(hit);
-        if (HeadHealth > 0)
-            HeadHealth -= damege;
+        if (Head.life > 0)
+            Head.life -= damege;
         HeadHitSpark.gameObject.SetActive(true);
 
         LifeTraker.Instance.UpdateLife();
 
         FightControler.Instance.stopFrame();
 
-        if (HeadHealth <= 0)
+        if (Head.life <= 0)
         {
             HeadBoom = true;
             ActivateParticle(HeadCrash);

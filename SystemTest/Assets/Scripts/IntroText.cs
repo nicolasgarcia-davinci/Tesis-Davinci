@@ -15,6 +15,7 @@ public class IntroText : MonoBehaviour
     public float transparancyRate;
     public Animator menu;
     public MenuNavigation men;
+    public GameObject indicatorCanvas;
     void Start()
     {
         StartCoroutine(TextFlash());
@@ -28,6 +29,11 @@ public class IntroText : MonoBehaviour
             menu.SetBool("HasIntro", true);
             StopAllCoroutines();
             start.color = endcolor;
+
+            if(indicatorCanvas != null)
+                indicatorCanvas.SetActive(true);
+
+            enabled = false;
         }
         if (toTranparent && !HasEnded)
         {
