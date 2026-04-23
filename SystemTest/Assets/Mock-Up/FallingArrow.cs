@@ -1,0 +1,52 @@
+using UnityEngine;
+using UnityEngine.UI;
+
+public class FallingArrow : MonoBehaviour
+{
+    public Image Arrow;
+
+    public bool IsRight;
+    public bool IsLeft;
+    public bool IsUp;
+    public bool IsDown;
+
+    public Animator Animator;
+
+    public DDManager DDManager;
+
+    public AudioSource AudioSource;
+
+    public bool CanBeHit;
+    void Start()
+    {
+        
+        if (IsLeft) Arrow.rectTransform.Rotate(0, 0, 180);
+        if (IsUp) Arrow.rectTransform.Rotate(0, 0, 90);
+        if (IsDown) Arrow.rectTransform.Rotate(0, 0, 270);
+    }
+
+    public void Fall()
+    {
+        Animator.SetTrigger("InAction");
+    }
+
+    public void CallFriend()
+    {
+        DDManager.SpawnArrow();
+    }
+
+    public void IsInRange()
+    {
+        CanBeHit = true;
+    }
+    public void IsNotInRange()
+    {
+        CanBeHit = false;
+    }
+    public void Correct()
+    {
+        AudioSource.Play();
+        Debug.Log("Hit");
+        Arrow.color = Color.green;
+    }
+}
