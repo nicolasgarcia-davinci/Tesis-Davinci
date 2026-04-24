@@ -14,7 +14,7 @@ public class FallingArrow : MonoBehaviour
 
     public DDManager DDManager;
 
-    public AudioSource AudioSource;
+    //public AudioSource AudioSource;
 
     public bool CanBeHit;
     void Start()
@@ -33,6 +33,7 @@ public class FallingArrow : MonoBehaviour
     public void CallFriend()
     {
         DDManager.SpawnArrow();
+        IsNotInRange();
     }
 
     public void IsInRange()
@@ -42,11 +43,20 @@ public class FallingArrow : MonoBehaviour
     public void IsNotInRange()
     {
         CanBeHit = false;
+        Arrow.color = Color.clear;
     }
     public void Correct()
     {
-        AudioSource.Play();
+        //AudioSource.Play();
         Debug.Log("Hit");
         Arrow.color = Color.green;
     }
+    public void IsReady()
+    {
+        Arrow.color = Color.white;
+    }
+    //public void Exit()
+    //{
+    //    Arrow.color= Color.clear;
+    //}
 }

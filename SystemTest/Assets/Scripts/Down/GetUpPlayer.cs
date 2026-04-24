@@ -8,13 +8,13 @@ public class GetUpPlayer : MonoBehaviour
     {
         if (!Fallen.Instance._gameOver)
         {
-            if (Input.GetKeyDown(KeyCode.LeftArrow)) Fallen.Instance.CheckLeft();
-
-            if (Input.GetKeyDown(KeyCode.RightArrow)) Fallen.Instance.CheckRight();
-
-            if (Input.GetKeyDown(KeyCode.DownArrow)) Fallen.Instance.CheckDown();
-
-            if (Input.GetKeyDown(KeyCode.UpArrow)) Fallen.Instance.CheckUp();
+            //if (Input.GetKeyDown(KeyCode.LeftArrow)) Fallen.Instance.CheckLeft();
+            //
+            //if (Input.GetKeyDown(KeyCode.RightArrow)) Fallen.Instance.CheckRight();
+            //
+            //if (Input.GetKeyDown(KeyCode.DownArrow)) Fallen.Instance.CheckDown();
+            //
+            //if (Input.GetKeyDown(KeyCode.UpArrow)) Fallen.Instance.CheckUp();
         }
     }
 }

@@ -56,5 +56,11 @@ public class DownManager : MonoBehaviour
             StageCam.Instance.GoToEndgameCam();
             LoadManager.Instance.GameOver();
         }
+
+        if (LifeTraker.Instance.IsEnemy && _clock._timer == 7 && LifeTraker.Instance.EnemyKO == 1)
+            Fallen._fallen.SetTrigger("GetUp");
+
+        if (LifeTraker.Instance.IsEnemy && _clock._timer == 3 && LifeTraker.Instance.EnemyKO == 2)
+            Fallen._fallen.SetTrigger("GetUp");
     }
 }

@@ -33,7 +33,8 @@ public class Fallen : MonoBehaviour
     public GetUpPlayer _player;
     public AIGetUp _ai;
 
-    public DDInputCheck _Cheker;
+    //public DDInputCheck _Cheker;
+    public DDManager _DanceMat;
 
 
     [Header("Mesh y materials")]
@@ -61,7 +62,7 @@ public class Fallen : MonoBehaviour
     }
     void Start()
     {
-        Set();
+        //Set();
     }
     public void Update()
     {
@@ -74,7 +75,8 @@ public class Fallen : MonoBehaviour
     }
     public void Set()
     {
-        _Cheker.Restart();
+        //_Cheker.Restart();
+        _DanceMat.SetGame();
         _isEnemy = LifeTraker.Instance.IsEnemy;
         if (_isEnemy)
         {
@@ -145,83 +147,83 @@ public class Fallen : MonoBehaviour
         if (Rnum <= 100 && Rnum > 75) _fallen.SetTrigger("Twitch Down");
     }
 
-    public void CheckLeft()
-    {
-        if (_gameOver) return;
-        _Cheker.CheckLeft();        
-
-        if (_Cheker._actualBar >= _Cheker._maxBar)
-        {
-            if (LifeTraker.Instance.IsEnemy)
-                LifeTraker.Instance.eOverHealt = 70;
-            else LifeTraker.Instance.pOverHealt = 70;
-
-            Sound.PlayOneShot(Succes);
-            LoadManager.Instance.Round2();
-            _timer.Stop();
-            StageState.Instance.ResetFight=true;
-            _fallen.SetTrigger("GetUp");
-            StageCam.Instance.GoToFightCamFromKO();
-        }
-        
-    }
-    public void CheckRight()
-    {
-        if (_gameOver) return;
-        _Cheker.CheckRight();
-
-        if (_Cheker._actualBar >= _Cheker._maxBar)
-        {
-            if (LifeTraker.Instance.IsEnemy)
-                LifeTraker.Instance.eOverHealt = 70;
-            else LifeTraker.Instance.pOverHealt = 70;
-
-            Sound.PlayOneShot(Succes);
-            LoadManager.Instance.Round2();
-            _timer.Stop();
-            StageState.Instance.ResetFight = true;
-            _fallen.SetTrigger("GetUp");
-            //StageCam.Instance.GoToFightCamFromKO();
-        }
-    }
-    public void CheckUp()
-    {
-        if (_gameOver) return;
-        _Cheker.CheckUp();
-
-        if (_Cheker._actualBar >= _Cheker._maxBar)
-        {
-            if (LifeTraker.Instance.IsEnemy)
-                LifeTraker.Instance.eOverHealt = 70;
-            else LifeTraker.Instance.pOverHealt = 70;
-
-            Sound.PlayOneShot(Succes);
-            LoadManager.Instance.Round2();
-            _timer.Stop();
-            StageState.Instance.ResetFight = true;
-            _fallen.SetTrigger("GetUp");
-            //StageCam.Instance.GoToFightCamFromKO();
-        }
-    }
-    public void CheckDown()
-    {
-        if (_gameOver) return;
-        _Cheker.CheckDown();
-
-        if (_Cheker._actualBar >= _Cheker._maxBar)
-        {
-            if (LifeTraker.Instance.IsEnemy)
-                LifeTraker.Instance.eOverHealt = 70;
-            else LifeTraker.Instance.pOverHealt = 70;
-
-            Sound.PlayOneShot(Succes);
-            _timer.Stop();
-            LoadManager.Instance.Round2();
-            StageState.Instance.ResetFight = true;
-            _fallen.SetTrigger("GetUp");
-            //StageCam.Instance.GoToFightCamFromKO();
-        }
-    }
+    //public void CheckLeft()
+    //{
+    //    if (_gameOver) return;
+    //    _Cheker.CheckLeft();        
+    //
+    //    if (_Cheker._actualBar >= _Cheker._maxBar)
+    //    {
+    //        if (LifeTraker.Instance.IsEnemy)
+    //            LifeTraker.Instance.eOverHealt = 70;
+    //        else LifeTraker.Instance.pOverHealt = 70;
+    //
+    //        Sound.PlayOneShot(Succes);
+    //        LoadManager.Instance.Round2();
+    //        _timer.Stop();
+    //        StageState.Instance.ResetFight=true;
+    //        _fallen.SetTrigger("GetUp");
+    //        StageCam.Instance.GoToFightCamFromKO();
+    //    }
+    //    
+    //}
+    //public void CheckRight()
+    //{
+    //    if (_gameOver) return;
+    //    _Cheker.CheckRight();
+    //
+    //    if (_Cheker._actualBar >= _Cheker._maxBar)
+    //    {
+    //        if (LifeTraker.Instance.IsEnemy)
+    //            LifeTraker.Instance.eOverHealt = 70;
+    //        else LifeTraker.Instance.pOverHealt = 70;
+    //
+    //        Sound.PlayOneShot(Succes);
+    //        LoadManager.Instance.Round2();
+    //        _timer.Stop();
+    //        StageState.Instance.ResetFight = true;
+    //        _fallen.SetTrigger("GetUp");
+    //        //StageCam.Instance.GoToFightCamFromKO();
+    //    }
+    //}
+    //public void CheckUp()
+    //{
+    //    if (_gameOver) return;
+    //    _Cheker.CheckUp();
+    //
+    //    if (_Cheker._actualBar >= _Cheker._maxBar)
+    //    {
+    //        if (LifeTraker.Instance.IsEnemy)
+    //            LifeTraker.Instance.eOverHealt = 70;
+    //        else LifeTraker.Instance.pOverHealt = 70;
+    //
+    //        Sound.PlayOneShot(Succes);
+    //        LoadManager.Instance.Round2();
+    //        _timer.Stop();
+    //        StageState.Instance.ResetFight = true;
+    //        _fallen.SetTrigger("GetUp");
+    //        //StageCam.Instance.GoToFightCamFromKO();
+    //    }
+    //}
+    //public void CheckDown()
+    //{
+    //    if (_gameOver) return;
+    //    _Cheker.CheckDown();
+    //
+    //    if (_Cheker._actualBar >= _Cheker._maxBar)
+    //    {
+    //        if (LifeTraker.Instance.IsEnemy)
+    //            LifeTraker.Instance.eOverHealt = 70;
+    //        else LifeTraker.Instance.pOverHealt = 70;
+    //
+    //        Sound.PlayOneShot(Succes);
+    //        _timer.Stop();
+    //        LoadManager.Instance.Round2();
+    //        StageState.Instance.ResetFight = true;
+    //        _fallen.SetTrigger("GetUp");
+    //        //StageCam.Instance.GoToFightCamFromKO();
+    //    }
+    //}
 
     public void Play()
     {
