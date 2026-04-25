@@ -18,6 +18,13 @@ public class CompositeFighter : MonoBehaviour
     public Leg Leg;
     public Head Head;
 
+    [Header("Current Health")]
+    public float CHead;
+    public float CRight;
+    public float CLeft;
+    public float CLegs;
+    public float CChest;
+
     [Header("Has To Set?")]
     public bool hasBeenSet=false;
 
@@ -86,6 +93,13 @@ public class CompositeFighter : MonoBehaviour
     [SerializeField] float lightBlow;
     [SerializeField] float heavyBlow;
 
+    [Header("OverAllHealth")]
+    public PartDisplay HeadDisplay;
+    public PartDisplay RightArmDisplay;
+    public PartDisplay LeftArmDisplay;
+    public PartDisplay LegsDisplay;
+    public PartDisplay ChestDisplay;
+
     void Start()
     {
         Stamina = MaxStamina;
@@ -112,6 +126,18 @@ public class CompositeFighter : MonoBehaviour
            LifeTraker.Instance.maxRarmHealth = Rarm.life;
            LifeTraker.Instance.maxLarmHealth = Larm.life;
            LifeTraker.Instance.maxLegsHealth = Leg.life;
+
+            CHead  = Head.life;
+            CRight = Rarm.life;
+            CLeft  = Larm.life;
+            CLegs  = Leg.life;
+            CChest =  OverAllHealth;
+
+            HeadDisplay.UpdateDisplay(Head.life, CHead);
+            RightArmDisplay.UpdateDisplay(Rarm.life, CRight);
+            LeftArmDisplay.UpdateDisplay(Larm.life, CLeft);
+            LegsDisplay.UpdateDisplay(Leg.life, CLegs);
+            ChestDisplay.UpdateDisplay(OverAllHealth, CChest);
         }
         else
         {
@@ -120,6 +146,18 @@ public class CompositeFighter : MonoBehaviour
             Larm.ActiveParts();
             Leg.ActiveParts();
             Head.ActiveParts();
+
+            CHead = Head.life;
+            CRight = Rarm.life;
+            CLeft = Larm.life;
+            CLegs = Leg.life;
+            CChest = OverAllHealth;
+
+            HeadDisplay.UpdateDisplay(Head.life, CHead);
+            RightArmDisplay.UpdateDisplay(Rarm.life, CRight);
+            LeftArmDisplay.UpdateDisplay(Larm.life, CLeft);
+            LegsDisplay.UpdateDisplay(Leg.life, CLegs);
+            ChestDisplay.UpdateDisplay(OverAllHealth, CChest);
         }
         //Set();
     }
@@ -161,6 +199,12 @@ public class CompositeFighter : MonoBehaviour
         {
             OverAllHealth = LifeTraker.Instance.eOverHealt;
         }
+
+        HeadDisplay.UpdateDisplay(Head.life, CHead);
+        RightArmDisplay.UpdateDisplay(Rarm.life, CRight);
+        LeftArmDisplay.UpdateDisplay(Larm.life, CLeft);
+        LegsDisplay.UpdateDisplay(Leg.life, CLegs);
+        ChestDisplay.UpdateDisplay(OverAllHealth, CChest);
     }
 
     public void ResetBools()
@@ -311,6 +355,8 @@ public class CompositeFighter : MonoBehaviour
 
         LifeTraker.Instance.UpdateLife();
 
+        RightArmDisplay.UpdateDisplay(Rarm.life, CRight);
+
         FightControler.Instance.stopFrame();
 
         if (Rarm.life <= 0 && !RarmBoom)
@@ -345,6 +391,8 @@ public class CompositeFighter : MonoBehaviour
 
         LifeTraker.Instance.UpdateLife();
 
+        LeftArmDisplay.UpdateDisplay(Larm.life, CLeft);
+
         FightControler.Instance.stopFrame();
 
         if (Larm.life <= 0)
@@ -375,9 +423,11 @@ public class CompositeFighter : MonoBehaviour
         _Audio.PlayOneShot(hit);
         if (Leg.life > 0)
             Leg.life -= damege;
+        LegsHitSpark.gameObject.SetActive(true);
 
         FightControler.Instance._Enemy.Leg.life -= damege;
-        LegsHitSpark.gameObject.SetActive(true);
+
+        LegsDisplay.UpdateDisplay(Leg.life, CLegs);
 
         LifeTraker.Instance.UpdateLife();
 
@@ -410,6 +460,8 @@ public class CompositeFighter : MonoBehaviour
 
         LifeTraker.Instance.UpdateLife();
 
+        HeadDisplay.UpdateDisplay(Head.life, CHead);
+
         FightControler.Instance.stopFrame();
 
         if (Head.life <= 0)
@@ -426,6 +478,9 @@ public class CompositeFighter : MonoBehaviour
     public void BattleHealth(int damage)
     {
         OverAllHealth -= damage;
+
+        ChestDisplay.UpdateDisplay(OverAllHealth, CChest);
+
         if(OverAllHealth<=0)
         {
             anim.SetTrigger("KO");
