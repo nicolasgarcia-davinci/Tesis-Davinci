@@ -26,6 +26,10 @@ public class EnterRound : PreView
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            Again();
+        }
         if (StageState.Instance.ResetFight && HasToReset)
         {
             HasToReset = false;
