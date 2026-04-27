@@ -26,6 +26,11 @@ public class EnterRound : PreView
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            Again();//ARREGLO TEMPORAL DIBU
+        }
+
         if (StageState.Instance.ResetFight && HasToReset)
         {
             HasToReset = false;
