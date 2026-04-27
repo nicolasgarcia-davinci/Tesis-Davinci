@@ -57,10 +57,6 @@ public class RestAnim : MonoBehaviour
             Head.ActiveParts();
         }
     }
-    public void GoToFight()
-    {
-        StageCam.Instance.GoToFightCamFromRepair();
-    }
 
     public void SetRepairUp()
     {

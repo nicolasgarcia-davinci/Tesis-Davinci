@@ -19,6 +19,7 @@ public class StageCam : MonoBehaviour
     public GameObject FightCurtain;
     public GameObject Repair;
     public GameObject KO;
+    public GameObject Controls;
 
     public IntermisionTimer _intermisionTimer;
     
@@ -50,6 +51,7 @@ public class StageCam : MonoBehaviour
     public void GoToRepairCam()
     {
         StageState.Instance.ResetRepair = true;
+        Controls.SetActive(false);
         _animator.Play("MoveToRepair");
     }
 
@@ -100,6 +102,7 @@ public class StageCam : MonoBehaviour
 
     public void TurnOffFight()
     {
+        Controls.SetActive(false);
         Fight.SetActive(false);
     }
     public void TurnOffKO()
@@ -112,6 +115,12 @@ public class StageCam : MonoBehaviour
     }
     public void TurnOnFight()
     {
+        Controls.SetActive(true);
+        Fight.SetActive(true);
+    }
+    public void TurnOnRound()
+    {
+        Fight.SetActive(true);
         FightCurtain.SetActive(true);
     }
     public void TurnOnKO()
