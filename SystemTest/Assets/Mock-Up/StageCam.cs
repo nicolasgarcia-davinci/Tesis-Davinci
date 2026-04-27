@@ -39,6 +39,7 @@ public class StageCam : MonoBehaviour
 
     public void GoToFightCamFromKO()
     {
+        StageState.Instance.ResetFight = true;
         _animator.Play("MoveToFightFromKO");
     }
     public void GoToFightCamFromRepair()
