@@ -47,6 +47,8 @@ public class Fallen : MonoBehaviour
 
     public GetUp _timer;
 
+    public CompositeFighter composite;
+
     public static Fallen Instance;
 
     private void Awake()
@@ -140,6 +142,8 @@ public class Fallen : MonoBehaviour
         {
         StageCam.Instance.EnemyBackToFight();
         } else StageCam.Instance.PlayerBackToFight();
+
+        composite.CharacterUpEvent();
     }
     public void Twith()
     {

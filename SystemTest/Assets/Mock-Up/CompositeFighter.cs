@@ -101,6 +101,9 @@ public class CompositeFighter : MonoBehaviour
     public PartDisplay LegsDisplay;
     public PartDisplay ChestDisplay;
 
+    public Action IsDyingEvent = delegate { };
+    public Action CharacterUpEvent = delegate { };
+
     void Start()
     {
         Stamina = MaxStamina;
@@ -486,6 +489,7 @@ public class CompositeFighter : MonoBehaviour
         if(OverAllHealth<=0)
         {
             IsDying = true;
+            IsDyingEvent();
             anim.SetTrigger("KO");
         }
     }
