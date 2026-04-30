@@ -38,15 +38,20 @@ public class StageCam : MonoBehaviour
         }
     }
 
-    public void GoToFightCamFromKO()
+    public void PlayerBackToFight()
     {
-        StageState.Instance.ResetFight = true;
-        _animator.Play("MoveToFightFromKO");
+        //StageState.Instance.ResetFight = true;
+        _animator.Play("PlayerBackToFight");
     }
-    public void GoToFightCamFromRepair()
+    public void EnemyBackToFight()
     {
-        StageState.Instance.ResetFight = true;
-        _animator.Play("MoveTorFightFromRepair");
+        //StageState.Instance.ResetFight = true;
+        _animator.Play("EnemyBackToFight");
+    }
+    public void GoToRound2()
+    {
+        StageState.Instance.ResetFight = false;
+        _animator.Play("Round 2");
     }
     public void GoToRepairCam()
     {
@@ -91,7 +96,21 @@ public class StageCam : MonoBehaviour
 
     public void GoToKOCam()
     {
-        _animator.Play("MoveToKo");
+        if(LifeTraker.Instance.IsEnemy)
+        {
+            _animator.Play("MoveToEnemyKo");
+            StageState.Instance.ResetKO = true;
+            LoadManager.Instance.LoadKO();
+        } else
+        {
+            _animator.Play("MoveToPlayer Ko");
+            StageState.Instance.ResetKO = true;
+            LoadManager.Instance.LoadKO();
+        }
+    }
+    public void GoToEnemyKOCam()
+    {
+        _animator.Play("MoveToEnemyKo");
         LoadManager.Instance.LoadKO();
         StageState.Instance.ResetKO = true;
     }
@@ -111,15 +130,18 @@ public class StageCam : MonoBehaviour
     }
     public void TurnOffRepair()
     {
+        StageState.Instance.ResetFight = false;
         Repair.SetActive(false);
     }
     public void TurnOnFight()
     {
+        StageState.Instance.ResetFight = true;
         Controls.SetActive(true);
         Fight.SetActive(true);
     }
     public void TurnOnRound()
     {
+        StageState.Instance.RoundEnter = true;
         Fight.SetActive(true);
         FightCurtain.SetActive(true);
     }

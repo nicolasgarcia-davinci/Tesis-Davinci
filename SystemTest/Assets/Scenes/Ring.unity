@@ -13661,7 +13661,6 @@ GameObject:
   m_Component:
   - component: {fileID: 257554556}
   - component: {fileID: 257554559}
-  - component: {fileID: 257554558}
   - component: {fileID: 257554557}
   m_Layer: 6
   m_Name: Camara Tablet
@@ -13729,14 +13728,6 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
---- !u!81 &257554558
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 257554555}
-  m_Enabled: 1
 --- !u!20 &257554559
 Camera:
   m_ObjectHideFlags: 0
@@ -68563,6 +68554,7 @@ MonoBehaviour:
   MaxStamina: 100
   StaminaRefresh: 2
   IsRepairing: 0
+  IsDying: 0
   IsEnemy: 1
   IsDodgingRight: 0
   IsDodgingLeft: 0
@@ -68842,7 +68834,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.0375625, y: 0.07273684}
   m_AnchorMax: {x: 0.063750006, y: 0.17249124}
-  m_AnchoredPosition: {x: -49.000122, y: 0}
+  m_AnchoredPosition: {x: -49, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1016350156
@@ -76616,7 +76608,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.11925, y: 0.07273684}
   m_AnchorMax: {x: 0.14600001, y: 0.17249124}
-  m_AnchoredPosition: {x: -49.000122, y: 0}
+  m_AnchoredPosition: {x: -49, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1235886947
@@ -93068,6 +93060,7 @@ MonoBehaviour:
   ResetFight: 0
   ResetKO: 0
   ResetRepair: 0
+  RoundEnter: 0
 --- !u!4 &1743601652
 Transform:
   m_ObjectHideFlags: 0
@@ -94234,6 +94227,8 @@ Transform:
   m_Children:
   - {fileID: 1771341628787401005}
   - {fileID: 223453097997841746}
+  - {fileID: 3482251869895444061}
+  - {fileID: 8365508204166346606}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1901582201
@@ -129241,7 +129236,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 8069939130639880812}
+    m_TransformParent: {fileID: 1899154740}
     m_Modifications:
     - target: {fileID: 3733163596005842589, guid: 6256cdc792a85e44f82890835c492730, type: 3}
       propertyPath: m_LocalPosition.x
@@ -135906,19 +135901,47 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9149717550943859495, guid: 42754b9ed5f8503479f3fb9ebe484b97, type: 3}
+      propertyPath: RT
+      value: 
+      objectReference: {fileID: 676752463676898396}
+    - target: {fileID: 9149717550943859495, guid: 42754b9ed5f8503479f3fb9ebe484b97, type: 3}
       propertyPath: _game
       value: 
       objectReference: {fileID: 1899154739}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1369079891030367435, guid: 42754b9ed5f8503479f3fb9ebe484b97, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1138192872779158495}
   m_SourcePrefab: {fileID: 100100000, guid: 42754b9ed5f8503479f3fb9ebe484b97, type: 3}
 --- !u!1 &1138192872779158494 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1369079891030367435, guid: 42754b9ed5f8503479f3fb9ebe484b97, type: 3}
   m_PrefabInstance: {fileID: 1138192872779158493}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1138192872779158495
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1138192872779158494}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e2427b83499d4284bbaa5f3730018c74, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &1143224292692794240
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -208603,7 +208626,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 8069939130639880812}
+    m_TransformParent: {fileID: 1899154740}
     m_Modifications:
     - target: {fileID: 1205633074660911695, guid: 630ebcffbde525f4d92ebd990f3eef84, type: 3}
       propertyPath: m_Name
@@ -208619,7 +208642,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5520649209312985949, guid: 630ebcffbde525f4d92ebd990f3eef84, type: 3}
       propertyPath: m_fontSize
-      value: 148.1
+      value: 148.15
       objectReference: {fileID: 0}
     - target: {fileID: 5520649209312985949, guid: 630ebcffbde525f4d92ebd990f3eef84, type: 3}
       propertyPath: m_hasFontAssetChanged
@@ -244180,6 +244203,7 @@ MonoBehaviour:
   MaxStamina: 100
   StaminaRefresh: 2
   IsRepairing: 0
+  IsDying: 0
   IsEnemy: 0
   IsDodgingRight: 0
   IsDodgingLeft: 0
@@ -244364,8 +244388,6 @@ Transform:
   - {fileID: 5137408918085294204}
   - {fileID: 482003322}
   - {fileID: 1462811381}
-  - {fileID: 3482251869895444061}
-  - {fileID: 8365508204166346606}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &8077472480515820855
@@ -251718,10 +251740,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34def18e978f0784689c6b9baacc87f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Player: {fileID: 0}
-  _Enemy: {fileID: 0}
-  _Controler: {fileID: 0}
-  _Control: {fileID: 0}
+  _Player: {fileID: 8012810488319688110}
+  _Enemy: {fileID: 994544851}
+  _Controler: {fileID: 4489516701602208359}
+  _Control: {fileID: 5217348322420569763}
   _RT: {fileID: 676752463676898396}
   PauseMenu: {fileID: 274433044}
   IsPaused: 0

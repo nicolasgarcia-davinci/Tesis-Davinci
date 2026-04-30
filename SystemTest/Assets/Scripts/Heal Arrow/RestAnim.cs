@@ -40,6 +40,7 @@ public class RestAnim : MonoBehaviour
 
     public void SetBody()
     {
+        ResetRepair();
         if (LifeTraker.Instance.pRight > 0)
         {
             Rarm.ActiveParts();
@@ -92,6 +93,6 @@ public class RestAnim : MonoBehaviour
 
     public void CallCam()
     {
-        StageCam.Instance.GoToFightCamFromRepair();
+        StageCam.Instance.GoToRound2();
     }
 }

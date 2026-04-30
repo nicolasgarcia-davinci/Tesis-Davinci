@@ -112,10 +112,16 @@ public class FightControler : MonoBehaviour
         if(StageState.Instance.ResetFight)
         {
             StageState.Instance.ResetFight = false;
-            _RT.LaunchTimer();
             _Player.Set();
             _Enemy.Set();
+            _RT.LaunchTimer();
         }
+    }
+
+    public void EnterStage()
+    {
+        _Player.Set();
+        _Enemy.Set();
     }
 
     public void ExitStage()

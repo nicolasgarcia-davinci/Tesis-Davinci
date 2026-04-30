@@ -136,7 +136,10 @@ public class Fallen : MonoBehaviour
 
     public void ResumeFight()
     {
-        StageCam.Instance.GoToFightCamFromKO();
+        if (!_isEnemy)
+        {
+        StageCam.Instance.EnemyBackToFight();
+        } else StageCam.Instance.PlayerBackToFight();
     }
     public void Twith()
     {

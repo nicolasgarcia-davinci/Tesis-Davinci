@@ -22,20 +22,18 @@ public class RoundTimer : MonoBehaviour
     }
     void Start()
     {
-        DataSaver.Instance.LoadTimer();
         if (_timer <= 0 || LifeTraker.Instance.ResetTimer)
         {
             _timer = _RoundTime;
             LifeTraker.Instance.ResetTimer = false;
         }
-        StartCoroutine(CountDown());
+        //StartCoroutine(CountDown());
     }
     public void LaunchTimer()
     {
         _counter.color = Color.white;
         _animator.SetBool("Pulse", false);
-        DataSaver.Instance.LoadTimer();
-        if (_timer <= 0 || LifeTraker.Instance.ResetTimer)
+        if (_timer <= 0)
         {
             _timer = _RoundTime;
             LifeTraker.Instance.ResetTimer = false;
@@ -55,23 +53,6 @@ public class RoundTimer : MonoBehaviour
         {
             StopAllCoroutines();
             FightControler.Instance.ExitStage();
-            //StageCam.Instance.GoToRepairCam();
-
-            //if (LifeTraker.Instance.Dificulty==1)
-            //{
-            //    LifeTraker.Instance.RundCounter++;
-            //    LifeTraker.Instance.ResetTimer = true;
-            //    LoadManager.Instance.LoadIntermision();
-            //    StageState.Instance.ResetRepair=true;
-            //    StopAllCoroutines();
-            //    TransitToRepair.SetActive(true);
-            //}
-            //if (LifeTraker.Instance.Dificulty == 2)
-            //{
-            //    LifeTraker.Instance.RundCounter++;
-            //    LifeTraker.Instance.ResetTimer = true;
-            //    LoadManager.Instance.LoadGymRest();
-            //}
         }
         yield return new WaitForSeconds(1);
         _timer--;

@@ -166,6 +166,7 @@ public class CompositeFighter : MonoBehaviour
     public void Set()
     {
         hasBeenSet = true;
+        ResetBools();
         Stamina = MaxStamina;
         IsRepairing = false;
         if (!IsEnemy)
@@ -210,7 +211,7 @@ public class CompositeFighter : MonoBehaviour
 
     public void ResetBools()
     {
-        IsDodgingLeft=false; IsDodgingRight=false; IsDodgingDown=false; IsDodgingUp=false; IsDodging=false;
+        IsDodgingLeft=false; IsDodgingRight=false; IsDodgingDown=false; IsDodgingUp=false; IsDodging=false; IsDying=false;
         IsAttackingLeft=false; IsAttackingRight=false; IsAttackingDown=false; IsAttackingUp=false; IsAttacking=false;
     }
     public void FallDown()

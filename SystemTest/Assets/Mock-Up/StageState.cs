@@ -9,6 +9,7 @@ public class StageState : MonoBehaviour
     public bool ResetFight;
     public bool ResetKO;
     public bool ResetRepair;
+    public bool RoundEnter;
 
     public void Awake()
     {

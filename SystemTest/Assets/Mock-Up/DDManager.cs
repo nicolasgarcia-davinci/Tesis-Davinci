@@ -102,7 +102,6 @@ public class DDManager : MonoBehaviour
         _bar.fillAmount = Hits/MaxHit;
         if(Hits >= MaxHit)
         {
-            Fallen._gameOver = true;
             if (LifeTraker.Instance.IsEnemy)
                 LifeTraker.Instance.eOverHealt = 70;
             else LifeTraker.Instance.pOverHealt = 70;

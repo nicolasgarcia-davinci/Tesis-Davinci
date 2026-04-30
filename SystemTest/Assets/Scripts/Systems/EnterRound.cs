@@ -3,25 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class EnterRound : PreView
+public class EnterRound : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI RoundMessage;
     [SerializeField] TMP_FontAsset RoundFont;
     [SerializeField] TMP_FontAsset ReturnFont;
+    public int _timer;
+    public GameObject _game;
+    public RoundTimer RT;
+    
 
     void Start()
     {
-        Again();
+
     }
     public void Again()
     {
         if (LifeTraker.Instance.ResetTimer)
         {
-            RoundMessage.text = "Round " + LifeTraker.Instance.RundCounter;
             RoundMessage.font = RoundFont;
-        }     
+            RoundMessage.text = "Round " + LifeTraker.Instance.RundCounter;
+        }
+        
             _timer = 3;
-            StartCoroutine(Clock());
+            //StartCoroutine(Clock());
     }
 
     void Update()
@@ -30,19 +35,32 @@ public class EnterRound : PreView
         {
             Again();
         }
-        if (StageState.Instance.ResetFight && HasToReset)
+        if (StageState.Instance.ResetFight)
         {
-            HasToReset = false;
             Again();
         }
 
-        if (_timer == 0)
-        {
-            StopAllCoroutines();
-            _timer = 3;
-            HasToReset = true;
-            _game.gameObject.SetActive(true);
-            this.gameObject.SetActive(false);
-        }
+        //if (_timer == 0)
+        //{
+        //    StopAllCoroutines();
+        //    _timer = 3;
+        //    _game.gameObject.SetActive(true);
+        //    this.gameObject.SetActive(false);
+        //}
+    }
+
+    public void CurtainCall()
+    {
+        StopAllCoroutines();
+        _game.gameObject.SetActive(true);
+        RT.LaunchTimer();
+        FightControler.Instance.EnterStage();
+        this.gameObject.SetActive(false);
+    }
+    public IEnumerator Clock()
+    {
+        _timer--;
+        yield return new WaitForSeconds(1);
+        StartCoroutine(Clock());
     }
 }

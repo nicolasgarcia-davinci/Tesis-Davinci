@@ -9,13 +9,15 @@ public class AnimatorControler : MonoBehaviour
     public Fallen _ko;
     void Start()
     {
-        //_boss=GetComponentInParent<Figther>();
         _ko=GetComponentInParent<Fallen>();
     }
 
     public void BackToTheFight()
     {
-        StageCam.Instance.GoToFightCamFromKO();
+        if(LifeTraker.Instance.IsEnemy)
+        {
+        StageCam.Instance.EnemyBackToFight();
+        }else StageCam.Instance.PlayerBackToFight();
     }
 
     public void CallForReset()
