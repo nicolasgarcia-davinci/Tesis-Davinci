@@ -14,17 +14,11 @@ public class DownedFigher : MonoBehaviour
         if(StageState.Instance.ResetRepair)
         {
             StageState.Instance.ResetRepair=false;
-            //StageCam.Instance.GoToRepairCam(); ANULADO
             _timer.LaunchTimer();
             _stageTheme.CallSong();
             Player.SetBody();
             Set();
         }
-    }
-
-    public void Start()
-    {
-        //Set();
     }
 
     public void Set()

@@ -40,12 +40,10 @@ public class StageCam : MonoBehaviour
 
     public void PlayerBackToFight()
     {
-        //StageState.Instance.ResetFight = true;
         _animator.Play("PlayerBackToFight");
     }
     public void EnemyBackToFight()
     {
-        //StageState.Instance.ResetFight = true;
         _animator.Play("EnemyBackToFight");
     }
     public void GoToRound2()
@@ -63,8 +61,6 @@ public class StageCam : MonoBehaviour
     public void GoToEndgameCam()
     {
         _animator.Play("EndGame");
-        //transform.position = FightPos.position;
-        //transform.rotation = FightPos.rotation;
     }
 
     #region Codigo Deprecado
@@ -114,10 +110,6 @@ public class StageCam : MonoBehaviour
         LoadManager.Instance.LoadKO();
         StageState.Instance.ResetKO = true;
     }
-    //public void Spin()
-    //{
-    //    _animator.Play("KoSpin");
-    //}
 
     public void TurnOffFight()
     {
@@ -148,7 +140,6 @@ public class StageCam : MonoBehaviour
     public void TurnOnKO()
     {
         KO.SetActive(true);
-        //Spin();
     }
     public void TurnOnRepair()
     {

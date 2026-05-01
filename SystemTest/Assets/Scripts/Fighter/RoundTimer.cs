@@ -27,7 +27,6 @@ public class RoundTimer : MonoBehaviour
             _timer = _RoundTime;
             LifeTraker.Instance.ResetTimer = false;
         }
-        //StartCoroutine(CountDown());
     }
     public void LaunchTimer()
     {

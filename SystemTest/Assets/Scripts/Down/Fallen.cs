@@ -30,10 +30,6 @@ public class Fallen : MonoBehaviour
     public bool _gameOver;
     public bool _isEnemy;
 
-    public GetUpPlayer _player;
-    public AIGetUp _ai;
-
-    //public DDInputCheck _Cheker;
     public DDManager _DanceMat;
 
 
@@ -47,34 +43,14 @@ public class Fallen : MonoBehaviour
 
     public GetUp _timer;
 
-    public static Fallen Instance;
-
-    private void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-        else
-        {
-            Destroy(this);
-        }
-    }
-    void Start()
-    {
-        //Set();
-    }
-
     public void Set()
     {
         _timer.Set();
-        //_Cheker.Restart();
         _DanceMat.SetGame();
         _isEnemy = LifeTraker.Instance.IsEnemy;
         if (_isEnemy)
         {
             VignetControler.Instance.ActivateEnemyColor();
-            _ai.gameObject.SetActive(true);
             body.material = EnemyMaterial;
             Rarm = ERarm;
             Larm = ELarm;
@@ -101,7 +77,6 @@ public class Fallen : MonoBehaviour
         if (!_isEnemy)
         {
             VignetControler.Instance.ActivatePlayerColor();
-            _player.gameObject.SetActive(true);
             Rarm = RarmCollection[LifeTraker.Instance.RarmIndex];
             Larm = LarmCollection[LifeTraker.Instance.LarmIndex];
             Leg = LegCollection[LifeTraker.Instance.LegsIndex];
@@ -136,12 +111,12 @@ public class Fallen : MonoBehaviour
     {
         if (!_isEnemy)
         {
-            StageCam.Instance.EnemyBackToFight();
+            StageCam.Instance.PlayerBackToFight();
             this.gameObject.SetActive(false);
         }
         else
         {
-            StageCam.Instance.PlayerBackToFight();
+            StageCam.Instance.EnemyBackToFight();
             this.gameObject.SetActive(false);
         }
     }
@@ -169,8 +144,12 @@ public class Fallen : MonoBehaviour
     }
     public void ColorChange(Color color1, Color color2)
     {
-        body.material.SetColor("_Color1", color1);
-        body.material.SetColor("_Color2", color2);
+        body.material.SetColor("_Color_1", color1);
+        body.material.SetColor("_Color_2", color2);
         body.material.SetFloat("_Transparencia", 1);
+    }
+    public void GetUp()
+    {
+        _fallen.SetTrigger("GetUp");
     }
 }

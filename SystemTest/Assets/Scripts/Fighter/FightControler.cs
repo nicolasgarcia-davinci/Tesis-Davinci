@@ -30,11 +30,6 @@ public class FightControler : MonoBehaviour
         }
     }
 
-    void Start()
-    {
-
-    }
-
     public void IADefender(CompositeFighter attacker)
     {
         if (attacker == _Player)
@@ -65,9 +60,6 @@ public class FightControler : MonoBehaviour
         LifeTraker.Instance.eRight     = _Enemy.Rarm.life;
         LifeTraker.Instance.eLeft      = _Enemy.Larm.life;
         LifeTraker.Instance.eLegs      = _Enemy.Leg.life;
-
-        //_Enemy.hasBeenSet = false;
-        //_Player.hasBeenSet = false;
 
         StageCam.Instance.GoToKOCam();
         _RT.Stop();

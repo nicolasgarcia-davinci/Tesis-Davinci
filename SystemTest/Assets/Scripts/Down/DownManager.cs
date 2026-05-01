@@ -17,24 +17,6 @@ public class DownManager : MonoBehaviour
 
     public GameObject gameCanvas;
     public GameObject gameKoState;
-    void Start()
-    {
-        //if (!LifeTraker.Instance.IsEnemy)
-        //{ 
-        //    _Player.gameObject.SetActive(true);
-        //    return;
-        //}
-        //
-        //if (LifeTraker.Instance.IsEnemy)
-        //{ 
-        //    _Enemy.gameObject.SetActive(true);
-        //    return;
-        //}
-        //if(LifeTraker.Instance.IsEnemy) enemyLight.SetActive(true);
-        //if(!LifeTraker.Instance.IsEnemy) playerLight.SetActive(true);
-    }
-
-
 
     void Update()
     {
@@ -76,10 +58,18 @@ public class DownManager : MonoBehaviour
             LoadManager.Instance.GameOver();
         }
 
-        if (LifeTraker.Instance.IsEnemy && _clock._timer == 7 && LifeTraker.Instance.EnemyKO == 1)
-            Enemy._fallen.SetTrigger("GetUp");
+        if (LifeTraker.Instance.IsEnemy && _clock._timer == 15 && LifeTraker.Instance.EnemyKO == 1)
+        {
+            Enemy.GetUp();
+            _clock.Stop();
+            LifeTraker.Instance.eOverHealt = 50;
+        }
 
-        if (LifeTraker.Instance.IsEnemy && _clock._timer == 3 && LifeTraker.Instance.EnemyKO == 2)
-            Enemy._fallen.SetTrigger("GetUp");
+        if (LifeTraker.Instance.IsEnemy && _clock._timer == 7 && LifeTraker.Instance.EnemyKO == 2)
+        {
+            Enemy.GetUp();
+            _clock.Stop();
+            LifeTraker.Instance.eOverHealt = 50;
+        }
     }
 }

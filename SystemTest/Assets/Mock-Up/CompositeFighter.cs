@@ -163,7 +163,6 @@ public class CompositeFighter : MonoBehaviour
             LegsDisplay.UpdateDisplay(Leg.life, CLegs);
             ChestDisplay.UpdateDisplay(OverAllHealth, CChest);
         }
-        //Set();
     }
 
     public void Set()
@@ -172,37 +171,45 @@ public class CompositeFighter : MonoBehaviour
         ResetBools();
         Stamina = MaxStamina;
         IsRepairing = false;
+
         if (!IsEnemy)
         { 
             OverAllHealth = LifeTraker.Instance.pOverHealt;
-
-            if (Rarm.life > 0)
-            {
-                RarmBoom = false;
-                Rarm.ActiveParts();
-            }
-
-            if (Larm.life > 0)
-            {
-                LarmBoom = false;
-                Larm.ActiveParts();
-            }
-
-            if (Leg.life > 0)
-            {
-                LegsBoom = false;
-                Leg.ActiveParts();
-            }
-
-            if (Head.life > 0)
-            {
-                HeadBoom = false;
-                Head.ActiveParts();
-            }
+            Rarm.life = LifeTraker.Instance.pRight;
+            Larm.life = LifeTraker.Instance.pLeft;
+            Leg.life  = LifeTraker.Instance.pLegs;
+            Head.life = LifeTraker.Instance.pHead;
         }
         else
         {
             OverAllHealth = LifeTraker.Instance.eOverHealt;
+            Rarm.life = LifeTraker.Instance.eRight;
+            Larm.life = LifeTraker.Instance.eLeft;
+            Leg.life = LifeTraker.Instance.eLegs;
+            Head.life = LifeTraker.Instance.eHead;
+        }
+        if (Rarm.life > 0)
+        {
+            RarmBoom = false;
+            Rarm.ActiveParts();
+        }
+
+        if (Larm.life > 0)
+        {
+            LarmBoom = false;
+            Larm.ActiveParts();
+        }
+
+        if (Leg.life > 0)
+        {
+            LegsBoom = false;
+            Leg.ActiveParts();
+        }
+
+        if (Head.life > 0)
+        {
+            HeadBoom = false;
+            Head.ActiveParts();
         }
 
         HeadDisplay.UpdateDisplay(Head.life, CHead);
@@ -429,8 +436,6 @@ public class CompositeFighter : MonoBehaviour
         if (Leg.life > 0)
             Leg.life -= damage;
         LegsHitSpark.gameObject.SetActive(true);
-
-        FightControler.Instance._Enemy.Leg.life -= damage;
 
         LegsDisplay.UpdateDisplay(Leg.life, CLegs);
 

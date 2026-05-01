@@ -26,19 +26,16 @@ public class DDManager : MonoBehaviour
 
     public Image _bar;
     public Color _Invisible;
-    void Start()
-    {
-        //SetGame();
-    }
 
     public void SetGame()
     {
+        if(Set) return;
         _bar.fillAmount = 0;
         Hits = 0;
         if (LifeTraker.Instance.IsEnemy)
         {
-            MaxHit = _defaultMaxHits + (LifeTraker.Instance.EnemyKO*3);
             _bar.color = _Invisible;
+            MaxHit = _defaultMaxHits + (LifeTraker.Instance.EnemyKO * 3);
         }
         else
         {
@@ -49,14 +46,8 @@ public class DDManager : MonoBehaviour
         Set = true;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        //if (!Set)
-        //{
-        //    SetGame();
-        //    return;
-        //}
         if(Player._gameOver) return;
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
@@ -107,11 +98,7 @@ public class DDManager : MonoBehaviour
             if(Timer>=TimetoTwithch)
             {
                 Timer=0;
-                float Rnum = Random.Range(0, 100);
-                if (Rnum <= 25) Enemy._fallen.SetTrigger("Twitch Left");
-                if (Rnum <= 50 && Rnum > 25) Enemy._fallen.SetTrigger("Twitch Right"); ;
-                if (Rnum <= 75 && Rnum > 50) Enemy._fallen.SetTrigger("Twitch Up"); ;
-                if (Rnum <= 100 && Rnum > 75) Enemy._fallen.SetTrigger("Twitch Down"); ;
+                Enemy.Twith();
             }
         }
     }
@@ -122,15 +109,13 @@ public class DDManager : MonoBehaviour
         _bar.fillAmount = Hits/MaxHit;
         if(Hits >= MaxHit)
         {
-            if (LifeTraker.Instance.IsEnemy)
-                LifeTraker.Instance.eOverHealt = 70;
-            else LifeTraker.Instance.pOverHealt = 70;
+            LifeTraker.Instance.pOverHealt = 50;
 
             _AudioSource.PlayOneShot(Succes);
             LoadManager.Instance.Round2();
             _clock.Stop();
             StageState.Instance.ResetFight = true;
-            Player._fallen.SetTrigger("GetUp");
+            Player.GetUp();
         }
     }
 

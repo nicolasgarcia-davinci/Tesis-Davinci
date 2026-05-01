@@ -14,8 +14,6 @@ public class FallingArrow : MonoBehaviour
 
     public DDManager DDManager;
 
-    //public AudioSource AudioSource;
-
     public bool CanBeHit;
     void Start()
     {
@@ -55,8 +53,4 @@ public class FallingArrow : MonoBehaviour
     {
         Arrow.color = Color.white;
     }
-    //public void Exit()
-    //{
-    //    Arrow.color= Color.clear;
-    //}
 }

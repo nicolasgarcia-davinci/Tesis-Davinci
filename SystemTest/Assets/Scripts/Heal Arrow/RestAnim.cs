@@ -63,22 +63,18 @@ public class RestAnim : MonoBehaviour
 
     public void SetRepairUp()
     {
-        //Anim.SetBool("RepairUp", true);
         HeadGlich.SetActive(true);
     }
     public void SetRepairRight()
     {
-       // Anim.SetBool("RepairRight", true);
         RightArmGlich.SetActive(true);
     }
     public void SetRepairLeft()
     {
-        //Anim.SetBool("RepairLeft", true);
         LeftArmGlich.SetActive(true);
     }
     public void SetRepairDown()
     {
-        //Anim.SetBool("RepairDown", true);
         LegsGlich.SetActive(true);
     }
     public void ResetRepair()

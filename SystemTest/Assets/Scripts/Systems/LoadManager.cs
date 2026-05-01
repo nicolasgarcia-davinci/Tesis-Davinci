@@ -27,7 +27,6 @@ public class LoadManager : MonoBehaviour
     }
     public void LoadGym()
     {
-        //check
         VignetControler.Instance.DeActivate();
         LifeTraker.Instance.ResetTimer = true;
         LifeTraker.Instance.Reset();
@@ -59,14 +58,12 @@ public class LoadManager : MonoBehaviour
     {
         DataSaver.Instance.SaveTimer();
         LifeTraker.Instance.UpdateLife();
-        //SceneManager.LoadSceneAsync(3);
     }
 
     public void LoadKO()
     {
         DataSaver.Instance.SaveTimer();
         LifeTraker.Instance.UpdateLife();
-        //SceneManager.LoadSceneAsync(2);
     }
 
     public void LoadEnter()
@@ -94,7 +91,6 @@ public class LoadManager : MonoBehaviour
     public void GameOver()
     {
         VignetControler.Instance.DeActivate();
-        //SceneManager.LoadSceneAsync(7);
     }
     public void ENDGAME()
     { SceneManager.LoadSceneAsync(4);}
