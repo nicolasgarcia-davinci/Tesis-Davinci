@@ -30,9 +30,6 @@ public class Fallen : MonoBehaviour
     public bool _gameOver;
     public bool _isEnemy;
 
-    public DDManager _DanceMat;
-
-
     [Header("Mesh y materials")]
     public SkinnedMeshRenderer body;
     public Material PlayerMaterial;
@@ -46,7 +43,6 @@ public class Fallen : MonoBehaviour
     public void Set()
     {
         _timer.Set();
-        _DanceMat.SetGame();
         _isEnemy = LifeTraker.Instance.IsEnemy;
         if (_isEnemy)
         {

@@ -35,21 +35,25 @@ public class DownedFigher : MonoBehaviour
         {
             LifeTraker.Instance.pHead += 10;
             _bodyIndicators[0].partlifeIndicator.UpdateLife(LifeTraker.Instance.pHead, LifeTraker.Instance.maxHeadHealth);
+            Player.CheckParts();
         }
         if (part == _bodyIndicators[1].partlifeIndicator)
         {
             LifeTraker.Instance.pRight += 10;
             _bodyIndicators[1].partlifeIndicator.UpdateLife(LifeTraker.Instance.pRight, LifeTraker.Instance.maxRarmHealth);
+            Player.CheckParts();
         }
         if (part == _bodyIndicators[2].partlifeIndicator)
         {
             LifeTraker.Instance.pLeft += 10;
             _bodyIndicators[2].partlifeIndicator.UpdateLife(LifeTraker.Instance.pLeft, LifeTraker.Instance.maxLarmHealth);
+            Player.CheckParts();
         }
         if (part == _bodyIndicators[3].partlifeIndicator)
         {
             LifeTraker.Instance.pLegs += 10;
             _bodyIndicators[3].partlifeIndicator.UpdateLife(LifeTraker.Instance.pLegs, LifeTraker.Instance.maxLegsHealth);
+            Player.CheckParts();
         }
     }
 }

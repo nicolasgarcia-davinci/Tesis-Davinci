@@ -40,6 +40,11 @@ public class RestAnim : MonoBehaviour
         Leg = LegCollection[LifeTraker.Instance.LegsIndex];
         Head = HeadCollection[LifeTraker.Instance.HeadIndex];
         ResetRepair();
+        CheckParts();
+    }
+
+    public void CheckParts()
+    {
         if (LifeTraker.Instance.pRight > 0)
         {
             Rarm.ActiveParts();
@@ -58,31 +63,58 @@ public class RestAnim : MonoBehaviour
         if (LifeTraker.Instance.pHead > 0)
         {
             Head.ActiveParts();
-        }else Head.DeActiveParts();
+        }
+        else Head.DeActiveParts();
     }
 
-    public void SetRepairUp()
-    {
-        HeadGlich.SetActive(true);
-    }
-    public void SetRepairRight()
-    {
-        RightArmGlich.SetActive(true);
-    }
-    public void SetRepairLeft()
-    {
-        LeftArmGlich.SetActive(true);
-    }
-    public void SetRepairDown()
-    {
-        LegsGlich.SetActive(true);
-    }
     public void ResetRepair()
     {
         RightArmGlich.SetActive(false);
         LeftArmGlich.SetActive(false);
         LegsGlich.SetActive(false);
         HeadGlich.SetActive(false);
+    }
+
+    public void RepairUP()
+    {
+        StartCoroutine(HeadRepairSpark());
+    }
+    public void RepairDown()
+    {
+        StartCoroutine(LegsRepairSpark());
+    }
+    public void RepairRight()
+    {
+        StartCoroutine(RightRepairSpark());
+    }
+    public void RepairLeft()
+    {
+        StartCoroutine(LeftRepairSpark());
+    }
+
+    public IEnumerator RightRepairSpark()
+    {
+        RightArmGlich.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+        RightArmGlich.SetActive(true);
+    }
+    public IEnumerator LeftRepairSpark()
+    {
+        LeftArmGlich.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+        LeftArmGlich.SetActive(true);
+    }
+    public IEnumerator LegsRepairSpark()
+    {
+        LegsGlich.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+        LegsGlich.SetActive(true);
+    }
+    public IEnumerator HeadRepairSpark()
+    {
+        HeadGlich.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+        HeadGlich.SetActive(true);
     }
 
     public void CallCam()

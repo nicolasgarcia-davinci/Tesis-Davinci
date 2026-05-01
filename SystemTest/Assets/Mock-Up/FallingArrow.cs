@@ -45,7 +45,6 @@ public class FallingArrow : MonoBehaviour
     }
     public void Correct()
     {
-        //AudioSource.Play();
         Debug.Log("Hit");
         Arrow.color = Color.green;
     }

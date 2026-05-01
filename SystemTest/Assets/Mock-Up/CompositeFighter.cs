@@ -192,24 +192,28 @@ public class CompositeFighter : MonoBehaviour
         {
             RarmBoom = false;
             Rarm.ActiveParts();
+            DeActivateParticle(RarmSpark);
         }
 
         if (Larm.life > 0)
         {
             LarmBoom = false;
             Larm.ActiveParts();
+            DeActivateParticle(LarmSpark);
         }
 
         if (Leg.life > 0)
         {
             LegsBoom = false;
             Leg.ActiveParts();
+            DeActivateParticle(LegsSpark);
         }
 
         if (Head.life > 0)
         {
             HeadBoom = false;
             Head.ActiveParts();
+            DeActivateParticle(HeadSpark);
         }
 
         HeadDisplay.UpdateDisplay(Head.life, CHead);
@@ -358,7 +362,7 @@ public class CompositeFighter : MonoBehaviour
             return;
         }
 
-        anim.SetTrigger("TakeDamage");
+        anim.Play("Get Hit Right");
         ResetBools();
         _Audio.PlayOneShot(hit);
         if(Rarm.life>0)
@@ -394,7 +398,7 @@ public class CompositeFighter : MonoBehaviour
             return;
         }
 
-        anim.SetTrigger("TakeDamage");
+        anim.Play("Get Hit Left");
         ResetBools();
         _Audio.PlayOneShot(hit);
         if (Larm.life > 0)
@@ -430,7 +434,7 @@ public class CompositeFighter : MonoBehaviour
             return;
         }
 
-        anim.SetTrigger("TakeDamage");
+        anim.Play("Get Hit Down");
         ResetBools();
         _Audio.PlayOneShot(hit);
         if (Leg.life > 0)
@@ -461,7 +465,7 @@ public class CompositeFighter : MonoBehaviour
             return;
         }
 
-        anim.SetTrigger("TakeDamage");
+        anim.Play("Get Hit Up");
         ResetBools();
         _Audio.PlayOneShot(hit);
         if (Head.life > 0)

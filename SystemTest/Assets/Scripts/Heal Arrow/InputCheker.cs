@@ -52,7 +52,7 @@ public class InputCheker : MonoBehaviour
             if (group.Secuence[Index].IsUp && group.perfect)
                 group.Secuence[Index].ChangeToCorrect();
             if(Index==0)
-                player.SetRepairUp();
+                player.RepairUP();
             if (!group.Secuence[Index].IsUp && group.perfect)
             {
                 group.Secuence[Index].ChangeToWrong();
@@ -76,7 +76,7 @@ public class InputCheker : MonoBehaviour
             if (group.Secuence[Index].IsRight && group.perfect)
                 group.Secuence[Index].ChangeToCorrect();
             if (Index == 0)
-                player.SetRepairRight();
+                player.RepairRight();
             if (!group.Secuence[Index].IsRight && group.perfect)
             {
                 group.Secuence[Index].ChangeToWrong();
@@ -101,7 +101,7 @@ public class InputCheker : MonoBehaviour
             if (group.Secuence[Index].IsLeft && group.perfect)
                 group.Secuence[Index].ChangeToCorrect();
             if (Index == 0)
-                player.SetRepairLeft();
+                player.RepairLeft();
             if (!group.Secuence[Index].IsLeft && group.perfect)
             {
                 group.Secuence[Index].ChangeToWrong();
@@ -125,7 +125,7 @@ public class InputCheker : MonoBehaviour
             if (group.Secuence[Index].IsDown && group.perfect)
                 group.Secuence[Index].ChangeToCorrect();
             if (Index == 0)
-                player.SetRepairDown();
+                player.RepairDown();
             if (!group.Secuence[Index].IsDown && group.perfect)
             {
                 group.Secuence[Index].ChangeToWrong();

@@ -11,6 +11,8 @@ public class DownManager : MonoBehaviour
     public AudioRequester _stageTheme;
     public AudioClip Lose;
 
+    public DDManager DDMachine;
+
 
     public GameObject enemyLight;
     public GameObject playerLight;
@@ -23,6 +25,7 @@ public class DownManager : MonoBehaviour
         if (StageState.Instance.ResetKO)
         {
             StageState.Instance.ResetKO = false;
+            DDMachine.SetGame();
             if(LifeTraker.Instance.IsEnemy)
             {
                 Enemy.gameObject.SetActive(true);
@@ -60,16 +63,18 @@ public class DownManager : MonoBehaviour
 
         if (LifeTraker.Instance.IsEnemy && _clock._timer == 15 && LifeTraker.Instance.EnemyKO == 1)
         {
-            Enemy.GetUp();
-            _clock.Stop();
             LifeTraker.Instance.eOverHealt = 50;
+            StageState.Instance.ResetFight = true;
+            _clock.Stop();
+            Enemy.GetUp();
         }
 
         if (LifeTraker.Instance.IsEnemy && _clock._timer == 7 && LifeTraker.Instance.EnemyKO == 2)
         {
-            Enemy.GetUp();
-            _clock.Stop();
             LifeTraker.Instance.eOverHealt = 50;
+            StageState.Instance.ResetFight = true;
+            _clock.Stop();
+            Enemy.GetUp();
         }
     }
 }

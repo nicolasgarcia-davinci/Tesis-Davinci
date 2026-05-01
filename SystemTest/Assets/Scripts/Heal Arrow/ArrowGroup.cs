@@ -8,7 +8,7 @@ public class ArrowGroup : MonoBehaviour
     public int index = 0;
     public bool perfect = true;
     public LifeBar partlifeIndicator;
-    // Start is called before the first frame update
+
     void Start()
     {
         foreach(Arrow flecha in Secuence)
@@ -20,7 +20,6 @@ public class ArrowGroup : MonoBehaviour
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         
