@@ -16,6 +16,8 @@ public class FightControler : MonoBehaviour
     public GameObject PauseMenu;
     public bool IsPaused;
 
+    public AudioRequester _stageTheme;
+
     private void Awake()
     {
         if (Instance == null)
@@ -120,6 +122,7 @@ public class FightControler : MonoBehaviour
 
     public void EnterStage()
     {
+        _stageTheme.CallSong();
         _Player.Set();
         _Enemy.Set();
     }

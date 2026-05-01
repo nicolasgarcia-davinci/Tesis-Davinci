@@ -6,6 +6,8 @@ public class DownedFigher : MonoBehaviour
 {
     public ArrowGroup[] _bodyIndicators;
     public IntermisionTimer _timer;
+    public AudioRequester _stageTheme;
+    public RestAnim Player;
 
     void Update()
     {
@@ -14,13 +16,15 @@ public class DownedFigher : MonoBehaviour
             StageState.Instance.ResetRepair=false;
             //StageCam.Instance.GoToRepairCam(); ANULADO
             _timer.LaunchTimer();
+            _stageTheme.CallSong();
+            Player.SetBody();
             Set();
         }
     }
 
     public void Start()
     {
-        Set();
+        //Set();
     }
 
     public void Set()

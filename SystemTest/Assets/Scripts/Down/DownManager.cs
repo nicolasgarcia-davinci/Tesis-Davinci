@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class DownManager : MonoBehaviour
 {
-    public Fallen Fallen;
+    public Fallen Player;
+    public Fallen Enemy;
     public GetUp _clock;
     public AudioSource _AudioSource;
+    public AudioRequester _stageTheme;
     public AudioClip Lose;
+
 
     public GameObject enemyLight;
     public GameObject playerLight;
@@ -35,11 +38,27 @@ public class DownManager : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Q))
+        if (StageState.Instance.ResetKO)
+        {
+            StageState.Instance.ResetKO = false;
+            if(LifeTraker.Instance.IsEnemy)
+            {
+                Enemy.gameObject.SetActive(true);
+                Enemy.Set();
+                _stageTheme.CallSong();
+            }
+            else
+            {
+                Player.gameObject.SetActive(true);
+                Player.Set();
+                _stageTheme.CallSong();
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.Q))
         {
             _clock.StopAllCoroutines();
             _AudioSource.PlayOneShot(Lose);
-            Fallen._gameOver = true;
+            Player._gameOver = true;
             gameCanvas.SetActive(true);
             gameKoState.SetActive(false);
             StageCam.Instance.GoToEndgameCam();
@@ -50,7 +69,7 @@ public class DownManager : MonoBehaviour
             Debug.Log("UwU");
             _clock.StopAllCoroutines();
             _AudioSource.PlayOneShot(Lose);
-            Fallen._gameOver = true;
+            Player._gameOver = true;
             gameCanvas.SetActive(true);
             gameKoState.SetActive(false);
             StageCam.Instance.GoToEndgameCam();
@@ -58,9 +77,9 @@ public class DownManager : MonoBehaviour
         }
 
         if (LifeTraker.Instance.IsEnemy && _clock._timer == 7 && LifeTraker.Instance.EnemyKO == 1)
-            Fallen._fallen.SetTrigger("GetUp");
+            Enemy._fallen.SetTrigger("GetUp");
 
         if (LifeTraker.Instance.IsEnemy && _clock._timer == 3 && LifeTraker.Instance.EnemyKO == 2)
-            Fallen._fallen.SetTrigger("GetUp");
+            Enemy._fallen.SetTrigger("GetUp");
     }
 }

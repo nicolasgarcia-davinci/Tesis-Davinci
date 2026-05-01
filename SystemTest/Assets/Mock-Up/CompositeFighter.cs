@@ -90,6 +90,7 @@ public class CompositeFighter : MonoBehaviour
 
     [Header("OverAllHealth")]
     public float OverAllHealth;
+
     [Header("Freeze Frame")]
     [SerializeField] float lightBlow;
     [SerializeField] float heavyBlow;
@@ -100,6 +101,8 @@ public class CompositeFighter : MonoBehaviour
     public PartDisplay LeftArmDisplay;
     public PartDisplay LegsDisplay;
     public PartDisplay ChestDisplay;
+
+    public int DamageToTake;
 
     void Start()
     {
@@ -340,7 +343,7 @@ public class CompositeFighter : MonoBehaviour
         }
     }
 
-    public void RightDamage(int damege, AudioClip hit)
+    public void RightDamage(int damage, AudioClip hit)
     {
         if (IsDodgingLeft)
         {
@@ -352,7 +355,7 @@ public class CompositeFighter : MonoBehaviour
         ResetBools();
         _Audio.PlayOneShot(hit);
         if(Rarm.life>0)
-            Rarm.life -= damege;
+            Rarm.life -= damage;
         RarmsHitSpark.gameObject.SetActive(true);
 
         LifeTraker.Instance.UpdateLife();
@@ -374,9 +377,9 @@ public class CompositeFighter : MonoBehaviour
             Debug.Log("BrazoChotoDerecho");
             LifeTraker.Instance.UpdateLife();
         }
-        BattleHealth(damege);
+        DamageToTake=damage;
     }
-    public void LeftDamage(int damege, AudioClip hit)
+    public void LeftDamage(int damage, AudioClip hit)
     {
         if (IsDodgingRight)
         {
@@ -388,7 +391,7 @@ public class CompositeFighter : MonoBehaviour
         ResetBools();
         _Audio.PlayOneShot(hit);
         if (Larm.life > 0)
-            Larm.life -= damege;
+            Larm.life -= damage;
         LarmsHitSpark.gameObject.SetActive(true);
 
         LifeTraker.Instance.UpdateLife();
@@ -410,9 +413,9 @@ public class CompositeFighter : MonoBehaviour
             Debug.Log("BrazoChotoIzquierdo");
             LifeTraker.Instance.UpdateLife();
         }
-        BattleHealth(damege);
+        DamageToTake = damage;
     }
-    public void LegsDamage(int damege, AudioClip hit)
+    public void LegsDamage(int damage, AudioClip hit)
     {
         if (IsDodgingDown)
         {
@@ -424,10 +427,10 @@ public class CompositeFighter : MonoBehaviour
         ResetBools();
         _Audio.PlayOneShot(hit);
         if (Leg.life > 0)
-            Leg.life -= damege;
+            Leg.life -= damage;
         LegsHitSpark.gameObject.SetActive(true);
 
-        FightControler.Instance._Enemy.Leg.life -= damege;
+        FightControler.Instance._Enemy.Leg.life -= damage;
 
         LegsDisplay.UpdateDisplay(Leg.life, CLegs);
 
@@ -443,9 +446,9 @@ public class CompositeFighter : MonoBehaviour
             FightControler.Instance.stopFrameHigh();
             Leg.DeActiveParts();
         }
-        BattleHealth(damege);
+        DamageToTake = damage;
     }
-    public void HeadDamage(int damege, AudioClip hit)
+    public void HeadDamage(int damage, AudioClip hit)
     {
         if (IsDodgingUp)
         {
@@ -457,7 +460,7 @@ public class CompositeFighter : MonoBehaviour
         ResetBools();
         _Audio.PlayOneShot(hit);
         if (Head.life > 0)
-            Head.life -= damege;
+            Head.life -= damage;
         HeadHitSpark.gameObject.SetActive(true);
 
         LifeTraker.Instance.UpdateLife();
@@ -474,12 +477,12 @@ public class CompositeFighter : MonoBehaviour
             FightControler.Instance.stopFrameHigh();
             Head.DeActiveParts();
         }
-        BattleHealth(damege);
+        DamageToTake = damage;
     }
 
-    public void BattleHealth(int damage)
+    public void BattleHealth()
     {
-        OverAllHealth -= damage;
+        OverAllHealth -= DamageToTake;
 
         ChestDisplay.UpdateDisplay(OverAllHealth, CChest);
 

@@ -30,33 +30,35 @@ public class RestAnim : MonoBehaviour
         body.material.SetColor("_Color_1", ColorCordination.Instance.color1);
         body.material.SetColor("_Color_2", ColorCordination.Instance.color2);
         body.material.SetFloat("_Transparencia", 1);
-        Rarm = RarmCollection[LifeTraker.Instance.RarmIndex];
-        Larm = LarmCollection[LifeTraker.Instance.LarmIndex];
-        Leg = LegCollection[LifeTraker.Instance.LegsIndex];
-        Head = HeadCollection[LifeTraker.Instance.HeadIndex];
-        SetBody();
         InputCheker.Instance.player=this;
     }
 
     public void SetBody()
     {
+        Rarm = RarmCollection[LifeTraker.Instance.RarmIndex];
+        Larm = LarmCollection[LifeTraker.Instance.LarmIndex];
+        Leg = LegCollection[LifeTraker.Instance.LegsIndex];
+        Head = HeadCollection[LifeTraker.Instance.HeadIndex];
         ResetRepair();
         if (LifeTraker.Instance.pRight > 0)
         {
             Rarm.ActiveParts();
         }
+        else Rarm.DeActiveParts();
         if (LifeTraker.Instance.pLeft > 0)
         {
             Larm.ActiveParts();
         }
+        else Larm.DeActiveParts();
         if (LifeTraker.Instance.pLegs > 0)
         {
             Leg.ActiveParts();
         }
+        else Leg.DeActiveParts();
         if (LifeTraker.Instance.pHead > 0)
         {
             Head.ActiveParts();
-        }
+        }else Head.DeActiveParts();
     }
 
     public void SetRepairUp()
@@ -81,10 +83,6 @@ public class RestAnim : MonoBehaviour
     }
     public void ResetRepair()
     {
-        //Anim.SetBool("RepairUp", false);
-        //Anim.SetBool("RepairRight", false);
-        //Anim.SetBool("RepairLeft", false);
-        //Anim.SetBool("RepairDown", false);
         RightArmGlich.SetActive(false);
         LeftArmGlich.SetActive(false);
         LegsGlich.SetActive(false);

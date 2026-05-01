@@ -7,6 +7,12 @@ public class StarAnimControler : MonoBehaviour
     public GameObject screen;
     public Animator animator;
     public int timeToIntro;
+    public AudioRequester _stageTheme;
+
+    public void Start()
+    {
+        _stageTheme.CallSong();
+    }
     public void stopanim()
     {
         animator.speed = 0;

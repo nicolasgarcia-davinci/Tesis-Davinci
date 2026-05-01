@@ -24,9 +24,7 @@ public class EnterRound : MonoBehaviour
             RoundMessage.font = RoundFont;
             RoundMessage.text = "Round " + LifeTraker.Instance.RundCounter;
         }
-        
             _timer = 3;
-            //StartCoroutine(Clock());
     }
 
     void Update()
@@ -39,14 +37,6 @@ public class EnterRound : MonoBehaviour
         {
             Again();
         }
-
-        //if (_timer == 0)
-        //{
-        //    StopAllCoroutines();
-        //    _timer = 3;
-        //    _game.gameObject.SetActive(true);
-        //    this.gameObject.SetActive(false);
-        //}
     }
 
     public void CurtainCall()

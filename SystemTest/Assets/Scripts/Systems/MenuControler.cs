@@ -5,10 +5,11 @@ using UnityEngine;
 public class MenuControler : MonoBehaviour
 {
     public MenuNavigation[] Menues;
+    public AudioRequester _stageTheme;
 
     void Start()
     {
-        
+        //_stageTheme.CallSong();
     }
 
 

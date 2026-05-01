@@ -10,7 +10,11 @@ public class DDManager : MonoBehaviour
 
     public bool Set;
 
-    public Fallen Fallen;
+    public float TimetoTwithch;
+    public float Timer;
+
+    public Fallen Player;
+    public Fallen Enemy;
     public GetUp _clock;
 
     public float MaxHit;
@@ -53,7 +57,7 @@ public class DDManager : MonoBehaviour
         //    SetGame();
         //    return;
         //}
-        if(Fallen._gameOver) return;
+        if(Player._gameOver) return;
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             foreach (var panel in DDPanels)
@@ -61,6 +65,7 @@ public class DDManager : MonoBehaviour
                 { 
                     panel.Correct();
                     UpdateHits();
+                    Player._fallen.SetTrigger("Twitch Right");
                 } 
         }
 
@@ -71,6 +76,7 @@ public class DDManager : MonoBehaviour
                 {
                     panel.Correct();
                     UpdateHits();
+                    Player._fallen.SetTrigger("Twitch Left");
                 }
         }
 
@@ -81,6 +87,7 @@ public class DDManager : MonoBehaviour
                 {
                     panel.Correct();
                     UpdateHits();
+                    Player._fallen.SetTrigger("Twitch Up");
                 }
         }
 
@@ -91,9 +98,22 @@ public class DDManager : MonoBehaviour
                 {
                     panel.Correct();
                     UpdateHits();
+                    Player._fallen.SetTrigger("Twitch Down");
                 }
         }
-
+        if(LifeTraker.Instance.IsEnemy)
+        {
+            Timer += Time.deltaTime;
+            if(Timer>=TimetoTwithch)
+            {
+                Timer=0;
+                float Rnum = Random.Range(0, 100);
+                if (Rnum <= 25) Enemy._fallen.SetTrigger("Twitch Left");
+                if (Rnum <= 50 && Rnum > 25) Enemy._fallen.SetTrigger("Twitch Right"); ;
+                if (Rnum <= 75 && Rnum > 50) Enemy._fallen.SetTrigger("Twitch Up"); ;
+                if (Rnum <= 100 && Rnum > 75) Enemy._fallen.SetTrigger("Twitch Down"); ;
+            }
+        }
     }
 
     public void UpdateHits()
@@ -110,7 +130,7 @@ public class DDManager : MonoBehaviour
             LoadManager.Instance.Round2();
             _clock.Stop();
             StageState.Instance.ResetFight = true;
-            Fallen._fallen.SetTrigger("GetUp");
+            Player._fallen.SetTrigger("GetUp");
         }
     }
 

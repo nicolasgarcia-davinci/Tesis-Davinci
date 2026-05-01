@@ -5,7 +5,8 @@ using UnityEngine;
 public class AudioRequester : MonoBehaviour
 {
     public AudioClip StageMusic;
-    void Start()
+
+    public void CallSong()
     {
         StageSound.instance.ChangeDisc(StageMusic);
     }
