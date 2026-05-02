@@ -8,23 +8,16 @@ public class EnterRound : MonoBehaviour
     [SerializeField] TextMeshProUGUI RoundMessage;
     [SerializeField] TMP_FontAsset RoundFont;
     [SerializeField] TMP_FontAsset ReturnFont;
-    public int _timer;
     public GameObject _game;
     public RoundTimer RT;
     
-
-    void Start()
-    {
-
-    }
     public void Again()
     {
         if (LifeTraker.Instance.ResetTimer)
         {
             RoundMessage.font = RoundFont;
-            RoundMessage.text = "Round " + LifeTraker.Instance.RundCounter;
+            RoundMessage.text = LifeTraker.Instance.RundCounter.ToString();
         }
-            _timer = 3;
     }
 
     void Update()
@@ -46,11 +39,5 @@ public class EnterRound : MonoBehaviour
         RT.LaunchTimer();
         FightControler.Instance.EnterStage();
         this.gameObject.SetActive(false);
-    }
-    public IEnumerator Clock()
-    {
-        _timer--;
-        yield return new WaitForSeconds(1);
-        StartCoroutine(Clock());
     }
 }
