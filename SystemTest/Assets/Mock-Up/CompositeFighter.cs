@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class CompositeFighter : MonoBehaviour
 {
@@ -74,6 +75,7 @@ public class CompositeFighter : MonoBehaviour
     public GameObject[] HeadCrash;
 
     [Header("Spark Particles")]
+    public VisualEffect[] shockWaves;
     public GameObject[] RarmSpark;
     public GameObject[] LarmSpark;
     public GameObject[] LegsSpark;
@@ -540,6 +542,11 @@ public class CompositeFighter : MonoBehaviour
             StageState.Instance.ResetRepair = true;
             StageCam.Instance.GoToRepairCam();
         }
+    }
+    
+    public void CallVFX(int i)
+    {
+        shockWaves[i].Play();
     }
 
     public void Pause()
