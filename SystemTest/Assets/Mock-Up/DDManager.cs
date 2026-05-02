@@ -55,7 +55,7 @@ public class DDManager : MonoBehaviour
     void Update()
     {
         if(Player._gameOver) return;
-        if (Input.GetKeyDown(KeyCode.RightArrow))
+        if (Input.GetKeyDown(KeyCode.RightArrow) && !LifeTraker.Instance.IsEnemy)
         {
             foreach (var panel in DDPanels)
                 if (panel.CanBeHit && panel.IsRight)
@@ -67,7 +67,7 @@ public class DDManager : MonoBehaviour
                 } 
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        if (Input.GetKeyDown(KeyCode.LeftArrow) && !LifeTraker.Instance.IsEnemy)
         {
             foreach (var panel in DDPanels)
                 if (panel.CanBeHit && panel.IsLeft) 
@@ -79,7 +79,7 @@ public class DDManager : MonoBehaviour
                 }
         }
 
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        if (Input.GetKeyDown(KeyCode.UpArrow) && !LifeTraker.Instance.IsEnemy)
         {
             foreach (var panel in DDPanels)
                 if (panel.CanBeHit && panel.IsUp) 
@@ -91,7 +91,7 @@ public class DDManager : MonoBehaviour
                 }
         }
 
-        if (Input.GetKeyDown(KeyCode.DownArrow))
+        if (Input.GetKeyDown(KeyCode.DownArrow) && !LifeTraker.Instance.IsEnemy)
         {
             foreach (var panel in DDPanels)
                 if (panel.CanBeHit && panel.IsDown) 

@@ -229,6 +229,10 @@ public class CompositeFighter : MonoBehaviour
     {
         IsDodgingLeft=false; IsDodgingRight=false; IsDodgingDown=false; IsDodgingUp=false; IsDodging=false; IsDying=false;
         IsAttackingLeft=false; IsAttackingRight=false; IsAttackingDown=false; IsAttackingUp=false; IsAttacking=false;
+        anim.ResetTrigger("DoedgeUp");
+        anim.ResetTrigger("DoedgeRight");
+        anim.ResetTrigger("DoedgeLeft");
+        anim.ResetTrigger("DoedgeDown");
     }
     public void FallDown()
     {
