@@ -16,7 +16,7 @@ public class EnterRound : MonoBehaviour
         if (LifeTraker.Instance.ResetTimer)
         {
             RoundMessage.font = RoundFont;
-            RoundMessage.text = LifeTraker.Instance.RundCounter.ToString();
+            RoundMessage.text = "Ronda" + LifeTraker.Instance.RundCounter.ToString();
         }
     }
 
