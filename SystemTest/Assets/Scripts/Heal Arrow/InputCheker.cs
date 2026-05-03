@@ -8,7 +8,8 @@ public class InputCheker : MonoBehaviour
     public ArrowGroup[] CollectionsOnScreen;
     public int Index=0;
     public AudioSource Jingle;
-    public AudioClip Correct,Wrong;
+    public AudioClip Wrong;
+    public AudioClip[] CorrectClips;
 
     public RestAnim player;
 
@@ -158,7 +159,8 @@ public class InputCheker : MonoBehaviour
             if (group.perfect)
             {
                 group.partlifeIndicator.Heal();
-                Jingle.PlayOneShot(Correct);
+                //Jingle.PlayOneShot(Correct);// Modificacion varios clips
+                PlayRandomCorrect();
             }
             group.perfect = true;
             foreach (Arrow flecha in group.Secuence)
@@ -167,5 +169,11 @@ public class InputCheker : MonoBehaviour
         player.ResetRepair();
         Index = 0;
         check = false;
+    }
+    private void PlayRandomCorrect()
+    {
+        if (CorrectClips == null || CorrectClips.Length == 0) return;
+        int randomIndex = Random.Range(0, CorrectClips.Length);
+        Jingle.PlayOneShot(CorrectClips[randomIndex]);
     }
 }
