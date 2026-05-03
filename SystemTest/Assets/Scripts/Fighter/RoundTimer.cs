@@ -31,6 +31,7 @@ public class RoundTimer : MonoBehaviour
     public void LaunchTimer()
     {
         _counter.color = Color.white;
+        _counter.rectTransform.localScale = Vector3.one;
         _animator.SetBool("Pulse", false);
         if (_timer <= 0)
         {

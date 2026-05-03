@@ -26,4 +26,9 @@ public class StageSound : MonoBehaviour
         StageMusic=disc;
         Musicplayer.PlayOneShot(StageMusic);
     }
+    public void Mute()
+    {
+        Musicplayer.Stop();
+    }
+
 }

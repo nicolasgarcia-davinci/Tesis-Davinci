@@ -105,6 +105,7 @@ public class Fallen : MonoBehaviour
 
     public void ResumeFight()
     {
+        StageSound.instance.Mute();
         if (!_isEnemy)
         {
             StageCam.Instance.PlayerBackToFight();

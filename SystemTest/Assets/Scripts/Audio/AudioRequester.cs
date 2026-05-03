@@ -10,4 +10,9 @@ public class AudioRequester : MonoBehaviour
     {
         StageSound.instance.ChangeDisc(StageMusic);
     }
+
+    public void EjectDisc()
+    {
+        StageSound.instance.Mute();
+    }
 }

@@ -20,18 +20,6 @@ public class EnterRound : MonoBehaviour
         }
     }
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            Again();
-        }
-        if (StageState.Instance.ResetFight)
-        {
-            Again();
-        }
-    }
-
     public void CurtainCall()
     {
         StopAllCoroutines();

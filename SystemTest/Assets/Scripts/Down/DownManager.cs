@@ -22,6 +22,10 @@ public class DownManager : MonoBehaviour
 
     void Update()
     {
+        if (_clock._timer<=10)
+        {
+            _stageTheme.CallSong();
+        }
         if (StageState.Instance.ResetKO)
         {
             StageState.Instance.ResetKO = false;
@@ -30,18 +34,17 @@ public class DownManager : MonoBehaviour
             {
                 Enemy.gameObject.SetActive(true);
                 Enemy.Set();
-                _stageTheme.CallSong();
             }
             else
             {
                 Player.gameObject.SetActive(true);
                 Player.Set();
-                _stageTheme.CallSong();
             }
         }
         if (Input.GetKeyDown(KeyCode.Q))
         {
             _clock.StopAllCoroutines();
+            _stageTheme.EjectDisc();
             _AudioSource.PlayOneShot(Lose);
             Player._gameOver = true;
             gameCanvas.SetActive(true);
@@ -53,6 +56,7 @@ public class DownManager : MonoBehaviour
         {
             Debug.Log("UwU");
             _clock.StopAllCoroutines();
+            _stageTheme.EjectDisc();
             _AudioSource.PlayOneShot(Lose);
             Player._gameOver = true;
             gameCanvas.SetActive(true);
@@ -65,6 +69,7 @@ public class DownManager : MonoBehaviour
         {
             LifeTraker.Instance.eOverHealt = 50;
             StageState.Instance.ResetFight = true;
+            _stageTheme.EjectDisc();
             _clock.Stop();
             Enemy.GetUp();
         }
@@ -73,6 +78,7 @@ public class DownManager : MonoBehaviour
         {
             LifeTraker.Instance.eOverHealt = 50;
             StageState.Instance.ResetFight = true;
+            _stageTheme.EjectDisc();
             _clock.Stop();
             Enemy.GetUp();
         }

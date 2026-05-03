@@ -32,6 +32,7 @@ public class IntermisionTimer : MonoBehaviour
             LifeTraker.Instance.ResetTimer = true;
             StageState.Instance.ResetFight = true;
             _player.Anim.SetTrigger("Exit Rest");
+            StageSound.instance.Mute();
             Stop();
         }
         yield return new WaitForSeconds(1);

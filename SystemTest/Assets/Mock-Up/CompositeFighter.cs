@@ -108,7 +108,6 @@ public class CompositeFighter : MonoBehaviour
 
     void Start()
     {
-        Stamina = MaxStamina;
         anim = GetComponent<Animator>();
         if(!IsEnemy)
         {
@@ -138,12 +137,6 @@ public class CompositeFighter : MonoBehaviour
             CLeft  = Larm.life;
             CLegs  = Leg.life;
             CChest =  OverAllHealth;
-
-            HeadDisplay.UpdateDisplay(Head.life, CHead);
-            RightArmDisplay.UpdateDisplay(Rarm.life, CRight);
-            LeftArmDisplay.UpdateDisplay(Larm.life, CLeft);
-            LegsDisplay.UpdateDisplay(Leg.life, CLegs);
-            ChestDisplay.UpdateDisplay(OverAllHealth, CChest);
         }
         else
         {
@@ -158,12 +151,6 @@ public class CompositeFighter : MonoBehaviour
             CLeft = Larm.life;
             CLegs = Leg.life;
             CChest = OverAllHealth;
-
-            HeadDisplay.UpdateDisplay(Head.life, CHead);
-            RightArmDisplay.UpdateDisplay(Rarm.life, CRight);
-            LeftArmDisplay.UpdateDisplay(Larm.life, CLeft);
-            LegsDisplay.UpdateDisplay(Leg.life, CLegs);
-            ChestDisplay.UpdateDisplay(OverAllHealth, CChest);
         }
     }
 
