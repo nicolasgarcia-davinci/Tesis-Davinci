@@ -19,7 +19,7 @@ public class DDManager : MonoBehaviour
     public float _defaultMaxHits;
 
     public AudioSource _AudioSource;
-    public AudioClip Lose, Succes;
+    public AudioClip Lose, Succes, HitSound;
 
     public Image _bar;
     public Image _RightHitZone;
@@ -63,6 +63,7 @@ public class DDManager : MonoBehaviour
                     panel.Correct();
                     StartCoroutine(RightHit());
                     UpdateHits();
+                    _AudioSource.PlayOneShot(HitSound);
                     Player._fallen.SetTrigger("Twitch Right");
                 } 
         }
@@ -75,6 +76,7 @@ public class DDManager : MonoBehaviour
                     panel.Correct();
                     StartCoroutine(LeftHit());
                     UpdateHits();
+                    _AudioSource.PlayOneShot(HitSound);
                     Player._fallen.SetTrigger("Twitch Left");
                 }
         }
@@ -87,6 +89,7 @@ public class DDManager : MonoBehaviour
                     panel.Correct();
                     StartCoroutine(UpHit());
                     UpdateHits();
+                    _AudioSource.PlayOneShot(HitSound);
                     Player._fallen.SetTrigger("Twitch Up");
                 }
         }
@@ -99,6 +102,7 @@ public class DDManager : MonoBehaviour
                     panel.Correct();
                     StartCoroutine(DownHit());
                     UpdateHits();
+                    _AudioSource.PlayOneShot(HitSound);
                     Player._fallen.SetTrigger("Twitch Down");
                 }
         }
