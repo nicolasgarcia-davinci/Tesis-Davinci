@@ -104,6 +104,10 @@ public class CompositeFighter : MonoBehaviour
     public PartDisplay LegsDisplay;
     public PartDisplay ChestDisplay;
 
+    [Header("Dying")]
+    public Action IsDyingEvent = delegate { };
+    public Action CharacterUpEvent = delegate { };
+
     public int DamageToTake;
 
     void Start()
@@ -488,9 +492,10 @@ public class CompositeFighter : MonoBehaviour
 
         ChestDisplay.UpdateDisplay(OverAllHealth, CChest);
 
-        if(OverAllHealth<=0)
+        if (OverAllHealth<=0)
         {
             IsDying = true;
+            IsDyingEvent();
             anim.SetTrigger("KO");
         }
     }
