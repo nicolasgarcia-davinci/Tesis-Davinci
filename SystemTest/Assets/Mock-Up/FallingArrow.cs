@@ -52,4 +52,8 @@ public class FallingArrow : MonoBehaviour
     {
         Arrow.color = Color.white;
     }
+    public void StopAnim()
+    {
+        Animator.speed = 0;
+    }
 }

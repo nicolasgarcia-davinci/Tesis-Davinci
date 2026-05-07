@@ -109,12 +109,12 @@ public class ButtomAction : MonoBehaviour
             if(LifeTraker.Instance.Dificulty == 2)
             {
                 LifeTraker.Instance.Dificulty = 3;
-                LoadManager.Instance.LoadEnter();
+                LoadManager.Instance.Garage();
             }
             if(LifeTraker.Instance.Dificulty == 1)
             {
                 LifeTraker.Instance.Dificulty = 2;
-                LoadManager.Instance.LoadEnter();
+                LoadManager.Instance.Garage();
             }
         }
 

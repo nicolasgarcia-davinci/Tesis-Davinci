@@ -46,7 +46,6 @@ public class Fallen : MonoBehaviour
         _isEnemy = LifeTraker.Instance.IsEnemy;
         if (_isEnemy)
         {
-            VignetControler.Instance.ActivateEnemyColor();
             body.material = EnemyMaterial;
             Rarm = ERarm;
             Larm = ELarm;
@@ -72,7 +71,6 @@ public class Fallen : MonoBehaviour
 
         if (!_isEnemy)
         {
-            VignetControler.Instance.ActivatePlayerColor();
             Rarm = RarmCollection[LifeTraker.Instance.RarmIndex];
             Larm = LarmCollection[LifeTraker.Instance.LarmIndex];
             Leg = LegCollection[LifeTraker.Instance.LegsIndex];

@@ -20,21 +20,15 @@ public class LoadManager : MonoBehaviour
     }
     public void LoadRing()
     {
-        VignetControler.Instance.DeActivate();
         LifeTraker.Instance.ResetTimer = true;
         LifeTraker.Instance.Reset();
         SceneManager.LoadSceneAsync(1);
     }
     public void LoadGym()
     {
-        VignetControler.Instance.DeActivate();
         LifeTraker.Instance.ResetTimer = true;
         LifeTraker.Instance.Reset();
         SceneManager.LoadSceneAsync(2);
-    }
-    public void Round2()
-    {
-        VignetControler.Instance.DeActivate();
     }
     public void LoadMenu()
     {
@@ -85,13 +79,9 @@ public class LoadManager : MonoBehaviour
 
     public void Garage()
     {
-        SceneManager.LoadSceneAsync(05);
+        SceneManager.LoadSceneAsync(5);
     }
 
-    public void GameOver()
-    {
-        VignetControler.Instance.DeActivate();
-    }
     public void ENDGAME()
     { SceneManager.LoadSceneAsync(4);}
 }

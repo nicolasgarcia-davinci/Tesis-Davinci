@@ -50,7 +50,6 @@ public class DownManager : MonoBehaviour
             gameCanvas.SetActive(true);
             gameKoState.SetActive(false);
             StageCam.Instance.GoToEndgameCam();
-            LoadManager.Instance.GameOver();
         }
         if(_clock._timer <= 0)
         {
@@ -62,25 +61,24 @@ public class DownManager : MonoBehaviour
             gameCanvas.SetActive(true);
             gameKoState.SetActive(false);
             StageCam.Instance.GoToEndgameCam();
-            LoadManager.Instance.GameOver();
         }
 
-        if (LifeTraker.Instance.IsEnemy && _clock._timer == 15 && LifeTraker.Instance.EnemyKO == 1)
-        {
-            LifeTraker.Instance.eOverHealt = 50;
-            StageState.Instance.ResetFight = true;
-            _stageTheme.EjectDisc();
-            _clock.Stop();
-            Enemy.GetUp();
-        }
-
-        if (LifeTraker.Instance.IsEnemy && _clock._timer == 7 && LifeTraker.Instance.EnemyKO == 2)
-        {
-            LifeTraker.Instance.eOverHealt = 50;
-            StageState.Instance.ResetFight = true;
-            _stageTheme.EjectDisc();
-            _clock.Stop();
-            Enemy.GetUp();
-        }
+        //if (LifeTraker.Instance.IsEnemy && _clock._timer == 15 && LifeTraker.Instance.EnemyKO == 1)
+        //{
+        //    LifeTraker.Instance.eOverHealt = 50;
+        //    StageState.Instance.ResetFight = true;
+        //    _stageTheme.EjectDisc();
+        //    _clock.Stop();
+        //    Enemy.GetUp();
+        //}
+        //
+        //if (LifeTraker.Instance.IsEnemy && _clock._timer == 7 && LifeTraker.Instance.EnemyKO == 2)
+        //{
+        //    LifeTraker.Instance.eOverHealt = 50;
+        //    StageState.Instance.ResetFight = true;
+        //    _stageTheme.EjectDisc();
+        //    _clock.Stop();
+        //    Enemy.GetUp();
+        //}
     }
 }

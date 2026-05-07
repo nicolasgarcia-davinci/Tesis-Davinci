@@ -49,9 +49,4 @@ public class AnimatorControler : MonoBehaviour
     {
         _ko.Stop();
     }
-
-    public void Round2()
-    {
-        LoadManager.Instance.Round2();
-    }
 }

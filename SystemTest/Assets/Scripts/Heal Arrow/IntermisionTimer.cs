@@ -28,7 +28,6 @@ public class IntermisionTimer : MonoBehaviour
         _counter.text = _timer.ToString();
         if (_timer <= 0 )
         {
-            LoadManager.Instance.Round2();
             LifeTraker.Instance.ResetTimer = true;
             StageState.Instance.ResetFight = true;
             _player.Anim.SetTrigger("Exit Rest");

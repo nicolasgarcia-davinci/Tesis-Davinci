@@ -10,6 +10,8 @@ public class DDManager : MonoBehaviour
     public float TimetoTwithch;
     public float Timer;
 
+    public GameObject mesage;
+
     public Fallen Player;
     public Fallen Enemy;
     public GetUp _clock;
@@ -30,7 +32,6 @@ public class DDManager : MonoBehaviour
     public Color _Correct;
 
 
-    public Color _Invisible;
     public Color _Normal;
 
     public void SetGame()
@@ -38,15 +39,22 @@ public class DDManager : MonoBehaviour
         _bar.fillAmount = 0;
         _default = _RightHitZone.color;
         Hits = 0;
+        mesage.SetActive(false);
+        foreach (var panel in DDPanels)
+        {
+            panel.Animator.speed=1;
+        }
         if (LifeTraker.Instance.IsEnemy)
         {
-            _bar.color = _Invisible;
             MaxHit = _defaultMaxHits + (LifeTraker.Instance.EnemyKO * 3);
+            Enemy._gameOver = false;
+            StartCoroutine(EnemyStep());
         }
         else
         {
             _bar.color = _Normal;
             MaxHit = _defaultMaxHits + (LifeTraker.Instance.PlayerKO * 3);
+            Player._gameOver = false;
         }
         _bar.fillAmount = Hits / MaxHit;
         SpawnArrow();
@@ -148,13 +156,25 @@ public class DDManager : MonoBehaviour
         _bar.fillAmount = Hits/MaxHit;
         if(Hits >= MaxHit)
         {
-            LifeTraker.Instance.pOverHealt = 50;
+            if(!LifeTraker.Instance.IsEnemy)
+            {
+                Player._gameOver = true;
+                LifeTraker.Instance.pOverHealt = 50;
+                Player.GetUp();
 
+            }
+            if (LifeTraker.Instance.IsEnemy)
+            {
+                Enemy._gameOver = true;
+                LifeTraker.Instance.eOverHealt = 50;
+                Enemy.GetUp();
+
+            }
+
+            StopGame();
             _AudioSource.PlayOneShot(Succes);
-            LoadManager.Instance.Round2();
             _clock.Stop();
             StageState.Instance.ResetFight = true;
-            Player.GetUp();
         }
     }
 
@@ -165,5 +185,22 @@ public class DDManager : MonoBehaviour
         if (Rnum <= 50 && Rnum > 25) DDPanels[1].Fall();
         if (Rnum <= 75 && Rnum > 50) DDPanels[2].Fall();
         if (Rnum <= 100 && Rnum > 75) DDPanels[3].Fall();
+    }
+
+    public IEnumerator EnemyStep()
+    {
+        yield return new WaitForSeconds(3f);
+        UpdateHits();
+        StartCoroutine(EnemyStep());
+    }
+
+    public void StopGame()
+    {
+        foreach (var panel in DDPanels)
+        {
+            panel.StopAnim();
+        }
+        StopCoroutine(EnemyStep());
+        mesage.SetActive(true);
     }
 }
