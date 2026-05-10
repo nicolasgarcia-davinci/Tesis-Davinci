@@ -14,6 +14,8 @@ public class FightControler : MonoBehaviour
 
     public RoundTimer _RT;
     public GameObject PauseMenu;
+    public GameObject Timer;
+    public GameObject Controlers;
     public bool IsPaused;
 
     public AudioRequester _stageTheme;
@@ -103,20 +105,28 @@ public class FightControler : MonoBehaviour
                 return;
             }
         }
-        if(StageState.Instance.ResetFight)
-        {
-            StageState.Instance.ResetFight = false;
-            _Player.Set();
-            _Enemy.Set();
-            _RT.LaunchTimer();
-        }
+        //if(StageState.Instance.ResetFight)
+        //{
+        //    StageState.Instance.ResetFight = false;
+        //    ActivateControlers();
+        //    _Player.Set();
+        //    _Enemy.Set();
+        //    _RT.LaunchTimer();
+        //}
     }
 
     public void EnterStage()
     {
-        _stageTheme.CallSong();
-        _Player.Set();
-        _Enemy.Set();
+        if (StageState.Instance.ResetFight)
+        {
+            StageState.Instance.ResetFight = false;
+            Timer.SetActive(true);
+            ActivateControlers();
+            _stageTheme.CallSong();
+            _Player.Set();
+            _Enemy.Set();
+            _RT.LaunchTimer();
+        }
     }
 
     public void ExitStage()
@@ -125,6 +135,14 @@ public class FightControler : MonoBehaviour
         _Enemy.IsRepairing = true;
         _Player.anim.SetTrigger("Exit Stage");
         _Enemy.anim.SetTrigger("Exit Stage");
+    }
+    public void ActivateControlers()
+    {
+        Controlers.SetActive(true);
+    }
+    public void DeActivateControlers()
+    {
+        Controlers.SetActive(false);
     }
     public void Pause()
     {

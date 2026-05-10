@@ -62,23 +62,5 @@ public class DownManager : MonoBehaviour
             gameKoState.SetActive(false);
             StageCam.Instance.GoToEndgameCam();
         }
-
-        //if (LifeTraker.Instance.IsEnemy && _clock._timer == 15 && LifeTraker.Instance.EnemyKO == 1)
-        //{
-        //    LifeTraker.Instance.eOverHealt = 50;
-        //    StageState.Instance.ResetFight = true;
-        //    _stageTheme.EjectDisc();
-        //    _clock.Stop();
-        //    Enemy.GetUp();
-        //}
-        //
-        //if (LifeTraker.Instance.IsEnemy && _clock._timer == 7 && LifeTraker.Instance.EnemyKO == 2)
-        //{
-        //    LifeTraker.Instance.eOverHealt = 50;
-        //    StageState.Instance.ResetFight = true;
-        //    _stageTheme.EjectDisc();
-        //    _clock.Stop();
-        //    Enemy.GetUp();
-        //}
     }
 }

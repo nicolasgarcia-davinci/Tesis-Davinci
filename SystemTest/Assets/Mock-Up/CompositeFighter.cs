@@ -225,6 +225,15 @@ public class CompositeFighter : MonoBehaviour
         anim.ResetTrigger("DoedgeLeft");
         anim.ResetTrigger("DoedgeDown");
     }
+
+    public void FightStart()
+    {
+        if(!IsEnemy) FightControler.Instance.EnterStage();
+    }
+    public void ExitFight()
+    {
+        FightControler.Instance.DeActivateControlers();
+    }
     public void FallDown()
     {
         FightControler.Instance.SetDownFighter(this);
@@ -495,6 +504,7 @@ public class CompositeFighter : MonoBehaviour
         if (OverAllHealth<=0)
         {
             IsDying = true;
+            ExitFight();
             IsDyingEvent();
             anim.SetTrigger("KO");
         }

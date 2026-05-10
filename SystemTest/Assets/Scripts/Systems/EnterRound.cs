@@ -24,8 +24,8 @@ public class EnterRound : MonoBehaviour
     {
         StopAllCoroutines();
         _game.gameObject.SetActive(true);
-        RT.LaunchTimer();
-        FightControler.Instance.EnterStage();
+        //RT.LaunchTimer();
+        //FightControler.Instance.EnterStage();
         this.gameObject.SetActive(false);
     }
 }

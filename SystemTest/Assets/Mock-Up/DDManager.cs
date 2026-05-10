@@ -189,7 +189,7 @@ public class DDManager : MonoBehaviour
 
     public IEnumerator EnemyStep()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1.25f);
         UpdateHits();
         StartCoroutine(EnemyStep());
     }
