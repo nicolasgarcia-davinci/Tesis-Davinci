@@ -34,6 +34,8 @@ public class DDManager : MonoBehaviour
 
     public Color _Normal;
 
+    public ParticleSystem[] ParticulasPlayer;
+    public ParticleSystem[] ParticulasEnemy;
     public void SetGame()
     {
         _bar.fillAmount = 0;
@@ -235,6 +237,7 @@ public class DDManager : MonoBehaviour
                 LifeTraker.Instance.eOverHealt = 50;
                 Enemy.GetUp();
             }
+
 
             StopGame();
             _AudioSource.PlayOneShot(Succes);

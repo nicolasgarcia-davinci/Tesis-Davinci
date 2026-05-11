@@ -281,7 +281,7 @@ public class CompositeFighter : MonoBehaviour
     }
 
     #region Dodge Viejo
-    /*public void DodgeRight()
+    public void DodgeRight()
     {
         if (!IsAttacking && !IsDodging && !IsRepairing && !IsDying)
         { 
@@ -316,7 +316,7 @@ public class CompositeFighter : MonoBehaviour
             IsDodging = true;
             anim.SetTrigger("DoedgeRight");
         }  
-    }*/
+    }
     #endregion
 
     public bool Attack(string animation, GameObject trail, bool partAttack)
