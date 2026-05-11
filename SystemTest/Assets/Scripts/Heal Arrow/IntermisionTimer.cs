@@ -13,12 +13,7 @@ public class IntermisionTimer : MonoBehaviour
 
     public void LaunchTimer()
     {
-        DataSaver.Instance.LoadTimer();
-        if (_timer <= 0 && LifeTraker.Instance.ResetTimer)
-        {
-            _timer = _IntermisionDuration;
-            LifeTraker.Instance.ResetTimer = false;
-        }
+        _timer = _IntermisionDuration;
         StartCoroutine(CountDown());
     }
 

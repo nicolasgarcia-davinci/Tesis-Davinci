@@ -9,7 +9,7 @@ public class EnterRound : MonoBehaviour
     [SerializeField] TMP_FontAsset RoundFont;
     [SerializeField] TMP_FontAsset ReturnFont;
     public GameObject _game;
-    public RoundTimer RT;
+    //public RoundTimer RT;
     
     public void Again()
     {
@@ -22,7 +22,7 @@ public class EnterRound : MonoBehaviour
 
     public void CurtainCall()
     {
-        StopAllCoroutines();
+        //StopAllCoroutines();
         _game.gameObject.SetActive(true);
         //RT.LaunchTimer();
         //FightControler.Instance.EnterStage();

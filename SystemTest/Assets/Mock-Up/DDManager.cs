@@ -48,10 +48,19 @@ public class DDManager : MonoBehaviour
         {
             MaxHit = _defaultMaxHits + (LifeTraker.Instance.EnemyKO * 3);
             Enemy._gameOver = false;
-            StartCoroutine(EnemyStep());
+            foreach (var panel in DDPanels)
+                {
+                panel.EnemySpeed();
+                }
+
+            //StartCoroutine(EnemyStep());
         }
         else
         {
+            foreach (var panel in DDPanels)
+            {
+                panel.PlayerSpeed();
+            }
             _bar.color = _Normal;
             MaxHit = _defaultMaxHits + (LifeTraker.Instance.PlayerKO * 3);
             Player._gameOver = false;
@@ -114,15 +123,15 @@ public class DDManager : MonoBehaviour
                     Player._fallen.SetTrigger("Twitch Down");
                 }
         }
-        if(LifeTraker.Instance.IsEnemy)
-        {
-            Timer += Time.deltaTime;
-            if(Timer>=TimetoTwithch)
-            {
-                Timer=0;
-                Enemy.Twith();
-            }
-        }
+        //if(LifeTraker.Instance.IsEnemy)
+        //{
+        //    Timer += Time.deltaTime;
+        //    if(Timer>=TimetoTwithch)
+        //    {
+        //        Timer=0;
+        //        Enemy.Twith();
+        //    }
+        //}
     }
 
     public IEnumerator UpHit()
@@ -150,6 +159,63 @@ public class DDManager : MonoBehaviour
         _LeftHitZone.color = _default;
     }
 
+    public void EnemyMess()
+    {
+        if(!LifeTraker.Instance.IsEnemy) return;
+        float Rnum = Random.Range(0, 100);
+        if (Rnum <= 25)
+        {
+            foreach (var panel in DDPanels)
+                if (panel.CanBeHit && panel.IsRight)
+                {
+                    panel.Correct();
+                    StartCoroutine(RightHit());
+                    UpdateHits();
+                    _AudioSource.PlayOneShot(HitSound);
+                    Enemy._fallen.SetTrigger("Twitch Right");
+                }
+        }
+
+        if (Rnum <= 50 && Rnum > 25)
+        {
+            foreach (var panel in DDPanels)
+                if (panel.CanBeHit && panel.IsLeft)
+                {
+                    panel.Correct();
+                    StartCoroutine(LeftHit());
+                    UpdateHits();
+                    _AudioSource.PlayOneShot(HitSound);
+                    Enemy._fallen.SetTrigger("Twitch Left");
+                }
+        }
+
+        if (Rnum <= 75 && Rnum > 50)
+        {
+            foreach (var panel in DDPanels)
+                if (panel.CanBeHit && panel.IsUp)
+                {
+                    panel.Correct();
+                    StartCoroutine(UpHit());
+                    UpdateHits();
+                    _AudioSource.PlayOneShot(HitSound);
+                    Enemy._fallen.SetTrigger("Twitch Up");
+                }
+        }
+
+        if (Rnum <= 100 && Rnum > 75)
+        {
+            foreach (var panel in DDPanels)
+                if (panel.CanBeHit && panel.IsDown)
+                {
+                    panel.Correct();
+                    StartCoroutine(DownHit());
+                    UpdateHits();
+                    _AudioSource.PlayOneShot(HitSound);
+                    Player._fallen.SetTrigger("Twitch Down");
+                }
+        }
+    }
+
     public void UpdateHits()
     {
         Hits++;
@@ -168,7 +234,6 @@ public class DDManager : MonoBehaviour
                 Enemy._gameOver = true;
                 LifeTraker.Instance.eOverHealt = 50;
                 Enemy.GetUp();
-
             }
 
             StopGame();

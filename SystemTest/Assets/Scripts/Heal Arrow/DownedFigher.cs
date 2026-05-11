@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class DownedFigher : MonoBehaviour
 {
@@ -8,6 +10,7 @@ public class DownedFigher : MonoBehaviour
     public IntermisionTimer _timer;
     public AudioRequester _stageTheme;
     public RestAnim Player;
+    public HealMenu MyHeal;
 
     void Update()
     {
@@ -17,7 +20,8 @@ public class DownedFigher : MonoBehaviour
             _timer.LaunchTimer();
             _stageTheme.CallSong();
             Player.SetBody();
-            Set();
+            //Set();
+            MyHeal.ResetHeals();
         }
     }
 
@@ -55,5 +59,44 @@ public class DownedFigher : MonoBehaviour
             _bodyIndicators[3].partlifeIndicator.UpdateLife(LifeTraker.Instance.pLegs, LifeTraker.Instance.maxLegsHealth);
             Player.CheckParts();
         }
+    }
+    public void HealMenuPart(int partId)
+    {
+        if (partId == 0)
+        {
+            LifeTraker.Instance.pHead += 30;
+            //_bodyIndicators[0].partlifeIndicator.UpdateLife(LifeTraker.Instance.pHead, LifeTraker.Instance.maxHeadHealth);
+            Player.CheckParts();
+            Player.RepairUP();
+        }
+
+        if (partId == 1)
+        {
+            LifeTraker.Instance.pRight += 30;
+            //_bodyIndicators[1].partlifeIndicator.UpdateLife(LifeTraker.Instance.pRight, LifeTraker.Instance.maxRarmHealth);
+            Player.CheckParts();
+            Player.RepairRight();
+        }
+
+        if (partId == 2)
+        {
+            LifeTraker.Instance.pLeft += 30;
+            //_bodyIndicators[2].partlifeIndicator.UpdateLife(LifeTraker.Instance.pLeft, LifeTraker.Instance.maxLarmHealth);
+            Player.CheckParts();
+            Player.RepairLeft();
+        }
+
+        if (partId == 3)
+        {
+            LifeTraker.Instance.pLegs += 30;
+            //_bodyIndicators[3].partlifeIndicator.UpdateLife(LifeTraker.Instance.pLegs, LifeTraker.Instance.maxLegsHealth);
+            Player.CheckParts();
+            Player.RepairDown();
+        }
+    }
+
+    public void TimeToExit()
+    {
+        Player.Anim.SetTrigger("Exit Rest");
     }
 }

@@ -20,8 +20,6 @@ public class StageCam : MonoBehaviour
     public GameObject Repair;
     public GameObject KO;
     public GameObject Controls;
-
-    public IntermisionTimer _intermisionTimer;
     
     
     public static StageCam Instance;
@@ -134,8 +132,7 @@ public class StageCam : MonoBehaviour
     public void TurnOnRound()
     {
         StageState.Instance.RoundEnter = true;
-        StageState.Instance.ResetFight = true;
-        Fight.SetActive(true);
+        //Fight.SetActive(true);
         FightCurtain.SetActive(true);
     }
     public void TurnOnKO()

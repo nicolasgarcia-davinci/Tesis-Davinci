@@ -115,14 +115,14 @@ public class Fallen : MonoBehaviour
             this.gameObject.SetActive(false);
         }
     }
-    public void Twith()
-    {
-        int Rnum = Random.Range(0, 100);
-        if (Rnum <= 25) _fallen.SetTrigger("Twitch Right");
-        if (Rnum <= 50 && Rnum > 25) _fallen.SetTrigger("Twitch Left");
-        if (Rnum <= 75 && Rnum > 50) _fallen.SetTrigger("Twitch Up");
-        if (Rnum <= 100 && Rnum > 75) _fallen.SetTrigger("Twitch Down");
-    }
+    //public void Twith()
+    //{
+    //    int Rnum = Random.Range(0, 100);
+    //    if (Rnum <= 25) _fallen.SetTrigger("Twitch Right");
+    //    if (Rnum <= 50 && Rnum > 25) _fallen.SetTrigger("Twitch Left");
+    //    if (Rnum <= 75 && Rnum > 50) _fallen.SetTrigger("Twitch Up");
+    //    if (Rnum <= 100 && Rnum > 75) _fallen.SetTrigger("Twitch Down");
+    //}
 
     public void Leave()
     {

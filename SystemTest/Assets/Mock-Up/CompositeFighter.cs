@@ -63,10 +63,10 @@ public class CompositeFighter : MonoBehaviour
     public Animator anim;
 
     [Header("Damage Particles")]
-    public GameObject RarmsHitSpark;
-    public GameObject LarmsHitSpark;
-    public GameObject LegsHitSpark;
-    public GameObject HeadHitSpark;
+    public GameObject RarmsHitWave;
+    public GameObject LarmsHitWave;
+    public GameObject LegsHitWave;
+    public GameObject HeadHitWave;
 
     [Header("Attack Trails")]
     public GameObject RarmsAttackTrail;
@@ -80,8 +80,8 @@ public class CompositeFighter : MonoBehaviour
     public GameObject[] HeadCrash;
 
     [Header("Spark Particles")]
-    public VisualEffect[] shockWaves;
-    public GameObject[] Trails;
+    //public VisualEffect[] shockWaves;
+    //public GameObject[] Trails;
     public GameObject[] RarmSpark;
     public GameObject[] LarmSpark;
     public GameObject[] LegsSpark;
@@ -253,6 +253,10 @@ public class CompositeFighter : MonoBehaviour
     {
         FightControler.Instance.IADefender(this);
     }
+    public void SkipIntro()
+    {
+        anim.Play("Idle");
+    }
 
 
     void Update()
@@ -319,7 +323,7 @@ public class CompositeFighter : MonoBehaviour
     {
         if (!IsAttacking && !IsDodging && !IsRepairing && !IsDying)
         {
-            if (!IsEnemy) StartCoroutine(ManageVFX(trail, 0.75f));
+            StartCoroutine(ManageVFX(trail, 0.75f));
             anim.speed = Stamina / MaxStamina;
             anim.Play(animation);
             IsAttacking = true;
@@ -413,7 +417,8 @@ public class CompositeFighter : MonoBehaviour
         _Audio.PlayOneShot(hit);
         if(Rarm.life>0)
             Rarm.life -= damage;
-        RarmsHitSpark.gameObject.SetActive(true);
+        //RarmsHitSpark.gameObject.SetActive(true);
+        StartCoroutine(WaveVFX(RarmsHitWave, 0.5f));
 
         LifeTraker.Instance.UpdateLife();
 
@@ -449,7 +454,8 @@ public class CompositeFighter : MonoBehaviour
         _Audio.PlayOneShot(hit);
         if (Larm.life > 0)
             Larm.life -= damage;
-        LarmsHitSpark.gameObject.SetActive(true);
+        //LarmsHitSpark.gameObject.SetActive(true);
+        StartCoroutine(WaveVFX(LarmsHitWave, 0.5f));
 
         LifeTraker.Instance.UpdateLife();
 
@@ -485,7 +491,8 @@ public class CompositeFighter : MonoBehaviour
         _Audio.PlayOneShot(hit);
         if (Leg.life > 0)
             Leg.life -= damage;
-        LegsHitSpark.gameObject.SetActive(true);
+        //LegsHitSpark.gameObject.SetActive(true);
+        StartCoroutine(WaveVFX(LegsHitWave, 0.5f));
 
         LegsDisplay.UpdateDisplay(Leg.life, CLegs);
 
@@ -516,7 +523,8 @@ public class CompositeFighter : MonoBehaviour
         _Audio.PlayOneShot(hit);
         if (Head.life > 0)
             Head.life -= damage;
-        HeadHitSpark.gameObject.SetActive(true);
+        //HeadHitSpark.gameObject.SetActive(true);
+        StartCoroutine(WaveVFX(HeadHitWave, 0.5f));
 
         LifeTraker.Instance.UpdateLife();
 
@@ -596,10 +604,11 @@ public class CompositeFighter : MonoBehaviour
         yield return new WaitForSeconds(i);
         vfx.SetActive(false);
     }
-
-    public void CallVFX(int i)
+    IEnumerator WaveVFX(GameObject vfx, float i)
     {
-        shockWaves[i].Play();
+        vfx.SetActive(true);
+        yield return new WaitForSeconds(i);
+        vfx.SetActive(false);
     }
 
     public void Pause()

@@ -92,9 +92,9 @@ public class FightControler : MonoBehaviour
     }
     public void Update()
     {
-        if(Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.P))
         {
-            if(IsPaused)
+            if (IsPaused)
             {
                 UnPause();
                 return;
@@ -113,13 +113,17 @@ public class FightControler : MonoBehaviour
         //    _Enemy.Set();
         //    _RT.LaunchTimer();
         //}
+        if (StageState.Instance.ResetFight)
+        {
+            SkipIntro();
+        }
     }
 
     public void EnterStage()
     {
-        if (StageState.Instance.ResetFight)
+        if (StageState.Instance.RoundEnter)
         {
-            StageState.Instance.ResetFight = false;
+            StageState.Instance.RoundEnter = false;
             Timer.SetActive(true);
             ActivateControlers();
             _stageTheme.CallSong();
@@ -127,6 +131,18 @@ public class FightControler : MonoBehaviour
             _Enemy.Set();
             _RT.LaunchTimer();
         }
+    }
+
+    public void SkipIntro()
+    {
+        StageState.Instance.ResetFight = false;
+        Timer.SetActive(true);
+        ActivateControlers();
+        _Player.Set();
+        _Enemy.Set();
+        _RT.LaunchTimer();
+        _Player.SkipIntro();
+        _Enemy.SkipIntro();
     }
 
     public void ExitStage()

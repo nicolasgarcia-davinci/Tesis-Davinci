@@ -8,7 +8,7 @@ public class FallingArrow : MonoBehaviour
     public bool IsRight;
     public bool IsLeft;
     public bool IsUp;
-    public bool IsDown;
+    public bool IsDown; 
 
     public Animator Animator;
 
@@ -21,6 +21,15 @@ public class FallingArrow : MonoBehaviour
         if (IsLeft) Arrow.rectTransform.Rotate(0, 0, 180);
         if (IsUp) Arrow.rectTransform.Rotate(0, 0, 90);
         if (IsDown) Arrow.rectTransform.Rotate(0, 0, 270);
+    }
+
+    public void PlayerSpeed()
+    {
+        Animator.speed = 1;
+    }
+    public void EnemySpeed()
+    {
+        Animator.speed = 2;
     }
 
     public void Fall()
@@ -37,6 +46,7 @@ public class FallingArrow : MonoBehaviour
     public void IsInRange()
     {
         CanBeHit = true;
+        DDManager.EnemyMess();
     }
     public void IsNotInRange()
     {
