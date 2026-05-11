@@ -25,10 +25,10 @@ public class AIControler : MonoBehaviour
         {
             _timer = 0;
             float attackNum = Random.Range(0,100);
-            if (attackNum <= 25) Character.Headattack();
-            if (attackNum <= 50 && attackNum > 25) Character.RArmattack();
-            if (attackNum <= 75 && attackNum > 50) Character.LArmattack();
-            if (attackNum <= 100 && attackNum > 75) Character.Legattack();
+            if (attackNum <= 25) Character.IsAttackingUp = Character.Attack(Character.Head.AttName, Character.RarmsAttackTrail, Character.IsAttackingUp);
+            if (attackNum <= 50 && attackNum > 25) Character.IsAttackingRight = Character.Attack(Character.Rarm.AttName, Character.RarmsAttackTrail, Character.IsAttackingRight);
+            if (attackNum <= 75 && attackNum > 50) Character.IsAttackingLeft = Character.Attack(Character.Larm.AttName, Character.RarmsAttackTrail, Character.IsAttackingLeft);
+            if (attackNum <= 100 && attackNum > 75) Character.IsAttackingDown = Character.Attack(Character.Leg.AttName, Character.RarmsAttackTrail, Character.IsAttackingDown);
         }
     }
 

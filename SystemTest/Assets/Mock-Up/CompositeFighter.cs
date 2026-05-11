@@ -68,6 +68,11 @@ public class CompositeFighter : MonoBehaviour
     public GameObject LegsHitSpark;
     public GameObject HeadHitSpark;
 
+    [Header("Attack Trails")]
+    public GameObject RarmsAttackTrail;
+    public GameObject LarmsAttackTrail;
+    public GameObject LegsAttackTrail;
+
     [Header("Crash Collection")]
     public GameObject[] RarmCrash;
     public GameObject[] LarmCrash;
@@ -76,6 +81,7 @@ public class CompositeFighter : MonoBehaviour
 
     [Header("Spark Particles")]
     public VisualEffect[] shockWaves;
+    public GameObject[] Trails;
     public GameObject[] RarmSpark;
     public GameObject[] LarmSpark;
     public GameObject[] LegsSpark;
@@ -258,6 +264,12 @@ public class CompositeFighter : MonoBehaviour
         if (!hasBeenSet) Set();
     }
 
+    //arreglar despues
+    public bool Dodge()
+    {
+        return false;
+    }
+
     public void DodgeRight()
     {
         if (!IsAttacking && !IsDodging && !IsRepairing && !IsDying)
@@ -295,10 +307,25 @@ public class CompositeFighter : MonoBehaviour
         }  
     }
 
-    public void LArmattack()
+    public bool Attack(string animation, GameObject trail, bool partAttack)
+    {
+        if (!IsAttacking && !IsDodging && !IsRepairing && !IsDying)
+        {
+            if (!IsEnemy) StartCoroutine(ManageVFX(trail, 0.75f));
+            anim.speed = Stamina / MaxStamina;
+            anim.Play(animation);
+            IsAttacking = true;
+            return partAttack = true;
+        }
+
+        return false;
+    }
+
+    /*public void LArmattack()
     {
         if(!IsAttacking && !IsDodging && !IsRepairing && !IsDying)
         {
+            if (!IsEnemy) StartCoroutine(ManageVFX(LarmsAttackTrail, 0.75f));
             anim.speed = Stamina / MaxStamina;
             anim.Play(Larm.AttName);
             IsAttackingLeft=true;
@@ -309,6 +336,7 @@ public class CompositeFighter : MonoBehaviour
     {
         if (!IsAttacking && !IsDodging && !IsRepairing && !IsDying)
         {
+            if (!IsEnemy) StartCoroutine(ManageVFX(RarmsAttackTrail, 0.75f));
             anim.speed = Stamina / MaxStamina;
             anim.Play(Rarm.AttName);
             IsAttackingRight = true;
@@ -319,6 +347,7 @@ public class CompositeFighter : MonoBehaviour
     {
         if (!IsAttacking && !IsDodging && !IsRepairing && !IsDying)
         {
+            if (!IsEnemy) StartCoroutine(ManageVFX(LegsAttackTrail, 0.75f));
             anim.speed = Stamina / MaxStamina;
             anim.Play(Leg.AttName);
             IsAttackingDown = true;
@@ -329,12 +358,13 @@ public class CompositeFighter : MonoBehaviour
     {
         if (!IsAttacking && !IsDodging && !IsRepairing && !IsDying)
         {
+            if(!IsEnemy) StartCoroutine(ManageVFX(RarmsAttackTrail, 0.75f));
             anim.speed = Stamina / MaxStamina;
             anim.Play(Head.AttName);
             IsAttackingUp = true;
             IsAttacking = true;
         }
-    }
+    }*/
 
     public void CheckAttack(CompositeFighter attacker)
     {
@@ -549,7 +579,14 @@ public class CompositeFighter : MonoBehaviour
             StageCam.Instance.GoToRepairCam();
         }
     }
-    
+
+    IEnumerator ManageVFX(GameObject vfx, float i)
+    {
+        vfx.SetActive(true);
+        yield return new WaitForSeconds(i);
+        vfx.SetActive(false);
+    }
+
     public void CallVFX(int i)
     {
         shockWaves[i].Play();
