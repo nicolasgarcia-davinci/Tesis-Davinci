@@ -56,7 +56,7 @@ public class AIControler : MonoBehaviour
             
             if (Down) 
             {
-                Character.IsDodgingDown = Character.Dodge("DoedgeRight", Character.IsDodgingDown);
+                Character.IsDodgingDown = Character.Dodge("DoedgeDown", Character.IsDodgingDown);
                 return;
             }
         }
