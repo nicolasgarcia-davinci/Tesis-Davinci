@@ -264,13 +264,20 @@ public class CompositeFighter : MonoBehaviour
         if (!hasBeenSet) Set();
     }
 
-    //arreglar despues
-    public bool Dodge()
+    public bool Dodge(string animation, bool dodge)
     {
+        if (!IsAttacking && !IsDodging && !IsRepairing && !IsDying)
+        {
+            IsDodgingRight = true;
+            dodge = true;
+            anim.SetTrigger(animation);
+            return dodge;
+        }
         return false;
     }
 
-    public void DodgeRight()
+    #region Dodge Viejo
+    /*public void DodgeRight()
     {
         if (!IsAttacking && !IsDodging && !IsRepairing && !IsDying)
         { 
@@ -305,7 +312,8 @@ public class CompositeFighter : MonoBehaviour
             IsDodging = true;
             anim.SetTrigger("DoedgeRight");
         }  
-    }
+    }*/
+    #endregion
 
     public bool Attack(string animation, GameObject trail, bool partAttack)
     {
@@ -321,6 +329,7 @@ public class CompositeFighter : MonoBehaviour
         return false;
     }
 
+    #region Ataque Viejo
     /*public void LArmattack()
     {
         if(!IsAttacking && !IsDodging && !IsRepairing && !IsDying)
@@ -365,6 +374,7 @@ public class CompositeFighter : MonoBehaviour
             IsAttacking = true;
         }
     }*/
+    #endregion
 
     public void CheckAttack(CompositeFighter attacker)
     {

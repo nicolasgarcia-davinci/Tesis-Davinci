@@ -21,10 +21,10 @@ public class PlayerControler : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.RightArrow)) Character.IsAttackingRight = Character.Attack(Character.Rarm.AttName, Character.RarmsAttackTrail, Character.IsAttackingRight);
         if (Input.GetKeyDown(KeyCode.LeftArrow)) Character.IsAttackingLeft = Character.Attack(Character.Larm.AttName, Character.LarmsAttackTrail, Character.IsAttackingLeft);
         if (Input.GetKeyDown(KeyCode.DownArrow)) Character.IsAttackingDown = Character.Attack(Character.Leg.AttName, Character.LegsAttackTrail, Character.IsAttackingDown);
-        if (Input.GetKeyDown(KeyCode.W)) Character.DodgeUp();
-        if (Input.GetKeyDown(KeyCode.D)) Character.DodgeRight();
-        if (Input.GetKeyDown(KeyCode.A)) Character.DodgeLeft();
-        if (Input.GetKeyDown(KeyCode.S)) Character.DodgeDown();
+        if (Input.GetKeyDown(KeyCode.W)) Character.IsDodgingUp = Character.Dodge("DoedgeUp", Character.IsDodgingUp);
+        if (Input.GetKeyDown(KeyCode.D)) Character.IsDodgingRight = Character.Dodge("DoedgeRight", Character.IsDodgingRight);
+        if (Input.GetKeyDown(KeyCode.A)) Character.IsDodgingLeft = Character.Dodge("DoedgeLeft", Character.IsDodgingLeft);
+        if (Input.GetKeyDown(KeyCode.S)) Character.IsDodgingDown = Character.Dodge("DoedgeRight", Character.IsDodgingDown);
     }
     public void Pause()
     {
