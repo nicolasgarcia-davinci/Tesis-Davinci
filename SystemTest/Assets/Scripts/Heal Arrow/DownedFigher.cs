@@ -92,9 +92,4 @@ public class DownedFigher : MonoBehaviour
             Player.RepairDown();
         }
     }
-
-    public void TimeToExit()
-    {
-        Player.Anim.SetTrigger("Exit Rest");
-    }
 }

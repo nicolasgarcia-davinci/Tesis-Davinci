@@ -119,6 +119,12 @@ public class FightControler : MonoBehaviour
         }
     }
 
+    public void CallFighters()
+    {
+        _Player.EnterStage();
+        _Enemy.EnterStage();
+    }
+
     public void EnterStage()
     {
         if (StageState.Instance.RoundEnter)

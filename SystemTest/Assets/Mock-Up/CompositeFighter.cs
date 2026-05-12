@@ -108,7 +108,8 @@ public class CompositeFighter : MonoBehaviour
     public PartDisplay RightArmDisplay;
     public PartDisplay LeftArmDisplay;
     public PartDisplay LegsDisplay;
-    public PartDisplay ChestDisplay;
+    public LifeBar LifeBar;
+    public LifeBar StamminaBar;
 
     [Header("Dying")]
     public Action IsDyingEvent = delegate { };
@@ -170,6 +171,7 @@ public class CompositeFighter : MonoBehaviour
         ResetBools();
         Stamina = MaxStamina;
         IsRepairing = false;
+        StamminaBar.UpdateLife(Stamina, MaxStamina);
 
         if (!IsEnemy)
         { 
@@ -219,7 +221,7 @@ public class CompositeFighter : MonoBehaviour
         RightArmDisplay.UpdateDisplay(Rarm.life, CRight);
         LeftArmDisplay.UpdateDisplay(Larm.life, CLeft);
         LegsDisplay.UpdateDisplay(Leg.life, CLegs);
-        ChestDisplay.UpdateDisplay(OverAllHealth, CChest);
+        LifeBar.UpdateLife(OverAllHealth, CChest);
     }
 
     public void ResetBools()
@@ -230,8 +232,13 @@ public class CompositeFighter : MonoBehaviour
         anim.ResetTrigger("DoedgeRight");
         anim.ResetTrigger("DoedgeLeft");
         anim.ResetTrigger("DoedgeDown");
+        anim.speed = 1;
     }
 
+    public void EnterStage()
+    {
+        anim.SetTrigger("Enter Stage");
+    }
     public void FightStart()
     {
         if(!IsEnemy) FightControler.Instance.EnterStage();
@@ -264,8 +271,9 @@ public class CompositeFighter : MonoBehaviour
         if (Stamina < MaxStamina)
         {
             Stamina += StaminaRefresh * Time.deltaTime;
+            StamminaBar.UpdateLife(Stamina,MaxStamina);
         }
-        if (!hasBeenSet) Set();
+        //if (!hasBeenSet) Set();
     }
 
     public bool Dodge(string animation, bool dodge)
@@ -323,6 +331,8 @@ public class CompositeFighter : MonoBehaviour
     {
         if (!IsAttacking && !IsDodging && !IsRepairing && !IsDying)
         {
+            Stamina -= 10;
+            StamminaBar.UpdateLife(Stamina, MaxStamina);
             StartCoroutine(ManageVFX(trail, 0.75f));
             anim.speed = Stamina / MaxStamina;
             anim.Play(animation);
@@ -547,7 +557,7 @@ public class CompositeFighter : MonoBehaviour
     {
         OverAllHealth -= DamageToTake;
 
-        ChestDisplay.UpdateDisplay(OverAllHealth, CChest);
+        LifeBar.UpdateLife(OverAllHealth, CChest);
 
         if (OverAllHealth<=0)
         {

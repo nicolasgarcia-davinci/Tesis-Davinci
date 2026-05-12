@@ -132,7 +132,7 @@ public class StageCam : MonoBehaviour
     public void TurnOnRound()
     {
         StageState.Instance.RoundEnter = true;
-        //Fight.SetActive(true);
+        Fight.SetActive(true);
         FightCurtain.SetActive(true);
     }
     public void TurnOnKO()

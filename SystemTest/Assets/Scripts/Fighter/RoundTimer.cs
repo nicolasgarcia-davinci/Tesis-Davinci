@@ -9,7 +9,7 @@ public class RoundTimer : MonoBehaviour
     public float _RoundTime;
     [SerializeField] TextMeshProUGUI _counter;
     public Color endTime;
-    public Animator _animator;
+    public Color Hush;
 
 
 
@@ -31,8 +31,6 @@ public class RoundTimer : MonoBehaviour
     public void LaunchTimer()
     {
         _counter.color = Color.white;
-        _counter.rectTransform.localScale = Vector3.one;
-        _animator.SetBool("Pulse", false);
         if (_timer <= 0)
         {
             _timer = _RoundTime;
@@ -47,11 +45,10 @@ public class RoundTimer : MonoBehaviour
         if(_timer <= 10)
         {
             _counter.color = endTime;
-            _animator.SetBool("Pulse",true);
         }
         if (_timer == 0)
         {
-            StopAllCoroutines();
+            Stop();
             FightControler.Instance.ExitStage();
         }
         yield return new WaitForSeconds(1);
@@ -68,6 +65,7 @@ public class RoundTimer : MonoBehaviour
 
     public void Stop()
     {
+        _counter.color = Hush;
         StopAllCoroutines();
         StopCoroutine(CountDown());
         _counter.text = "";

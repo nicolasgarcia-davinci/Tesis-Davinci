@@ -116,9 +116,4 @@ public class RestAnim : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         HeadGlich.SetActive(true);
     }
-
-    public void CallCam()
-    {
-        StageCam.Instance.GoToRound2();
-    }
 }

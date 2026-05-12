@@ -109,9 +109,9 @@ public class RepairButtom : MonoBehaviour
         {
             LifeTraker.Instance.ResetTimer = true;
             StageState.Instance.ResetFight = true;
-            RepariBot.TimeToExit();
             StageSound.instance.Mute();
             IT.Stop();
+            StageCam.Instance.GoToRound2();
         }
     }
     public enum HealPart
