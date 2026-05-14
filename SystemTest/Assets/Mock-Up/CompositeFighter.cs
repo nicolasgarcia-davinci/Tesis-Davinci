@@ -119,6 +119,8 @@ public class CompositeFighter : MonoBehaviour
 
     void Start()
     {
+        Stamina = MaxStamina;
+        StamminaBar.UpdateLife(Stamina, MaxStamina);
         anim = GetComponent<Animator>();
         if(!IsEnemy)
         {
@@ -170,8 +172,8 @@ public class CompositeFighter : MonoBehaviour
         hasBeenSet = true;
         ResetBools();
         Stamina = MaxStamina;
-        IsRepairing = false;
         StamminaBar.UpdateLife(Stamina, MaxStamina);
+        IsRepairing = false;
 
         if (!IsEnemy)
         { 
