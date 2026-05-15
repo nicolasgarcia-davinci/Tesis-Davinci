@@ -143,4 +143,13 @@ public class StageCam : MonoBehaviour
     {
         Repair.SetActive(true);
     }
+    public void StopCam()
+    {
+        _animator.speed = 0;
+    }
+    public void ResumeCam()
+    {
+        _animator.speed = 1;
+    }
+
 }

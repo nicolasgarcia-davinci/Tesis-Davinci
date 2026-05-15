@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.VFX;
 
 public class CompositeFighter : MonoBehaviour
@@ -235,6 +236,11 @@ public class CompositeFighter : MonoBehaviour
         anim.ResetTrigger("DoedgeLeft");
         anim.ResetTrigger("DoedgeDown");
         anim.speed = 1;
+    }
+    public void FireCutscene()
+    {
+        if(!IsEnemy)
+        StageCam.Instance.ResumeCam();
     }
 
     public void EnterStage()
