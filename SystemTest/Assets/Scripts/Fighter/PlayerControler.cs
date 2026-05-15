@@ -24,7 +24,7 @@ public class PlayerControler : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.W)) Character.IsDodgingUp = Character.Dodge("DoedgeUp", Character.IsDodgingUp);
         if (Input.GetKeyDown(KeyCode.D)) Character.IsDodgingRight = Character.Dodge("DoedgeRight", Character.IsDodgingRight);
         if (Input.GetKeyDown(KeyCode.A)) Character.IsDodgingLeft = Character.Dodge("DoedgeLeft", Character.IsDodgingLeft);
-        if (Input.GetKeyDown(KeyCode.S)) Character.IsDodgingDown = Character.Dodge("DoedgeRight", Character.IsDodgingDown);
+        if (Input.GetKeyDown(KeyCode.S)) Character.IsDodgingDown = Character.Dodge("DoedgeDown", Character.IsDodgingDown);
     }
     public void Pause()
     {

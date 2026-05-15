@@ -39,28 +39,28 @@ public class AIControler : MonoBehaviour
         {
             if (Up)
             {
-                //Character.IsDodgingUp = Character.Dodge("DoedgeUp", Character.IsDodgingUp);
-                Character.DodgeUp();
+                Character.IsDodgingUp = Character.Dodge("DoedgeUp", Character.IsDodgingUp);
+                //Character.DodgeUp();
                 return;
             }
 
             if (Right) 
             {
-                Character.DodgeRight();
-                //Character.IsDodgingRight = Character.Dodge("DoedgeRight", Character.IsDodgingRight);
+                //Character.DodgeRight();
+                Character.IsDodgingRight = Character.Dodge("DoedgeRight", Character.IsDodgingRight);
                 return;
             }
             if (Left) 
             {
-                Character.DodgeLeft();
-                //Character.IsDodgingLeft = Character.Dodge("DoedgeLeft", Character.IsDodgingLeft);
+                //Character.DodgeLeft();
+                Character.IsDodgingLeft = Character.Dodge("DoedgeLeft", Character.IsDodgingLeft);
                 return;
             }
             
             if (Down) 
             {
-                Character.DodgeDown();
-                //Character.IsDodgingDown = Character.Dodge("DoedgeDown", Character.IsDodgingDown);
+                //Character.DodgeDown();
+                Character.IsDodgingDown = Character.Dodge("DoedgeDown", Character.IsDodgingDown);
                 return;
             }
         }
