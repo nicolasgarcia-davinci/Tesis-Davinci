@@ -86,15 +86,12 @@ public class DDManager : MonoBehaviour
         if(Player._gameOver) return;
         if (Input.GetKeyDown(KeyCode.RightArrow) && !LifeTraker.Instance.IsEnemy)
         {
-            Player._fallen.SetTrigger("Twitch Right");
-            RightParticles.SetActive(true);
             foreach (var panel in DDPanels)
                 if (panel.CanBeHit && panel.IsRight)
                 { 
                     panel.Correct();
                     StartCoroutine(RightHit());
                     UpdateHits();
-                    _AudioSource.PlayOneShot(HitSound);
                     return;
                 }
             foreach (var panel in DDPanels)
@@ -110,15 +107,12 @@ public class DDManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.LeftArrow) && !LifeTraker.Instance.IsEnemy)
         {
-            Player._fallen.SetTrigger("Twitch Left");
-            LeftParticles.SetActive(true);
             foreach (var panel in DDPanels)
                 if (panel.CanBeHit && panel.IsLeft) 
                 {
                     panel.Correct();
                     StartCoroutine(LeftHit());
                     UpdateHits();
-                    _AudioSource.PlayOneShot(HitSound);
                     return;
                 }
             foreach (var panel in DDPanels)
@@ -133,15 +127,12 @@ public class DDManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.UpArrow) && !LifeTraker.Instance.IsEnemy)
         {
-            Player._fallen.SetTrigger("Twitch Up");
-            UpParticles.SetActive(true);
             foreach (var panel in DDPanels)
                 if (panel.CanBeHit && panel.IsUp) 
                 {
                     panel.Correct();
                     StartCoroutine(UpHit());
                     UpdateHits();
-                    _AudioSource.PlayOneShot(HitSound);
                     return;
                 }
             foreach (var panel in DDPanels)
@@ -156,15 +147,12 @@ public class DDManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.DownArrow) && !LifeTraker.Instance.IsEnemy)
         {
-            Player._fallen.SetTrigger("Twitch Down");
-            DownParticles.SetActive(true);
             foreach (var panel in DDPanels)
                 if (panel.CanBeHit && panel.IsDown) 
                 {
                     panel.Correct();
                     StartCoroutine(DownHit());
                     UpdateHits();
-                    _AudioSource.PlayOneShot(HitSound);
                     return;
                 }
             foreach (var panel in DDPanels)
@@ -204,24 +192,28 @@ public class DDManager : MonoBehaviour
     public IEnumerator UpMiss()
     {
         _UpHitZone.color = _Wrong;
+        UpParticles.SetActive(true);
         yield return new WaitForSeconds(0.5f);
         _UpHitZone.color = _default;
     }
     public IEnumerator DownMiss()
     {
         _DownHitZone.color = _Wrong;
+        DownParticles.SetActive(true);
         yield return new WaitForSeconds(0.5f);
         _DownHitZone.color = _default;
     }
     public IEnumerator RightMiss()
     {
         _RightHitZone.color = _Wrong;
+        RightParticles.SetActive(true);
         yield return new WaitForSeconds(0.5f);
         _RightHitZone.color = _default;
     }
     public IEnumerator LeftMiss()
     {
         _LeftHitZone.color = _Wrong;
+        LeftParticles.SetActive(true);
         yield return new WaitForSeconds(0.5f);
         _LeftHitZone.color = _default;
     }
@@ -232,7 +224,6 @@ public class DDManager : MonoBehaviour
         float Rnum = Random.Range(0, 100);
         if (Rnum <= 25)
         {
-            Enemy._fallen.SetTrigger("Twitch Right");
             ERightParticles.SetActive(true);
             foreach (var panel in DDPanels)
                 if (panel.CanBeHit && panel.IsRight)
@@ -240,7 +231,6 @@ public class DDManager : MonoBehaviour
                     panel.Correct();
                     StartCoroutine(RightHit());
                     UpdateHits();
-                    _AudioSource.PlayOneShot(HitSound);
                     return;
                 }
             foreach (var panel in DDPanels)
@@ -255,7 +245,6 @@ public class DDManager : MonoBehaviour
 
         if (Rnum <= 50 && Rnum > 25)
         {
-            Enemy._fallen.SetTrigger("Twitch Left");
             ELeftParticles.SetActive(true);
             foreach (var panel in DDPanels)
                 if (panel.CanBeHit && panel.IsLeft)
@@ -263,7 +252,6 @@ public class DDManager : MonoBehaviour
                     panel.Correct();
                     StartCoroutine(LeftHit());
                     UpdateHits();
-                    _AudioSource.PlayOneShot(HitSound);
                     return;
                 }
             foreach (var panel in DDPanels)
@@ -278,7 +266,6 @@ public class DDManager : MonoBehaviour
 
         if (Rnum <= 75 && Rnum > 50)
         {
-            Enemy._fallen.SetTrigger("Twitch Up");
             EUpParticles.SetActive(true);
             foreach (var panel in DDPanels)
                 if (panel.CanBeHit && panel.IsUp)
@@ -286,7 +273,6 @@ public class DDManager : MonoBehaviour
                     panel.Correct();
                     StartCoroutine(UpHit());
                     UpdateHits();
-                    _AudioSource.PlayOneShot(HitSound);
                     return;
                 }
             foreach (var panel in DDPanels)
@@ -301,7 +287,6 @@ public class DDManager : MonoBehaviour
 
         if (Rnum <= 100 && Rnum > 75)
         {
-            Enemy._fallen.SetTrigger("Twitch Down");
             EDownParticles.SetActive(true);
             foreach (var panel in DDPanels)
                 if (panel.CanBeHit && panel.IsDown)
@@ -309,7 +294,6 @@ public class DDManager : MonoBehaviour
                     panel.Correct();
                     StartCoroutine(DownHit());
                     UpdateHits();
-                    _AudioSource.PlayOneShot(HitSound);
                     return;
                 }
             foreach (var panel in DDPanels)
@@ -326,7 +310,8 @@ public class DDManager : MonoBehaviour
     {
         Hits++;
         _bar.fillAmount = Hits/MaxHit;
-        if(Hits >= MaxHit)
+        _AudioSource.PlayOneShot(HitSound);
+        if (Hits >= MaxHit)
         {
             if(!LifeTraker.Instance.IsEnemy)
             {
@@ -345,6 +330,28 @@ public class DDManager : MonoBehaviour
             _AudioSource.PlayOneShot(Succes);
             _clock.Stop();
             StageState.Instance.ResetFight = true;
+            return;
+        }
+        float Rnum = Random.Range(0, 100);
+        if (Rnum <= 25)
+        {
+            if (LifeTraker.Instance.IsEnemy) Enemy._fallen.SetTrigger("Twitch Down");
+            else Player._fallen.SetTrigger("Twitch Down");
+        }
+        if (Rnum <= 50 && Rnum > 25)
+        {
+            if (LifeTraker.Instance.IsEnemy) Enemy._fallen.SetTrigger("Twitch Up");
+            else Player._fallen.SetTrigger("Twitch Up");
+        }
+        if (Rnum <= 75 && Rnum > 50)
+        {
+            if (LifeTraker.Instance.IsEnemy) Enemy._fallen.SetTrigger("Twitch Right");
+            else Player._fallen.SetTrigger("Twitch Right");
+        }
+        if (Rnum <= 100 && Rnum > 75)
+        {
+            if (LifeTraker.Instance.IsEnemy) Enemy._fallen.SetTrigger("Twitch Left");
+            else Player._fallen.SetTrigger("Twitch Left");
         }
     }
 
