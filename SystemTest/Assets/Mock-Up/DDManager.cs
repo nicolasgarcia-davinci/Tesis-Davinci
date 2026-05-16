@@ -38,6 +38,16 @@ public class DDManager : MonoBehaviour
 
     public ParticleSystem[] ParticulasPlayer;
     public ParticleSystem[] ParticulasEnemy;
+
+    public GameObject UpParticles;
+    public GameObject DownParticles;
+    public GameObject RightParticles;
+    public GameObject LeftParticles;
+
+    public GameObject EUpParticles;
+    public GameObject EDownParticles;
+    public GameObject ERightParticles;
+    public GameObject ELeftParticles;
     public void SetGame()
     {
         _bar.fillAmount = 0;
@@ -76,7 +86,8 @@ public class DDManager : MonoBehaviour
         if(Player._gameOver) return;
         if (Input.GetKeyDown(KeyCode.RightArrow) && !LifeTraker.Instance.IsEnemy)
         {
-                    Player._fallen.SetTrigger("Twitch Right");
+            Player._fallen.SetTrigger("Twitch Right");
+            RightParticles.SetActive(true);
             foreach (var panel in DDPanels)
                 if (panel.CanBeHit && panel.IsRight)
                 { 
@@ -99,7 +110,8 @@ public class DDManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.LeftArrow) && !LifeTraker.Instance.IsEnemy)
         {
-                    Player._fallen.SetTrigger("Twitch Left");
+            Player._fallen.SetTrigger("Twitch Left");
+            LeftParticles.SetActive(true);
             foreach (var panel in DDPanels)
                 if (panel.CanBeHit && panel.IsLeft) 
                 {
@@ -121,7 +133,8 @@ public class DDManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.UpArrow) && !LifeTraker.Instance.IsEnemy)
         {
-                    Player._fallen.SetTrigger("Twitch Up");
+            Player._fallen.SetTrigger("Twitch Up");
+            UpParticles.SetActive(true);
             foreach (var panel in DDPanels)
                 if (panel.CanBeHit && panel.IsUp) 
                 {
@@ -143,7 +156,8 @@ public class DDManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.DownArrow) && !LifeTraker.Instance.IsEnemy)
         {
-                    Player._fallen.SetTrigger("Twitch Down");
+            Player._fallen.SetTrigger("Twitch Down");
+            DownParticles.SetActive(true);
             foreach (var panel in DDPanels)
                 if (panel.CanBeHit && panel.IsDown) 
                 {
@@ -218,7 +232,8 @@ public class DDManager : MonoBehaviour
         float Rnum = Random.Range(0, 100);
         if (Rnum <= 25)
         {
-                    Enemy._fallen.SetTrigger("Twitch Right");
+            Enemy._fallen.SetTrigger("Twitch Right");
+            ERightParticles.SetActive(true);
             foreach (var panel in DDPanels)
                 if (panel.CanBeHit && panel.IsRight)
                 {
@@ -240,7 +255,8 @@ public class DDManager : MonoBehaviour
 
         if (Rnum <= 50 && Rnum > 25)
         {
-                    Enemy._fallen.SetTrigger("Twitch Left");
+            Enemy._fallen.SetTrigger("Twitch Left");
+            ELeftParticles.SetActive(true);
             foreach (var panel in DDPanels)
                 if (panel.CanBeHit && panel.IsLeft)
                 {
@@ -262,7 +278,8 @@ public class DDManager : MonoBehaviour
 
         if (Rnum <= 75 && Rnum > 50)
         {
-                    Enemy._fallen.SetTrigger("Twitch Up");
+            Enemy._fallen.SetTrigger("Twitch Up");
+            EUpParticles.SetActive(true);
             foreach (var panel in DDPanels)
                 if (panel.CanBeHit && panel.IsUp)
                 {
@@ -284,7 +301,8 @@ public class DDManager : MonoBehaviour
 
         if (Rnum <= 100 && Rnum > 75)
         {
-                    Enemy._fallen.SetTrigger("Twitch Down");
+            Enemy._fallen.SetTrigger("Twitch Down");
+            EDownParticles.SetActive(true);
             foreach (var panel in DDPanels)
                 if (panel.CanBeHit && panel.IsDown)
                 {
@@ -323,8 +341,6 @@ public class DDManager : MonoBehaviour
                 LifeTraker.Instance.eOverHealt = 50;
                 Enemy.GetUp();
             }
-
-
             StopGame();
             _AudioSource.PlayOneShot(Succes);
             _clock.Stop();

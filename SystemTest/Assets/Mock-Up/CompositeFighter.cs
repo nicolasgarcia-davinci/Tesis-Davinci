@@ -166,6 +166,7 @@ public class CompositeFighter : MonoBehaviour
             CLegs = Leg.life;
             CChest = OverAllHealth;
         }
+        LifeBar.UpdateLife(OverAllHealth, CChest);
     }
 
     public void Set()
