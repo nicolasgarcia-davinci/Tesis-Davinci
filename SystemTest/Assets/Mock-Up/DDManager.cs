@@ -22,7 +22,7 @@ public class DDManager : MonoBehaviour
     public float _defaultMaxHits;
 
     public AudioSource _AudioSource;
-    public AudioClip Lose, Succes, HitSound,Miss;
+    public AudioClip Lose, Succes, HitSound;
 
     public Image _bar;
     public Image _RightHitZone;
@@ -91,7 +91,7 @@ public class DDManager : MonoBehaviour
                 {
                     panel.Wrong();
                     StartCoroutine(RightMiss());
-                    _AudioSource.PlayOneShot(Miss);
+                    _AudioSource.PlayOneShot(Lose);
                     return;
                 }
 
@@ -114,7 +114,7 @@ public class DDManager : MonoBehaviour
                 {
                     panel.Wrong();
                     StartCoroutine(LeftMiss());
-                    _AudioSource.PlayOneShot(Miss);
+                    _AudioSource.PlayOneShot(Lose);
                     return;
                 }
         }
@@ -136,7 +136,7 @@ public class DDManager : MonoBehaviour
                 {
                     panel.Wrong();
                     StartCoroutine(UpMiss());
-                    _AudioSource.PlayOneShot(Miss);
+                    _AudioSource.PlayOneShot(Lose);
                     return;
                 }
         }
@@ -158,7 +158,7 @@ public class DDManager : MonoBehaviour
                 {
                     panel.Wrong();
                     StartCoroutine(DownMiss());
-                    _AudioSource.PlayOneShot(Miss);
+                    _AudioSource.PlayOneShot(Lose);
                 }
         }
     }
@@ -233,7 +233,7 @@ public class DDManager : MonoBehaviour
                 {
                     panel.Wrong();
                     StartCoroutine(RightMiss());
-                    _AudioSource.PlayOneShot(Miss);
+                    _AudioSource.PlayOneShot(Lose);
                     return;
                 }
         }
@@ -255,7 +255,7 @@ public class DDManager : MonoBehaviour
                 {
                     panel.Wrong();
                     StartCoroutine(LeftMiss());
-                    _AudioSource.PlayOneShot(Miss);
+                    _AudioSource.PlayOneShot(Lose);
                     return;
                 }
         }
@@ -277,7 +277,7 @@ public class DDManager : MonoBehaviour
                 {
                     panel.Wrong();
                     StartCoroutine(UpMiss());
-                    _AudioSource.PlayOneShot(Miss);
+                    _AudioSource.PlayOneShot(Lose);
                     return;
                 }
         }
@@ -299,7 +299,7 @@ public class DDManager : MonoBehaviour
                 {
                     panel.Wrong();
                     StartCoroutine(DownMiss());
-                    _AudioSource.PlayOneShot(Miss);
+                    _AudioSource.PlayOneShot(Lose);
                 }
         }
     }
