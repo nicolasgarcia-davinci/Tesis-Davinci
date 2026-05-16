@@ -132,10 +132,10 @@ public class FightControler : MonoBehaviour
             StageState.Instance.RoundEnter = false;
             Timer.SetActive(true);
             ActivateControlers();
-            _stageTheme.CallSong();
             _Player.Set();
             _Enemy.Set();
             _RT.LaunchTimer();
+            _stageTheme.CallSong();
         }
     }
 
@@ -149,6 +149,7 @@ public class FightControler : MonoBehaviour
         _RT.LaunchTimer();
         _Player.SkipIntro();
         _Enemy.SkipIntro();
+        _stageTheme.CallSong();
     }
 
     public void ExitStage()

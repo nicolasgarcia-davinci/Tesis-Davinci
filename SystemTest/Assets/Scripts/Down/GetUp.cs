@@ -19,6 +19,7 @@ public class GetUp : MonoBehaviour
     public IEnumerator CountDown()
     {
         _counter.text = _timer.ToString();
+        if (_timer > 10) _counter.text = "0" + _timer.ToString();
         yield return new WaitForSeconds(1);
         _timer--;
         StartCoroutine(CountDown());

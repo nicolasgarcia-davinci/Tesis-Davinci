@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEngine.Rendering.DebugUI;
 using Random = UnityEngine.Random;
 
 public class DDManager : MonoBehaviour
@@ -21,7 +22,7 @@ public class DDManager : MonoBehaviour
     public float _defaultMaxHits;
 
     public AudioSource _AudioSource;
-    public AudioClip Lose, Succes, HitSound;
+    public AudioClip Lose, Succes, HitSound,Miss;
 
     public Image _bar;
     public Image _RightHitZone;
@@ -30,6 +31,7 @@ public class DDManager : MonoBehaviour
     public Image _UpHitZone;
     public Color _default;
     public Color _Correct;
+    public Color _Wrong;
 
 
     public Color _Normal;
@@ -54,8 +56,6 @@ public class DDManager : MonoBehaviour
                 {
                 panel.EnemySpeed();
                 }
-
-            //StartCoroutine(EnemyStep());
         }
         else
         {
@@ -76,6 +76,7 @@ public class DDManager : MonoBehaviour
         if(Player._gameOver) return;
         if (Input.GetKeyDown(KeyCode.RightArrow) && !LifeTraker.Instance.IsEnemy)
         {
+                    Player._fallen.SetTrigger("Twitch Right");
             foreach (var panel in DDPanels)
                 if (panel.CanBeHit && panel.IsRight)
                 { 
@@ -83,12 +84,22 @@ public class DDManager : MonoBehaviour
                     StartCoroutine(RightHit());
                     UpdateHits();
                     _AudioSource.PlayOneShot(HitSound);
-                    Player._fallen.SetTrigger("Twitch Right");
-                } 
+                    return;
+                }
+            foreach (var panel in DDPanels)
+                if (panel.IsFalling && !panel.IsRight)
+                {
+                    panel.Wrong();
+                    StartCoroutine(RightMiss());
+                    _AudioSource.PlayOneShot(Miss);
+                    return;
+                }
+
         }
 
         if (Input.GetKeyDown(KeyCode.LeftArrow) && !LifeTraker.Instance.IsEnemy)
         {
+                    Player._fallen.SetTrigger("Twitch Left");
             foreach (var panel in DDPanels)
                 if (panel.CanBeHit && panel.IsLeft) 
                 {
@@ -96,12 +107,21 @@ public class DDManager : MonoBehaviour
                     StartCoroutine(LeftHit());
                     UpdateHits();
                     _AudioSource.PlayOneShot(HitSound);
-                    Player._fallen.SetTrigger("Twitch Left");
+                    return;
+                }
+            foreach (var panel in DDPanels)
+                if (panel.IsFalling && !panel.IsLeft)
+                {
+                    panel.Wrong();
+                    StartCoroutine(LeftMiss());
+                    _AudioSource.PlayOneShot(Miss);
+                    return;
                 }
         }
 
         if (Input.GetKeyDown(KeyCode.UpArrow) && !LifeTraker.Instance.IsEnemy)
         {
+                    Player._fallen.SetTrigger("Twitch Up");
             foreach (var panel in DDPanels)
                 if (panel.CanBeHit && panel.IsUp) 
                 {
@@ -109,12 +129,21 @@ public class DDManager : MonoBehaviour
                     StartCoroutine(UpHit());
                     UpdateHits();
                     _AudioSource.PlayOneShot(HitSound);
-                    Player._fallen.SetTrigger("Twitch Up");
+                    return;
+                }
+            foreach (var panel in DDPanels)
+                if (panel.IsFalling && !panel.IsUp)
+                {
+                    panel.Wrong();
+                    StartCoroutine(UpMiss());
+                    _AudioSource.PlayOneShot(Miss);
+                    return;
                 }
         }
 
         if (Input.GetKeyDown(KeyCode.DownArrow) && !LifeTraker.Instance.IsEnemy)
         {
+                    Player._fallen.SetTrigger("Twitch Down");
             foreach (var panel in DDPanels)
                 if (panel.CanBeHit && panel.IsDown) 
                 {
@@ -122,18 +151,16 @@ public class DDManager : MonoBehaviour
                     StartCoroutine(DownHit());
                     UpdateHits();
                     _AudioSource.PlayOneShot(HitSound);
-                    Player._fallen.SetTrigger("Twitch Down");
+                    return;
+                }
+            foreach (var panel in DDPanels)
+                if (panel.IsFalling && !panel.IsDown)
+                {
+                    panel.Wrong();
+                    StartCoroutine(DownMiss());
+                    _AudioSource.PlayOneShot(Miss);
                 }
         }
-        //if(LifeTraker.Instance.IsEnemy)
-        //{
-        //    Timer += Time.deltaTime;
-        //    if(Timer>=TimetoTwithch)
-        //    {
-        //        Timer=0;
-        //        Enemy.Twith();
-        //    }
-        //}
     }
 
     public IEnumerator UpHit()
@@ -160,6 +187,30 @@ public class DDManager : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         _LeftHitZone.color = _default;
     }
+    public IEnumerator UpMiss()
+    {
+        _UpHitZone.color = _Wrong;
+        yield return new WaitForSeconds(0.5f);
+        _UpHitZone.color = _default;
+    }
+    public IEnumerator DownMiss()
+    {
+        _DownHitZone.color = _Wrong;
+        yield return new WaitForSeconds(0.5f);
+        _DownHitZone.color = _default;
+    }
+    public IEnumerator RightMiss()
+    {
+        _RightHitZone.color = _Wrong;
+        yield return new WaitForSeconds(0.5f);
+        _RightHitZone.color = _default;
+    }
+    public IEnumerator LeftMiss()
+    {
+        _LeftHitZone.color = _Wrong;
+        yield return new WaitForSeconds(0.5f);
+        _LeftHitZone.color = _default;
+    }
 
     public void EnemyMess()
     {
@@ -167,6 +218,7 @@ public class DDManager : MonoBehaviour
         float Rnum = Random.Range(0, 100);
         if (Rnum <= 25)
         {
+                    Enemy._fallen.SetTrigger("Twitch Right");
             foreach (var panel in DDPanels)
                 if (panel.CanBeHit && panel.IsRight)
                 {
@@ -174,12 +226,21 @@ public class DDManager : MonoBehaviour
                     StartCoroutine(RightHit());
                     UpdateHits();
                     _AudioSource.PlayOneShot(HitSound);
-                    Enemy._fallen.SetTrigger("Twitch Right");
+                    return;
+                }
+            foreach (var panel in DDPanels)
+                if (panel.IsFalling && !panel.IsRight)
+                {
+                    panel.Wrong();
+                    StartCoroutine(RightMiss());
+                    _AudioSource.PlayOneShot(Miss);
+                    return;
                 }
         }
 
         if (Rnum <= 50 && Rnum > 25)
         {
+                    Enemy._fallen.SetTrigger("Twitch Left");
             foreach (var panel in DDPanels)
                 if (panel.CanBeHit && panel.IsLeft)
                 {
@@ -187,12 +248,21 @@ public class DDManager : MonoBehaviour
                     StartCoroutine(LeftHit());
                     UpdateHits();
                     _AudioSource.PlayOneShot(HitSound);
-                    Enemy._fallen.SetTrigger("Twitch Left");
+                    return;
+                }
+            foreach (var panel in DDPanels)
+                if (panel.IsFalling && !panel.IsLeft)
+                {
+                    panel.Wrong();
+                    StartCoroutine(LeftMiss());
+                    _AudioSource.PlayOneShot(Miss);
+                    return;
                 }
         }
 
         if (Rnum <= 75 && Rnum > 50)
         {
+                    Enemy._fallen.SetTrigger("Twitch Up");
             foreach (var panel in DDPanels)
                 if (panel.CanBeHit && panel.IsUp)
                 {
@@ -200,12 +270,21 @@ public class DDManager : MonoBehaviour
                     StartCoroutine(UpHit());
                     UpdateHits();
                     _AudioSource.PlayOneShot(HitSound);
-                    Enemy._fallen.SetTrigger("Twitch Up");
+                    return;
+                }
+            foreach (var panel in DDPanels)
+                if (panel.IsFalling && !panel.IsUp)
+                {
+                    panel.Wrong();
+                    StartCoroutine(UpMiss());
+                    _AudioSource.PlayOneShot(Miss);
+                    return;
                 }
         }
 
         if (Rnum <= 100 && Rnum > 75)
         {
+                    Enemy._fallen.SetTrigger("Twitch Down");
             foreach (var panel in DDPanels)
                 if (panel.CanBeHit && panel.IsDown)
                 {
@@ -213,7 +292,14 @@ public class DDManager : MonoBehaviour
                     StartCoroutine(DownHit());
                     UpdateHits();
                     _AudioSource.PlayOneShot(HitSound);
-                    Player._fallen.SetTrigger("Twitch Down");
+                    return;
+                }
+            foreach (var panel in DDPanels)
+                if (panel.IsFalling && !panel.IsDown)
+                {
+                    panel.Wrong();
+                    StartCoroutine(DownMiss());
+                    _AudioSource.PlayOneShot(Miss);
                 }
         }
     }

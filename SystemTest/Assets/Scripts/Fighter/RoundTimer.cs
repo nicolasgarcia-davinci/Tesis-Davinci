@@ -42,7 +42,8 @@ public class RoundTimer : MonoBehaviour
     public IEnumerator CountDown()
     {
         _counter.text = _timer.ToString();
-        if(_timer <= 10)
+        if (_timer < 10) _counter.text = "0" + _timer.ToString();
+        if (_timer <= 10)
         {
             _counter.color = endTime;
         }

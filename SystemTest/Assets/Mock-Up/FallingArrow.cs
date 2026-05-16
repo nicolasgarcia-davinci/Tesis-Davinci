@@ -15,6 +15,7 @@ public class FallingArrow : MonoBehaviour
     public DDManager DDManager;
 
     public bool CanBeHit;
+    public bool IsFalling;
     void Start()
     {
         
@@ -50,6 +51,7 @@ public class FallingArrow : MonoBehaviour
     }
     public void IsNotInRange()
     {
+        IsFalling = false;
         CanBeHit = false;
         Arrow.color = Color.clear;
     }
@@ -58,9 +60,15 @@ public class FallingArrow : MonoBehaviour
         Debug.Log("Hit");
         Arrow.color = Color.green;
     }
+    public void Wrong()
+    {
+        Debug.Log("Hit");
+        Arrow.color = Color.red;
+    }
     public void IsReady()
     {
         Arrow.color = Color.white;
+        IsFalling = true;
     }
     public void StopAnim()
     {
