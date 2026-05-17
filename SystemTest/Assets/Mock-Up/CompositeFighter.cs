@@ -81,8 +81,6 @@ public class CompositeFighter : MonoBehaviour
     public GameObject[] HeadCrash;
 
     [Header("Spark Particles")]
-    //public VisualEffect[] shockWaves;
-    //public GameObject[] Trails;
     public GameObject[] RarmSpark;
     public GameObject[] LarmSpark;
     public GameObject[] LegsSpark;
@@ -282,7 +280,6 @@ public class CompositeFighter : MonoBehaviour
             Stamina += StaminaRefresh * Time.deltaTime;
             StamminaBar.UpdateLife(Stamina,MaxStamina);
         }
-        //if (!hasBeenSet) Set();
     }
 
     public bool Dodge(string animation, bool dodge)
@@ -338,7 +335,7 @@ public class CompositeFighter : MonoBehaviour
 
     public bool Attack(string animation, GameObject trail, bool partAttack)
     {
-        if (!IsAttacking && !IsDodging && !IsRepairing && !IsDying)
+        if (!IsAttacking && !IsDodging && !IsRepairing && !IsDying && Stamina>10)
         {
             Stamina -= 10;
             StamminaBar.UpdateLife(Stamina, MaxStamina);
