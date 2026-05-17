@@ -78,7 +78,6 @@ public class FightControler : MonoBehaviour
         {
             _Player.CheckAttack(attacker);
         }
-        attacker.Stamina -= 10;
     }
     public void stopFrame()
     {
@@ -105,14 +104,6 @@ public class FightControler : MonoBehaviour
                 return;
             }
         }
-        //if(StageState.Instance.ResetFight)
-        //{
-        //    StageState.Instance.ResetFight = false;
-        //    ActivateControlers();
-        //    _Player.Set();
-        //    _Enemy.Set();
-        //    _RT.LaunchTimer();
-        //}
         if (StageState.Instance.ResetFight)
         {
             SkipIntro();

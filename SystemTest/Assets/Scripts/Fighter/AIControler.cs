@@ -25,10 +25,10 @@ public class AIControler : MonoBehaviour
         {
             _timer = 0;
             float attackNum = Random.Range(0,100);
-            if (attackNum <= 25) Character.IsAttackingUp = Character.Attack(Character.Head.AttName, Character.RarmsAttackTrail, Character.IsAttackingUp);
-            if (attackNum <= 50 && attackNum > 25) Character.IsAttackingRight = Character.Attack(Character.Rarm.AttName, Character.RarmsAttackTrail, Character.IsAttackingRight);
-            if (attackNum <= 75 && attackNum > 50) Character.IsAttackingLeft = Character.Attack(Character.Larm.AttName, Character.RarmsAttackTrail, Character.IsAttackingLeft);
-            if (attackNum <= 100 && attackNum > 75) Character.IsAttackingDown = Character.Attack(Character.Leg.AttName, Character.RarmsAttackTrail, Character.IsAttackingDown);
+            if (attackNum <= 25 && Character.Head.life > 0) Character.IsAttackingUp = Character.Attack(Character.Head.AttName, Character.RarmsAttackTrail, Character.IsAttackingUp);
+            if (attackNum <= 50 && attackNum > 25 && Character.Rarm.life > 0) Character.IsAttackingRight = Character.Attack(Character.Rarm.AttName, Character.RarmsAttackTrail, Character.IsAttackingRight);
+            if (attackNum <= 75 && attackNum > 50 && Character.Larm.life > 0) Character.IsAttackingLeft = Character.Attack(Character.Larm.AttName, Character.RarmsAttackTrail, Character.IsAttackingLeft);
+            if (attackNum <= 100 && attackNum > 75 && Character.Leg.life > 0) Character.IsAttackingDown = Character.Attack(Character.Leg.AttName, Character.RarmsAttackTrail, Character.IsAttackingDown);
         }
     }
 
@@ -40,26 +40,22 @@ public class AIControler : MonoBehaviour
             if (Up)
             {
                 Character.IsDodgingUp = Character.Dodge("DoedgeUp", Character.IsDodgingUp);
-                //Character.DodgeUp();
                 return;
             }
 
             if (Right) 
             {
-                //Character.DodgeRight();
                 Character.IsDodgingRight = Character.Dodge("DoedgeRight", Character.IsDodgingRight);
                 return;
             }
             if (Left) 
             {
-                //Character.DodgeLeft();
                 Character.IsDodgingLeft = Character.Dodge("DoedgeLeft", Character.IsDodgingLeft);
                 return;
             }
             
             if (Down) 
             {
-                //Character.DodgeDown();
                 Character.IsDodgingDown = Character.Dodge("DoedgeDown", Character.IsDodgingDown);
                 return;
             }

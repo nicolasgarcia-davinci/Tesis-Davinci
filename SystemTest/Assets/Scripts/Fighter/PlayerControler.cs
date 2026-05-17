@@ -17,10 +17,10 @@ public class PlayerControler : MonoBehaviour
     void Update()
     {
         if (IsPaused) return;
-        if (Input.GetKeyDown(KeyCode.UpArrow)) Character.IsAttackingUp = Character.Attack(Character.Head.AttName, Character.RarmsAttackTrail, Character.IsAttackingUp);
-        if (Input.GetKeyDown(KeyCode.RightArrow)) Character.IsAttackingRight = Character.Attack(Character.Rarm.AttName, Character.RarmsAttackTrail, Character.IsAttackingRight);
-        if (Input.GetKeyDown(KeyCode.LeftArrow)) Character.IsAttackingLeft = Character.Attack(Character.Larm.AttName, Character.LarmsAttackTrail, Character.IsAttackingLeft);
-        if (Input.GetKeyDown(KeyCode.DownArrow)) Character.IsAttackingDown = Character.Attack(Character.Leg.AttName, Character.LegsAttackTrail, Character.IsAttackingDown);
+        if (Input.GetKeyDown(KeyCode.UpArrow) && Character.Head.life>0) Character.IsAttackingUp = Character.Attack(Character.Head.AttName, Character.RarmsAttackTrail, Character.IsAttackingUp);
+        if (Input.GetKeyDown(KeyCode.RightArrow) && Character.Rarm.life > 0) Character.IsAttackingRight = Character.Attack(Character.Rarm.AttName, Character.RarmsAttackTrail, Character.IsAttackingRight);
+        if (Input.GetKeyDown(KeyCode.LeftArrow) && Character.Larm.life > 0) Character.IsAttackingLeft = Character.Attack(Character.Larm.AttName, Character.LarmsAttackTrail, Character.IsAttackingLeft);
+        if (Input.GetKeyDown(KeyCode.DownArrow) && Character.Leg.life > 0) Character.IsAttackingDown = Character.Attack(Character.Leg.AttName, Character.LegsAttackTrail, Character.IsAttackingDown);
         if (Input.GetKeyDown(KeyCode.W)) Character.IsDodgingUp = Character.Dodge("DoedgeUp", Character.IsDodgingUp);
         if (Input.GetKeyDown(KeyCode.D)) Character.IsDodgingRight = Character.Dodge("DoedgeRight", Character.IsDodgingRight);
         if (Input.GetKeyDown(KeyCode.A)) Character.IsDodgingLeft = Character.Dodge("DoedgeLeft", Character.IsDodgingLeft);
