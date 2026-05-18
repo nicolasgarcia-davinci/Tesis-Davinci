@@ -7,6 +7,7 @@ public class RepairButtom : MonoBehaviour
 {
     [SerializeField] string _labelText;
     [SerializeField] TextMeshProUGUI _label;
+    [SerializeField] TextMeshProUGUI _percentil;
     public GameObject _selector;
     public HealMenu _HealMenu;
     public float activationdelay;
@@ -43,21 +44,25 @@ public class RepairButtom : MonoBehaviour
         {
             _label.text = _labelText;
             _lifebar.UpdateLife(LifeTraker.Instance.pHead, LifeTraker.Instance.maxHeadHealth);
+            _percentil.text= GetPercentil(LifeTraker.Instance.pHead, LifeTraker.Instance.maxHeadHealth).ToString()+ "%";
         }
         if (_thisType == HealPart.HealRightArm && _HealMenu.HealUses > 0)
         {
             _label.text = _labelText;
             _lifebar.UpdateLife(LifeTraker.Instance.pRight, LifeTraker.Instance.maxRarmHealth);
+            _percentil.text = GetPercentil(LifeTraker.Instance.pRight, LifeTraker.Instance.maxRarmHealth).ToString() + "%";
         }
         if (_thisType == HealPart.HealLeftArm && _HealMenu.HealUses > 0)
         {
             _label.text = _labelText;
             _lifebar.UpdateLife(LifeTraker.Instance.pLeft, LifeTraker.Instance.maxLarmHealth);
+            _percentil.text = GetPercentil(LifeTraker.Instance.pLeft, LifeTraker.Instance.maxLarmHealth).ToString() + "%";
         }
         if (_thisType == HealPart.HealLegs && _HealMenu.HealUses > 0)
         {
             _label.text = _labelText;
             _lifebar.UpdateLife(LifeTraker.Instance.pLegs, LifeTraker.Instance.maxLegsHealth);
+            _percentil.text = GetPercentil(LifeTraker.Instance.pLegs, LifeTraker.Instance.maxLegsHealth).ToString() + "%";
         }
         if (_thisType == HealPart.Pass)
         {
@@ -68,6 +73,11 @@ public class RepairButtom : MonoBehaviour
     {
         _Activated = false;
         _isSelected = false;
+    }
+
+    public float GetPercentil(float current, float max)
+    {  
+        return (current/max)*100; 
     }
     public IEnumerator Action()
     {
@@ -82,28 +92,28 @@ public class RepairButtom : MonoBehaviour
             RepariBot.HealMenuPart(0);
             _HealMenu.UseHeal();
             _lifebar.UpdateLife(LifeTraker.Instance.pHead, LifeTraker.Instance.maxHeadHealth);
-            Select();
+            _percentil.text = GetPercentil(LifeTraker.Instance.pHead, LifeTraker.Instance.maxHeadHealth).ToString() + "%";
         }
         if (_thisType == HealPart.HealRightArm && _HealMenu.HealUses > 0)
         {
             RepariBot.HealMenuPart(1);
             _HealMenu.UseHeal();
             _lifebar.UpdateLife(LifeTraker.Instance.pRight, LifeTraker.Instance.maxRarmHealth);
-            Select();
+            _percentil.text = GetPercentil(LifeTraker.Instance.pRight, LifeTraker.Instance.maxRarmHealth).ToString() + "%";
         }
         if (_thisType == HealPart.HealLeftArm && _HealMenu.HealUses > 0)
         {
             RepariBot.HealMenuPart(2);
             _HealMenu.UseHeal();
             _lifebar.UpdateLife(LifeTraker.Instance.pLeft, LifeTraker.Instance.maxLarmHealth);
-            Select();
+            _percentil.text = GetPercentil(LifeTraker.Instance.pLeft, LifeTraker.Instance.maxLarmHealth).ToString() + "%";
         }
         if (_thisType == HealPart.HealLegs && _HealMenu.HealUses > 0)
         {
             RepariBot.HealMenuPart(3);
             _HealMenu.UseHeal();
             _lifebar.UpdateLife(LifeTraker.Instance.pLegs, LifeTraker.Instance.maxLegsHealth);
-            Select();
+            _percentil.text = GetPercentil(LifeTraker.Instance.pLegs, LifeTraker.Instance.maxLegsHealth).ToString() + "%";
         }
         if (_thisType == HealPart.Pass)
         {

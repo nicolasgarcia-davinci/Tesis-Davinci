@@ -18,7 +18,6 @@ public class DownedFigher : MonoBehaviour
             _timer.LaunchTimer();
             _stageTheme.CallSong();
             Player.SetBody();
-            //Set();
             MyHeal.ResetHeals();
         }
     }
@@ -63,6 +62,7 @@ public class DownedFigher : MonoBehaviour
         if (partId == 0)
         {
             LifeTraker.Instance.pHead += 30;
+            if (LifeTraker.Instance.pHead > LifeTraker.Instance.maxHeadHealth) LifeTraker.Instance.pHead = LifeTraker.Instance.maxHeadHealth;
             //_bodyIndicators[0].partlifeIndicator.UpdateLife(LifeTraker.Instance.pHead, LifeTraker.Instance.maxHeadHealth);
             Player.CheckParts();
             Player.RepairUP();
@@ -71,6 +71,7 @@ public class DownedFigher : MonoBehaviour
         if (partId == 1)
         {
             LifeTraker.Instance.pRight += 30;
+            if (LifeTraker.Instance.pRight > LifeTraker.Instance.maxRarmHealth) LifeTraker.Instance.pRight = LifeTraker.Instance.maxRarmHealth;
             //_bodyIndicators[1].partlifeIndicator.UpdateLife(LifeTraker.Instance.pRight, LifeTraker.Instance.maxRarmHealth);
             Player.CheckParts();
             Player.RepairRight();
@@ -79,6 +80,7 @@ public class DownedFigher : MonoBehaviour
         if (partId == 2)
         {
             LifeTraker.Instance.pLeft += 30;
+            if (LifeTraker.Instance.pLeft > LifeTraker.Instance.maxLarmHealth) LifeTraker.Instance.pLeft = LifeTraker.Instance.maxLarmHealth;
             //_bodyIndicators[2].partlifeIndicator.UpdateLife(LifeTraker.Instance.pLeft, LifeTraker.Instance.maxLarmHealth);
             Player.CheckParts();
             Player.RepairLeft();
@@ -87,6 +89,7 @@ public class DownedFigher : MonoBehaviour
         if (partId == 3)
         {
             LifeTraker.Instance.pLegs += 30;
+            if (LifeTraker.Instance.pLegs > LifeTraker.Instance.maxLegsHealth) LifeTraker.Instance.pLegs = LifeTraker.Instance.maxLegsHealth;
             //_bodyIndicators[3].partlifeIndicator.UpdateLife(LifeTraker.Instance.pLegs, LifeTraker.Instance.maxLegsHealth);
             Player.CheckParts();
             Player.RepairDown();

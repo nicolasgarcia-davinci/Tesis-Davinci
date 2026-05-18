@@ -13,7 +13,7 @@ public class HealMenu : MonoBehaviour
 
     void Start()
     {
-        _label.text = "Remaining heals: " + HealUses.ToString();
+        _label.text = HealUses.ToString();
     }
     void Update()
     {
