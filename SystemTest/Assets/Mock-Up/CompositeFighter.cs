@@ -282,16 +282,14 @@ public class CompositeFighter : MonoBehaviour
         }
     }
 
-    public bool Dodge(string animation, bool dodge)
+    public void Dodge(string animation, ref bool dodge)
     {
         if (!IsAttacking && !IsDodging && !IsRepairing && !IsDying)
         {
             IsDodgingRight = true;
             dodge = true;
             anim.SetTrigger(animation);
-            return dodge;
         }
-        return false;
     }
 
     #region Dodge Viejo
@@ -333,7 +331,7 @@ public class CompositeFighter : MonoBehaviour
     }
     #endregion
 
-    public bool Attack(string animation, GameObject trail, bool partAttack)
+    public void Attack(string animation, GameObject trail, ref bool partAttack)
     {
         if (!IsAttacking && !IsDodging && !IsRepairing && !IsDying && Stamina>10)
         {
@@ -343,10 +341,8 @@ public class CompositeFighter : MonoBehaviour
             anim.speed = Stamina / MaxStamina;
             anim.Play(animation);
             IsAttacking = true;
-            return partAttack = true;
+            partAttack = true;
         }
-
-        return false;
     }
 
     #region Ataque Viejo
