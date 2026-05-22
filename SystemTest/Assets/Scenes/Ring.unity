@@ -231463,27 +231463,6 @@ RectTransform:
   m_AnchoredPosition: {x: 2.6347656, y: -1.4060059}
   m_SizeDelta: {x: 28.669186, y: 20.188292}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1143224292692794240
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5683544546125485569}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ba0733d5e536884c81ea8678410a268, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PartName: 
-  AttName: Boxer Up Attack
-  life: 50
-  Damage: 10
-  Aspeed: 0
-  AttackSound: {fileID: 8300000, guid: ba0aefe70ed92434eb97ad95ef9785be, type: 3}
-  ParticleContainer: {fileID: 736293316}
-  components:
-  - {fileID: 6073797090889938026}
 --- !u!1 &1204354877660988751
 GameObject:
   m_ObjectHideFlags: 0
@@ -231984,29 +231963,6 @@ Transform:
   - {fileID: 8937150285081978257}
   m_Father: {fileID: 5184127906485984791}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1321616834749025393
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7650989665243073550}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 033010281b3c9f946bab82bd51625f27, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PartName: 
-  AttName: Boxer Right Attack
-  life: 50
-  Damage: 10
-  Aspeed: 0
-  AttackSound: {fileID: 8300000, guid: fa2b8ac799ba0b1449eaafa7207786ec, type: 3}
-  ParticleContainer: {fileID: 736293316}
-  components:
-  - {fileID: 1851429161722829358}
-  - {fileID: 2484385429433477383}
-  - {fileID: 2546359102578091909}
 --- !u!4 &1328922798358391228
 Transform:
   m_ObjectHideFlags: 0
@@ -237510,30 +237466,6 @@ MonoBehaviour:
   ActSound: {fileID: 8300000, guid: d946f7046a8eb25409189747da0e8a03, type: 3}
   Asambley: {fileID: 0}
   _thisType: 5
---- !u!114 &1647811772946405126
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1965269546451663347}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7633a5ed9b4abb5438645a309cb7eb00, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PartName: 
-  AttName: Boxer Down Attack
-  life: 50
-  Damage: 10
-  Aspeed: 0
-  AttackSound: {fileID: 8300000, guid: ba0aefe70ed92434eb97ad95ef9785be, type: 3}
-  ParticleContainer: {fileID: 741447886}
-  components:
-  - {fileID: 6076528731604947777}
-  - {fileID: 5892097578770671643}
-  - {fileID: 953372465960854139}
-  - {fileID: 3746998556677360001}
 --- !u!1 &1649899162265398093
 GameObject:
   m_ObjectHideFlags: 0
@@ -238474,7 +238406,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4773847552063358184}
-  - component: {fileID: 1647811772946405126}
+  - component: {fileID: 4773847552063358185}
   m_Layer: 0
   m_Name: Leg Boxer
   m_TagString: Untagged
@@ -260981,29 +260913,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &3375327998056004197
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5528653256242423270}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 033010281b3c9f946bab82bd51625f27, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PartName: 
-  AttName: Boxer Left Attack
-  life: 50
-  Damage: 10
-  Aspeed: 0
-  AttackSound: {fileID: 8300000, guid: fa2b8ac799ba0b1449eaafa7207786ec, type: 3}
-  ParticleContainer: {fileID: 1444290267}
-  components:
-  - {fileID: 358469141110277166}
-  - {fileID: 1687115590711658170}
-  - {fileID: 631514431}
 --- !u!1 &3379840827433850843
 GameObject:
   m_ObjectHideFlags: 0
@@ -273763,6 +273672,30 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3760737302071194155}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4773847552063358185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1965269546451663347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 749b4c7a75499a248a6b50bdf97377f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PartName: 
+  AttName: Boxer Down Attack
+  life: 50
+  Damage: 10
+  Aspeed: 0
+  AttackSound: {fileID: 8300000, guid: ba0aefe70ed92434eb97ad95ef9785be, type: 3}
+  ParticleContainer: {fileID: 741447886}
+  components:
+  - {fileID: 6076528731604947777}
+  - {fileID: 5892097578770671643}
+  - {fileID: 953372465960854139}
+  - {fileID: 3746998556677360001}
 --- !u!222 &4777265964524321429
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -285712,7 +285645,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6856299531397181586}
-  - component: {fileID: 3375327998056004197}
+  - component: {fileID: 6856299531397181587}
   m_Layer: 0
   m_Name: Left Boxer Arm
   m_TagString: Untagged
@@ -286836,7 +286769,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8878547016533301571}
-  - component: {fileID: 1143224292692794240}
+  - component: {fileID: 8878547016533301572}
   m_Layer: 0
   m_Name: Boxer Head
   m_TagString: Untagged
@@ -314725,6 +314658,29 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3760737302071194155}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6856299531397181587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5528653256242423270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 749b4c7a75499a248a6b50bdf97377f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PartName: 
+  AttName: Boxer Left Attack
+  life: 50
+  Damage: 10
+  Aspeed: 0
+  AttackSound: {fileID: 8300000, guid: fa2b8ac799ba0b1449eaafa7207786ec, type: 3}
+  ParticleContainer: {fileID: 1444290267}
+  components:
+  - {fileID: 358469141110277166}
+  - {fileID: 1687115590711658170}
+  - {fileID: 631514431}
 --- !u!4 &6866095223433349755
 Transform:
   m_ObjectHideFlags: 0
@@ -321278,7 +321234,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2896932403560851936}
-  - component: {fileID: 1321616834749025393}
+  - component: {fileID: 7650989665243073551}
   m_Layer: 0
   m_Name: Right Boxer Arm
   m_TagString: Untagged
@@ -321286,6 +321242,29 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
+--- !u!114 &7650989665243073551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7650989665243073550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 749b4c7a75499a248a6b50bdf97377f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PartName: 
+  AttName: Boxer Right Attack
+  life: 50
+  Damage: 10
+  Aspeed: 0
+  AttackSound: {fileID: 8300000, guid: fa2b8ac799ba0b1449eaafa7207786ec, type: 3}
+  ParticleContainer: {fileID: 736293316}
+  components:
+  - {fileID: 1851429161722829358}
+  - {fileID: 2484385429433477383}
+  - {fileID: 2546359102578091909}
 --- !u!4 &7659001401899581502
 Transform:
   m_ObjectHideFlags: 0
@@ -326984,16 +326963,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RarmCollection:
-  - {fileID: 1321616834749025393}
+  - {fileID: 7650989665243073551}
   - {fileID: 2343175979835566048}
   LarmCollection:
-  - {fileID: 3375327998056004197}
+  - {fileID: 6856299531397181587}
   - {fileID: 331450388032825497}
   LegCollection:
-  - {fileID: 1647811772946405126}
+  - {fileID: 4773847552063358185}
   - {fileID: 7272926891780604177}
   HeadCollection:
-  - {fileID: 1143224292692794240}
+  - {fileID: 8878547016533301572}
   - {fileID: 3659054496107020899}
   Rarm: {fileID: 0}
   Larm: {fileID: 0}
@@ -339081,6 +339060,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3760737302071194155}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8878547016533301572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5683544546125485569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 749b4c7a75499a248a6b50bdf97377f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PartName: 
+  AttName: Boxer Up Attack
+  life: 50
+  Damage: 10
+  Aspeed: 0
+  AttackSound: {fileID: 8300000, guid: ba0aefe70ed92434eb97ad95ef9785be, type: 3}
+  ParticleContainer: {fileID: 736293316}
+  components:
+  - {fileID: 6073797090889938026}
 --- !u!1 &8909733179937160637
 GameObject:
   m_ObjectHideFlags: 0

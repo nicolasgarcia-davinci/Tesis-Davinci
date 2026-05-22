@@ -9,16 +9,16 @@ using UnityEngine.VFX;
 public class CompositeFighter : MonoBehaviour
 {
     [Header ("Part Collection")]
-    public Arm[] RarmCollection;
-    public Arm[] LarmCollection;
-    public Leg[] LegCollection;
-    public Head[] HeadCollection;
+    public Part[] RarmCollection;
+    public Part[] LarmCollection;
+    public Part[] LegCollection;
+    public Part[] HeadCollection;
 
     [Header("Active Parts")]
-    public Arm Rarm;
-    public Arm Larm;
-    public Leg Leg;
-    public Head Head;
+    public Part Rarm;
+    public Part Larm;
+    public Part Leg;
+    public Part Head;
 
     [Header("Current Health")]
     public float CHead;
@@ -396,27 +396,77 @@ public class CompositeFighter : MonoBehaviour
     {
         if (attacker.IsAttackingRight)
         {
-            LeftDamage(attacker.Rarm.Damage, attacker.Rarm.AttackSound);
+            PartDamage(attacker.Rarm.Damage, CLeft, attacker.Rarm.AttackSound, ref Rarm, IsDodgingRight, ref LarmBoom,
+                "Get Hit Left", LarmsHitWave, LarmSpark, LarmCrash);
+            //LeftDamage(attacker.Rarm.Damage, attacker.Rarm.AttackSound);
             return;
         }
         if (attacker.IsAttackingLeft)
         {
-            RightDamage(attacker.Larm.Damage, attacker.Larm.AttackSound);
+            PartDamage(attacker.Larm.Damage, CRight, attacker.Larm.AttackSound, ref Larm, IsDodgingLeft, ref RarmBoom,
+                "Get Hit Right", RarmsHitWave, RarmSpark, RarmCrash);
+            //RightDamage(attacker.Larm.Damage, attacker.Larm.AttackSound);
             return;
         }
         if (attacker.IsAttackingUp)
         {
-            HeadDamage(attacker.Head.Damage, attacker.Head.AttackSound);
+            PartDamage(attacker.Head.Damage, CHead, attacker.Head.AttackSound, ref Head, IsDodgingUp, ref HeadBoom,
+                "Get Hit Up", HeadHitWave, HeadSpark, HeadCrash);
+            //HeadDamage(attacker.Head.Damage, attacker.Head.AttackSound);
             return;
         }
         if (attacker.IsAttackingDown)
-        { 
-            LegsDamage(attacker.Leg.Damage, attacker.Leg.AttackSound);
+        {
+            PartDamage(attacker.Leg.Damage, CRight, attacker.Leg.AttackSound, ref Leg, IsDodgingDown, ref LegsBoom,
+                "Get Hit Down", LegsHitWave, LegsSpark, LegsCrash);
+            //LegsDamage(attacker.Leg.Damage, attacker.Leg.AttackSound);
             return;
         }
     }
 
-    public void RightDamage(int damage, AudioClip hit)
+    public void PartDamage(int damage, float currentLife, AudioClip hit, ref Part partHit, bool hitPart, 
+        ref bool partDestroyed, string animHit, GameObject HitWave, GameObject[] Sparks, GameObject[] Crash)
+    {
+        Debug.Log("Jaja llame a la funcion de Necro " + this.name);
+
+        if (hitPart)
+        {
+            _Audio.PlayOneShot(_miss);
+            return;
+        }
+
+        anim.Play(animHit);
+        ResetBools();
+        _Audio.PlayOneShot(hit);
+        if (partHit.life > 0)
+            partHit.life -= damage;
+
+        //RarmsHitSpark.gameObject.SetActive(true);
+        StartCoroutine(WaveVFX(HitWave, 0.5f));
+
+        LifeTraker.Instance.UpdateLife();
+
+        RightArmDisplay.UpdateDisplay(partHit.life, CRight);
+
+        FightControler.Instance.stopFrame();
+
+        if (partHit.life <= 0 && !partDestroyed)
+        {
+            partDestroyed = true;
+            ActivateParticle(Crash);
+            ActivateParticle(Sparks);
+            FightControler.Instance.stopFrameHigh();
+            partHit.DeActiveParts();
+        }
+        if (!IsEnemy)
+        {
+            Debug.Log("BrazoChotoDerecho");
+            LifeTraker.Instance.UpdateLife();
+        }
+        DamageToTake = damage;
+    }
+
+    /*public void RightDamage(int damage, AudioClip hit)
     {
         if (IsDodgingLeft)
         {
@@ -554,7 +604,7 @@ public class CompositeFighter : MonoBehaviour
             Head.DeActiveParts();
         }
         DamageToTake = damage;
-    }
+    }*/
 
     public void BattleHealth()
     {
