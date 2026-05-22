@@ -44,7 +44,8 @@ public class LoadManager : MonoBehaviour
         }
         if (LifeTraker.Instance.Dificulty == 2)
         {
-            LoadGym();
+            LoadRing();
+            //LoadGym();
         }
     }
 
@@ -73,7 +74,8 @@ public class LoadManager : MonoBehaviour
         }
         else if (LifeTraker.Instance.Dificulty == 2)
         {
-            LoadGym();
+            LoadRing();
+            //LoadGym();
         }
     }
 

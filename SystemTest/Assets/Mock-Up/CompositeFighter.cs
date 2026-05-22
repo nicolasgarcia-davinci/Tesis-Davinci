@@ -69,10 +69,10 @@ public class CompositeFighter : MonoBehaviour
     public GameObject LegsHitWave;
     public GameObject HeadHitWave;
 
-    [Header("Attack Trails")]
-    public GameObject RarmsAttackTrail;
-    public GameObject LarmsAttackTrail;
-    public GameObject LegsAttackTrail;
+    //[Header("Attack Trails")]
+    //public GameObject RarmsAttackTrail;
+    //public GameObject LarmsAttackTrail;
+    //public GameObject LegsAttackTrail;
 
     [Header("Crash Collection")]
     public GameObject[] RarmCrash;
@@ -429,6 +429,7 @@ public class CompositeFighter : MonoBehaviour
         _Audio.PlayOneShot(hit);
         if(Rarm.life>0)
             Rarm.life -= damage;
+
         //RarmsHitSpark.gameObject.SetActive(true);
         StartCoroutine(WaveVFX(RarmsHitWave, 0.5f));
 

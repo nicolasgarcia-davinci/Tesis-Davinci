@@ -11,18 +11,9 @@ public class Part : MonoBehaviour
     public float Aspeed;
     public AudioClip AttackSound;
 
-    public GameObject[] components;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public GameObject ParticleContainer;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public GameObject[] components;
 
     public void ActiveParts()
     {

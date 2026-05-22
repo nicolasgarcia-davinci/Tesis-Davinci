@@ -25,10 +25,10 @@ public class AIControler : MonoBehaviour
         {
             _timer = 0;
             float attackNum = Random.Range(0,100);
-            if (attackNum <= 25 && Character.Head.life > 0) Character.Attack(Character.Head.AttName, Character.RarmsAttackTrail, ref Character.IsAttackingUp);
-            if (attackNum <= 50 && attackNum > 25 && Character.Rarm.life > 0) Character.Attack(Character.Rarm.AttName, Character.RarmsAttackTrail, ref Character.IsAttackingRight);
-            if (attackNum <= 75 && attackNum > 50 && Character.Larm.life > 0) Character.Attack(Character.Larm.AttName, Character.RarmsAttackTrail, ref Character.IsAttackingLeft);
-            if (attackNum <= 100 && attackNum > 75 && Character.Leg.life > 0) Character.Attack(Character.Leg.AttName, Character.RarmsAttackTrail, ref Character.IsAttackingDown);
+            if (attackNum <= 25 && Character.Head.life > 0) Character.Attack(Character.Head.AttName, Character.Head.ParticleContainer, ref Character.IsAttackingUp);
+            if (attackNum <= 50 && attackNum > 25 && Character.Rarm.life > 0) Character.Attack(Character.Rarm.AttName, Character.Rarm.ParticleContainer, ref Character.IsAttackingRight);
+            if (attackNum <= 75 && attackNum > 50 && Character.Larm.life > 0) Character.Attack(Character.Larm.AttName, Character.Larm.ParticleContainer, ref Character.IsAttackingLeft);
+            if (attackNum <= 100 && attackNum > 75 && Character.Leg.life > 0) Character.Attack(Character.Leg.AttName, Character.Leg.ParticleContainer, ref Character.IsAttackingDown);
         }
     }
 
