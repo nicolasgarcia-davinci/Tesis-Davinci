@@ -19,17 +19,20 @@ public class PartSelector : MonoBehaviour
     public int HIndex;
     public int LAIndex;
     public int RAIndex;
+    public int ChIndex;
     public int LIndex;
 
     public Head[] heads;
     public Arm[] lArms;
     public Arm[] rArms;
     public Leg[] legs;
+    public Chest[] chests;
 
     public bool HeadSelected;
     public bool LarmsSelected;
     public bool RarmsSelected;
     public bool LegsSelected;
+    public bool ChestSelected;
 
     public bool NeedsToZero;
     void Start()
@@ -69,6 +72,7 @@ public class PartSelector : MonoBehaviour
             LarmsSelected = false;
             LegsSelected = false;
             HeadSelected = false;
+            ChestSelected = false;
             rArms[RAIndex].gameObject.SetActive(true);
         }
 
@@ -78,6 +82,7 @@ public class PartSelector : MonoBehaviour
             LarmsSelected = true;
             LegsSelected = false;
             HeadSelected = false;
+            ChestSelected = false;
             lArms[LAIndex].gameObject.SetActive(true);
         }
 
@@ -87,6 +92,7 @@ public class PartSelector : MonoBehaviour
             LarmsSelected = false;
             LegsSelected = true;
             HeadSelected = false;
+            ChestSelected = false;
             legs[LIndex].gameObject.SetActive(true);
         }
 
@@ -96,7 +102,17 @@ public class PartSelector : MonoBehaviour
             LarmsSelected = false;
             LegsSelected = false;
             HeadSelected = true;
+            ChestSelected = false;
             heads[HIndex].gameObject.SetActive(true);
+        }
+        if (SIndex == 4)
+        {
+            RarmsSelected = false;
+            LarmsSelected = false;
+            LegsSelected = false;
+            HeadSelected = false;
+            ChestSelected = true;
+            heads[ChIndex].gameObject.SetActive(true);
         }
     }
     public void SelectUp()
@@ -115,9 +131,6 @@ public class PartSelector : MonoBehaviour
             LifeTraker.Instance.LegsIndex = LIndex;
             LifeTraker.Instance.HeadIndex = HIndex;
 
-            //_asMenu.gameObject.SetActive(true);
-            //_asMenu.Zero();
-            //NeedsToZero = true;
             Zero();
             TheSlector.SetActive(false);
             CompFighter.SetActive(true);
@@ -133,9 +146,9 @@ public class PartSelector : MonoBehaviour
         {
             RAIndex++;
 
-            if (RAIndex > LifeTraker.Instance.Dificulty)
+            if (RAIndex > LifeTraker.Instance.Dificulty-1)
             { 
-                RAIndex=LifeTraker.Instance.Dificulty;
+                RAIndex=LifeTraker.Instance.Dificulty - 1;
                 return;
             }
             
@@ -158,9 +171,9 @@ public class PartSelector : MonoBehaviour
         {
             LAIndex++;
 
-            if (LAIndex > LifeTraker.Instance.Dificulty)
+            if (LAIndex > LifeTraker.Instance.Dificulty-1)
             {
-                LAIndex = LifeTraker.Instance.Dificulty;
+                LAIndex = LifeTraker.Instance.Dificulty-1;
                 return;
             }
 
@@ -183,9 +196,9 @@ public class PartSelector : MonoBehaviour
         {
             HIndex++;
 
-            if (HIndex > LifeTraker.Instance.Dificulty)
+            if (HIndex > LifeTraker.Instance.Dificulty - 1)
             {
-                HIndex = LifeTraker.Instance.Dificulty;
+                HIndex = LifeTraker.Instance.Dificulty - 1;
                 return;
             }
 
@@ -208,9 +221,9 @@ public class PartSelector : MonoBehaviour
         {
             LIndex++;
 
-            if (LIndex > LifeTraker.Instance.Dificulty)
+            if (LIndex > LifeTraker.Instance.Dificulty - 1)
             {
-                LIndex = LifeTraker.Instance.Dificulty;
+                LIndex = LifeTraker.Instance.Dificulty - 1;
                 return;
             }
 
@@ -228,6 +241,30 @@ public class PartSelector : MonoBehaviour
             legs[LIndex].gameObject.SetActive(true);
             Display.SetDisplay(legs[LIndex].life, legs[LIndex].Aspeed, legs[LIndex].PartName);
             return;
+        }
+        if (ChestSelected)
+        {
+            ChIndex++;
+
+            if (ChIndex > LifeTraker.Instance.Dificulty - 1)
+            {
+                ChIndex = LifeTraker.Instance.Dificulty - 1;
+                return;
+            }
+
+            if (ChIndex > chests.Length - 1)
+            {
+                ChIndex = chests.Length - 1;
+                return;
+            }
+
+            foreach (var p in chests)
+            {
+                p.gameObject.SetActive(false);
+            }
+
+            chests[ChIndex].gameObject.SetActive(true);
+            Display.SetDisplay(chests[ChIndex].life, chests[ChIndex].Aspeed, chests[ChIndex].PartName);
         }
     }
     public void SelectLeft()
@@ -308,6 +345,24 @@ public class PartSelector : MonoBehaviour
             legs[LIndex].gameObject.SetActive(true);
             Display.SetDisplay(legs[LIndex].life, legs[LIndex].Aspeed, legs[LIndex].PartName);
             return;
+        }
+        if (ChestSelected)
+        {
+            ChIndex--;
+
+            if (ChIndex < 0)
+            {
+                ChIndex = 0;
+                return;
+            }
+
+            foreach (var p in chests)
+            {
+                p.gameObject.SetActive(false);
+            }
+
+            chests[ChIndex].gameObject.SetActive(true);
+            Display.SetDisplay(chests[ChIndex].life, chests[ChIndex].Aspeed, chests[ChIndex].PartName);
         }
     }
 }

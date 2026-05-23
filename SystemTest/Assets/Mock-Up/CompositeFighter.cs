@@ -275,11 +275,11 @@ public class CompositeFighter : MonoBehaviour
 
     void Update()
     {
-        if (Stamina < MaxStamina)
-        {
-            Stamina += StaminaRefresh * Time.deltaTime;
-            StamminaBar.UpdateLife(Stamina,MaxStamina);
-        }
+        //if (Stamina < MaxStamina)
+        //{
+        //    Stamina += StaminaRefresh * Time.deltaTime;
+        //    StamminaBar.UpdateLife(Stamina,MaxStamina);
+        //}
     }
 
     public void Dodge(string animation, ref bool dodge)
@@ -432,6 +432,7 @@ public class CompositeFighter : MonoBehaviour
         if (hitPart)
         {
             _Audio.PlayOneShot(_miss);
+            Stamina += 10;
             return;
         }
 

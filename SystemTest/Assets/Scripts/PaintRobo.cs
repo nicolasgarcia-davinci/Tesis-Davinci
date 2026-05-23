@@ -16,7 +16,6 @@ public class PaintRobo : MonoBehaviour
     public Arm Larm;
     public Leg Leg;
     public Head Head;
-    // Start is called before the first frame update
     void Start()
     {
         Rarm = RarmCollection[LifeTraker.Instance.RarmIndex];
@@ -28,12 +27,6 @@ public class PaintRobo : MonoBehaviour
         Leg.ActiveParts();
         Head.ActiveParts();
         ColorChange();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
     public void ColorChange()
     {
