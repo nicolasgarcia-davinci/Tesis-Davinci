@@ -13,12 +13,14 @@ public class CompositeFighter : MonoBehaviour
     public Part[] LarmCollection;
     public Part[] LegCollection;
     public Part[] HeadCollection;
+    public Part[] ChestCollection;
 
     [Header("Active Parts")]
     public Part Rarm;
     public Part Larm;
     public Part Leg;
     public Part Head;
+    public Part Chest;
 
     [Header("Current Health")]
     public float CHead;
@@ -129,12 +131,14 @@ public class CompositeFighter : MonoBehaviour
            Larm = LarmCollection[LifeTraker.Instance.LarmIndex];
            Leg = LegCollection[LifeTraker.Instance.LegsIndex];
            Head = HeadCollection[LifeTraker.Instance.HeadIndex];
-           OverAllHealth = LifeTraker.Instance.pOverHealt;
+           Chest = ChestCollection[LifeTraker.Instance.ChestIndex];
+           OverAllHealth = LifeTraker.Instance.eOverHealt * Chest.life;
 
            Rarm.ActiveParts();
            Larm.ActiveParts();
            Leg.ActiveParts();
            Head.ActiveParts();
+           Chest.ActiveParts();
            LifeTraker.Instance.pRight = Rarm.life;
            LifeTraker.Instance.pLeft = Larm.life;
            LifeTraker.Instance.pLegs = Leg.life;

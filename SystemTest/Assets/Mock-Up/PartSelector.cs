@@ -130,6 +130,7 @@ public class PartSelector : MonoBehaviour
             LifeTraker.Instance.LarmIndex = LAIndex;
             LifeTraker.Instance.LegsIndex = LIndex;
             LifeTraker.Instance.HeadIndex = HIndex;
+            LifeTraker.Instance.ChestIndex = ChIndex;
 
             Zero();
             TheSlector.SetActive(false);
