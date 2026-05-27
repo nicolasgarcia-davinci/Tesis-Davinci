@@ -400,14 +400,14 @@ public class CompositeFighter : MonoBehaviour
     {
         if (attacker.IsAttackingRight)
         {
-            PartDamage(attacker.Rarm.Damage, CLeft, attacker.Rarm.AttackSound, ref Rarm, IsDodgingRight, ref LarmBoom,
+            PartDamage(attacker.Larm.Damage, CLeft, attacker.Larm.AttackSound, ref Larm, IsDodgingRight, ref LarmBoom,
                 "Get Hit Left", LarmsHitWave, LarmSpark, LarmCrash);
             //LeftDamage(attacker.Rarm.Damage, attacker.Rarm.AttackSound);
             return;
         }
         if (attacker.IsAttackingLeft)
         {
-            PartDamage(attacker.Larm.Damage, CRight, attacker.Larm.AttackSound, ref Larm, IsDodgingLeft, ref RarmBoom,
+            PartDamage(attacker.Rarm.Damage, CRight, attacker.Rarm.AttackSound, ref Rarm, IsDodgingLeft, ref RarmBoom,
                 "Get Hit Right", RarmsHitWave, RarmSpark, RarmCrash);
             //RightDamage(attacker.Larm.Damage, attacker.Larm.AttackSound);
             return;
