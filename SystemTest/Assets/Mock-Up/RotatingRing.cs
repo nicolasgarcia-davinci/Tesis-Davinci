@@ -21,8 +21,8 @@ public class RotatingRing : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.LeftArrow)) RotateLeft();
-        if (Input.GetKeyDown(KeyCode.RightArrow)) RotateRigth();
+        if (Input.GetKeyDown(KeyCode.UpArrow)) RotateUp();
+        if (Input.GetKeyDown(KeyCode.DownArrow)) RotateDown();
         if (Input.GetKeyDown(KeyCode.Space)) LoadManager.Instance.LoadRing();
         if (toTranparent)
         {
@@ -35,7 +35,7 @@ public class RotatingRing : MonoBehaviour
             lab.color = Transparency;
         }
     }
-    public void RotateRigth()
+    public void RotateUp()
     {
         Current++;
         if (Current == LifeTraker.Instance.Dificulty)
@@ -49,7 +49,7 @@ public class RotatingRing : MonoBehaviour
             UpdateDisPlay();
         }
     }
-    public void RotateLeft()
+    public void RotateDown()
     {
         Current--;
         if (Current < 0)

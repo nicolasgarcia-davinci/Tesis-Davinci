@@ -90,6 +90,7 @@ public class DDManager : MonoBehaviour
                 if (panel.CanBeHit && panel.IsRight)
                 { 
                     panel.Correct();
+                    panel.CanBeHit = false;
                     StartCoroutine(RightHit());
                     UpdateHits();
                     return;
@@ -98,6 +99,7 @@ public class DDManager : MonoBehaviour
                 if (panel.IsFalling && !panel.IsRight)
                 {
                     panel.Wrong();
+                    panel.CanBeHit = false;
                     StartCoroutine(RightMiss());
                     _AudioSource.PlayOneShot(Lose);
                     return;
@@ -111,6 +113,7 @@ public class DDManager : MonoBehaviour
                 if (panel.CanBeHit && panel.IsLeft) 
                 {
                     panel.Correct();
+                    panel.CanBeHit = false;
                     StartCoroutine(LeftHit());
                     UpdateHits();
                     return;
@@ -119,6 +122,7 @@ public class DDManager : MonoBehaviour
                 if (panel.IsFalling && !panel.IsLeft)
                 {
                     panel.Wrong();
+                    panel.CanBeHit = false;
                     StartCoroutine(LeftMiss());
                     _AudioSource.PlayOneShot(Lose);
                     return;
@@ -131,6 +135,7 @@ public class DDManager : MonoBehaviour
                 if (panel.CanBeHit && panel.IsUp) 
                 {
                     panel.Correct();
+                    panel.CanBeHit = false;
                     StartCoroutine(UpHit());
                     UpdateHits();
                     return;
@@ -139,6 +144,7 @@ public class DDManager : MonoBehaviour
                 if (panel.IsFalling && !panel.IsUp)
                 {
                     panel.Wrong();
+                    panel.CanBeHit = false;
                     StartCoroutine(UpMiss());
                     _AudioSource.PlayOneShot(Lose);
                     return;
@@ -151,6 +157,7 @@ public class DDManager : MonoBehaviour
                 if (panel.CanBeHit && panel.IsDown) 
                 {
                     panel.Correct();
+                    panel.CanBeHit = false;
                     StartCoroutine(DownHit());
                     UpdateHits();
                     return;
@@ -159,6 +166,7 @@ public class DDManager : MonoBehaviour
                 if (panel.IsFalling && !panel.IsDown)
                 {
                     panel.Wrong();
+                    panel.CanBeHit = false;
                     StartCoroutine(DownMiss());
                     _AudioSource.PlayOneShot(Lose);
                 }

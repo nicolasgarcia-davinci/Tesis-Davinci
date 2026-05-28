@@ -13,12 +13,14 @@ public class CompositeFighter : MonoBehaviour
     public Part[] LarmCollection;
     public Part[] LegCollection;
     public Part[] HeadCollection;
+    public Part[] ChestCollection;
 
     [Header("Active Parts")]
     public Part Rarm;
     public Part Larm;
     public Part Leg;
     public Part Head;
+    public Part Chest;
 
     [Header("Current Health")]
     public float CHead;
@@ -129,12 +131,14 @@ public class CompositeFighter : MonoBehaviour
            Larm = LarmCollection[LifeTraker.Instance.LarmIndex];
            Leg = LegCollection[LifeTraker.Instance.LegsIndex];
            Head = HeadCollection[LifeTraker.Instance.HeadIndex];
-           OverAllHealth = LifeTraker.Instance.pOverHealt;
+           Chest = ChestCollection[LifeTraker.Instance.ChestIndex];
+           OverAllHealth = LifeTraker.Instance.eOverHealt * Chest.life;
 
            Rarm.ActiveParts();
            Larm.ActiveParts();
            Leg.ActiveParts();
            Head.ActiveParts();
+           Chest.ActiveParts();
            LifeTraker.Instance.pRight = Rarm.life;
            LifeTraker.Instance.pLeft = Larm.life;
            LifeTraker.Instance.pLegs = Leg.life;
@@ -275,11 +279,11 @@ public class CompositeFighter : MonoBehaviour
 
     void Update()
     {
-        if (Stamina < MaxStamina)
-        {
-            Stamina += StaminaRefresh * Time.deltaTime;
-            StamminaBar.UpdateLife(Stamina,MaxStamina);
-        }
+        //if (Stamina < MaxStamina)
+        //{
+        //    Stamina += StaminaRefresh * Time.deltaTime;
+        //    StamminaBar.UpdateLife(Stamina,MaxStamina);
+        //}
     }
 
     public void Dodge(string animation, ref bool dodge)
@@ -396,14 +400,14 @@ public class CompositeFighter : MonoBehaviour
     {
         if (attacker.IsAttackingRight)
         {
-            PartDamage(attacker.Rarm.Damage, CLeft, attacker.Rarm.AttackSound, ref Rarm, IsDodgingRight, ref LarmBoom,
+            PartDamage(attacker.Larm.Damage, CLeft, attacker.Larm.AttackSound, ref Larm, IsDodgingRight, ref LarmBoom,
                 "Get Hit Left", LarmsHitWave, LarmSpark, LarmCrash);
             //LeftDamage(attacker.Rarm.Damage, attacker.Rarm.AttackSound);
             return;
         }
         if (attacker.IsAttackingLeft)
         {
-            PartDamage(attacker.Larm.Damage, CRight, attacker.Larm.AttackSound, ref Larm, IsDodgingLeft, ref RarmBoom,
+            PartDamage(attacker.Rarm.Damage, CRight, attacker.Rarm.AttackSound, ref Rarm, IsDodgingLeft, ref RarmBoom,
                 "Get Hit Right", RarmsHitWave, RarmSpark, RarmCrash);
             //RightDamage(attacker.Larm.Damage, attacker.Larm.AttackSound);
             return;
@@ -424,7 +428,7 @@ public class CompositeFighter : MonoBehaviour
         }
     }
 
-    public void PartDamage(int damage, float currentLife, AudioClip hit, ref Part partHit, bool hitPart, 
+    public void PartDamage(int damage, float currentLife, AudioClip hit, ref Part partHit, bool hitPart,
         ref bool partDestroyed, string animHit, GameObject HitWave, GameObject[] Sparks, GameObject[] Crash)
     {
         Debug.Log("Jaja llame a la funcion de Necro " + this.name);
@@ -432,6 +436,7 @@ public class CompositeFighter : MonoBehaviour
         if (hitPart)
         {
             _Audio.PlayOneShot(_miss);
+            Stamina += 10;
             return;
         }
 
@@ -446,7 +451,7 @@ public class CompositeFighter : MonoBehaviour
 
         LifeTraker.Instance.UpdateLife();
 
-        RightArmDisplay.UpdateDisplay(partHit.life, CRight);
+        RightArmDisplay.UpdateDisplay(partHit.life, currentLife);
 
         FightControler.Instance.stopFrame();
 
@@ -466,6 +471,7 @@ public class CompositeFighter : MonoBehaviour
         DamageToTake = damage;
     }
 
+    #region Viejo Daño
     /*public void RightDamage(int damage, AudioClip hit)
     {
         if (IsDodgingLeft)
@@ -605,6 +611,7 @@ public class CompositeFighter : MonoBehaviour
         }
         DamageToTake = damage;
     }*/
+    #endregion
 
     public void BattleHealth()
     {

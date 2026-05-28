@@ -37,6 +37,7 @@ public class LifeTraker : MonoBehaviour
     public int LarmIndex;
     public int LegsIndex;
     public int HeadIndex;
+    public int ChestIndex;
 
     [Header("Number of Downs")]
     public int PlayerKO;
