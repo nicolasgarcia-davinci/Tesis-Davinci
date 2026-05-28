@@ -51,6 +51,14 @@ public class CompositeFighter : MonoBehaviour
     public bool IsDodgingDown;
     public bool IsDodging;
 
+    [Header("DodgeTrail")]
+    [SerializeField] string matAlphaName;
+    [SerializeField, Range(0, 1)] float _dodgeTime;
+    [SerializeField] float _refreshRate;
+    [SerializeField] float _delayDestroy;
+    [SerializeField] PlayerTrailFactory trailFactory;
+    [SerializeField] MeshTrail trailMesh;
+
     [Header("Atacks")]
     public bool IsAttackingRight;
     public bool IsAttackingLeft;
@@ -123,40 +131,42 @@ public class CompositeFighter : MonoBehaviour
         Stamina = MaxStamina;
         StamminaBar.UpdateLife(Stamina, MaxStamina);
         anim = GetComponent<Animator>();
-        if(!IsEnemy)
+        if (!IsEnemy)
         {
-           Body.material.SetColor("_Color_1", ColorCordination.Instance.color1);
-           Body.material.SetColor("_Color_2", ColorCordination.Instance.color2);
-           Rarm = RarmCollection[LifeTraker.Instance.RarmIndex];
-           Larm = LarmCollection[LifeTraker.Instance.LarmIndex];
-           Leg = LegCollection[LifeTraker.Instance.LegsIndex];
-           Head = HeadCollection[LifeTraker.Instance.HeadIndex];
-           Chest = ChestCollection[LifeTraker.Instance.ChestIndex];
-           OverAllHealth = LifeTraker.Instance.eOverHealt * Chest.life;
+            trailMesh = new MeshTrail(this, trailFactory.Pool, trailFactory.playerSkRenderer, trailFactory.trailMat, matAlphaName, _dodgeTime)
+                .setTime(_refreshRate, _delayDestroy);
+            Body.material.SetColor("_Color_1", ColorCordination.Instance.color1);
+            Body.material.SetColor("_Color_2", ColorCordination.Instance.color2);
+            Rarm = RarmCollection[LifeTraker.Instance.RarmIndex];
+            Larm = LarmCollection[LifeTraker.Instance.LarmIndex];
+            Leg = LegCollection[LifeTraker.Instance.LegsIndex];
+            Head = HeadCollection[LifeTraker.Instance.HeadIndex];
+            Chest = ChestCollection[LifeTraker.Instance.ChestIndex];
+            OverAllHealth = LifeTraker.Instance.eOverHealt * Chest.life;
 
-           Rarm.ActiveParts();
-           Larm.ActiveParts();
-           Leg.ActiveParts();
-           Head.ActiveParts();
-           Chest.ActiveParts();
-           LifeTraker.Instance.pRight = Rarm.life;
-           LifeTraker.Instance.pLeft = Larm.life;
-           LifeTraker.Instance.pLegs = Leg.life;
-           LifeTraker.Instance.pHead = Head.life;
-           LifeTraker.Instance.maxHeadHealth = Head.life;
-           LifeTraker.Instance.maxRarmHealth = Rarm.life;
-           LifeTraker.Instance.maxLarmHealth = Larm.life;
-           LifeTraker.Instance.maxLegsHealth = Leg.life;
+            Rarm.ActiveParts();
+            Larm.ActiveParts();
+            Leg.ActiveParts();
+            Head.ActiveParts();
+            Chest.ActiveParts();
+            LifeTraker.Instance.pRight = Rarm.life;
+            LifeTraker.Instance.pLeft = Larm.life;
+            LifeTraker.Instance.pLegs = Leg.life;
+            LifeTraker.Instance.pHead = Head.life;
+            LifeTraker.Instance.maxHeadHealth = Head.life;
+            LifeTraker.Instance.maxRarmHealth = Rarm.life;
+            LifeTraker.Instance.maxLarmHealth = Larm.life;
+            LifeTraker.Instance.maxLegsHealth = Leg.life;
 
-            CHead  = Head.life;
+            CHead = Head.life;
             CRight = Rarm.life;
-            CLeft  = Larm.life;
-            CLegs  = Leg.life;
-            CChest =  OverAllHealth;
+            CLeft = Larm.life;
+            CLegs = Leg.life;
+            CChest = OverAllHealth;
         }
         else
         {
-            OverAllHealth = LifeTraker.Instance.eOverHealt*(LifeTraker.Instance.Dificulty);
+            OverAllHealth = LifeTraker.Instance.eOverHealt * (LifeTraker.Instance.Dificulty);
             Rarm.ActiveParts();
             Larm.ActiveParts();
             Leg.ActiveParts();
@@ -290,7 +300,7 @@ public class CompositeFighter : MonoBehaviour
     {
         if (!IsAttacking && !IsDodging && !IsRepairing && !IsDying)
         {
-            IsDodgingRight = true;
+            trailMesh?.CallTrail();
             dodge = true;
             anim.SetTrigger(animation);
         }

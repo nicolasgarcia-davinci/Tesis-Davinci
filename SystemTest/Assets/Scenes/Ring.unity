@@ -108275,6 +108275,20 @@ MonoBehaviour:
   IsDodgingUp: 0
   IsDodgingDown: 0
   IsDodging: 0
+  matAlphaName: 
+  _dodgeTime: 0
+  _refreshRate: 0
+  _delayDestroy: 0
+  trailFactory: {fileID: 0}
+  trailMesh:
+    activeTime: 0
+    meshRefreshRate: 0
+    positionToSpawn: {fileID: 0}
+    meshDelayDestroy: 0
+    mat: {fileID: 0}
+    shaderVarRef: 
+    shaderVarRate: 0
+    shaderVarRefreshRate: 0
   IsAttackingRight: 0
   IsAttackingLeft: 0
   IsAttackingUp: 0
@@ -292181,6 +292195,7 @@ GameObject:
   - component: {fileID: 8012810488319688110}
   - component: {fileID: 7667564808855253216}
   - component: {fileID: 8012810488319688111}
+  - component: {fileID: 8012810488319688112}
   m_Layer: 0
   m_Name: Esqueleto Fighter
   m_TagString: Untagged
@@ -331385,6 +331400,20 @@ MonoBehaviour:
   IsDodgingUp: 0
   IsDodgingDown: 0
   IsDodging: 0
+  matAlphaName: _Alpha
+  _dodgeTime: 1
+  _refreshRate: 0.25
+  _delayDestroy: 0.75
+  trailFactory: {fileID: 8012810488319688112}
+  trailMesh:
+    activeTime: 0
+    meshRefreshRate: 0
+    positionToSpawn: {fileID: 0}
+    meshDelayDestroy: 0
+    mat: {fileID: 0}
+    shaderVarRef: 
+    shaderVarRate: 0
+    shaderVarRefreshRate: 0
   IsAttackingRight: 0
   IsAttackingLeft: 0
   IsAttackingUp: 0
@@ -331464,6 +331493,24 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &8012810488319688112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5808547133311960243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c20a7e8699c69a4aa27acafd941486e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pool:
+    _stock: []
+  playerSkRenderer:
+  - {fileID: 8136280532875123323}
+  trailMat: {fileID: 2100000, guid: 57064c9527dbd124cb4e1b43094e410a, type: 2}
+  _playerPos: {fileID: 6199157242847144966}
 --- !u!1 &8016050005705935790
 GameObject:
   m_ObjectHideFlags: 0
