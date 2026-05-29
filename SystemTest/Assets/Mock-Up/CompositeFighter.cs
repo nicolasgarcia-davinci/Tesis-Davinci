@@ -53,6 +53,7 @@ public class CompositeFighter : MonoBehaviour
 
     [Header("DodgeTrail")]
     [SerializeField] string matAlphaName;
+    [SerializeField] GameObject spawnTransform;
     [SerializeField, Range(0, 1)] float _dodgeTime;
     [SerializeField] float _refreshRate;
     [SerializeField] float _delayDestroy;
@@ -134,7 +135,7 @@ public class CompositeFighter : MonoBehaviour
         if (!IsEnemy)
         {
             trailMesh = new MeshTrail(this, trailFactory.Pool, trailFactory.playerSkRenderer, trailFactory.trailMat, matAlphaName, _dodgeTime)
-                .setTime(_refreshRate, _delayDestroy);
+                .setTime(_refreshRate, _delayDestroy).setPos(this.transform);
             Body.material.SetColor("_Color_1", ColorCordination.Instance.color1);
             Body.material.SetColor("_Color_2", ColorCordination.Instance.color2);
             Rarm = RarmCollection[LifeTraker.Instance.RarmIndex];
@@ -300,14 +301,14 @@ public class CompositeFighter : MonoBehaviour
     {
         if (!IsAttacking && !IsDodging && !IsRepairing && !IsDying)
         {
-            trailMesh?.CallTrail();
             dodge = true;
+            //if(!IsEnemy) trailMesh?.CallTrail();
             anim.SetTrigger(animation);
         }
     }
 
     #region Dodge Viejo
-    public void DodgeRight()
+    /*public void DodgeRight()
     {
         if (!IsAttacking && !IsDodging && !IsRepairing && !IsDying)
         { 
@@ -342,7 +343,7 @@ public class CompositeFighter : MonoBehaviour
             IsDodging = true;
             anim.SetTrigger("DoedgeRight");
         }  
-    }
+    }*/
     #endregion
 
     public void Attack(string animation, GameObject trail, ref bool partAttack)
@@ -446,6 +447,7 @@ public class CompositeFighter : MonoBehaviour
         if (hitPart)
         {
             _Audio.PlayOneShot(_miss);
+            if(!IsEnemy) trailMesh?.CallTrail();
             Stamina += 10;
             return;
         }

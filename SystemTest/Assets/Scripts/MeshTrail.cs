@@ -44,6 +44,12 @@ public class MeshTrail
         meshDelayDestroy = delayDestroy;
         return this;
     }
+
+    public MeshTrail setPos(Transform newPos)
+    {
+        positionToSpawn = newPos;
+        return this;
+    }
     //public void FakeStart()
     //{
     //    EventManager.Subscribe("OnDashEnter", CallTrail);
@@ -58,7 +64,7 @@ public class MeshTrail
     //    }
     //}
 
-    public void CallTrail(params object[] parameters)
+    public void CallTrail()
     {
         _myView.StartCoroutine(ActivateTrail());
     }
