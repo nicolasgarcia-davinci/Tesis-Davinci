@@ -326,7 +326,6 @@ public class DDManager : MonoBehaviour
                 Player._gameOver = true;
                 LifeTraker.Instance.pOverHealt = 50;
                 Player.GetUp();
-
             }
             if (LifeTraker.Instance.IsEnemy)
             {

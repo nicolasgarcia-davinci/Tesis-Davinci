@@ -16110,6 +16110,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 0
   currentHealth: 0
+  targetOuch: 0
+  EnterHeal: 0
+  progIncrement: 0
+  ProgHeal: 0
+  ProgOuch: 0
   lifeBar: {fileID: 106389986}
   _body: {fileID: 0}
   _bodyMaterial: {fileID: 2100000, guid: aecc0cb6c1946034e93dc55789e6854e, type: 2}
@@ -68802,7 +68807,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 1
+  m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 1
   m_UseSpriteMesh: 0
@@ -68829,6 +68834,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 0
   currentHealth: 0
+  targetOuch: 0
+  EnterHeal: 0
+  progIncrement: 1
+  ProgHeal: 0
+  ProgOuch: 0
   lifeBar: {fileID: 642369632}
   _body: {fileID: 0}
   _bodyMaterial: {fileID: 2100000, guid: d169c566c68654744b20d7d1383e00e4, type: 2}
@@ -68918,6 +68928,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 0
   currentHealth: 0
+  targetOuch: 0
+  EnterHeal: 0
+  progIncrement: 0
+  ProgHeal: 0
+  ProgOuch: 0
   lifeBar: {fileID: 649484587}
   _body: {fileID: 0}
   _bodyMaterial: {fileID: 2100000, guid: 5a29bf33ca8c92549b010fd13a9ff69c, type: 2}
@@ -73993,6 +74008,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1350224488}
   - {fileID: 642369631}
   - {fileID: 106389984}
   m_Father: {fileID: 8069939130639880812}
@@ -80025,6 +80041,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 0
   currentHealth: 0
+  targetOuch: 0
+  EnterHeal: 0
+  progIncrement: 0
+  ProgHeal: 0
+  ProgOuch: 0
   lifeBar: {fileID: 701683785}
   _body: {fileID: 9017258742554602634}
   _bodyMaterial: {fileID: 2100000, guid: 3bccb0285cd1d6746819cbb2757bf955, type: 2}
@@ -95278,7 +95299,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PartName: 
   AttName: 
-  life: 1
+  life: 50
   Damage: 0
   Aspeed: 0
   AttackSound: {fileID: 8300000, guid: fa2b8ac799ba0b1449eaafa7207786ec, type: 3}
@@ -106103,6 +106124,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 0
   currentHealth: 0
+  targetOuch: 0
+  EnterHeal: 0
+  progIncrement: 0
+  ProgHeal: 0
+  ProgOuch: 0
   lifeBar: {fileID: 805999763}
   _body: {fileID: 9017258742554602634}
   _bodyMaterial: {fileID: 2100000, guid: fad4ab2b32e0ab94f947b2f114d170a4, type: 2}
@@ -106886,6 +106912,104 @@ Transform:
   m_Children: []
   m_Father: {fileID: 861972542}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &891365423
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 891365424}
+  - component: {fileID: 891365427}
+  - component: {fileID: 891365426}
+  - component: {fileID: 891365425}
+  m_Layer: 6
+  m_Name: Player RedBar
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &891365424
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 891365423}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1782759965}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.10572917, y: 0.8880001}
+  m_AnchorMax: {x: 0.40875, y: 0.93700004}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &891365425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 891365423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43458e93f588f78468dc1ae06c9bc278, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 0
+  currentHealth: 0
+  targetOuch: 0
+  EnterHeal: 0
+  progIncrement: 0.5
+  ProgHeal: 0
+  ProgOuch: 0
+  lifeBar: {fileID: 891365426}
+  _body: {fileID: 0}
+  _bodyMaterial: {fileID: 2100000, guid: 1302868665fb2584599d9241b6921315, type: 2}
+--- !u!114 &891365426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 891365423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: a1f006f70d6d092438f7114a22326942, type: 3}
+  m_Type: 3
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 0
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &891365427
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 891365423}
+  m_CullTransparentMesh: 1
 --- !u!1 &907962591
 GameObject:
   m_ObjectHideFlags: 0
@@ -108257,7 +108381,7 @@ MonoBehaviour:
   Larm: {fileID: 912901144}
   Leg: {fileID: 299957812}
   Head: {fileID: 1908250818}
-  Chest: {fileID: 0}
+  Chest: {fileID: 1812869435}
   CHead: 0
   CRight: 0
   CLeft: 0
@@ -108265,7 +108389,7 @@ MonoBehaviour:
   CChest: 0
   hasBeenSet: 0
   Stamina: 0
-  MaxStamina: 100
+  MaxStamina: 50
   StaminaRefresh: 2
   IsRepairing: 0
   IsDying: 0
@@ -108295,6 +108419,8 @@ MonoBehaviour:
   IsAttackingUp: 0
   IsAttackingDown: 0
   IsAttacking: 0
+  IsDebuffed: 0
+  DebuffTime: 10
   _Audio: {fileID: 1022139563}
   _miss: {fileID: 8300000, guid: ad8c2bd6ecfce054297fd964fb91d60c, type: 3}
   _KO: {fileID: 8300000, guid: 591a787cdbecda5459380aa474c91292, type: 3}
@@ -108346,6 +108472,7 @@ MonoBehaviour:
   LeftArmDisplay: {fileID: 437017464}
   LegsDisplay: {fileID: 190808736}
   LifeBar: {fileID: 642369634}
+  RedBar: {fileID: 1350224489}
   StamminaBar: {fileID: 106389985}
   DamageToTake: 0
 --- !u!1 &1022547986
@@ -135887,6 +136014,104 @@ Transform:
   - {fileID: 834105607}
   m_Father: {fileID: 646876092}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1350224487
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1350224488}
+  - component: {fileID: 1350224491}
+  - component: {fileID: 1350224490}
+  - component: {fileID: 1350224489}
+  m_Layer: 6
+  m_Name: Enemy RedBar
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1350224488
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1350224487}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 661433171}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5896458, y: 0.89400005}
+  m_AnchorMax: {x: 0.8945209, y: 0.93981}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1350224489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1350224487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43458e93f588f78468dc1ae06c9bc278, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 0
+  currentHealth: 0
+  targetOuch: 0
+  EnterHeal: 0
+  progIncrement: 0.5
+  ProgHeal: 0
+  ProgOuch: 0
+  lifeBar: {fileID: 1350224490}
+  _body: {fileID: 0}
+  _bodyMaterial: {fileID: 2100000, guid: d169c566c68654744b20d7d1383e00e4, type: 2}
+--- !u!114 &1350224490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1350224487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: a1f006f70d6d092438f7114a22326942, type: 3}
+  m_Type: 3
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 0
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 1
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1350224491
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1350224487}
+  m_CullTransparentMesh: 1
 --- !u!1 &1351721606
 GameObject:
   m_ObjectHideFlags: 0
@@ -147837,6 +148062,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 0
   currentHealth: 0
+  targetOuch: 0
+  EnterHeal: 0
+  progIncrement: 0
+  ProgHeal: 0
+  ProgOuch: 0
   lifeBar: {fileID: 1485082046}
   _body: {fileID: 9017258742554602634}
   _bodyMaterial: {fileID: 0}
@@ -158526,6 +158756,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 0
   currentHealth: 0
+  targetOuch: 0
+  EnterHeal: 0
+  progIncrement: 0
+  ProgHeal: 0
+  ProgOuch: 0
   lifeBar: {fileID: 1634055172}
   _body: {fileID: 9017258742554602634}
   _bodyMaterial: {fileID: 2100000, guid: d34990294cc807947afa6c3e68c86f31, type: 2}
@@ -165197,6 +165432,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 891365424}
   - {fileID: 2112943326}
   - {fileID: 649484585}
   m_Father: {fileID: 8069939130639880812}
@@ -165595,7 +165831,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PartName: 
   AttName: 
-  life: 0
+  life: 50
   Damage: 0
   Aspeed: 0
   AttackSound: {fileID: 0}
@@ -188441,7 +188677,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 1
+  m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -188468,6 +188704,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 0
   currentHealth: 0
+  targetOuch: 0
+  EnterHeal: 0
+  progIncrement: 1
+  ProgHeal: 0
+  ProgOuch: 0
   lifeBar: {fileID: 2112943327}
   _body: {fileID: 0}
   _bodyMaterial: {fileID: 2100000, guid: 1302868665fb2584599d9241b6921315, type: 2}
@@ -188828,6 +189069,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 0
   currentHealth: 0
+  targetOuch: 0
+  EnterHeal: 0
+  progIncrement: 0
+  ProgHeal: 0
+  ProgOuch: 0
   lifeBar: {fileID: 2141312258}
   _body: {fileID: 9017258742554602634}
   _bodyMaterial: {fileID: 2100000, guid: b865f699341cbe141a413bfa56b326af, type: 2}
@@ -331391,7 +331637,7 @@ MonoBehaviour:
   CChest: 0
   hasBeenSet: 0
   Stamina: 0
-  MaxStamina: 100
+  MaxStamina: 50
   StaminaRefresh: 2
   IsRepairing: 0
   IsDying: 0
@@ -331421,6 +331667,8 @@ MonoBehaviour:
   IsAttackingUp: 0
   IsAttackingDown: 0
   IsAttacking: 0
+  IsDebuffed: 0
+  DebuffTime: 10
   _Audio: {fileID: 7667564808855253216}
   _miss: {fileID: 8300000, guid: ad8c2bd6ecfce054297fd964fb91d60c, type: 3}
   _KO: {fileID: 8300000, guid: 591a787cdbecda5459380aa474c91292, type: 3}
@@ -331472,6 +331720,7 @@ MonoBehaviour:
   LeftArmDisplay: {fileID: 1016350158}
   LegsDisplay: {fileID: 693132476}
   LifeBar: {fileID: 2112943329}
+  RedBar: {fileID: 891365425}
   StamminaBar: {fileID: 649484586}
   DamageToTake: 0
 --- !u!95 &8012810488319688111

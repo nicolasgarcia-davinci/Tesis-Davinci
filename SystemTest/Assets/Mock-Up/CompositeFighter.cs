@@ -66,6 +66,8 @@ public class CompositeFighter : MonoBehaviour
     public bool IsAttackingUp;
     public bool IsAttackingDown;
     public bool IsAttacking;
+    public bool IsDebuffed;
+    public float DebuffTime;
 
     [Header("Audio")]
     public AudioSource _Audio;
@@ -119,6 +121,7 @@ public class CompositeFighter : MonoBehaviour
     public PartDisplay LeftArmDisplay;
     public PartDisplay LegsDisplay;
     public LifeBar LifeBar;
+    public LifeBar RedBar;
     public LifeBar StamminaBar;
 
     [Header("Dying")]
@@ -143,7 +146,8 @@ public class CompositeFighter : MonoBehaviour
             Leg = LegCollection[LifeTraker.Instance.LegsIndex];
             Head = HeadCollection[LifeTraker.Instance.HeadIndex];
             Chest = ChestCollection[LifeTraker.Instance.ChestIndex];
-            OverAllHealth = LifeTraker.Instance.eOverHealt * Chest.life;
+            LifeTraker.Instance.pOverHealt = Chest.life;
+            OverAllHealth = LifeTraker.Instance.pOverHealt;
 
             Rarm.ActiveParts();
             Larm.ActiveParts();
@@ -167,6 +171,12 @@ public class CompositeFighter : MonoBehaviour
         }
         else
         {
+            LifeTraker.Instance.eRight = Rarm.life;
+            LifeTraker.Instance.eLeft = Larm.life;
+            LifeTraker.Instance.eLegs = Leg.life;
+            LifeTraker.Instance.eHead = Head.life;
+            LifeTraker.Instance.eOverHealt = Chest.life;
+
             OverAllHealth = LifeTraker.Instance.eOverHealt * (LifeTraker.Instance.Dificulty);
             Rarm.ActiveParts();
             Larm.ActiveParts();
@@ -179,11 +189,13 @@ public class CompositeFighter : MonoBehaviour
             CLegs = Leg.life;
             CChest = OverAllHealth;
         }
-        LifeBar.UpdateLife(OverAllHealth, CChest);
+        //LifeBar.ProgresiveEnter(OverAllHealth, CChest);
     }
 
     public void Set()
     {
+        LifeBar.lifeBar.fillAmount = 0;
+        RedBar.lifeBar.fillAmount = 0;
         hasBeenSet = true;
         ResetBools();
         Stamina = MaxStamina;
@@ -197,6 +209,8 @@ public class CompositeFighter : MonoBehaviour
             Larm.life = LifeTraker.Instance.pLeft;
             Leg.life  = LifeTraker.Instance.pLegs;
             Head.life = LifeTraker.Instance.pHead;
+            LifeBar.ProgresiveEnter(OverAllHealth, CChest);
+            RedBar.UpdateLife(OverAllHealth, CChest);
         }
         else
         {
@@ -205,6 +219,8 @@ public class CompositeFighter : MonoBehaviour
             Larm.life = LifeTraker.Instance.eLeft;
             Leg.life = LifeTraker.Instance.eLegs;
             Head.life = LifeTraker.Instance.eHead;
+            LifeBar.ProgresiveEnter(OverAllHealth, CChest);
+            RedBar.UpdateLife(OverAllHealth, CChest);
         }
         if (Rarm.life > 0)
         {
@@ -238,7 +254,6 @@ public class CompositeFighter : MonoBehaviour
         RightArmDisplay.UpdateDisplay(Rarm.life, CRight);
         LeftArmDisplay.UpdateDisplay(Larm.life, CLeft);
         LegsDisplay.UpdateDisplay(Leg.life, CLegs);
-        LifeBar.UpdateLife(OverAllHealth, CChest);
     }
 
     public void ResetBools()
@@ -290,11 +305,11 @@ public class CompositeFighter : MonoBehaviour
 
     void Update()
     {
-        //if (Stamina < MaxStamina)
-        //{
-        //    Stamina += StaminaRefresh * Time.deltaTime;
-        //    StamminaBar.UpdateLife(Stamina,MaxStamina);
-        //}
+        if (Stamina < MaxStamina && !IsDebuffed)
+        {
+            Stamina += StaminaRefresh * Time.deltaTime;
+            StamminaBar.UpdateLife(Stamina,MaxStamina);
+        }
     }
 
     public void Dodge(string animation, ref bool dodge)
@@ -348,12 +363,16 @@ public class CompositeFighter : MonoBehaviour
 
     public void Attack(string animation, GameObject trail, ref bool partAttack)
     {
-        if (!IsAttacking && !IsDodging && !IsRepairing && !IsDying && Stamina>10)
+        if (!IsAttacking && !IsDodging && !IsRepairing && !IsDying && Stamina>1)
         {
+            if (IsDebuffed) anim.speed = 0.5f;
+            else anim.speed = 1;
             Stamina -= 10;
+            if(Stamina<0) Stamina = 0;
             StamminaBar.UpdateLife(Stamina, MaxStamina);
+            if (!IsDebuffed && Stamina <= 0) StartCoroutine(Exausted());
             StartCoroutine(ManageVFX(trail, 0.75f));
-            anim.speed = Stamina / MaxStamina;
+            //anim.speed = Stamina / MaxStamina;
             anim.Play(animation);
             IsAttacking = true;
             partAttack = true;
@@ -630,6 +649,7 @@ public class CompositeFighter : MonoBehaviour
         OverAllHealth -= DamageToTake;
 
         LifeBar.UpdateLife(OverAllHealth, CChest);
+        RedBar.ProgresiveUpdate(OverAllHealth, CChest);
 
         if (OverAllHealth<=0)
         {
@@ -691,6 +711,12 @@ public class CompositeFighter : MonoBehaviour
         vfx.SetActive(true);
         yield return new WaitForSeconds(i);
         vfx.SetActive(false);
+    }
+    IEnumerator Exausted()
+    {
+        IsDebuffed = true;
+        yield return new WaitForSeconds(DebuffTime);
+        IsDebuffed = false;
     }
 
     public void Pause()

@@ -20,6 +20,9 @@ public class Part : MonoBehaviour
         foreach (var part in components)
         {
             part.gameObject.SetActive(true);
+            var coloring = part.GetComponent<MeshRenderer>();
+            coloring.material.SetColor("_Color_1", ColorCordination.Instance.color1);
+            coloring.material.SetColor("_Color_2", ColorCordination.Instance.color2);
         }
     }
     public void DeActiveParts()

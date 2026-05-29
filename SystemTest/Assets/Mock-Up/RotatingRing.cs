@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 
@@ -8,22 +9,25 @@ public class RotatingRing : MonoBehaviour
     public Animator RRIng;
     public int Current;
     public GameObject[] Stages;
+    public GameObject Lock;
     public TextMeshProUGUI lab;
     public Color Transparency;
     public bool toTranparent;
+    public bool CanEnter;
     public float BlinkInterval;
     public float transparancyRate;
     void Start()
     {
         UpdateDisPlay();
         StartCoroutine(TextFlash());
+        CanEnter = true;
     }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.UpArrow)) RotateUp();
         if (Input.GetKeyDown(KeyCode.DownArrow)) RotateDown();
-        if (Input.GetKeyDown(KeyCode.Space)) LoadManager.Instance.LoadRing();
+        if (Input.GetKeyDown(KeyCode.Space)) LevelLoad();
         if (toTranparent)
         {
             Transparency.a -= transparancyRate;
@@ -35,17 +39,35 @@ public class RotatingRing : MonoBehaviour
             lab.color = Transparency;
         }
     }
+
+    public void LevelLoad()
+    {
+        if(Current == 0 && CanEnter) LoadManager.Instance.LoadRing();
+        if (Current == 1 && CanEnter) LoadManager.Instance.LoadRing();
+        if (Current == 2 && CanEnter) LoadManager.Instance.LoadRing();
+        if (Current == 3 && CanEnter) LoadManager.Instance.LoadRing();
+    }
     public void RotateUp()
     {
         Current++;
-        if (Current == LifeTraker.Instance.Dificulty)
+        if (Current == Stages.Count())
         {
             Current--;
             return;
         }
-        else
+        if (Current == 1)
         {
-            RRIng.SetTrigger("NextLvl");
+            RRIng.Play("RTLv2");
+            UpdateDisPlay();
+        }
+        if (Current == 2)
+        {
+            RRIng.Play("RTLv3");
+            UpdateDisPlay();
+        }
+        if (Current == 3)
+        {
+            RRIng.Play("RTLv4");
             UpdateDisPlay();
         }
     }
@@ -57,9 +79,19 @@ public class RotatingRing : MonoBehaviour
             Current++;
             return;
         }
-        else
+        if(Current==0)
         {
-            RRIng.SetTrigger("PrevLvl");
+            RRIng.Play("RTLv1");
+            UpdateDisPlay();
+        }
+        if (Current == 1)
+        {
+            RRIng.Play("BLvl2");
+            UpdateDisPlay();
+        }
+        if (Current == 2)
+        {
+            RRIng.Play("BLvl3");
             UpdateDisPlay();
         }
     }
@@ -71,6 +103,16 @@ public class RotatingRing : MonoBehaviour
             item.SetActive(false);
         }
         Stages[Current].SetActive(true);
+        if (Current >= LifeTraker.Instance.Dificulty)
+        {
+            Lock.SetActive(true);
+            CanEnter = false;
+        }
+        else
+        {
+            Lock.SetActive(false);
+            CanEnter = true;
+        } 
     }
     public IEnumerator TextFlash()
     {
