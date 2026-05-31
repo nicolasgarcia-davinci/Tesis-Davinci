@@ -175,9 +175,9 @@ public class CompositeFighter : MonoBehaviour
             LifeTraker.Instance.eLeft = Larm.life;
             LifeTraker.Instance.eLegs = Leg.life;
             LifeTraker.Instance.eHead = Head.life;
-            LifeTraker.Instance.eOverHealt = Chest.life;
+            LifeTraker.Instance.eOverHealt = Chest.life * (LifeTraker.Instance.Dificulty);
 
-            OverAllHealth = LifeTraker.Instance.eOverHealt * (LifeTraker.Instance.Dificulty);
+            OverAllHealth = LifeTraker.Instance.eOverHealt;
             Rarm.ActiveParts();
             Larm.ActiveParts();
             Leg.ActiveParts();
@@ -194,8 +194,6 @@ public class CompositeFighter : MonoBehaviour
 
     public void Set()
     {
-        LifeBar.lifeBar.fillAmount = 0;
-        RedBar.lifeBar.fillAmount = 0;
         hasBeenSet = true;
         ResetBools();
         Stamina = MaxStamina;
@@ -209,8 +207,6 @@ public class CompositeFighter : MonoBehaviour
             Larm.life = LifeTraker.Instance.pLeft;
             Leg.life  = LifeTraker.Instance.pLegs;
             Head.life = LifeTraker.Instance.pHead;
-            LifeBar.ProgresiveEnter(OverAllHealth, CChest);
-            RedBar.UpdateLife(OverAllHealth, CChest);
         }
         else
         {
@@ -218,10 +214,11 @@ public class CompositeFighter : MonoBehaviour
             Rarm.life = LifeTraker.Instance.eRight;
             Larm.life = LifeTraker.Instance.eLeft;
             Leg.life = LifeTraker.Instance.eLegs;
-            Head.life = LifeTraker.Instance.eHead;
-            LifeBar.ProgresiveEnter(OverAllHealth, CChest);
-            RedBar.UpdateLife(OverAllHealth, CChest);
+            Head.life = LifeTraker.Instance.eHead;  
         }
+
+        EnterLife();
+
         if (Rarm.life > 0)
         {
             RarmBoom = false;
@@ -256,6 +253,17 @@ public class CompositeFighter : MonoBehaviour
         LegsDisplay.UpdateDisplay(Leg.life, CLegs);
     }
 
+    public void ExitStage()
+    {
+        anim.Play("DescansoEntry V2");
+    }
+
+    public void EnterLife()
+    {
+        LifeBar.ProgresiveEnter(OverAllHealth, CChest);
+        RedBar.UpdateLife(OverAllHealth, CChest);
+    }
+
     public void ResetBools()
     {
         IsDodgingLeft=false; IsDodgingRight=false; IsDodgingDown=false; IsDodgingUp=false; IsDodging=false; IsDying=false;
@@ -274,6 +282,8 @@ public class CompositeFighter : MonoBehaviour
 
     public void EnterStage()
     {
+        LifeBar.lifeBar.fillAmount = 0;
+        RedBar.lifeBar.fillAmount = 0;
         anim.SetTrigger("Enter Stage");
     }
     public void FightStart()
@@ -300,6 +310,7 @@ public class CompositeFighter : MonoBehaviour
     public void SkipIntro()
     {
         anim.Play("Idle");
+        EnterLife();
     }
 
 

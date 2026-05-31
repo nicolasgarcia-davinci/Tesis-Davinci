@@ -158,7 +158,7 @@ public class InputCheker : MonoBehaviour
         {
             if (group.perfect)
             {
-                group.partlifeIndicator.Heal();
+                //group.partlifeIndicator.Heal();
                 //Jingle.PlayOneShot(Correct);// Modificacion varios clips
                 PlayRandomCorrect();
             }

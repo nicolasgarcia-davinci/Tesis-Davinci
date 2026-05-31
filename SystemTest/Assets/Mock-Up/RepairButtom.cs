@@ -91,28 +91,28 @@ public class RepairButtom : MonoBehaviour
         {
             RepariBot.HealMenuPart(0);
             _HealMenu.UseHeal();
-            _lifebar.UpdateLife(LifeTraker.Instance.pHead, LifeTraker.Instance.maxHeadHealth);
+            _lifebar.ProgresiveEnter(LifeTraker.Instance.pHead, LifeTraker.Instance.maxHeadHealth);
             _percentil.text = GetPercentil(LifeTraker.Instance.pHead, LifeTraker.Instance.maxHeadHealth).ToString() + "%";
         }
         if (_thisType == HealPart.HealRightArm && _HealMenu.HealUses > 0)
         {
             RepariBot.HealMenuPart(1);
             _HealMenu.UseHeal();
-            _lifebar.UpdateLife(LifeTraker.Instance.pRight, LifeTraker.Instance.maxRarmHealth);
+            _lifebar.ProgresiveEnter(LifeTraker.Instance.pRight, LifeTraker.Instance.maxRarmHealth);
             _percentil.text = GetPercentil(LifeTraker.Instance.pRight, LifeTraker.Instance.maxRarmHealth).ToString() + "%";
         }
         if (_thisType == HealPart.HealLeftArm && _HealMenu.HealUses > 0)
         {
             RepariBot.HealMenuPart(2);
             _HealMenu.UseHeal();
-            _lifebar.UpdateLife(LifeTraker.Instance.pLeft, LifeTraker.Instance.maxLarmHealth);
+            _lifebar.ProgresiveEnter(LifeTraker.Instance.pLeft, LifeTraker.Instance.maxLarmHealth);
             _percentil.text = GetPercentil(LifeTraker.Instance.pLeft, LifeTraker.Instance.maxLarmHealth).ToString() + "%";
         }
         if (_thisType == HealPart.HealLegs && _HealMenu.HealUses > 0)
         {
             RepariBot.HealMenuPart(3);
             _HealMenu.UseHeal();
-            _lifebar.UpdateLife(LifeTraker.Instance.pLegs, LifeTraker.Instance.maxLegsHealth);
+            _lifebar.ProgresiveEnter(LifeTraker.Instance.pLegs, LifeTraker.Instance.maxLegsHealth);
             _percentil.text = GetPercentil(LifeTraker.Instance.pLegs, LifeTraker.Instance.maxLegsHealth).ToString() + "%";
         }
         if (_thisType == HealPart.Pass)

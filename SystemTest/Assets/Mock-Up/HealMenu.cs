@@ -23,7 +23,7 @@ public class HealMenu : MonoBehaviour
     public void UseHeal()
     {
         HealUses--;
-        _label.text = "Remaining heals: " + HealUses.ToString();
+        _label.text =  HealUses.ToString();
         ResetHeals();
     }
 

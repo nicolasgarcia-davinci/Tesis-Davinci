@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class LifeBar : MonoBehaviour
 {
-    public float maxHealth;
-    public float currentHealth;
     public float targetOuch;
     public float EnterHeal;
     public float progIncrement;
@@ -40,10 +38,10 @@ public class LifeBar : MonoBehaviour
         }
     }
 
-    public void Heal()
-    {
-        _body.HealPart(this);
-    }
+    //public void Heal()
+    //{
+    //    _body.HealPart(this);
+    //}
 
     public void ProgresiveUpdate(float current, float max)
     {

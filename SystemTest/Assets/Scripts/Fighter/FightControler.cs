@@ -18,6 +18,8 @@ public class FightControler : MonoBehaviour
     public GameObject Controlers;
     public bool IsPaused;
 
+    public Animator UI_Enter;
+
     public AudioRequester _stageTheme;
 
     private void Awake()
@@ -114,6 +116,7 @@ public class FightControler : MonoBehaviour
     {
         _Player.EnterStage();
         _Enemy.EnterStage();
+        UI_Enter.SetTrigger("Enter");
     }
 
     public void EnterStage()
@@ -133,6 +136,7 @@ public class FightControler : MonoBehaviour
     public void SkipIntro()
     {
         StageState.Instance.ResetFight = false;
+        UI_Enter.Play("Skip");
         Timer.SetActive(true);
         ActivateControlers();
         _Player.Set();
@@ -145,10 +149,11 @@ public class FightControler : MonoBehaviour
 
     public void ExitStage()
     {
+        UI_Enter.Play("Exit");
         _Player.IsRepairing = true;
         _Enemy.IsRepairing = true;
-        _Player.anim.SetTrigger("Exit Stage");
-        _Enemy.anim.SetTrigger("Exit Stage");
+        _Player.ExitStage();
+        _Enemy.ExitStage();
     }
     public void ActivateControlers()
     {
@@ -157,6 +162,7 @@ public class FightControler : MonoBehaviour
     public void DeActivateControlers()
     {
         Controlers.SetActive(false);
+        UI_Enter.Play("Exit");
     }
     public void Pause()
     {
