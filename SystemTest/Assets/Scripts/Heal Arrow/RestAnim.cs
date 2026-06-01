@@ -5,19 +5,20 @@ using UnityEngine;
 public class RestAnim : MonoBehaviour
 {
     public Animator Anim;
-    public SkinnedMeshRenderer body;
 
     [Header("Part Collection")]
     public Arm[] RarmCollection;
     public Arm[] LarmCollection;
     public Leg[] LegCollection;
     public Head[] HeadCollection;
+    public Chest[] ChestCollection;
 
     [Header("Active Parts")]
     public Arm Rarm;
     public Arm Larm;
     public Leg Leg;
     public Head Head;
+    public Chest Chest;
 
     [Header("Particles")]
     public GameObject HeadGlich;
@@ -27,17 +28,29 @@ public class RestAnim : MonoBehaviour
 
     void Start()
     {
-        body.material.SetColor("_Color_1", ColorCordination.Instance.color1);
-        body.material.SetColor("_Color_2", ColorCordination.Instance.color2);
-        body.material.SetFloat("_Transparencia", 1);
+        Rarm = RarmCollection[LifeTraker.Instance.RarmIndex];
+        Rarm.ActiveParts();
+        Rarm.SetColor();
+
+        Larm = LarmCollection[LifeTraker.Instance.LarmIndex];
+        Larm.ActiveParts();
+        Larm.SetColor();
+
+        Leg = LegCollection[LifeTraker.Instance.LegsIndex];
+        Leg.ActiveParts();
+        Leg.SetColor();
+
+        Head = HeadCollection[LifeTraker.Instance.HeadIndex];
+        Head.ActiveParts();
+        Head.SetColor();
+
+        Chest = ChestCollection[LifeTraker.Instance.ChestIndex];
+        Chest.ActiveParts();
+        Chest.SetColor();
     }
 
     public void SetBody()
     {
-        Rarm = RarmCollection[LifeTraker.Instance.RarmIndex];
-        Larm = LarmCollection[LifeTraker.Instance.LarmIndex];
-        Leg = LegCollection[LifeTraker.Instance.LegsIndex];
-        Head = HeadCollection[LifeTraker.Instance.HeadIndex];
         ResetRepair();
         CheckParts();
     }

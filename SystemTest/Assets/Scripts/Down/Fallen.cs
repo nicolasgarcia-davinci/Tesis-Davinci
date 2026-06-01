@@ -30,11 +30,6 @@ public class Fallen : MonoBehaviour
     public bool _gameOver;
     public bool _isEnemy;
 
-    [Header("Mesh y materials")]
-    public SkinnedMeshRenderer body;
-    public Material PlayerMaterial;
-    public Material EnemyMaterial;
-
     public AudioClip Succes;
     public AudioSource Sound;
 
@@ -46,7 +41,6 @@ public class Fallen : MonoBehaviour
         _isEnemy = LifeTraker.Instance.IsEnemy;
         if (_isEnemy)
         {
-            body.material = EnemyMaterial;
             Rarm = ERarm;
             Larm = ELarm;
             Leg = ELeg;
@@ -95,9 +89,7 @@ public class Fallen : MonoBehaviour
             {
                 Head.ActiveParts();
             }else Head.DeActiveParts();
-
-            body.material=PlayerMaterial;
-            ColorChange(ColorCordination.Instance.color1, ColorCordination.Instance.color2);
+            ColorChange();
         }
     }
 
@@ -129,11 +121,12 @@ public class Fallen : MonoBehaviour
     {
         _fallen.speed = 0;
     }
-    public void ColorChange(Color color1, Color color2)
+    public void ColorChange()
     {
-        body.material.SetColor("_Color_1", color1);
-        body.material.SetColor("_Color_2", color2);
-        body.material.SetFloat("_Transparencia", 1);
+        Rarm.SetColor();
+        Larm.SetColor();
+        Leg.SetColor();
+        Head.SetColor();
     }
     public void GetUp()
     {

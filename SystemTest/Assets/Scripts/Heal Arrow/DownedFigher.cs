@@ -22,6 +22,11 @@ public class DownedFigher : MonoBehaviour
         }
     }
 
+    public void ExitRepair()
+    {
+        Player.ResetRepair();
+    }
+
     //public void Set()
     //{   
     //    _bodyIndicators[0].partlifeIndicator.UpdateLife(LifeTraker.Instance.pHead, LifeTraker.Instance.maxHeadHealth);

@@ -117,6 +117,7 @@ public class RepairButtom : MonoBehaviour
         }
         if (_thisType == HealPart.Pass)
         {
+            RepariBot.ExitRepair();
             LifeTraker.Instance.ResetTimer = true;
             StageState.Instance.ResetFight = true;
             StageSound.instance.Mute();

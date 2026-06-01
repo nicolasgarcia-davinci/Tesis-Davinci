@@ -303,6 +303,7 @@ MonoBehaviour:
   _thisType: 3
   color: {r: 1, g: 0.16235377, b: 0, a: 1}
   colorCatalog: {fileID: 1339843650}
+  partsToPaint: {fileID: 0}
 --- !u!82 &39943968
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1056,6 +1057,7 @@ MonoBehaviour:
   _thisType: 4
   color: {r: 1, g: 1, b: 1, a: 1}
   colorCatalog: {fileID: 1238282230}
+  partsToPaint: {fileID: 592929880}
 --- !u!1 &85724772
 GameObject:
   m_ObjectHideFlags: 0
@@ -1542,7 +1544,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: BackSpace
+  m_text: E
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6826d9bc6940a1c4887285504492b5b1, type: 2}
   m_sharedMaterial: {fileID: 4141341682264513077, guid: 6826d9bc6940a1c4887285504492b5b1, type: 2}
@@ -1569,7 +1571,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 37.75
+  m_fontSize: 72
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1861,6 +1863,7 @@ MonoBehaviour:
   _thisType: 4
   color: {r: 0.8928399, g: 1, b: 0, a: 1}
   colorCatalog: {fileID: 882915428}
+  partsToPaint: {fileID: 592929880}
 --- !u!1 &152199888
 GameObject:
   m_ObjectHideFlags: 0
@@ -2079,6 +2082,7 @@ MonoBehaviour:
   _thisType: 4
   color: {r: 0, g: 1, b: 0.930851, a: 1}
   colorCatalog: {fileID: 1022377891}
+  partsToPaint: {fileID: 592929880}
 --- !u!82 &175885438
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4058,6 +4062,7 @@ MonoBehaviour:
   _thisType: 3
   color: {r: 0.00083088875, g: 1, b: 0, a: 1}
   colorCatalog: {fileID: 174941114}
+  partsToPaint: {fileID: 0}
 --- !u!1 &367601436
 GameObject:
   m_ObjectHideFlags: 0
@@ -4377,6 +4382,7 @@ MonoBehaviour:
   _thisType: 4
   color: {r: 1, g: 0, b: 0.86768484, a: 1}
   colorCatalog: {fileID: 665852550}
+  partsToPaint: {fileID: 592929880}
 --- !u!82 &444605671
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5361,6 +5367,56 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 568102522}
   m_CullTransparentMesh: 1
+--- !u!1 &592929879
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 592929881}
+  - component: {fileID: 592929880}
+  m_Layer: 0
+  m_Name: Parts To Paint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &592929880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 592929879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7a8ff39bf9c11d4bbe2ac390500e8d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PtP:
+  - {fileID: 5824285368487834043}
+  - {fileID: 6000104181026193172}
+  - {fileID: 5289964205188148110}
+  - {fileID: 2416044378676287645}
+  - {fileID: 7372016346342452938}
+--- !u!4 &592929881
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 592929879}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -513.128, y: 15.985208, z: 31.281189}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &596205044
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5717,6 +5773,7 @@ MonoBehaviour:
   _thisType: 3
   color: {r: 1, g: 0, b: 0.86768484, a: 1}
   colorCatalog: {fileID: 706087267}
+  partsToPaint: {fileID: 0}
 --- !u!82 &628230633
 AudioSource:
   m_ObjectHideFlags: 0
@@ -6248,8 +6305,8 @@ RectTransform:
   - {fileID: 134308173}
   m_Father: {fileID: 763862916}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.08587319, y: 0.106000006}
-  m_AnchorMax: {x: 0.3435122, y: 0.179}
+  m_AnchorMin: {x: 0.17571704, y: 0.106000006}
+  m_AnchorMax: {x: 0.25571713, y: 0.179}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -6648,6 +6705,7 @@ MonoBehaviour:
   _thisType: 3
   color: {r: 1, g: 0, b: 0.86768484, a: 1}
   colorCatalog: {fileID: 468735578}
+  partsToPaint: {fileID: 0}
 --- !u!1 &723554551
 GameObject:
   m_ObjectHideFlags: 0
@@ -6925,6 +6983,7 @@ MonoBehaviour:
   _thisType: 4
   color: {r: 0, g: 0.018627167, b: 1, a: 1}
   colorCatalog: {fileID: 90888716}
+  partsToPaint: {fileID: 592929880}
 --- !u!82 &729302758
 AudioSource:
   m_ObjectHideFlags: 0
@@ -8957,6 +9016,7 @@ MonoBehaviour:
   _thisType: 4
   color: {r: 0, g: 0.018627167, b: 1, a: 1}
   colorCatalog: {fileID: 238206435}
+  partsToPaint: {fileID: 592929880}
 --- !u!1 &993992189
 GameObject:
   m_ObjectHideFlags: 0
@@ -9025,6 +9085,7 @@ MonoBehaviour:
   _thisType: 3
   color: {r: 0.8928399, g: 1, b: 0, a: 1}
   colorCatalog: {fileID: 53839621}
+  partsToPaint: {fileID: 0}
 --- !u!82 &993992192
 AudioSource:
   m_ObjectHideFlags: 0
@@ -9285,6 +9346,7 @@ MonoBehaviour:
   _thisType: 3
   color: {r: 1, g: 1, b: 1, a: 1}
   colorCatalog: {fileID: 152199890}
+  partsToPaint: {fileID: 0}
 --- !u!1 &1020175579
 GameObject:
   m_ObjectHideFlags: 0
@@ -11097,6 +11159,7 @@ MonoBehaviour:
   _thisType: 4
   color: {r: 1, g: 0, b: 0.86768484, a: 1}
   colorCatalog: {fileID: 1720705504}
+  partsToPaint: {fileID: 592929880}
 --- !u!1001 &1221788654
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11503,6 +11566,7 @@ MonoBehaviour:
   _thisType: 4
   color: {r: 1, g: 1, b: 1, a: 1}
   colorCatalog: {fileID: 936948814}
+  partsToPaint: {fileID: 592929880}
 --- !u!82 &1286191533
 AudioSource:
   m_ObjectHideFlags: 0
@@ -12539,6 +12603,7 @@ MonoBehaviour:
   _asMenu: {fileID: 8348805834133518759}
   TheSlector: {fileID: 125801979}
   CompFighter: {fileID: 886212520369946560}
+  ListToPaint: {fileID: 592929880}
   SIndex: 0
   HIndex: 0
   LAIndex: 0
@@ -12749,6 +12814,7 @@ MonoBehaviour:
   _thisType: 4
   color: {r: 0, g: 1, b: 0.930851, a: 1}
   colorCatalog: {fileID: 1644795179}
+  partsToPaint: {fileID: 592929880}
 --- !u!1 &1515894315
 GameObject:
   m_ObjectHideFlags: 0
@@ -12892,6 +12958,7 @@ MonoBehaviour:
   _thisType: 3
   color: {r: 1, g: 1, b: 1, a: 1}
   colorCatalog: {fileID: 24590498}
+  partsToPaint: {fileID: 0}
 --- !u!82 &1519271293
 AudioSource:
   m_ObjectHideFlags: 0
@@ -13286,6 +13353,7 @@ MonoBehaviour:
   _thisType: 4
   color: {r: 1, g: 0.16235377, b: 0, a: 1}
   colorCatalog: {fileID: 1784398489}
+  partsToPaint: {fileID: 592929880}
 --- !u!1 &1565453944
 GameObject:
   m_ObjectHideFlags: 0
@@ -13530,6 +13598,7 @@ MonoBehaviour:
   _thisType: 3
   color: {r: 0.8928399, g: 1, b: 0, a: 1}
   colorCatalog: {fileID: 1154413717}
+  partsToPaint: {fileID: 0}
 --- !u!1 &1583740245
 GameObject:
   m_ObjectHideFlags: 0
@@ -15070,6 +15139,7 @@ MonoBehaviour:
   _thisType: 3
   color: {r: 1, g: 0.16235377, b: 0, a: 1}
   colorCatalog: {fileID: 90170124}
+  partsToPaint: {fileID: 0}
 --- !u!1 &1698460603
 GameObject:
   m_ObjectHideFlags: 0
@@ -15218,6 +15288,7 @@ MonoBehaviour:
   _thisType: 3
   color: {r: 0.00083088875, g: 1, b: 0, a: 1}
   colorCatalog: {fileID: 2137408198}
+  partsToPaint: {fileID: 0}
 --- !u!82 &1705050443
 AudioSource:
   m_ObjectHideFlags: 0
@@ -15581,6 +15652,7 @@ MonoBehaviour:
   _thisType: 3
   color: {r: 0, g: 1, b: 0.930851, a: 1}
   colorCatalog: {fileID: 1439466720}
+  partsToPaint: {fileID: 0}
 --- !u!1 &1715360203
 GameObject:
   m_ObjectHideFlags: 0
@@ -15649,6 +15721,7 @@ MonoBehaviour:
   _thisType: 4
   color: {r: 0.00083088875, g: 1, b: 0, a: 1}
   colorCatalog: {fileID: 1107105612}
+  partsToPaint: {fileID: 592929880}
 --- !u!82 &1715360206
 AudioSource:
   m_ObjectHideFlags: 0
@@ -16402,6 +16475,7 @@ MonoBehaviour:
   _thisType: 4
   color: {r: 0.8928399, g: 1, b: 0, a: 1}
   colorCatalog: {fileID: 456503583}
+  partsToPaint: {fileID: 592929880}
 --- !u!82 &1765608678
 AudioSource:
   m_ObjectHideFlags: 0
@@ -17487,6 +17561,7 @@ MonoBehaviour:
   _thisType: 3
   color: {r: 0, g: 0.018627167, b: 1, a: 1}
   colorCatalog: {fileID: 240456555}
+  partsToPaint: {fileID: 0}
 --- !u!1 &1965133254
 GameObject:
   m_ObjectHideFlags: 0
@@ -17689,6 +17764,7 @@ MonoBehaviour:
   _thisType: 3
   color: {r: 0, g: 1, b: 0.930851, a: 1}
   colorCatalog: {fileID: 1515894317}
+  partsToPaint: {fileID: 0}
 --- !u!82 &1970810879
 AudioSource:
   m_ObjectHideFlags: 0
@@ -18568,6 +18644,7 @@ MonoBehaviour:
   _thisType: 4
   color: {r: 0.00083088875, g: 1, b: 0, a: 1}
   colorCatalog: {fileID: 1645906808}
+  partsToPaint: {fileID: 592929880}
 --- !u!1 &2066116835
 GameObject:
   m_ObjectHideFlags: 0
@@ -18780,6 +18857,7 @@ MonoBehaviour:
   _thisType: 4
   color: {r: 1, g: 0.16235377, b: 0, a: 1}
   colorCatalog: {fileID: 1379897462}
+  partsToPaint: {fileID: 592929880}
 --- !u!82 &2068945473
 AudioSource:
   m_ObjectHideFlags: 0
@@ -29261,7 +29339,10 @@ MonoBehaviour:
   Aspeed: 20
   AttackSound: {fileID: 0}
   ParticleContainer: {fileID: 0}
-  components: []
+  components:
+  - {fileID: 3376437686053083877}
+  - {fileID: 8548871115512197986}
+  - {fileID: 7609793306051331336}
 --- !u!4 &1769966457914204592
 Transform:
   m_ObjectHideFlags: 0
@@ -30494,7 +30575,10 @@ MonoBehaviour:
   Aspeed: 20
   AttackSound: {fileID: 0}
   ParticleContainer: {fileID: 0}
-  components: []
+  components:
+  - {fileID: 4834809209798485497}
+  - {fileID: 2479663157000494420}
+  - {fileID: 3082316843517577601}
 --- !u!1 &2158450240581545866
 GameObject:
   m_ObjectHideFlags: 0
@@ -31307,7 +31391,8 @@ MonoBehaviour:
   Aspeed: 10
   AttackSound: {fileID: 0}
   ParticleContainer: {fileID: 0}
-  components: []
+  components:
+  - {fileID: 2648981945338074913}
 --- !u!108 &2424642482159238859
 Light:
   m_ObjectHideFlags: 0
@@ -31984,7 +32069,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2650736476340590585
 Transform:
   m_ObjectHideFlags: 0
@@ -32017,7 +32102,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &2667907148501222757
 GameObject:
   m_ObjectHideFlags: 0
@@ -35939,7 +36024,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!33 &3998828682701842741
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -39512,7 +39597,10 @@ MonoBehaviour:
   Aspeed: 10
   AttackSound: {fileID: 0}
   ParticleContainer: {fileID: 0}
-  components: []
+  components:
+  - {fileID: 8839706202513985428}
+  - {fileID: 5401178442605117790}
+  - {fileID: 5272423392131139100}
 --- !u!1 &5312945407175189862
 GameObject:
   m_ObjectHideFlags: 0
@@ -40918,7 +41006,8 @@ MonoBehaviour:
   Aspeed: 0
   AttackSound: {fileID: 0}
   ParticleContainer: {fileID: 0}
-  components: []
+  components:
+  - {fileID: 7935212432897213932}
 --- !u!1 &5825724520465370561
 GameObject:
   m_ObjectHideFlags: 0
@@ -41421,7 +41510,10 @@ MonoBehaviour:
   Aspeed: 10
   AttackSound: {fileID: 0}
   ParticleContainer: {fileID: 0}
-  components: []
+  components:
+  - {fileID: 4311506977693094480}
+  - {fileID: 6080750710630878171}
+  - {fileID: 4526602051088621889}
 --- !u!23 &6006627403902102206
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -44430,7 +44522,8 @@ MonoBehaviour:
   Aspeed: 0
   AttackSound: {fileID: 0}
   ParticleContainer: {fileID: 0}
-  components: []
+  components:
+  - {fileID: 2278444375133980509}
 --- !u!1 &7212597598844763232
 GameObject:
   m_ObjectHideFlags: 0
@@ -44775,7 +44868,11 @@ MonoBehaviour:
   Aspeed: 10
   AttackSound: {fileID: 0}
   ParticleContainer: {fileID: 0}
-  components: []
+  components:
+  - {fileID: 3629025067973600659}
+  - {fileID: 8703913320326673264}
+  - {fileID: 8580695896685001244}
+  - {fileID: 6464164185201058792}
 --- !u!4 &7372287856373897731
 Transform:
   m_ObjectHideFlags: 0
@@ -46255,7 +46352,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7941379414163544129
 Transform:
   m_ObjectHideFlags: 0
@@ -46967,7 +47064,11 @@ MonoBehaviour:
   Aspeed: 20
   AttackSound: {fileID: 0}
   ParticleContainer: {fileID: 0}
-  components: []
+  components:
+  - {fileID: 5876274057015183527}
+  - {fileID: 6791977503818283203}
+  - {fileID: 1610543158964260397}
+  - {fileID: 6446005667829408922}
 --- !u!65 &8179627476825579201
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -47363,7 +47464,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8329262754531162065
 Transform:
   m_ObjectHideFlags: 0
@@ -47406,7 +47507,8 @@ MonoBehaviour:
   Aspeed: 10
   AttackSound: {fileID: 0}
   ParticleContainer: {fileID: 0}
-  components: []
+  components:
+  - {fileID: 4912398223190343810}
 --- !u!114 &8348805834133518759
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48771,6 +48873,7 @@ MonoBehaviour:
   _thisType: 3
   color: {r: 0, g: 0.018627167, b: 1, a: 1}
   colorCatalog: {fileID: 3952039806074826845}
+  partsToPaint: {fileID: 0}
 --- !u!82 &8834512008763056109
 AudioSource:
   m_ObjectHideFlags: 0
@@ -49884,3 +49987,4 @@ SceneRoots:
   - {fileID: 59126901778896863}
   - {fileID: 8072550241525618399}
   - {fileID: 929765718815168650}
+  - {fileID: 592929881}

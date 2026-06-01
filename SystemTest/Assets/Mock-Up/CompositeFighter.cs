@@ -105,9 +105,6 @@ public class CompositeFighter : MonoBehaviour
     public bool LarmBoom;
     public bool LegsBoom;
 
-    [Header("Body Paint")]
-    public SkinnedMeshRenderer Body;
-
     [Header("OverAllHealth")]
     public float OverAllHealth;
 
@@ -139,8 +136,6 @@ public class CompositeFighter : MonoBehaviour
         {
             trailMesh = new MeshTrail(this, trailFactory.Pool, trailFactory.playerSkRenderer, trailFactory.trailMat, matAlphaName, _dodgeTime)
                 .setTime(_refreshRate, _delayDestroy).setPos(this.transform);
-            Body.material.SetColor("_Color_1", ColorCordination.Instance.color1);
-            Body.material.SetColor("_Color_2", ColorCordination.Instance.color2);
             Rarm = RarmCollection[LifeTraker.Instance.RarmIndex];
             Larm = LarmCollection[LifeTraker.Instance.LarmIndex];
             Leg = LegCollection[LifeTraker.Instance.LegsIndex];
@@ -150,10 +145,16 @@ public class CompositeFighter : MonoBehaviour
             OverAllHealth = LifeTraker.Instance.pOverHealt;
 
             Rarm.ActiveParts();
+            Rarm.SetColor();
             Larm.ActiveParts();
+            Larm.SetColor();
             Leg.ActiveParts();
+            Leg.SetColor();
             Head.ActiveParts();
+            Head.SetColor();
             Chest.ActiveParts();
+            Chest.SetColor();
+
             LifeTraker.Instance.pRight = Rarm.life;
             LifeTraker.Instance.pLeft = Larm.life;
             LifeTraker.Instance.pLegs = Leg.life;
@@ -178,6 +179,7 @@ public class CompositeFighter : MonoBehaviour
             LifeTraker.Instance.eOverHealt = Chest.life * (LifeTraker.Instance.Dificulty);
 
             OverAllHealth = LifeTraker.Instance.eOverHealt;
+
             Rarm.ActiveParts();
             Larm.ActiveParts();
             Leg.ActiveParts();

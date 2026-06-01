@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PaintRobo : MonoBehaviour
 {
-    public SkinnedMeshRenderer body;
     [Header("Part Collection")]
     public Arm[] RarmCollection;
     public Arm[] LarmCollection;
@@ -27,16 +26,14 @@ public class PaintRobo : MonoBehaviour
         Chest = ChestCollection[LifeTraker.Instance.ChestIndex];
 
         Rarm.ActiveParts();
+        Rarm.SetColor();
         Larm.ActiveParts();
+        Larm.SetColor();
         Leg.ActiveParts();
+        Leg.SetColor();
         Head.ActiveParts();
+        Head.SetColor();
         Chest.ActiveParts();
-        ColorChange();
-    }
-    public void ColorChange()
-    {
-        body.material.SetColor("_Color_1", ColorCordination.Instance.color1);
-        body.material.SetColor("_Color_2", ColorCordination.Instance.color2);
-        body.material.SetFloat("_Transparencia", 1f);
+        Chest.SetColor();
     }
 }

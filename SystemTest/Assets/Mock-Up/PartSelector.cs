@@ -14,6 +14,8 @@ public class PartSelector : MonoBehaviour
     public GameObject TheSlector;
 
     public GameObject CompFighter;
+
+    public PartsToPaint ListToPaint;
     
     public int SIndex;
     public int HIndex;
@@ -41,7 +43,7 @@ public class PartSelector : MonoBehaviour
     }
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Backspace)) SelectUp();
+        if(Input.GetKeyDown(KeyCode.E)) SelectUp();
         if(Input.GetKeyDown(KeyCode.RightArrow)) SelectRight();
         if(Input.GetKeyDown(KeyCode.LeftArrow)) SelectLeft();
         if(NeedsToZero) Zero();
@@ -74,6 +76,7 @@ public class PartSelector : MonoBehaviour
             HeadSelected = false;
             ChestSelected = false;
             rArms[RAIndex].gameObject.SetActive(true);
+            rArms[RAIndex].SetColor();
         }
 
         if (SIndex == 1)
@@ -84,6 +87,7 @@ public class PartSelector : MonoBehaviour
             HeadSelected = false;
             ChestSelected = false;
             lArms[LAIndex].gameObject.SetActive(true);
+            lArms[LAIndex].SetColor();
         }
 
         if (SIndex == 2)
@@ -94,6 +98,7 @@ public class PartSelector : MonoBehaviour
             HeadSelected = false;
             ChestSelected = false;
             legs[LIndex].gameObject.SetActive(true);
+            legs[LIndex].SetColor();
         }
 
         if (SIndex == 3)
@@ -104,6 +109,7 @@ public class PartSelector : MonoBehaviour
             HeadSelected = true;
             ChestSelected = false;
             heads[HIndex].gameObject.SetActive(true);
+            heads[HIndex].SetColor();
         }
         if (SIndex == 4)
         {
@@ -112,7 +118,8 @@ public class PartSelector : MonoBehaviour
             LegsSelected = false;
             HeadSelected = false;
             ChestSelected = true;
-            heads[ChIndex].gameObject.SetActive(true);
+            chests[ChIndex].gameObject.SetActive(true);
+            chests[ChIndex].SetColor();
         }
     }
     public void SelectUp()
@@ -126,11 +133,22 @@ public class PartSelector : MonoBehaviour
 
         if (SIndex > Selectors.Length-1)
         {
+            ListToPaint.PtP = new List<Part>();
+
             LifeTraker.Instance.RarmIndex = RAIndex;
+            ListToPaint.PtP.Add(rArms[RAIndex]);
+
             LifeTraker.Instance.LarmIndex = LAIndex;
+            ListToPaint.PtP.Add(lArms[LAIndex]);
+
             LifeTraker.Instance.LegsIndex = LIndex;
+            ListToPaint.PtP.Add(legs[LIndex]);
+
             LifeTraker.Instance.HeadIndex = HIndex;
+            ListToPaint.PtP.Add(heads[HIndex]);
+
             LifeTraker.Instance.ChestIndex = ChIndex;
+            ListToPaint.PtP.Add(chests[ChIndex]);
 
             Zero();
             TheSlector.SetActive(false);

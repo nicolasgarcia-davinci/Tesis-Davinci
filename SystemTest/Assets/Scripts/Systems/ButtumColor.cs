@@ -7,6 +7,8 @@ public class ButtumColor : ButtomAction
 {
     public Color color;
     public Image colorCatalog;
+
+    public PartsToPaint partsToPaint;
     public void Awake()
     {
         colorCatalog.color = color;
@@ -40,6 +42,7 @@ public class ButtumColor : ButtomAction
             DeSelect();
             ColorCordination.Instance.color2 = color;
             _Activated = false;
+            partsToPaint.PaintThem();
             ChangeMenu();
         }
     }
