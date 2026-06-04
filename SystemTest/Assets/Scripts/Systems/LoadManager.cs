@@ -30,6 +30,12 @@ public class LoadManager : MonoBehaviour
         LifeTraker.Instance.Reset();
         SceneManager.LoadSceneAsync(2);
     }
+    public void LoadAlley()
+    {
+        LifeTraker.Instance.ResetTimer = true;
+        LifeTraker.Instance.Reset();
+        SceneManager.LoadSceneAsync(6);
+    }
     public void LoadMenu()
     {
         SceneManager.LoadSceneAsync(0);
@@ -43,8 +49,7 @@ public class LoadManager : MonoBehaviour
         }
         if (LifeTraker.Instance.Dificulty == 2)
         {
-            LoadRing();
-            //LoadGym();
+            LoadGym();
         }
     }
 
@@ -72,6 +77,10 @@ public class LoadManager : MonoBehaviour
             LoadRing();
         }
         else if (lvl == 2)
+        {
+            LoadAlley();
+        }
+        else if (lvl == 3)
         {
             LoadGym();
         }

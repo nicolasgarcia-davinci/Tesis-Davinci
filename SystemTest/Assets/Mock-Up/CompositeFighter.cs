@@ -276,7 +276,6 @@ public class CompositeFighter : MonoBehaviour
         anim.ResetTrigger("DoedgeRight");
         anim.ResetTrigger("DoedgeLeft");
         anim.ResetTrigger("DoedgeDown");
-        anim.speed = 1;
     }
     public void FireCutscene()
     {
