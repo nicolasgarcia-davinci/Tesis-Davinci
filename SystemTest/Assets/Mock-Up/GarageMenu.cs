@@ -5,7 +5,7 @@ using UnityEngine;
 public class GarageMenu : MonoBehaviour
 {
     public GameObject Dif1;
-    public GameObject Dif2;
+    public GameObject Unlocks;
     void Start()
     {
         if(LifeTraker.Instance.Dificulty==1)
@@ -14,7 +14,7 @@ public class GarageMenu : MonoBehaviour
         }
         if (LifeTraker.Instance.Dificulty > 1)
         {
-            Dif2.SetActive(true);
+            Unlocks.SetActive(true);
         }
     }
 }

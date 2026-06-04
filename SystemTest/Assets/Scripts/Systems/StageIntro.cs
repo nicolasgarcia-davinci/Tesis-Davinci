@@ -27,10 +27,6 @@ public class StageIntro : MonoBehaviour
 
     void Update()
     {
-        if(Input.anyKeyDown)
-        {
-            LoadManager.Instance.ToLVL();
-        }
         if(toTranparent)
         {
             Transparency.a -= transparancyRate;

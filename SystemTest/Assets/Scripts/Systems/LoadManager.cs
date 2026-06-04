@@ -32,7 +32,6 @@ public class LoadManager : MonoBehaviour
     }
     public void LoadMenu()
     {
-        LifeTraker.Instance.Dificulty = 1;
         SceneManager.LoadSceneAsync(0);
         Pixelation.Instance.HighDefinition();
     }
@@ -66,16 +65,15 @@ public class LoadManager : MonoBehaviour
         SceneManager.LoadSceneAsync(3);
     }
 
-    public void ToLVL()
+    public void ToLVL( int lvl)
     {
-        if(LifeTraker.Instance.Dificulty == 1)
+        if(lvl == 1)
         {
             LoadRing();
         }
-        else if (LifeTraker.Instance.Dificulty == 2)
+        else if (lvl == 2)
         {
-            LoadRing();
-            //LoadGym();
+            LoadGym();
         }
     }
 

@@ -172,6 +172,13 @@ public class CompositeFighter : MonoBehaviour
         }
         else
         {
+
+            Rarm.ActiveParts();
+            Larm.ActiveParts();
+            Leg.ActiveParts();
+            Head.ActiveParts();
+            Chest.ActiveParts();
+
             LifeTraker.Instance.eRight = Rarm.life;
             LifeTraker.Instance.eLeft = Larm.life;
             LifeTraker.Instance.eLegs = Leg.life;
@@ -179,11 +186,6 @@ public class CompositeFighter : MonoBehaviour
             LifeTraker.Instance.eOverHealt = Chest.life * (LifeTraker.Instance.Dificulty);
 
             OverAllHealth = LifeTraker.Instance.eOverHealt;
-
-            Rarm.ActiveParts();
-            Larm.ActiveParts();
-            Leg.ActiveParts();
-            Head.ActiveParts();
 
             CHead = Head.life;
             CRight = Rarm.life;
@@ -378,8 +380,6 @@ public class CompositeFighter : MonoBehaviour
     {
         if (!IsAttacking && !IsDodging && !IsRepairing && !IsDying && Stamina>1)
         {
-            if (IsDebuffed) anim.speed = 0.5f;
-            else anim.speed = 1;
             Stamina -= 10;
             if(Stamina<0) Stamina = 0;
             StamminaBar.UpdateLife(Stamina, MaxStamina);

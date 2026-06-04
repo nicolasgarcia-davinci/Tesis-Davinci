@@ -4,14 +4,6 @@ using UnityEngine;
 
 public class StageCam : MonoBehaviour
 {
-    public Transform FightPos;
-    public Transform RepairPos;
-    public Transform[] KOPos;
-    public float desiredDuration;
-    private float _elapsedTime;
-    private Transform _startPos;
-    private Quaternion _startRot;
-    public int Index;
 
     public Animator _animator;
 
@@ -126,7 +118,6 @@ public class StageCam : MonoBehaviour
     public void TurnOnFight()
     {
         StageState.Instance.ResetFight = true;
-        //Controls.SetActive(true);
         Fight.SetActive(true);
     }
     public void TurnOnRound()

@@ -21,7 +21,9 @@ public class ButtomAction : MonoBehaviour
     public AudioSource Sound;
     public AudioClip ActSound;
     public GameObject Asambley;
+    public int newDif;
     public ButtomType _thisType;
+
     
     public void Start()
     {
@@ -92,9 +94,13 @@ public class ButtomAction : MonoBehaviour
             FightControler.Instance.UnPause();
         }
 
-        if (_thisType == ButtomType.LoadStage) LoadManager.Instance.LoadEnter();
+        if (_thisType == ButtomType.LoadStage) LoadManager.Instance.Garage();
 
-        if (_thisType == ButtomType.LoadMenu) LoadManager.Instance.LoadMenu();
+        if (_thisType == ButtomType.LoadMenu && LifeTraker.Instance.IsEnemy)
+        {
+            LifeTraker.Instance.Dificulty = newDif;
+            LoadManager.Instance.LoadMenu();
+        }else if (_thisType == ButtomType.LoadMenu && !LifeTraker.Instance.IsEnemy) LoadManager.Instance.LoadMenu();
 
         if (_thisType == ButtomType.Quit) Application.Quit();
 
@@ -106,30 +112,17 @@ public class ButtomAction : MonoBehaviour
 
         if (_thisType == ButtomType.Continue)
         {
-            if(LifeTraker.Instance.Dificulty == 2)
-            {
-                LifeTraker.Instance.Dificulty = 3;
+                LifeTraker.Instance.Dificulty = newDif;
                 LoadManager.Instance.Garage();
-            }
-            if(LifeTraker.Instance.Dificulty == 1)
-            {
-                LifeTraker.Instance.Dificulty = 2;
-                LoadManager.Instance.Garage();
-            }
         }
 
         if (_thisType == ButtomType.NextLvl)
         {
             LifeTraker.Instance.Dificulty = 2;
-            LoadManager.Instance.LoadGym();
+            LoadManager.Instance.Garage();
         }
 
-        if (_thisType == ButtomType.NextLvl)
-        {
-            LifeTraker.Instance.Dificulty = 2;
-            LoadManager.Instance.LoadGym();
-        }
-        if(_thisType==ButtomType.ToGarage) LoadManager.Instance.Garage();
+        if(_thisType==ButtomType.Play) LoadManager.Instance.LoadEnter();
         if(_thisType==ButtomType.Asambley)
         {
             _selector.gameObject.SetActive(false);
@@ -159,5 +152,5 @@ public class ButtomAction : MonoBehaviour
 }
 public enum ButtomType
 {
-    NavButtom, LoadStage, LoadMenu, Color1, Color2, Quit, Return, Continue, NextLvl, Resume, MVolume, EVolume, SVolume, ToGarage, Asambley
+    NavButtom, LoadStage, LoadMenu, Color1, Color2, Quit, Return, Continue, NextLvl, Resume, MVolume, EVolume, SVolume, Play, Asambley
 }

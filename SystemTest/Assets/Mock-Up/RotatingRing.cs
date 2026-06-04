@@ -27,7 +27,7 @@ public class RotatingRing : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.UpArrow)) RotateUp();
         if (Input.GetKeyDown(KeyCode.DownArrow)) RotateDown();
-        if (Input.GetKeyDown(KeyCode.Space)) LevelLoad();
+        if (Input.GetKeyDown(KeyCode.Space) && CanEnter) LoadManager.Instance.ToLVL(Current + 1); ;
         if (toTranparent)
         {
             Transparency.a -= transparancyRate;
@@ -38,14 +38,6 @@ public class RotatingRing : MonoBehaviour
             Transparency.a += transparancyRate;
             lab.color = Transparency;
         }
-    }
-
-    public void LevelLoad()
-    {
-        if(Current == 0 && CanEnter) LoadManager.Instance.LoadRing();
-        if (Current == 1 && CanEnter) LoadManager.Instance.LoadRing();
-        if (Current == 2 && CanEnter) LoadManager.Instance.LoadRing();
-        if (Current == 3 && CanEnter) LoadManager.Instance.LoadRing();
     }
     public void RotateUp()
     {

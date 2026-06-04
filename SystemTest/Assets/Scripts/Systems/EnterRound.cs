@@ -7,7 +7,6 @@ public class EnterRound : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI RoundMessage;
     [SerializeField] TMP_FontAsset RoundFont;
-    [SerializeField] TMP_FontAsset ReturnFont;
     
     public void Again()
     {
