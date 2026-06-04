@@ -6374,6 +6374,7 @@ MonoBehaviour:
   Damage: 0
   Aspeed: 0
   AttackSound: {fileID: 0}
+  ParticleContainer: {fileID: 0}
   components:
   - {fileID: 1251387326}
   - {fileID: 853008705}
@@ -7032,6 +7033,7 @@ MonoBehaviour:
   Damage: 10
   Aspeed: 0
   AttackSound: {fileID: 0}
+  ParticleContainer: {fileID: 0}
   components:
   - {fileID: 1380168378}
   - {fileID: 39061924}
@@ -13114,6 +13116,7 @@ MonoBehaviour:
   Damage: 10
   Aspeed: 0
   AttackSound: {fileID: 0}
+  ParticleContainer: {fileID: 0}
   components:
   - {fileID: 146685956}
   - {fileID: 768903058}
@@ -24422,6 +24425,7 @@ MonoBehaviour:
   Damage: 0
   Aspeed: 0
   AttackSound: {fileID: 0}
+  ParticleContainer: {fileID: 0}
   components:
   - {fileID: 1622437946}
   - {fileID: 636062370}
@@ -24703,6 +24707,7 @@ MonoBehaviour:
   Damage: 0
   Aspeed: 0
   AttackSound: {fileID: 0}
+  ParticleContainer: {fileID: 0}
   components:
   - {fileID: 8466338576343902448}
 --- !u!1 &477891819
@@ -31639,6 +31644,7 @@ MonoBehaviour:
   Damage: 0
   Aspeed: 0
   AttackSound: {fileID: 0}
+  ParticleContainer: {fileID: 0}
   components:
   - {fileID: 4816924106938028263}
   - {fileID: 4598912591587719259}
@@ -37535,6 +37541,7 @@ MonoBehaviour:
   Damage: 10
   Aspeed: 0
   AttackSound: {fileID: 0}
+  ParticleContainer: {fileID: 0}
   components:
   - {fileID: 989433050}
   - {fileID: 1193124469}
@@ -60457,6 +60464,7 @@ MonoBehaviour:
   Damage: 0
   Aspeed: 0
   AttackSound: {fileID: 0}
+  ParticleContainer: {fileID: 0}
   components:
   - {fileID: 1923018846}
 --- !u!1 &882691044
@@ -66406,10 +66414,12 @@ MonoBehaviour:
   HeadCollection:
   - {fileID: 1814277663}
   - {fileID: 1913307348}
+  ChestCollection: []
   Rarm: {fileID: 2020784926}
   Larm: {fileID: 132425096}
   Leg: {fileID: 1383004362}
   Head: {fileID: 1814277663}
+  Chest: {fileID: 0}
   CHead: 0
   CRight: 0
   CLeft: 0
@@ -66427,11 +66437,28 @@ MonoBehaviour:
   IsDodgingUp: 0
   IsDodgingDown: 0
   IsDodging: 0
+  matAlphaName: 
+  spawnTransform: {fileID: 0}
+  _dodgeTime: 0
+  _refreshRate: 0
+  _delayDestroy: 0
+  trailFactory: {fileID: 0}
+  trailMesh:
+    activeTime: 0
+    meshRefreshRate: 0
+    positionToSpawn: {fileID: 0}
+    meshDelayDestroy: 0
+    mat: {fileID: 0}
+    shaderVarRef: 
+    shaderVarRate: 0
+    shaderVarRefreshRate: 0
   IsAttackingRight: 0
   IsAttackingLeft: 0
   IsAttackingUp: 0
   IsAttackingDown: 0
   IsAttacking: 0
+  IsDebuffed: 0
+  DebuffTime: 0
   _Audio: {fileID: 994544853}
   _miss: {fileID: 0}
   _KO: {fileID: 0}
@@ -66440,9 +66467,6 @@ MonoBehaviour:
   LarmsHitWave: {fileID: 0}
   LegsHitWave: {fileID: 0}
   HeadHitWave: {fileID: 0}
-  RarmsAttackTrail: {fileID: 0}
-  LarmsAttackTrail: {fileID: 0}
-  LegsAttackTrail: {fileID: 0}
   RarmCrash:
   - {fileID: 251476007}
   - {fileID: 975220582}
@@ -66477,7 +66501,6 @@ MonoBehaviour:
   RarmBoom: 0
   LarmBoom: 0
   LegsBoom: 0
-  Body: {fileID: 534088396}
   OverAllHealth: 0
   lightBlow: 0
   heavyBlow: 0
@@ -66486,6 +66509,7 @@ MonoBehaviour:
   LeftArmDisplay: {fileID: 0}
   LegsDisplay: {fileID: 0}
   LifeBar: {fileID: 0}
+  RedBar: {fileID: 0}
   StamminaBar: {fileID: 0}
   DamageToTake: 0
 --- !u!95 &994544852
@@ -67559,6 +67583,7 @@ MonoBehaviour:
   Damage: 0
   Aspeed: 0
   AttackSound: {fileID: 0}
+  ParticleContainer: {fileID: 0}
   components:
   - {fileID: 6255771649753683340}
   - {fileID: 5164122727050784939}
@@ -67869,6 +67894,7 @@ MonoBehaviour:
   Damage: 10
   Aspeed: 0
   AttackSound: {fileID: 0}
+  ParticleContainer: {fileID: 0}
   components:
   - {fileID: 864206873}
   - {fileID: 411725821}
@@ -68414,6 +68440,7 @@ MonoBehaviour:
   Damage: 10
   Aspeed: 0
   AttackSound: {fileID: 0}
+  ParticleContainer: {fileID: 0}
   components:
   - {fileID: 873848011}
 --- !u!1 &1191684803
@@ -68549,6 +68576,7 @@ MonoBehaviour:
   Damage: 0
   Aspeed: 0
   AttackSound: {fileID: 0}
+  ParticleContainer: {fileID: 0}
   components:
   - {fileID: 1264944703}
   - {fileID: 2046997659}
@@ -75372,6 +75400,7 @@ MonoBehaviour:
   Damage: 10
   Aspeed: 0
   AttackSound: {fileID: 0}
+  ParticleContainer: {fileID: 0}
   components:
   - {fileID: 1157077468}
 --- !u!1 &1352090173
@@ -75984,6 +76013,7 @@ MonoBehaviour:
   Damage: 10
   Aspeed: 0
   AttackSound: {fileID: 0}
+  ParticleContainer: {fileID: 0}
   components:
   - {fileID: 1411822573}
   - {fileID: 138942262}
@@ -76463,6 +76493,7 @@ MonoBehaviour:
   Damage: 0
   Aspeed: 0
   AttackSound: {fileID: 0}
+  ParticleContainer: {fileID: 0}
   components:
   - {fileID: 1114993715296823264}
   - {fileID: 2601578544954351782}
@@ -77690,6 +77721,7 @@ MonoBehaviour:
   Damage: 0
   Aspeed: 0
   AttackSound: {fileID: 0}
+  ParticleContainer: {fileID: 0}
   components:
   - {fileID: 790711536}
   - {fileID: 1369178687}
@@ -88828,6 +88860,7 @@ MonoBehaviour:
   Damage: 10
   Aspeed: 0
   AttackSound: {fileID: 0}
+  ParticleContainer: {fileID: 0}
   components:
   - {fileID: 766745213}
   - {fileID: 1123698901}
@@ -89378,6 +89411,7 @@ MonoBehaviour:
   Damage: 10
   Aspeed: 0
   AttackSound: {fileID: 0}
+  ParticleContainer: {fileID: 0}
   components:
   - {fileID: 1786201377}
   - {fileID: 1576032445}
@@ -89417,6 +89451,7 @@ MonoBehaviour:
   Damage: 0
   Aspeed: 0
   AttackSound: {fileID: 0}
+  ParticleContainer: {fileID: 0}
   components:
   - {fileID: 1072339623}
   - {fileID: 1026694100}
@@ -89487,6 +89522,7 @@ MonoBehaviour:
   Damage: 10
   Aspeed: 0
   AttackSound: {fileID: 0}
+  ParticleContainer: {fileID: 0}
   components:
   - {fileID: 1231202214}
   - {fileID: 544248562}
@@ -89620,6 +89656,7 @@ MonoBehaviour:
   Damage: 10
   Aspeed: 0
   AttackSound: {fileID: 0}
+  ParticleContainer: {fileID: 0}
   components:
   - {fileID: 2059470584}
 --- !u!4 &1814277664
@@ -90400,6 +90437,7 @@ MonoBehaviour:
   Damage: 0
   Aspeed: 0
   AttackSound: {fileID: 0}
+  ParticleContainer: {fileID: 0}
   components:
   - {fileID: 1487311949}
 --- !u!4 &1913307349
@@ -96655,6 +96693,7 @@ MonoBehaviour:
   Damage: 0
   Aspeed: 0
   AttackSound: {fileID: 0}
+  ParticleContainer: {fileID: 0}
   components:
   - {fileID: 2012007394}
   - {fileID: 210182400}
@@ -101980,6 +102019,7 @@ MonoBehaviour:
   Damage: 10
   Aspeed: 0
   AttackSound: {fileID: 0}
+  ParticleContainer: {fileID: 0}
   components:
   - {fileID: 854117769}
   - {fileID: 601392447}
@@ -113787,6 +113827,7 @@ MonoBehaviour:
   Damage: 0
   Aspeed: 0
   AttackSound: {fileID: 0}
+  ParticleContainer: {fileID: 0}
   components:
   - {fileID: 6255771649753683340}
   - {fileID: 5164122727050784939}
@@ -124287,8 +124328,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43458e93f588f78468dc1ae06c9bc278, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 10
-  currentHealth: 9
+  targetOuch: 0
+  EnterHeal: 0
+  progIncrement: 0
+  ProgHeal: 0
+  ProgOuch: 0
   lifeBar: {fileID: 678358545225329822}
   _body: {fileID: 9017258742554602634}
   _bodyMaterial: {fileID: 0}
@@ -124824,7 +124868,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Anim: {fileID: 719725998627962187}
-  body: {fileID: 2356525645273270128}
   RarmCollection:
   - {fileID: 675296266}
   - {fileID: 628963731}
@@ -124837,10 +124880,12 @@ MonoBehaviour:
   HeadCollection:
   - {fileID: 1164154516}
   - {fileID: 471620912}
+  ChestCollection: []
   Rarm: {fileID: 0}
   Larm: {fileID: 0}
   Leg: {fileID: 0}
   Head: {fileID: 0}
+  Chest: {fileID: 0}
   HeadGlich: {fileID: 2862826567939846461}
   RightArmGlich: {fileID: 6067879327284053879}
   LeftArmGlich: {fileID: 2751497559342218719}
@@ -125096,6 +125141,7 @@ MonoBehaviour:
   Sound: {fileID: 0}
   ActSound: {fileID: 0}
   Asambley: {fileID: 0}
+  newDif: 0
   _thisType: 2
 --- !u!1 &793556984631863151
 GameObject:
@@ -125509,8 +125555,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43458e93f588f78468dc1ae06c9bc278, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 10
-  currentHealth: 9
+  targetOuch: 0
+  EnterHeal: 0
+  progIncrement: 0
+  ProgHeal: 0
+  ProgOuch: 0
   lifeBar: {fileID: 975217171850982410}
   _body: {fileID: 9017258742554602634}
   _bodyMaterial: {fileID: 0}
@@ -131173,6 +131222,7 @@ MonoBehaviour:
   Damage: 10
   Aspeed: 0
   AttackSound: {fileID: 0}
+  ParticleContainer: {fileID: 0}
   components:
   - {fileID: 3062212136514306016}
 --- !u!4 &1150567853477616992
@@ -131900,6 +131950,7 @@ MonoBehaviour:
   Damage: 10
   Aspeed: 0
   AttackSound: {fileID: 0}
+  ParticleContainer: {fileID: 0}
   components:
   - {fileID: 6870716496292283536}
   - {fileID: 3120329011709934358}
@@ -132397,6 +132448,7 @@ MonoBehaviour:
   Sound: {fileID: 6446736451078703368}
   ActSound: {fileID: 8300000, guid: d946f7046a8eb25409189747da0e8a03, type: 3}
   Asambley: {fileID: 0}
+  newDif: 0
   _thisType: 7
 --- !u!224 &1536060554478829649
 RectTransform:
@@ -137431,6 +137483,7 @@ MonoBehaviour:
   Sound: {fileID: 7695880991610248757}
   ActSound: {fileID: 8300000, guid: d946f7046a8eb25409189747da0e8a03, type: 3}
   Asambley: {fileID: 0}
+  newDif: 0
   _thisType: 5
 --- !u!23 &1640140813158476229
 MeshRenderer:
@@ -137522,6 +137575,7 @@ MonoBehaviour:
   Damage: 10
   Aspeed: 0
   AttackSound: {fileID: 0}
+  ParticleContainer: {fileID: 0}
   components:
   - {fileID: 6155061021959712621}
   - {fileID: 182746641699863914}
@@ -138569,8 +138623,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43458e93f588f78468dc1ae06c9bc278, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 10
-  currentHealth: 9
+  targetOuch: 0
+  EnterHeal: 0
+  progIncrement: 0
+  ProgHeal: 0
+  ProgOuch: 0
   lifeBar: {fileID: 1927252114559097218}
   _body: {fileID: 9017258742554602634}
   _bodyMaterial: {fileID: 0}
@@ -144581,6 +144638,7 @@ MonoBehaviour:
   Damage: 0
   Aspeed: 0
   AttackSound: {fileID: 0}
+  ParticleContainer: {fileID: 0}
   components:
   - {fileID: 4816924106938028263}
   - {fileID: 4598912591587719259}
@@ -161658,6 +161716,7 @@ MonoBehaviour:
   Damage: 10
   Aspeed: 0
   AttackSound: {fileID: 0}
+  ParticleContainer: {fileID: 0}
   components:
   - {fileID: 5444803839814710478}
   - {fileID: 2734954697582051672}
@@ -171646,6 +171705,7 @@ MonoBehaviour:
   Sound: {fileID: 5583290356661822807}
   ActSound: {fileID: 8300000, guid: d946f7046a8eb25409189747da0e8a03, type: 3}
   Asambley: {fileID: 0}
+  newDif: 0
   _thisType: 2
 --- !u!1 &3502595699464282419
 GameObject:
@@ -171804,6 +171864,7 @@ MonoBehaviour:
   Sound: {fileID: 6019212159207537109}
   ActSound: {fileID: 8300000, guid: d946f7046a8eb25409189747da0e8a03, type: 3}
   Asambley: {fileID: 0}
+  newDif: 0
   _thisType: 5
 --- !u!1 &3578641043053823591
 GameObject:
@@ -176774,6 +176835,7 @@ MonoBehaviour:
   Damage: 0
   Aspeed: 0
   AttackSound: {fileID: 0}
+  ParticleContainer: {fileID: 0}
   components:
   - {fileID: 8466338576343902448}
 --- !u!1 &3662679006354500399
@@ -176912,8 +176974,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43458e93f588f78468dc1ae06c9bc278, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 10
-  currentHealth: 9
+  targetOuch: 0
+  EnterHeal: 0
+  progIncrement: 0
+  ProgHeal: 0
+  ProgOuch: 0
   lifeBar: {fileID: 3634890700740096291}
   _body: {fileID: 9017258742554602634}
   _bodyMaterial: {fileID: 0}
@@ -196498,6 +196563,7 @@ MonoBehaviour:
   Sound: {fileID: 7115353720545115565}
   ActSound: {fileID: 8300000, guid: d946f7046a8eb25409189747da0e8a03, type: 3}
   Asambley: {fileID: 0}
+  newDif: 0
   _thisType: 2
 --- !u!1 &5446149067519042594
 GameObject:
@@ -203864,6 +203930,7 @@ MonoBehaviour:
   Sound: {fileID: 0}
   ActSound: {fileID: 0}
   Asambley: {fileID: 0}
+  newDif: 0
   _thisType: 8
 --- !u!1 &6067879327284053879
 GameObject:
@@ -204657,6 +204724,7 @@ MonoBehaviour:
   Sound: {fileID: 0}
   ActSound: {fileID: 0}
   Asambley: {fileID: 0}
+  newDif: 0
   _thisType: 5
 --- !u!114 &6331681661125765681
 MonoBehaviour:
@@ -225837,9 +225905,6 @@ MonoBehaviour:
   EHead: {fileID: 1349665919}
   _gameOver: 0
   _isEnemy: 0
-  body: {fileID: 9170214895420320919}
-  PlayerMaterial: {fileID: 2100000, guid: 8dd75b1e921287743b13e2b3c450f144, type: 2}
-  EnemyMaterial: {fileID: 2100000, guid: 673986adb90beb04c9ef2b18f1ac4785, type: 2}
   Succes: {fileID: 0}
   Sound: {fileID: 6719370770008493078}
   _timer: {fileID: 2512088370613507474}
@@ -227553,6 +227618,7 @@ MonoBehaviour:
   Damage: 0
   Aspeed: 0
   AttackSound: {fileID: 0}
+  ParticleContainer: {fileID: 0}
   components:
   - {fileID: 1114993715296823264}
   - {fileID: 2601578544954351782}
@@ -239361,10 +239427,12 @@ MonoBehaviour:
   HeadCollection:
   - {fileID: 1143224292692794240}
   - {fileID: 3659054496107020899}
+  ChestCollection: []
   Rarm: {fileID: 0}
   Larm: {fileID: 0}
   Leg: {fileID: 0}
   Head: {fileID: 0}
+  Chest: {fileID: 0}
   CHead: 0
   CRight: 0
   CLeft: 0
@@ -239382,11 +239450,28 @@ MonoBehaviour:
   IsDodgingUp: 0
   IsDodgingDown: 0
   IsDodging: 0
+  matAlphaName: 
+  spawnTransform: {fileID: 0}
+  _dodgeTime: 0
+  _refreshRate: 0
+  _delayDestroy: 0
+  trailFactory: {fileID: 0}
+  trailMesh:
+    activeTime: 0
+    meshRefreshRate: 0
+    positionToSpawn: {fileID: 0}
+    meshDelayDestroy: 0
+    mat: {fileID: 0}
+    shaderVarRef: 
+    shaderVarRate: 0
+    shaderVarRefreshRate: 0
   IsAttackingRight: 0
   IsAttackingLeft: 0
   IsAttackingUp: 0
   IsAttackingDown: 0
   IsAttacking: 0
+  IsDebuffed: 0
+  DebuffTime: 0
   _Audio: {fileID: 7667564808855253216}
   _miss: {fileID: 0}
   _KO: {fileID: 0}
@@ -239395,9 +239480,6 @@ MonoBehaviour:
   LarmsHitWave: {fileID: 0}
   LegsHitWave: {fileID: 0}
   HeadHitWave: {fileID: 0}
-  RarmsAttackTrail: {fileID: 0}
-  LarmsAttackTrail: {fileID: 0}
-  LegsAttackTrail: {fileID: 0}
   RarmCrash:
   - {fileID: 2341269184803055763}
   - {fileID: 2646414278461005064}
@@ -239432,7 +239514,6 @@ MonoBehaviour:
   RarmBoom: 0
   LarmBoom: 0
   LegsBoom: 0
-  Body: {fileID: 8136280532875123323}
   OverAllHealth: 0
   lightBlow: 0
   heavyBlow: 0
@@ -239441,6 +239522,7 @@ MonoBehaviour:
   LeftArmDisplay: {fileID: 0}
   LegsDisplay: {fileID: 0}
   LifeBar: {fileID: 0}
+  RedBar: {fileID: 0}
   StamminaBar: {fileID: 0}
   DamageToTake: 0
 --- !u!95 &8012810488319688111
@@ -239859,6 +239941,7 @@ MonoBehaviour:
   Sound: {fileID: 0}
   ActSound: {fileID: 0}
   Asambley: {fileID: 0}
+  newDif: 0
   _thisType: 5
 --- !u!4 &8144529376221878003
 Transform:
@@ -240047,6 +240130,7 @@ MonoBehaviour:
   Sound: {fileID: 0}
   ActSound: {fileID: 0}
   Asambley: {fileID: 0}
+  newDif: 0
   _thisType: 2
 --- !u!1 &8209150826318178231
 GameObject:
@@ -246817,15 +246901,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 468218f4b896e0343871b8d591a56f00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FightPos: {fileID: 1863254870}
-  RepairPos: {fileID: 965051832}
-  KOPos:
-  - {fileID: 1943655749}
-  - {fileID: 296857087}
-  - {fileID: 101048862}
-  - {fileID: 1852377019}
-  desiredDuration: 1.5
-  Index: 0
   _animator: {fileID: 8742385828395404169}
   Fight: {fileID: 5631999156306706454}
   FightCurtain: {fileID: 1138192872779158494}
@@ -246971,6 +247046,7 @@ MonoBehaviour:
   Timer: {fileID: 0}
   Controlers: {fileID: 0}
   IsPaused: 0
+  UI_Enter: {fileID: 0}
   _stageTheme: {fileID: 0}
 --- !u!1 &8823595576220199849
 GameObject:
@@ -252279,11 +252355,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a8c1262c5a389e449a93aed12e249f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bodyIndicators:
-  - {fileID: 7452135172511107053}
-  - {fileID: 2087199564376138410}
-  - {fileID: 2906477293440446200}
-  - {fileID: 9182172387120801909}
   _timer: {fileID: 1600200184256180103}
   _stageTheme: {fileID: 0}
   Player: {fileID: 0}
