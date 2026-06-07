@@ -665,6 +665,7 @@ public class CompositeFighter : MonoBehaviour
 
         if (OverAllHealth<=0)
         {
+            FightControler.Instance.Halt();
             IsDying = true;
             ExitFight();
             IsDyingEvent();
@@ -728,6 +729,7 @@ public class CompositeFighter : MonoBehaviour
     {
         IsDebuffed = true;
         yield return new WaitForSeconds(DebuffTime);
+        Stamina = MaxStamina / 2;
         IsDebuffed = false;
     }
 

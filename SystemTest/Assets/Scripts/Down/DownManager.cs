@@ -13,10 +13,6 @@ public class DownManager : MonoBehaviour
 
     public DDManager DDMachine;
 
-
-    public GameObject enemyLight;
-    public GameObject playerLight;
-
     public GameObject gameCanvas;
     public GameObject gameKoState;
 

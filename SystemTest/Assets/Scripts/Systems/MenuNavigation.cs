@@ -9,7 +9,6 @@ public class MenuNavigation : MonoBehaviour
     public int ID;
     public int Index;
     public bool hasEnter;
-    // Start is called before the first frame update
     void Start()
     {
         foreach (var menu in _menu)
@@ -27,7 +26,6 @@ public class MenuNavigation : MonoBehaviour
         hasEnter = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(!hasEnter)

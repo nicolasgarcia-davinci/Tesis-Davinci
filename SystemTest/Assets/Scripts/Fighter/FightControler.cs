@@ -66,7 +66,6 @@ public class FightControler : MonoBehaviour
         LifeTraker.Instance.eLegs      = _Enemy.Leg.life;
 
         StageCam.Instance.GoToKOCam();
-        _RT.Stop();
     }
 
     public void CheckAttack(CompositeFighter attacker)
@@ -80,6 +79,10 @@ public class FightControler : MonoBehaviour
         {
             _Player.CheckAttack(attacker);
         }
+    }
+    public void Halt()
+    {
+        _RT.Stop();
     }
     public void stopFrame()
     {
