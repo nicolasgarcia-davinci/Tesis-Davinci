@@ -309,17 +309,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!114 &1022139564 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8034514996569186564, guid: 435a4d6c9e0683b4cba0241040027355, type: 3}
-  m_PrefabInstance: {fileID: 1990439172905084077}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36772bd3352f58d4d82c9491f88f4af9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1513945502 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4475219794237832844, guid: 3a8947e150a05a647a0d68e9422a88f7, type: 3}
@@ -4080,7 +4069,7 @@ PrefabInstance:
     - target: {fileID: 1833356938697160607, guid: 435a4d6c9e0683b4cba0241040027355, type: 3}
       propertyPath: m_Material
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: -876546973899608171, guid: 92e853f355e8cf14394953212ebde287, type: 3}
     - target: {fileID: 1833356938697160607, guid: 435a4d6c9e0683b4cba0241040027355, type: 3}
       propertyPath: m_FillAmount
       value: 1
@@ -4105,6 +4094,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: ee459667f2e5e87489da68d554e3d0de, type: 2}
+    - target: {fileID: 4234028456906702785, guid: 435a4d6c9e0683b4cba0241040027355, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5320202084954132075, guid: 435a4d6c9e0683b4cba0241040027355, type: 3}
       propertyPath: m_Name
       value: FightIng
@@ -4174,6 +4167,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 435a4d6c9e0683b4cba0241040027355, type: 3}
+--- !u!114 &1990439172905084078 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7025046705790533092, guid: 435a4d6c9e0683b4cba0241040027355, type: 3}
+  m_PrefabInstance: {fileID: 1990439172905084077}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36772bd3352f58d4d82c9491f88f4af9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &2015625975132524062
 Transform:
   m_ObjectHideFlags: 0
@@ -6873,7 +6877,7 @@ PrefabInstance:
     - target: {fileID: 4087037160922166327, guid: 621d593a4b3e1a7438223ee33977482b, type: 3}
       propertyPath: Character
       value: 
-      objectReference: {fileID: 1022139564}
+      objectReference: {fileID: 1990439172905084078}
     - target: {fileID: 8495070066203452475, guid: 621d593a4b3e1a7438223ee33977482b, type: 3}
       propertyPath: m_Name
       value: Controlers
@@ -22558,7 +22562,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 2
   m_AntialiasingQuality: 2
   m_StopNaN: 0
