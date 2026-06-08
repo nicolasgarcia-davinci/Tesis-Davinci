@@ -13,10 +13,7 @@ public class LifeTraker : MonoBehaviour
     public float pRight;
     public float pLeft;
     public float pLegs;
-    public float eHead;
-    public float eRight;
-    public float eLeft;
-    public float eLegs;
+    public int PartCount;
 
     [Header("Player Max Health")]
     public float maxRarmHealth;
@@ -27,6 +24,11 @@ public class LifeTraker : MonoBehaviour
 
     [Header("Enemy Body Health")]
     public float eOverHealt;
+    public float eHead;
+    public float eRight;
+    public float eLeft;
+    public float eLegs;
+    public int ePartCount;
 
     [Header("Level Data")]
     public float RundCounter = 1;

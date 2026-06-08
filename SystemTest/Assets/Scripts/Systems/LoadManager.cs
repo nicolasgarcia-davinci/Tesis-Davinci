@@ -74,14 +74,17 @@ public class LoadManager : MonoBehaviour
     {
         if(lvl == 1)
         {
+            LifeTraker.Instance.Dificulty = lvl;
             LoadRing();
         }
         else if (lvl == 2)
         {
+            LifeTraker.Instance.Dificulty = lvl;
             LoadAlley();
         }
         else if (lvl == 3)
         {
+            LifeTraker.Instance.Dificulty = lvl;
             LoadGym();
         }
     }

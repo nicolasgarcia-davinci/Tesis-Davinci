@@ -47,11 +47,13 @@ public class FightControler : MonoBehaviour
         {
             LifeTraker.Instance.IsEnemy = false;
             LifeTraker.Instance.PlayerKO++;
+            LifeTraker.Instance.PartCount = loser.PartCount;
         }
         else
         {
             LifeTraker.Instance.IsEnemy = true;
             LifeTraker.Instance.EnemyKO++;
+            LifeTraker.Instance.ePartCount = loser.PartCount;
         }
 
         LifeTraker.Instance.pOverHealt = _Player.OverAllHealth;

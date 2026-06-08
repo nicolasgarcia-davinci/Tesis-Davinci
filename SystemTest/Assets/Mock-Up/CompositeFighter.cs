@@ -21,6 +21,7 @@ public class CompositeFighter : MonoBehaviour
     public Part Leg;
     public Part Head;
     public Part Chest;
+    public int PartCount;
 
     [Header("Current Health")]
     public float CHead;
@@ -141,7 +142,7 @@ public class CompositeFighter : MonoBehaviour
             Leg = LegCollection[LifeTraker.Instance.LegsIndex];
             Head = HeadCollection[LifeTraker.Instance.HeadIndex];
             Chest = ChestCollection[LifeTraker.Instance.ChestIndex];
-            LifeTraker.Instance.pOverHealt = Chest.life;
+            LifeTraker.Instance.pOverHealt = (10 + PartCount * 10);
             OverAllHealth = LifeTraker.Instance.pOverHealt;
 
             Rarm.ActiveParts();
@@ -183,7 +184,7 @@ public class CompositeFighter : MonoBehaviour
             LifeTraker.Instance.eLeft = Larm.life;
             LifeTraker.Instance.eLegs = Leg.life;
             LifeTraker.Instance.eHead = Head.life;
-            LifeTraker.Instance.eOverHealt = Chest.life * (LifeTraker.Instance.Dificulty);
+            LifeTraker.Instance.eOverHealt = (10 + PartCount * 10) * (LifeTraker.Instance.Dificulty);
 
             OverAllHealth = LifeTraker.Instance.eOverHealt;
 
@@ -221,10 +222,11 @@ public class CompositeFighter : MonoBehaviour
             Head.life = LifeTraker.Instance.eHead;  
         }
 
-        EnterLife();
+        PartCount = 0;
 
         if (Rarm.life > 0)
         {
+            PartCount++; 
             RarmBoom = false;
             Rarm.ActiveParts();
             DeActivateParticle(RarmSpark);
@@ -232,6 +234,7 @@ public class CompositeFighter : MonoBehaviour
 
         if (Larm.life > 0)
         {
+            PartCount++;
             LarmBoom = false;
             Larm.ActiveParts();
             DeActivateParticle(LarmSpark);
@@ -239,6 +242,7 @@ public class CompositeFighter : MonoBehaviour
 
         if (Leg.life > 0)
         {
+            PartCount++;
             LegsBoom = false;
             Leg.ActiveParts();
             DeActivateParticle(LegsSpark);
@@ -246,6 +250,7 @@ public class CompositeFighter : MonoBehaviour
 
         if (Head.life > 0)
         {
+            PartCount++;
             HeadBoom = false;
             Head.ActiveParts();
             DeActivateParticle(HeadSpark);
@@ -255,6 +260,7 @@ public class CompositeFighter : MonoBehaviour
         RightArmDisplay.UpdateDisplay(Rarm.life, CRight);
         LeftArmDisplay.UpdateDisplay(Larm.life, CLeft);
         LegsDisplay.UpdateDisplay(Leg.life, CLegs);
+        EnterLife();
     }
 
     public void ExitStage()
@@ -505,6 +511,7 @@ public class CompositeFighter : MonoBehaviour
             ActivateParticle(Sparks);
             FightControler.Instance.stopFrameHigh();
             partHit.DeActiveParts();
+            PartCount--;
         }
         if (!IsEnemy)
         {
