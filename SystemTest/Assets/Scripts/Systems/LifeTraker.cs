@@ -23,6 +23,7 @@ public class LifeTraker : MonoBehaviour
 
 
     [Header("Enemy Body Health")]
+    public float eMaxHealt;
     public float eOverHealt;
     public float eHead;
     public float eRight;

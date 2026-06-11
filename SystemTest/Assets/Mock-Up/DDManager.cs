@@ -324,13 +324,13 @@ public class DDManager : MonoBehaviour
             if(!LifeTraker.Instance.IsEnemy)
             {
                 Player._gameOver = true;
-                LifeTraker.Instance.pOverHealt = (10 + LifeTraker.Instance.PartCount*10);
+                LifeTraker.Instance.pOverHealt = (LifeTraker.Instance.MaxHealt * (LifeTraker.Instance.PartCount / 4));
                 Player.GetUp();
             }
             if (LifeTraker.Instance.IsEnemy)
             {
                 Enemy._gameOver = true;
-                LifeTraker.Instance.eOverHealt = (10 + LifeTraker.Instance.ePartCount * 10)* LifeTraker.Instance.Dificulty;
+                LifeTraker.Instance.eOverHealt = (LifeTraker.Instance.eMaxHealt * (LifeTraker.Instance.ePartCount / 4));
                 Enemy.GetUp();
             }
             StopGame();

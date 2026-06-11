@@ -70,7 +70,7 @@ public class Figther : MonoBehaviour
 
     void Start()
     {
-        ColorChange(ColorCordination.Instance.color1, ColorCordination.Instance.color2);
+        //ColorChange(ColorCordination.Instance.color1, ColorCordination.Instance.color2);
         Stamina = MaxStamina;
         Set();
         _anim= GetComponentInChildren<Animator>();

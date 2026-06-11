@@ -13,6 +13,8 @@ public class PartSelector : MonoBehaviour
 
     public GameObject TheSlector;
 
+    public PartPainter ColorPalet;
+
     public GameObject CompFighter;
 
     public PartsToPaint ListToPaint;
@@ -44,9 +46,22 @@ public class PartSelector : MonoBehaviour
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.E)) SelectUp();
-        if(Input.GetKeyDown(KeyCode.RightArrow)) SelectRight();
+        if (Input.GetKeyDown(KeyCode.Q)) OpenColors();
+        if (Input.GetKeyDown(KeyCode.RightArrow)) SelectRight();
         if(Input.GetKeyDown(KeyCode.LeftArrow)) SelectLeft();
         if(NeedsToZero) Zero();
+    }
+
+    public void OpenColors()
+    {
+        ColorPalet.gameObject.SetActive(true);
+        //ColorPalet.GetArm(partToSend);
+        if (RarmsSelected) ColorPalet.GetRArm(rArms[RAIndex]);
+        if (LarmsSelected) ColorPalet.GetLArm(lArms[LAIndex]);
+        if (LegsSelected) ColorPalet.GetLeg(legs[LIndex]);
+        if (HeadSelected) ColorPalet.GetHead(heads[HIndex]);
+        if (ChestSelected) ColorPalet.GetChest(chests[ChIndex]);
+        TheSlector.gameObject.SetActive(false);
     }
 
     public void Zero()
@@ -133,26 +148,26 @@ public class PartSelector : MonoBehaviour
 
         if (SIndex > Selectors.Length-1)
         {
-            ListToPaint.PtP = new List<Part>();
+            ListToPaint.Clean();
 
             LifeTraker.Instance.RarmIndex = RAIndex;
-            ListToPaint.PtP.Add(rArms[RAIndex]);
+            ListToPaint.Rarms.Add(rArms[RAIndex]); 
 
             LifeTraker.Instance.LarmIndex = LAIndex;
-            ListToPaint.PtP.Add(lArms[LAIndex]);
+            ListToPaint.Larms.Add(lArms[LAIndex]);
 
             LifeTraker.Instance.LegsIndex = LIndex;
-            ListToPaint.PtP.Add(legs[LIndex]);
+            ListToPaint.Legs.Add(legs[LIndex]);
 
             LifeTraker.Instance.HeadIndex = HIndex;
-            ListToPaint.PtP.Add(heads[HIndex]);
+            ListToPaint.Heads.Add(heads[HIndex]);
 
             LifeTraker.Instance.ChestIndex = ChIndex;
-            ListToPaint.PtP.Add(chests[ChIndex]);
+            ListToPaint.Chests.Add(chests[ChIndex]);
 
             Zero();
-            TheSlector.SetActive(false);
             CompFighter.SetActive(true);
+            TheSlector.SetActive(false);
             return;
         }
 

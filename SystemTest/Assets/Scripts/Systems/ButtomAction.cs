@@ -134,7 +134,7 @@ public class ButtomAction : MonoBehaviour
         }
     }
 
-    public void Select()
+    public virtual void Select()
     {
         _selector.gameObject.SetActive(true);
         _isSelected = true;

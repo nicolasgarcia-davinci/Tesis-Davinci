@@ -44,6 +44,7 @@ public class CompositeFighter : MonoBehaviour
 
     [Header("Enemy?")]
     public bool IsEnemy;
+    public float DificultyMultyplyer;
 
     [Header("Dodge")]
     public bool IsDodgingRight;
@@ -126,7 +127,7 @@ public class CompositeFighter : MonoBehaviour
     public Action IsDyingEvent = delegate { };
     public Action CharacterUpEvent = delegate { };
 
-    public int DamageToTake;
+    public float DamageToTake;
 
     void Start()
     {
@@ -142,19 +143,20 @@ public class CompositeFighter : MonoBehaviour
             Leg = LegCollection[LifeTraker.Instance.LegsIndex];
             Head = HeadCollection[LifeTraker.Instance.HeadIndex];
             Chest = ChestCollection[LifeTraker.Instance.ChestIndex];
-            LifeTraker.Instance.pOverHealt = (10 + PartCount * 10);
+            LifeTraker.Instance.pOverHealt = (Rarm.life + Larm.life + Leg.life  +Head.life + Chest.life);
+            LifeTraker.Instance.MaxHealt = LifeTraker.Instance.pOverHealt;
             OverAllHealth = LifeTraker.Instance.pOverHealt;
 
             Rarm.ActiveParts();
-            Rarm.SetColor();
+            Rarm.FullColor(ColorCordination.Instance.Fullcolor1[0], ColorCordination.Instance.Fullcolor2[0]);
             Larm.ActiveParts();
-            Larm.SetColor();
+            Larm.FullColor(ColorCordination.Instance.Fullcolor1[1], ColorCordination.Instance.Fullcolor2[1]);
             Leg.ActiveParts();
-            Leg.SetColor();
+            Leg.FullColor(ColorCordination.Instance.Fullcolor1[2], ColorCordination.Instance.Fullcolor2[2]);
             Head.ActiveParts();
-            Head.SetColor();
+            Head.FullColor(ColorCordination.Instance.Fullcolor1[3], ColorCordination.Instance.Fullcolor2[3]);
             Chest.ActiveParts();
-            Chest.SetColor();
+            Chest.FullColor(ColorCordination.Instance.Fullcolor1[4], ColorCordination.Instance.Fullcolor2[4]);
 
             LifeTraker.Instance.pRight = Rarm.life;
             LifeTraker.Instance.pLeft = Larm.life;
@@ -173,7 +175,7 @@ public class CompositeFighter : MonoBehaviour
         }
         else
         {
-
+            DificultyMultyplyer = LifeTraker.Instance.Dificulty;
             Rarm.ActiveParts();
             Larm.ActiveParts();
             Leg.ActiveParts();
@@ -184,8 +186,8 @@ public class CompositeFighter : MonoBehaviour
             LifeTraker.Instance.eLeft = Larm.life;
             LifeTraker.Instance.eLegs = Leg.life;
             LifeTraker.Instance.eHead = Head.life;
-            LifeTraker.Instance.eOverHealt = (10 + PartCount * 10) * (LifeTraker.Instance.Dificulty);
-
+            LifeTraker.Instance.eOverHealt = (Rarm.life + Larm.life + Leg.life + Head.life + Chest.life) * DificultyMultyplyer;
+            LifeTraker.Instance.eMaxHealt = LifeTraker.Instance.eOverHealt;
             OverAllHealth = LifeTraker.Instance.eOverHealt;
 
             CHead = Head.life;
@@ -476,7 +478,7 @@ public class CompositeFighter : MonoBehaviour
         }
     }
 
-    public void PartDamage(int damage, float currentLife, AudioClip hit, ref Part partHit, bool hitPart,
+    public void PartDamage(float damage, float currentLife, AudioClip hit, ref Part partHit, bool hitPart,
         ref bool partDestroyed, string animHit, GameObject HitWave, GameObject[] Sparks, GameObject[] Crash)
     {
         Debug.Log("Jaja llame a la funcion de Necro " + this.name);
@@ -512,6 +514,8 @@ public class CompositeFighter : MonoBehaviour
             FightControler.Instance.stopFrameHigh();
             partHit.DeActiveParts();
             PartCount--;
+            DamageToTake = (damage + partHit.life);
+            return;
         }
         if (!IsEnemy)
         {

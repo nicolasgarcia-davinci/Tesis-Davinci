@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class Part : MonoBehaviour
@@ -7,6 +8,7 @@ public class Part : MonoBehaviour
     public string PartName;
     public string AttName;
     public float life;
+    public float Maxlife;
     public int Damage;
     public float Aspeed;
     public AudioClip AttackSound;
@@ -15,21 +17,25 @@ public class Part : MonoBehaviour
 
     public GameObject[] components;
 
+    private void Start()
+    {
+        Maxlife = life;
+    }
+    public void FullColor(Color paint1,Color paint2)
+    {
+        foreach (var part in components)
+        {
+            var coloring = part.GetComponent<MeshRenderer>();
+            coloring.material.SetColor("_Color_1", paint1);
+            coloring.material.SetColor("_Color_2", paint2);
+        }
+    }
+
     public void ActiveParts()
     {
         foreach (var part in components)
         {
             part.gameObject.SetActive(true); 
-        }
-    }
-
-    public void SetColor()
-    {
-        foreach (var part in components)
-        {
-            var coloring = part.GetComponent<MeshRenderer>();
-            coloring.material.SetColor("_Color_1", ColorCordination.Instance.color1);
-            coloring.material.SetColor("_Color_2", ColorCordination.Instance.color2);
         }
     }
     public void DeActiveParts()

@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class UnLocks : MonoBehaviour
 {
-    public GameObject Menu;
+    public MenuNavigation Menu;
     public TextMeshProUGUI UnlockMesage;
     public TextMeshProUGUI Instruction;
     public Color Transparency;
@@ -24,7 +24,8 @@ public class UnLocks : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         { 
-            Menu.SetActive(true);
+            Menu.gameObject.SetActive(true);
+            Menu.act1();
             gameObject.SetActive(false);
         }
         if (toTranparent)

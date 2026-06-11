@@ -13,6 +13,28 @@ public class ButtumColor : ButtomAction
     {
         colorCatalog.color = color;
     }
+    public override void Select()
+    {
+        base.Select();
+        if(_thisType == ButtomType.Color1)
+        {
+            ColorCordination.Instance.Rightcolor1 = color;
+            ColorCordination.Instance.Leftcolor1 = color;
+            ColorCordination.Instance.Headcolor1 = color;
+            ColorCordination.Instance.Legscolor1 = color;
+            ColorCordination.Instance.Chestcolor1 = color;
+            partsToPaint.PaintThem();
+        }
+        if (_thisType == ButtomType.Color2)
+        {
+            ColorCordination.Instance.Rightcolor2 = color;
+            ColorCordination.Instance.Leftcolor2 = color;
+            ColorCordination.Instance.Headcolor2 = color;
+            ColorCordination.Instance.Legscolor2 = color;
+            ColorCordination.Instance.Chestcolor2 = color;
+            partsToPaint.PaintThem();
+        }
+    }
 
     public override void Update()
     {
@@ -33,16 +55,13 @@ public class ButtumColor : ButtomAction
         if (_thisType == ButtomType.Color1)
         {
             DeSelect();
-            ColorCordination.Instance.color1 = color;
             _Activated = false;
             ChangeMenu();
         }
         if (_thisType == ButtomType.Color2)
         {
             DeSelect();
-            ColorCordination.Instance.color2 = color;
             _Activated = false;
-            partsToPaint.PaintThem();
             ChangeMenu();
         }
     }

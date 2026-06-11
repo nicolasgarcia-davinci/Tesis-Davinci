@@ -7,8 +7,10 @@ public class AIControler : MonoBehaviour
     public CompositeFighter Character;
     public float _timer;
     public float _AttackInterval;
+    public bool HasGivenWarning;
     [Range(0, 100)] public int _DodgeChance;
     public bool IsPaused;
+    public GameObject Warning;
 
     void Start()
     {
@@ -21,7 +23,8 @@ public class AIControler : MonoBehaviour
     {
         if (IsPaused) return;
         _timer += Time.deltaTime;
-        if(_timer>=_AttackInterval)
+        if (_timer >= _AttackInterval - 0.5f && !HasGivenWarning) StartCoroutine(GiveWarning());
+        if (_timer>=_AttackInterval)
         {
             _timer = 0;
             float attackNum = Random.Range(0,100);
@@ -70,5 +73,13 @@ public class AIControler : MonoBehaviour
     {
         IsPaused = false;
         Character.UnPause();
+    }
+    public IEnumerator GiveWarning()
+    {
+        HasGivenWarning = true;
+        Warning.SetActive(true);
+        yield return new WaitForSeconds(0.6f);
+        Warning.SetActive(false);
+        HasGivenWarning=false;
     }
 }
