@@ -19,7 +19,6 @@ public class UnLocks : MonoBehaviour
         if (LifeTraker.Instance.Dificulty == 3) UnlockMesage.text = "You Have Unlocked the ?? Set";
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))

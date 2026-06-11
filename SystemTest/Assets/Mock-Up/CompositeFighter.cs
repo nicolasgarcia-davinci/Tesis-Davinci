@@ -148,15 +148,15 @@ public class CompositeFighter : MonoBehaviour
             OverAllHealth = LifeTraker.Instance.pOverHealt;
 
             Rarm.ActiveParts();
-            Rarm.FullColor(ColorCordination.Instance.Fullcolor1[0], ColorCordination.Instance.Fullcolor2[0]);
+            Rarm.FullColor(ColorCordination.Instance.Rightcolor1, ColorCordination.Instance.Rightcolor2);
             Larm.ActiveParts();
-            Larm.FullColor(ColorCordination.Instance.Fullcolor1[1], ColorCordination.Instance.Fullcolor2[1]);
+            Larm.FullColor(ColorCordination.Instance.Leftcolor1, ColorCordination.Instance.Leftcolor2);
             Leg.ActiveParts();
-            Leg.FullColor(ColorCordination.Instance.Fullcolor1[2], ColorCordination.Instance.Fullcolor2[2]);
+            Leg.FullColor(ColorCordination.Instance.Legscolor1, ColorCordination.Instance.Legscolor2);
             Head.ActiveParts();
-            Head.FullColor(ColorCordination.Instance.Fullcolor1[3], ColorCordination.Instance.Fullcolor2[3]);
+            Head.FullColor(ColorCordination.Instance.Headcolor1, ColorCordination.Instance.Headcolor2);
             Chest.ActiveParts();
-            Chest.FullColor(ColorCordination.Instance.Fullcolor1[4], ColorCordination.Instance.Fullcolor2[4]);
+            Chest.FullColor(ColorCordination.Instance.Chestcolor1, ColorCordination.Instance.Chestcolor2);
 
             LifeTraker.Instance.pRight = Rarm.life;
             LifeTraker.Instance.pLeft = Larm.life;

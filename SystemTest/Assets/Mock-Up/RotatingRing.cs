@@ -8,7 +8,6 @@ public class RotatingRing : MonoBehaviour
 {
     public Animator RRIng;
     public int Current;
-    public GameObject[] Stages;
     public GameObject Lock;
     public TextMeshProUGUI lab;
     public Color Transparency;
@@ -16,9 +15,11 @@ public class RotatingRing : MonoBehaviour
     public bool CanEnter;
     public float BlinkInterval;
     public float transparancyRate;
+
+    public LabelAnim[] label;
     void Start()
     {
-        UpdateDisPlay();
+        EnterLabel1();
         StartCoroutine(TextFlash());
         CanEnter = true;
     }
@@ -42,7 +43,7 @@ public class RotatingRing : MonoBehaviour
     public void RotateUp()
     {
         Current++;
-        if (Current == Stages.Count())
+        if (Current == label.Count())
         {
             Current--;
             return;
@@ -90,11 +91,6 @@ public class RotatingRing : MonoBehaviour
 
     public void UpdateDisPlay()
     {
-        foreach (var item in Stages)
-        {
-            item.SetActive(false);
-        }
-        Stages[Current].SetActive(true);
         if (Current >= LifeTraker.Instance.Dificulty)
         {
             Lock.SetActive(true);
@@ -106,6 +102,15 @@ public class RotatingRing : MonoBehaviour
             CanEnter = true;
         } 
     }
+
+    public void EnterLabel1() { label[0].Enter(); }
+    public void EnterLabel2() { label[1].Enter(); }
+    public void EnterLabel3() { label[2].Enter(); }
+    public void EnterLabel4() { label[3].Enter(); }
+    public void ExitLabel1() { label[0].Exit(); }
+    public void ExitLabel2() { label[1].Exit(); }
+    public void ExitLabel3() { label[2].Exit(); }
+    public void ExitLabel4() { label[3].Exit(); }
     public IEnumerator TextFlash()
     {
         toTranparent = true;

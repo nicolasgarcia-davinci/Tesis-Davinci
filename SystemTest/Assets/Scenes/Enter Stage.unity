@@ -1674,6 +1674,7 @@ MonoBehaviour:
   PartName: 
   AttName: Drill Down Attack
   life: 0
+  Maxlife: 0
   Damage: 0
   Aspeed: 0
   AttackSound: {fileID: 0}
@@ -2062,6 +2063,7 @@ MonoBehaviour:
   PartName: 
   AttName: Drill Down Attack
   life: 0
+  Maxlife: 0
   Damage: 0
   Aspeed: 0
   AttackSound: {fileID: 0}
@@ -3182,6 +3184,7 @@ MonoBehaviour:
   PartName: 
   AttName: Boxer Up Attack
   life: 0
+  Maxlife: 0
   Damage: 0
   Aspeed: 0
   AttackSound: {fileID: 0}
@@ -3365,6 +3368,7 @@ MonoBehaviour:
   PartName: 
   AttName: Boxer Left Attack
   life: 0
+  Maxlife: 0
   Damage: 0
   Aspeed: 0
   AttackSound: {fileID: 0}
@@ -3373,6 +3377,7 @@ MonoBehaviour:
   - {fileID: 1877962208}
   - {fileID: 63019170}
   - {fileID: 1057302357}
+  isLeft: 0
 --- !u!1 &345336185
 GameObject:
   m_ObjectHideFlags: 0
@@ -3918,6 +3923,7 @@ MonoBehaviour:
   PartName: 
   AttName: Drill Up Attack
   life: 0
+  Maxlife: 0
   Damage: 0
   Aspeed: 0
   AttackSound: {fileID: 0}
@@ -4054,6 +4060,7 @@ MonoBehaviour:
   PartName: 
   AttName: Boxer Up Attack
   life: 0
+  Maxlife: 0
   Damage: 0
   Aspeed: 0
   AttackSound: {fileID: 0}
@@ -4848,13 +4855,15 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 487844826}
+  - component: {fileID: 487844827}
+  - component: {fileID: 487844828}
   m_Layer: 5
-  m_Name: Stage 3
+  m_Name: Stage 2 Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &487844826
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4872,9 +4881,43 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.58500004, y: 0.854251}
   m_AnchorMax: {x: 0.9044166, y: 1}
-  m_AnchoredPosition: {x: 0, y: -23}
+  m_AnchoredPosition: {x: 850, y: -23}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!95 &487844827
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 487844825}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d82f0d7d1750002449e134e97833f4ba, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &487844828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 487844825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9fb1f05c8dde1a459a791ea7a778d00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 487844827}
 --- !u!1 &488546147
 GameObject:
   m_ObjectHideFlags: 0
@@ -4922,6 +4965,7 @@ MonoBehaviour:
   PartName: 
   AttName: Drill Right Attack
   life: 0
+  Maxlife: 0
   Damage: 0
   Aspeed: 0
   AttackSound: {fileID: 0}
@@ -4930,6 +4974,7 @@ MonoBehaviour:
   - {fileID: 1640900661}
   - {fileID: 144412331}
   - {fileID: 398097869}
+  isLeft: 0
 --- !u!1 &496586872
 GameObject:
   m_ObjectHideFlags: 0
@@ -5060,6 +5105,7 @@ MonoBehaviour:
   PartName: 
   AttName: Boxer Up Attack
   life: 0
+  Maxlife: 0
   Damage: 0
   Aspeed: 0
   AttackSound: {fileID: 0}
@@ -5653,6 +5699,7 @@ MonoBehaviour:
   PartName: 
   AttName: 
   life: 0
+  Maxlife: 0
   Damage: 0
   Aspeed: 0
   AttackSound: {fileID: 0}
@@ -5790,55 +5837,6 @@ Transform:
   - {fileID: 1601495654}
   m_Father: {fileID: 1841586962}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &563856334
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 563856335}
-  - component: {fileID: 563856336}
-  m_Layer: 0
-  m_Name: Model Displayer
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &563856335
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 563856334}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.35662127, y: -1.0696696, z: 5.0143366}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &563856336
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 563856334}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ef5a1f1e8c5e0049abd847fdcbb0050, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  oponents:
-  - {fileID: 1135227130}
-  - {fileID: 0}
-  index: 0
-  ToDie: 0
 --- !u!1 &571931826
 GameObject:
   m_ObjectHideFlags: 0
@@ -5943,11 +5941,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RRIng: {fileID: 576618252}
   Current: 0
-  Stages:
-  - {fileID: 881797848475968364}
-  - {fileID: 2968088875496631175}
-  - {fileID: 487844825}
-  - {fileID: 1434810855}
   Lock: {fileID: 1455714578}
   lab: {fileID: 280115561}
   Transparency: {r: 1, g: 1, b: 1, a: 1}
@@ -5955,6 +5948,11 @@ MonoBehaviour:
   CanEnter: 1
   BlinkInterval: 0.75
   transparancyRate: 0.0015
+  label:
+  - {fileID: 8449708510106667870}
+  - {fileID: 487844828}
+  - {fileID: 5786956733106488249}
+  - {fileID: 1434810858}
 --- !u!1 &583178904
 GameObject:
   m_ObjectHideFlags: 0
@@ -6002,6 +6000,7 @@ MonoBehaviour:
   PartName: 
   AttName: Boxer Left Attack
   life: 0
+  Maxlife: 0
   Damage: 0
   Aspeed: 0
   AttackSound: {fileID: 0}
@@ -6010,6 +6009,7 @@ MonoBehaviour:
   - {fileID: 203142600}
   - {fileID: 1154143578}
   - {fileID: 897164288}
+  isLeft: 0
 --- !u!1 &584293586
 GameObject:
   m_ObjectHideFlags: 0
@@ -6334,6 +6334,7 @@ MonoBehaviour:
   PartName: 
   AttName: Drill Left Attack
   life: 0
+  Maxlife: 0
   Damage: 0
   Aspeed: 0
   AttackSound: {fileID: 0}
@@ -6342,6 +6343,7 @@ MonoBehaviour:
   - {fileID: 1242219760}
   - {fileID: 1654268846}
   - {fileID: 269952559}
+  isLeft: 0
 --- !u!1 &605931340
 GameObject:
   m_ObjectHideFlags: 0
@@ -6588,6 +6590,7 @@ MonoBehaviour:
   PartName: 
   AttName: Drill Left Attack
   life: 0
+  Maxlife: 0
   Damage: 0
   Aspeed: 0
   AttackSound: {fileID: 0}
@@ -6596,6 +6599,7 @@ MonoBehaviour:
   - {fileID: 1958364923}
   - {fileID: 2146925778}
   - {fileID: 1851511667}
+  isLeft: 0
 --- !u!1 &629839417
 GameObject:
   m_ObjectHideFlags: 0
@@ -6643,6 +6647,7 @@ MonoBehaviour:
   PartName: 
   AttName: Boxer Left Attack
   life: 0
+  Maxlife: 0
   Damage: 0
   Aspeed: 0
   AttackSound: {fileID: 0}
@@ -6651,6 +6656,7 @@ MonoBehaviour:
   - {fileID: 2024024764}
   - {fileID: 1234582204}
   - {fileID: 945612480}
+  isLeft: 0
 --- !u!1 &635510747
 GameObject:
   m_ObjectHideFlags: 0
@@ -6694,7 +6700,7 @@ GameObject:
   - component: {fileID: 642121501}
   - component: {fileID: 642121500}
   m_Layer: 5
-  m_Name: Robot Description
+  m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6766,7 +6772,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 205.3
+  m_fontSize: 205.25
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -9613,6 +9619,7 @@ MonoBehaviour:
   PartName: 
   AttName: Drill Right Attack
   life: 0
+  Maxlife: 0
   Damage: 0
   Aspeed: 0
   AttackSound: {fileID: 0}
@@ -9621,6 +9628,7 @@ MonoBehaviour:
   - {fileID: 1349780209}
   - {fileID: 389947259}
   - {fileID: 1568403527}
+  isLeft: 0
 --- !u!1 &927660248
 GameObject:
   m_ObjectHideFlags: 0
@@ -10478,6 +10486,7 @@ MonoBehaviour:
   PartName: 
   AttName: Boxer Right Attack
   life: 0
+  Maxlife: 0
   Damage: 0
   Aspeed: 0
   AttackSound: {fileID: 0}
@@ -10486,77 +10495,7 @@ MonoBehaviour:
   - {fileID: 1059741690}
   - {fileID: 1940548269}
   - {fileID: 206527170}
---- !u!1 &1011688622
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1011688623}
-  - component: {fileID: 1011688625}
-  - component: {fileID: 1011688624}
-  m_Layer: 0
-  m_Name: Stairs
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &1011688623
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1011688622}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 553952452586947836}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1011688624
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1011688622}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63581f38e6803f34381766b32b17af83, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  screen: {fileID: 1415091794}
-  animator: {fileID: 1011688625}
-  timeToIntro: 2
-  _stageTheme: {fileID: 1181045506}
---- !u!95 &1011688625
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1011688622}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: eeb436d0689b8344aaae8284888adc5d, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
+  isLeft: 0
 --- !u!1 &1011695116
 GameObject:
   m_ObjectHideFlags: 0
@@ -11146,6 +11085,7 @@ MonoBehaviour:
   PartName: 
   AttName: Boxer Down Attack
   life: 0
+  Maxlife: 0
   Damage: 0
   Aspeed: 0
   AttackSound: {fileID: 0}
@@ -11187,6 +11127,7 @@ MonoBehaviour:
   PartName: 
   AttName: 
   life: 0
+  Maxlife: 0
   Damage: 0
   Aspeed: 0
   AttackSound: {fileID: 0}
@@ -11733,108 +11674,6 @@ Transform:
   - {fileID: 1019710177}
   m_Father: {fileID: 994658770}
   m_LocalEulerAnglesHint: {x: -39.594883, y: 0.0000122833235, z: -119.60445}
---- !u!1 &1152087156
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1152087160}
-  - component: {fileID: 1152087159}
-  - component: {fileID: 1152087158}
-  - component: {fileID: 1152087157}
-  m_Layer: 5
-  m_Name: Sigil
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &1152087157
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1152087156}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IgnoreReversedGraphics: 1
-  m_BlockingObjects: 0
-  m_BlockingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
---- !u!114 &1152087158
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1152087156}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_UiScaleMode: 1
-  m_ReferencePixelsPerUnit: 100
-  m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 1920, y: 1080}
-  m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
-  m_PhysicalUnit: 3
-  m_FallbackScreenDPI: 96
-  m_DefaultSpriteDPI: 96
-  m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
---- !u!223 &1152087159
-Canvas:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1152087156}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
-  m_PlaneDistance: 100
-  m_PixelPerfect: 0
-  m_ReceivesEvents: 1
-  m_OverrideSorting: 0
-  m_OverridePixelPerfect: 0
-  m_SortingBucketNormalizedSize: 0
-  m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 0
-  m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
-  m_TargetDisplay: 0
---- !u!224 &1152087160
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1152087156}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1283625730}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0, y: 0}
 --- !u!1 &1154143578
 GameObject:
   m_ObjectHideFlags: 0
@@ -12111,6 +11950,7 @@ MonoBehaviour:
   PartName: 
   AttName: Boxer Right Attack
   life: 0
+  Maxlife: 0
   Damage: 0
   Aspeed: 0
   AttackSound: {fileID: 0}
@@ -12119,6 +11959,7 @@ MonoBehaviour:
   - {fileID: 473676761}
   - {fileID: 1385113903}
   - {fileID: 1409486854}
+  isLeft: 0
 --- !u!1 &1170479273
 GameObject:
   m_ObjectHideFlags: 0
@@ -12131,7 +11972,7 @@ GameObject:
   - component: {fileID: 1170479276}
   - component: {fileID: 1170479275}
   m_Layer: 5
-  m_Name: RawImage
+  m_Name: BackGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12436,17 +12277,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9646d9e7a9cbe134bbbd1e6182d20c78, type: 3}
---- !u!114 &1181045506 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3201212191210111139, guid: 9646d9e7a9cbe134bbbd1e6182d20c78, type: 3}
-  m_PrefabInstance: {fileID: 1181045505}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cdf525df82bc71f469768b785c32a7b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1185272792
 GameObject:
   m_ObjectHideFlags: 0
@@ -13215,6 +13045,7 @@ MonoBehaviour:
   PartName: 
   AttName: Boxer Down Attack
   life: 0
+  Maxlife: 0
   Damage: 0
   Aspeed: 0
   AttackSound: {fileID: 0}
@@ -13339,114 +13170,6 @@ Transform:
   - {fileID: 2002244558}
   m_Father: {fileID: 390477216}
   m_LocalEulerAnglesHint: {x: -62.77965, y: -34.358967, z: 92.37528}
---- !u!1 &1283625729
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1283625730}
-  - component: {fileID: 1283625733}
-  - component: {fileID: 1283625732}
-  - component: {fileID: 1283625731}
-  - component: {fileID: 1283625734}
-  m_Layer: 5
-  m_Name: Aim
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1283625730
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1283625729}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.63, y: 1.63, z: 1.63}
-  m_ConstrainProportionsScale: 1
-  m_Children: []
-  m_Father: {fileID: 1152087160}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.47512504, y: 0.4555185}
-  m_AnchorMax: {x: 0.52377075, y: 0.5464815}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!95 &1283625731
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1283625729}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d11c72a4ead66664fb01a5ad76f2759f, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1283625732
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1283625729}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 4f1d6bf8ebd7ed64c826211866f81b45, type: 3}
-  m_UVRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
---- !u!222 &1283625733
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1283625729}
-  m_CullTransparentMesh: 1
---- !u!114 &1283625734
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1283625729}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8848004a98c473478700d55157bf064, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 1283625731}
 --- !u!1 &1287191265
 GameObject:
   m_ObjectHideFlags: 0
@@ -13610,6 +13333,7 @@ MonoBehaviour:
   PartName: 
   AttName: Boxer Right Attack
   life: 0
+  Maxlife: 0
   Damage: 0
   Aspeed: 0
   AttackSound: {fileID: 0}
@@ -13618,6 +13342,7 @@ MonoBehaviour:
   - {fileID: 390574915}
   - {fileID: 1676973442}
   - {fileID: 1590547500}
+  isLeft: 0
 --- !u!1 &1315807989
 GameObject:
   m_ObjectHideFlags: 0
@@ -13699,6 +13424,7 @@ MonoBehaviour:
   PartName: 
   AttName: Boxer Down Attack
   life: 0
+  Maxlife: 0
   Damage: 0
   Aspeed: 0
   AttackSound: {fileID: 0}
@@ -14248,7 +13974,7 @@ GameObject:
   - component: {fileID: 1381404626}
   - component: {fileID: 1381404625}
   m_Layer: 5
-  m_Name: RawImage
+  m_Name: Separator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14633,8 +14359,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8449708510106667868}
-  - {fileID: 5786956733106488247}
   - {fileID: 487844826}
+  - {fileID: 5786956733106488247}
   - {fileID: 1434810856}
   - {fileID: 1381404624}
   - {fileID: 280115560}
@@ -14660,8 +14386,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc70fa9dd4ea59f49b4137e583b9806c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Stage1: {fileID: 881797848475968364}
-  Stage2: {fileID: 2968088875496631175}
   lab: {fileID: 280115561}
   Transparency: {r: 1, g: 1, b: 1, a: 1}
   toTranparent: 0
@@ -14839,13 +14563,15 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1434810856}
+  - component: {fileID: 1434810857}
+  - component: {fileID: 1434810858}
   m_Layer: 5
-  m_Name: Stage 4
+  m_Name: Stage 4 Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1434810856
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14863,9 +14589,43 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.58500004, y: 0.854251}
   m_AnchorMax: {x: 0.9044166, y: 1}
-  m_AnchoredPosition: {x: 0, y: -22}
+  m_AnchoredPosition: {x: 850, y: -22}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!95 &1434810857
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1434810855}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d82f0d7d1750002449e134e97833f4ba, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1434810858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1434810855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9fb1f05c8dde1a459a791ea7a778d00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 1434810857}
 --- !u!1 &1435313690
 GameObject:
   m_ObjectHideFlags: 0
@@ -15134,6 +14894,7 @@ MonoBehaviour:
   PartName: 
   AttName: Drill Down Attack
   life: 0
+  Maxlife: 0
   Damage: 0
   Aspeed: 0
   AttackSound: {fileID: 0}
@@ -15190,6 +14951,7 @@ MonoBehaviour:
   PartName: 
   AttName: Boxer Right Attack
   life: 0
+  Maxlife: 0
   Damage: 0
   Aspeed: 0
   AttackSound: {fileID: 0}
@@ -15198,6 +14960,7 @@ MonoBehaviour:
   - {fileID: 1823816559}
   - {fileID: 507400093}
   - {fileID: 1874487367}
+  isLeft: 0
 --- !u!1 &1463532364
 GameObject:
   m_ObjectHideFlags: 0
@@ -16160,6 +15923,7 @@ MonoBehaviour:
   PartName: 
   AttName: Drill Right Attack
   life: 0
+  Maxlife: 0
   Damage: 0
   Aspeed: 0
   AttackSound: {fileID: 0}
@@ -16168,6 +15932,7 @@ MonoBehaviour:
   - {fileID: 1237685578}
   - {fileID: 659081318}
   - {fileID: 510952486}
+  isLeft: 0
 --- !u!1 &1546461725
 GameObject:
   m_ObjectHideFlags: 0
@@ -16283,6 +16048,7 @@ MonoBehaviour:
   PartName: 
   AttName: 
   life: 0
+  Maxlife: 0
   Damage: 0
   Aspeed: 0
   AttackSound: {fileID: 0}
@@ -16399,7 +16165,7 @@ GameObject:
   - component: {fileID: 1555165541}
   - component: {fileID: 1555165540}
   m_Layer: 5
-  m_Name: Robot Description
+  m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16444,7 +16210,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Stage 3
+  m_text: Stage 2
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 02ca91812d120cd418173cc38a458ce8, type: 2}
   m_sharedMaterial: {fileID: 731728864525709630, guid: 02ca91812d120cd418173cc38a458ce8, type: 2}
@@ -16471,7 +16237,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 205.3
+  m_fontSize: 205.25
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -16830,6 +16596,7 @@ MonoBehaviour:
   PartName: 
   AttName: Drill Up Attack
   life: 0
+  Maxlife: 0
   Damage: 0
   Aspeed: 0
   AttackSound: {fileID: 0}
@@ -17121,6 +16888,7 @@ MonoBehaviour:
   PartName: 
   AttName: Drill Right Attack
   life: 0
+  Maxlife: 0
   Damage: 0
   Aspeed: 0
   AttackSound: {fileID: 0}
@@ -17129,6 +16897,7 @@ MonoBehaviour:
   - {fileID: 656109368}
   - {fileID: 666812834}
   - {fileID: 2013762969}
+  isLeft: 0
 --- !u!1 &1640190780
 GameObject:
   m_ObjectHideFlags: 0
@@ -17582,6 +17351,7 @@ MonoBehaviour:
   PartName: 
   AttName: Drill Up Attack
   life: 0
+  Maxlife: 0
   Damage: 0
   Aspeed: 0
   AttackSound: {fileID: 0}
@@ -17943,6 +17713,7 @@ MonoBehaviour:
   PartName: 
   AttName: 
   life: 0
+  Maxlife: 0
   Damage: 0
   Aspeed: 0
   AttackSound: {fileID: 0}
@@ -18027,6 +17798,7 @@ MonoBehaviour:
   PartName: 
   AttName: Boxer Up Attack
   life: 0
+  Maxlife: 0
   Damage: 0
   Aspeed: 0
   AttackSound: {fileID: 0}
@@ -19230,7 +19002,7 @@ GameObject:
   - component: {fileID: 1834915414}
   - component: {fileID: 1834915413}
   m_Layer: 5
-  m_Name: RawImage
+  m_Name: BackGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20223,6 +19995,7 @@ MonoBehaviour:
   PartName: 
   AttName: Drill Up Attack
   life: 0
+  Maxlife: 0
   Damage: 0
   Aspeed: 0
   AttackSound: {fileID: 0}
@@ -20276,6 +20049,7 @@ MonoBehaviour:
   PartName: 
   AttName: Drill Down Attack
   life: 0
+  Maxlife: 0
   Damage: 0
   Aspeed: 0
   AttackSound: {fileID: 0}
@@ -21408,6 +21182,7 @@ MonoBehaviour:
   PartName: 
   AttName: Boxer Down Attack
   life: 0
+  Maxlife: 0
   Damage: 0
   Aspeed: 0
   AttackSound: {fileID: 0}
@@ -22093,6 +21868,7 @@ MonoBehaviour:
   PartName: 
   AttName: Boxer Left Attack
   life: 0
+  Maxlife: 0
   Damage: 0
   Aspeed: 0
   AttackSound: {fileID: 0}
@@ -22101,6 +21877,7 @@ MonoBehaviour:
   - {fileID: 1825461424}
   - {fileID: 2069149524}
   - {fileID: 502949341}
+  isLeft: 0
 --- !u!1 &2098675488
 GameObject:
   m_ObjectHideFlags: 0
@@ -22265,6 +22042,7 @@ MonoBehaviour:
   PartName: 
   AttName: Drill Left Attack
   life: 0
+  Maxlife: 0
   Damage: 0
   Aspeed: 0
   AttackSound: {fileID: 0}
@@ -22273,6 +22051,7 @@ MonoBehaviour:
   - {fileID: 655471224}
   - {fileID: 1132267588}
   - {fileID: 648615966}
+  isLeft: 0
 --- !u!1 &2107956155
 GameObject:
   m_ObjectHideFlags: 0
@@ -22585,6 +22364,7 @@ MonoBehaviour:
   PartName: 
   AttName: Drill Left Attack
   life: 0
+  Maxlife: 0
   Damage: 0
   Aspeed: 0
   AttackSound: {fileID: 0}
@@ -22593,6 +22373,7 @@ MonoBehaviour:
   - {fileID: 584321466}
   - {fileID: 104927126}
   - {fileID: 698222828}
+  isLeft: 0
 --- !u!1 &2146925778
 GameObject:
   m_ObjectHideFlags: 0
@@ -23548,24 +23329,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &192190589791201721
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7171849197582953629}
-  - component: {fileID: 3817055166236733424}
-  - component: {fileID: 4417635390818830870}
-  m_Layer: 0
-  m_Name: pCube9
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!4 &196616406434158534
 Transform:
   m_ObjectHideFlags: 0
@@ -24312,6 +24075,7 @@ MonoBehaviour:
   PartName: 
   AttName: Drill Left Attack
   life: 0
+  Maxlife: 0
   Damage: 0
   Aspeed: 0
   AttackSound: {fileID: 0}
@@ -24320,6 +24084,7 @@ MonoBehaviour:
   - {fileID: 5229255175986111273}
   - {fileID: 4628879863572641788}
   - {fileID: 2399341538099629905}
+  isLeft: 1
 --- !u!4 &355260811611941344
 Transform:
   m_ObjectHideFlags: 0
@@ -25356,24 +25121,6 @@ Transform:
   - {fileID: 5469648724545770037}
   m_Father: {fileID: 8072550242446050540}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &553952452586947836
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 935579385641475654}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: -2.25, y: -1.66, z: 0.2}
-  m_LocalScale: {x: 1.184799, y: 1.184799, z: 1.184799}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 6000323985472040659}
-  - {fileID: 7171849197582953629}
-  - {fileID: 704702861660806049}
-  m_Father: {fileID: 1011688623}
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &554184310609753447
 GameObject:
   m_ObjectHideFlags: 0
@@ -25929,21 +25676,6 @@ Transform:
   - {fileID: 6397854873907056370}
   - {fileID: 3525302366522691479}
   m_Father: {fileID: 8072550242446050540}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &704702861660806049
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3313511941708822153}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.59679055, y: 0.49596107, z: -0.7853122}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 553952452586947836}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &715407123690345068
 MeshRenderer:
@@ -26824,8 +26556,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8449708510106667868}
+  - component: {fileID: 8449708510106667869}
+  - component: {fileID: 8449708510106667870}
   m_Layer: 5
-  m_Name: Stage 1
+  m_Name: Stage 1 Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27087,22 +26821,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!1 &935579385641475654
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 553952452586947836}
-  m_Layer: 0
-  m_Name: torre mk
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!4 &943338968918738777
 Transform:
   m_ObjectHideFlags: 0
@@ -27698,6 +27416,7 @@ MonoBehaviour:
   PartName: 
   AttName: Boxer Up Attack
   life: 0
+  Maxlife: 0
   Damage: 0
   Aspeed: 0
   AttackSound: {fileID: 0}
@@ -28557,6 +28276,7 @@ MonoBehaviour:
   PartName: 
   AttName: Boxer Right Attack
   life: 0
+  Maxlife: 0
   Damage: 0
   Aspeed: 0
   AttackSound: {fileID: 0}
@@ -28565,6 +28285,7 @@ MonoBehaviour:
   - {fileID: 6666776209514744809}
   - {fileID: 3906793216381051251}
   - {fileID: 6449455891100219640}
+  isLeft: 0
 --- !u!1 &1304117597014150746
 GameObject:
   m_ObjectHideFlags: 0
@@ -29899,6 +29620,7 @@ MonoBehaviour:
   PartName: 
   AttName: Boxer Down Attack
   life: 0
+  Maxlife: 0
   Damage: 0
   Aspeed: 0
   AttackSound: {fileID: 0}
@@ -33119,6 +32841,7 @@ MonoBehaviour:
   PartName: 
   AttName: Drill Right Attack
   life: 0
+  Maxlife: 0
   Damage: 0
   Aspeed: 0
   AttackSound: {fileID: 0}
@@ -33127,14 +32850,7 @@ MonoBehaviour:
   - {fileID: 851171015647178656}
   - {fileID: 1510726548786010570}
   - {fileID: 5516655665209700429}
---- !u!33 &2365418231189767166
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6597415591290125909}
-  m_Mesh: {fileID: -7759331768739107841, guid: a6f4c7fa748751347a5a97f1ae135f80, type: 3}
+  isLeft: 0
 --- !u!23 &2371193408928220247
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -33239,7 +32955,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 126.95
+  m_fontSize: 127.05
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -34591,14 +34307,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4888409886702136994}
   m_LocalEulerAnglesHint: {x: 0, y: 305.197, z: 20.658}
---- !u!33 &2710403077092255012
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3313511941708822153}
-  m_Mesh: {fileID: 2239598380301062371, guid: a6f4c7fa748751347a5a97f1ae135f80, type: 3}
 --- !u!4 &2711655837447409752
 Transform:
   m_ObjectHideFlags: 0
@@ -35758,13 +35466,15 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5786956733106488247}
+  - component: {fileID: 5786956733106488248}
+  - component: {fileID: 5786956733106488249}
   m_Layer: 5
-  m_Name: Stage 2
+  m_Name: Stage 3 Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &2971330779726712414
 GameObject:
   m_ObjectHideFlags: 0
@@ -37558,24 +37268,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!1 &3313511941708822153
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 704702861660806049}
-  - component: {fileID: 2710403077092255012}
-  - component: {fileID: 9158829322643007226}
-  m_Layer: 0
-  m_Name: pCylinder23
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!4 &3318990329788430143
 Transform:
   m_ObjectHideFlags: 0
@@ -37680,6 +37372,7 @@ MonoBehaviour:
   PartName: 
   AttName: Boxer Left Attack
   life: 0
+  Maxlife: 0
   Damage: 0
   Aspeed: 0
   AttackSound: {fileID: 0}
@@ -37688,6 +37381,7 @@ MonoBehaviour:
   - {fileID: 3134492227761876148}
   - {fileID: 2927421240508296182}
   - {fileID: 1799307632624674108}
+  isLeft: 1
 --- !u!1 &3356609868969833710
 GameObject:
   m_ObjectHideFlags: 0
@@ -38579,6 +38273,7 @@ MonoBehaviour:
   PartName: 
   AttName: Drill Up Attack
   life: 0
+  Maxlife: 0
   Damage: 0
   Aspeed: 0
   AttackSound: {fileID: 0}
@@ -39141,14 +38836,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!33 &3817055166236733424
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 192190589791201721}
-  m_Mesh: {fileID: 7857590630482128698, guid: a6f4c7fa748751347a5a97f1ae135f80, type: 3}
 --- !u!1 &3817608912115287466
 GameObject:
   m_ObjectHideFlags: 0
@@ -41416,48 +41103,6 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 3826a080ff4e58d48895f4ca09630bce, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!23 &4417635390818830870
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 192190589791201721}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 559dcbd38fb2d5849ada044fe657197c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -47115,9 +46760,43 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.58500004, y: 0.854251}
   m_AnchorMax: {x: 0.9044166, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 850, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!95 &5786956733106488248
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2968088875496631175}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d82f0d7d1750002449e134e97833f4ba, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5786956733106488249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2968088875496631175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9fb1f05c8dde1a459a791ea7a778d00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 5786956733106488248}
 --- !u!4 &5803187834682868978
 Transform:
   m_ObjectHideFlags: 0
@@ -47664,21 +47343,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1617322200457615928}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &6000323985472040659
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6597415591290125909}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0.6587743, y: 0.25693667, z: -0.25693667, w: 0.6587743}
-  m_LocalPosition: {x: -2.896412, y: 1.5341593, z: 0.33707958}
-  m_LocalScale: {x: 0.41775128, y: 0.2231545, z: 0.41775128}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 553952452586947836}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &6007612856719613750
 Transform:
@@ -49997,24 +49661,6 @@ GameObject:
   - component: {fileID: 6268879702127454786}
   m_Layer: 0
   m_Name: pCylinder217
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &6597415591290125909
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6000323985472040659}
-  - component: {fileID: 2365418231189767166}
-  - component: {fileID: 7486833306878297950}
-  m_Layer: 0
-  m_Name: pCube7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -57305,21 +56951,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7171849197582953629
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 192190589791201721}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.9881716, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 553952452586947836}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7174626309578259353
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -57756,6 +57387,7 @@ MonoBehaviour:
   PartName: 
   AttName: Drill Down Attack
   life: 0
+  Maxlife: 0
   Damage: 0
   Aspeed: 0
   AttackSound: {fileID: 0}
@@ -58609,48 +58241,6 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: d48cdc214d8f6a342870e8c23ab56e98, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!23 &7486833306878297950
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6597415591290125909}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 0944d4f92f741d440b32df032ef4cb20, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -62701,9 +62291,43 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.58500004, y: 0.854251}
   m_AnchorMax: {x: 0.9044166, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 850, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!95 &8449708510106667869
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 881797848475968364}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d82f0d7d1750002449e134e97833f4ba, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &8449708510106667870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 881797848475968364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9fb1f05c8dde1a459a791ea7a778d00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 8449708510106667869}
 --- !u!1 &8453660641868497999
 GameObject:
   m_ObjectHideFlags: 0
@@ -65883,48 +65507,6 @@ Transform:
   - {fileID: 9131070954558124575}
   m_Father: {fileID: 213835392013464622}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &9158829322643007226
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3313511941708822153}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: f0808e62fa50a9a4d90d7c8da8bfdf5b, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!222 &9158852525895102475
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -66322,9 +65904,6 @@ SceneRoots:
   - {fileID: 774442782}
   - {fileID: 1656197340}
   - {fileID: 1415091798}
-  - {fileID: 1011688623}
-  - {fileID: 563856335}
-  - {fileID: 1152087160}
   - {fileID: 1181045505}
   - {fileID: 576618253}
   - {fileID: 7099523131951594871}

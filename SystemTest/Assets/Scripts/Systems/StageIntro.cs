@@ -6,8 +6,8 @@ using UnityEngine.UI;
 
 public class StageIntro : MonoBehaviour
 {
-    public GameObject Stage1;
-    public GameObject Stage2;
+    //public GameObject Stage1;
+    //public GameObject Stage2;
     public TextMeshProUGUI lab;
     public Color Transparency;
     public bool toTranparent;
@@ -16,13 +16,13 @@ public class StageIntro : MonoBehaviour
     void Start()
     {
         StartCoroutine(TextFlash());
-        if (LifeTraker.Instance.Dificulty==1)
-        {
-            Stage1.gameObject.SetActive(true);
-        }else if(LifeTraker.Instance.Dificulty==2)
-        {
-            Stage2.gameObject.SetActive(true);
-        }
+        //if (LifeTraker.Instance.Dificulty==1)
+        //{
+        //    Stage1.gameObject.SetActive(true);
+        //}else if(LifeTraker.Instance.Dificulty==2)
+        //{
+        //    Stage2.gameObject.SetActive(true);
+        //}
     }
 
     void Update()

@@ -84,8 +84,8 @@ public class PartPainter : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.W)) CycleUp();
-        if (Input.GetKeyDown(KeyCode.S)) CycleDown();
+        if (Input.GetKeyDown(KeyCode.UpArrow)) CycleUp();
+        if (Input.GetKeyDown(KeyCode.DownArrow)) CycleDown();
     }
     public void nextColumn()
     {
@@ -134,6 +134,7 @@ public class PartPainter : MonoBehaviour
                 }
             }
             col.DeSelect();
+            col.Clean();
         }
         Palet1.gameObject.SetActive(false);
         
@@ -148,6 +149,7 @@ public class PartPainter : MonoBehaviour
         foreach (var col in Column2)
         {
             col.DeSelect();
+            col.Clean();
         }
         Palet2.gameObject.SetActive(false);
         IsInColum2 = false;

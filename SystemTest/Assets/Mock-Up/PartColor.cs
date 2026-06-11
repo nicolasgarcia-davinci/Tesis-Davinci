@@ -50,35 +50,30 @@ public class PartColor : MonoBehaviour
             if (IsRArm)
             {
                 ColorCordination.Instance.Rightcolor1 = color;
-                ColorCordination.Instance.Fullcolor1[0] = color;
                 RArmToPaint.SetColor();
             }
 
             if (IsLArm)
             {
                 ColorCordination.Instance.Leftcolor1 = color;
-                ColorCordination.Instance.Fullcolor1[1] = color;
                 LArmToPaint.SetColor();
             }
             
             if (IsLeg)
             {
                 ColorCordination.Instance.Legscolor1 = color;
-                ColorCordination.Instance.Fullcolor1[2] = color;
                 LegToPaint.SetColor();
             }
             
             if (IsHead)
             {
                 ColorCordination.Instance.Headcolor1 = color;
-                ColorCordination.Instance.Fullcolor1[3] = color;
                 HeadToPaint.SetColor();
             } 
 
             if (IsChest)
             {
                 ColorCordination.Instance.Chestcolor1 = color;
-                ColorCordination.Instance.Fullcolor1[4] = color;
                 ChestToPaint.SetColor();
             }
         }
@@ -87,35 +82,30 @@ public class PartColor : MonoBehaviour
             if (IsRArm)
             {
                 ColorCordination.Instance.Rightcolor2 = color;
-                ColorCordination.Instance.Fullcolor2[0] = color;
                 RArmToPaint.SetColor();
             }
 
             if (IsLArm)
             {
                 ColorCordination.Instance.Leftcolor2 = color;
-                ColorCordination.Instance.Fullcolor2[1] = color;
                 LArmToPaint.SetColor();
             }
 
-            if (LegToPaint)
+            if (IsLeg)
             {
                 ColorCordination.Instance.Legscolor2 = color;
-                ColorCordination.Instance.Fullcolor2[2] = color;
                 LegToPaint.SetColor();
             }
 
-            if (HeadToPaint)
+            if (IsHead)
             {
                 ColorCordination.Instance.Headcolor2 = color;
-                ColorCordination.Instance.Fullcolor2[3] = color;
                 HeadToPaint.SetColor();
             }
 
-            if (ChestToPaint)
+            if (IsChest)
             {
                 ColorCordination.Instance.Chestcolor2 = color;
-                ColorCordination.Instance.Fullcolor2[4] = color;
                 ChestToPaint.SetColor();
             }
         }
@@ -124,11 +114,19 @@ public class PartColor : MonoBehaviour
     {
         _selector.gameObject.SetActive(false);
         _isSelected = false;
+    }
+    public void Clean()
+    {
         IsRArm = false;
         IsLArm = false;
         IsLeg = false;
         IsHead = false;
         IsChest = false;
+        RArmToPaint = null;
+        LArmToPaint = null;
+        LegToPaint = null;
+        HeadToPaint = null;
+        ChestToPaint = null;
     }
     public IEnumerator Action()
     {

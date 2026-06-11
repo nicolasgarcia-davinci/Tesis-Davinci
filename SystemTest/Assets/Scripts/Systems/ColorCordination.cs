@@ -24,10 +24,6 @@ public class ColorCordination : MonoBehaviour
     public Color Chestcolor1;
     public Color Chestcolor2;
 
-    [Header("Full Colors")]
-    public Color[] Fullcolor1;
-    public Color[] Fullcolor2;
-
     public static ColorCordination Instance;
 
     public void Awake()
