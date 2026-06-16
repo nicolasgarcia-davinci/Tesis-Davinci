@@ -2662,18 +2662,6 @@ MonoBehaviour:
   Legscolor2: {r: 0, g: 0, b: 0, a: 0}
   Chestcolor1: {r: 0, g: 0, b: 0, a: 0}
   Chestcolor2: {r: 0, g: 0, b: 0, a: 0}
-  Fullcolor1:
-  - {r: 0, g: 0, b: 0, a: 0}
-  - {r: 0, g: 0, b: 0, a: 0}
-  - {r: 0, g: 0, b: 0, a: 0}
-  - {r: 0, g: 0, b: 0, a: 0}
-  - {r: 0, g: 0, b: 0, a: 0}
-  Fullcolor2:
-  - {r: 0, g: 0, b: 0, a: 0}
-  - {r: 0, g: 0, b: 0, a: 0}
-  - {r: 0, g: 0, b: 0, a: 0}
-  - {r: 0, g: 0, b: 0, a: 0}
-  - {r: 0, g: 0, b: 0, a: 0}
 --- !u!4 &689117656
 Transform:
   m_ObjectHideFlags: 0
@@ -7538,6 +7526,7 @@ GameObject:
   - component: {fileID: 1205367099022877258}
   - component: {fileID: 5796841789516265151}
   - component: {fileID: 5796841789516265152}
+  - component: {fileID: 5796841789516265153}
   m_Layer: 5
   m_Name: Play
   m_TagString: Untagged
@@ -7687,6 +7676,37 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5796841789516265153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4462871782831561057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eec65e8d173c96b49a55a4336013234a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _labelText: Play
+  _label: {fileID: 6128600874810365680}
+  _selector: {fileID: 315762221}
+  _miMenu: {fileID: 0}
+  _Display: {fileID: 0}
+  activationdelay: 0
+  Volume: 0
+  VolumeSlider: {fileID: 0}
+  _isSelected: 0
+  _Activated: 0
+  _targetID: 0
+  Sound: {fileID: 5796841789516265152}
+  ActSound: {fileID: 0}
+  Asambley: {fileID: 0}
+  newDif: 0
+  _thisType: 0
+  color: {r: 1, g: 0, b: 0, a: 0}
+  colorCatalog: {fileID: 0}
+  partsToPaint: {fileID: 0}
 --- !u!114 &6128600874810365680
 MonoBehaviour:
   m_ObjectHideFlags: 0
