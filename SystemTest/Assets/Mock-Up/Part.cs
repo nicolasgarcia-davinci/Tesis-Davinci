@@ -16,10 +16,6 @@ public class Part : MonoBehaviour
 
     public GameObject[] components;
 
-    private void Start()
-    {
-        Maxlife = life;
-    }
     public void FullColor(Color paint1,Color paint2)
     {
         foreach (var part in components)
@@ -36,6 +32,7 @@ public class Part : MonoBehaviour
         {
             part.gameObject.SetActive(true); 
         }
+
     }
     public void DeActiveParts()
     {

@@ -4,24 +4,53 @@ using UnityEngine;
 
 public class Winner : MonoBehaviour
 {
-    public SkinnedMeshRenderer body;
-    public Material Player;
-    public Material Enemy;
     public GameObject Win;
     public GameObject Lose;
+
+    [Header("Part Collection")]
+    public Part[] RarmCollection;
+    public Part[] LarmCollection;
+    public Part[] LegCollection;
+    public Part[] HeadCollection;
+    public Part[] ChestCollection;
+
+    [Header("Active Parts")]
+    public Part Rarm;
+    public Part Larm;
+    public Part Leg;
+    public Part Head;
+    public Part Chest;
     void Start()
     {
         if (LifeTraker.Instance.IsEnemy)
         {
-            body.material = Player;
-            //body.material.SetColor("_Color_1", ColorCordination.Instance.color1);
-            //body.material.SetColor("_Color_2", ColorCordination.Instance.color2);
-            body.material.SetFloat("_Transparencia", 1);
+            Rarm = RarmCollection[LifeTraker.Instance.RarmIndex];
+            Larm = LarmCollection[LifeTraker.Instance.LarmIndex];
+            Leg = LegCollection[LifeTraker.Instance.LegsIndex];
+            Head = HeadCollection[LifeTraker.Instance.HeadIndex];
+            Chest = ChestCollection[LifeTraker.Instance.ChestIndex];
+
+            Rarm.ActiveParts();
+            Rarm.FullColor(ColorCordination.Instance.Rightcolor1, ColorCordination.Instance.Rightcolor2);
+            Larm.ActiveParts();
+            Larm.FullColor(ColorCordination.Instance.Leftcolor1, ColorCordination.Instance.Leftcolor2);
+            Leg.ActiveParts();
+            Leg.FullColor(ColorCordination.Instance.Legscolor1, ColorCordination.Instance.Legscolor2);
+            Head.ActiveParts();
+            Head.FullColor(ColorCordination.Instance.Headcolor1, ColorCordination.Instance.Headcolor2);
+            Chest.ActiveParts();
+            Chest.FullColor(ColorCordination.Instance.Chestcolor1, ColorCordination.Instance.Chestcolor2);
+
             Win.SetActive(true);
         }
         if (!LifeTraker.Instance.IsEnemy)
         {
-            body.material = Enemy;
+            Rarm.ActiveParts();
+            Larm.ActiveParts();
+            Leg.ActiveParts();
+            Head.ActiveParts();
+            Chest.ActiveParts();
+
             Lose.SetActive(true);
         }
     }

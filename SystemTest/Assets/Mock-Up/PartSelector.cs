@@ -55,7 +55,6 @@ public class PartSelector : MonoBehaviour
     public void OpenColors()
     {
         ColorPalet.gameObject.SetActive(true);
-        //ColorPalet.GetArm(partToSend);
         if (RarmsSelected) ColorPalet.GetRArm(rArms[RAIndex]);
         if (LarmsSelected) ColorPalet.GetLArm(lArms[LAIndex]);
         if (LegsSelected) ColorPalet.GetLeg(legs[LIndex]);

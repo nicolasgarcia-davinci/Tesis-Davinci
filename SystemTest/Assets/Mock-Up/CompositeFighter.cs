@@ -129,6 +129,10 @@ public class CompositeFighter : MonoBehaviour
 
     public float DamageToTake;
 
+    [Header("Attack Warning")]
+    public GameObject warning;
+    public float WarningTime;
+
     void Start()
     {
         Stamina = MaxStamina;
@@ -224,7 +228,7 @@ public class CompositeFighter : MonoBehaviour
             Head.life = LifeTraker.Instance.eHead;  
         }
 
-        PartCount = 0;
+        PartCount = 1;
 
         if (Rarm.life > 0)
         {
@@ -514,15 +518,17 @@ public class CompositeFighter : MonoBehaviour
             FightControler.Instance.stopFrameHigh();
             partHit.DeActiveParts();
             PartCount--;
-            DamageToTake = (damage + partHit.life);
+            DamageToTake = (damage + partHit.Maxlife);
+            Debug.Log(DamageToTake);
             return;
         }
+        else DamageToTake = damage;
         if (!IsEnemy)
         {
             Debug.Log("BrazoChotoDerecho");
             LifeTraker.Instance.UpdateLife();
         }
-        DamageToTake = damage;
+        
     }
 
     #region Viejo Daño
@@ -676,6 +682,8 @@ public class CompositeFighter : MonoBehaviour
 
         if (OverAllHealth<=0)
         {
+            if(IsEnemy) LifeTraker.Instance.ePartCount=PartCount;
+            if(!IsEnemy) LifeTraker.Instance.PartCount=PartCount;
             FightControler.Instance.Halt();
             IsDying = true;
             ExitFight();
@@ -723,7 +731,18 @@ public class CompositeFighter : MonoBehaviour
             StageCam.Instance.GoToRepairCam();
         }
     }
+    public void FlashWarning()
+    {
+        if (IsEnemy) StartCoroutine(Warning());
+    }
 
+
+    IEnumerator Warning()
+    {
+        warning.SetActive(true);
+        yield return new WaitForSeconds(WarningTime);
+        warning.SetActive(false);
+    }
     IEnumerator ManageVFX(GameObject vfx, float i)
     {
         vfx.SetActive(true);
