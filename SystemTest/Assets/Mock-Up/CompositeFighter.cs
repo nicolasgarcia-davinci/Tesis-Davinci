@@ -389,6 +389,17 @@ public class CompositeFighter : MonoBehaviour
     }*/
     #endregion
 
+    private void OnDisable()
+    {
+        StopCoroutine(Exausted());
+        debuffParticles.SetActive(false);
+    }
+
+    private void OnEnable()
+    {
+        if(IsDebuffed) StartCoroutine(Exausted());
+    }
+
     public void Attack(string animation, GameObject trail, ref bool partAttack)
     {
         if (!IsAttacking && !IsDodging && !IsRepairing && !IsDying && Stamina>1)
@@ -757,18 +768,31 @@ public class CompositeFighter : MonoBehaviour
         yield return new WaitForSeconds(i);
         vfx.SetActive(false);
     }
+
+    float timer;
+
     IEnumerator Exausted()
     {
         IsDebuffed = true;
         _Audio.PlayOneShot(_debuff);
         debuffParticles.SetActive(true);
-        yield return new WaitForSeconds(DebuffTime);
-        Stamina = MaxStamina / 2;
+        while (timer <= DebuffTime)
+        {
+            timer += Time.deltaTime;
+            yield return null;
+        }
+        Stamina = MaxStamina * 0.5f;
         debuffParticles.SetActive(false);
         IsDebuffed = false;
         recoverParticles.SetActive(true);
-        yield return new WaitForSeconds(2.5f);
+        while (timer <= DebuffTime + 2.5f)
+        {
+            timer += Time.deltaTime;
+            Debug.Log(timer);
+            yield return null;
+        }
         recoverParticles.SetActive(false);
+        timer = 0;
     }
 
     public void Pause()
