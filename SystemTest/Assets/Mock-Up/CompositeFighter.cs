@@ -37,6 +37,8 @@ public class CompositeFighter : MonoBehaviour
     public float Stamina;
     public float MaxStamina;
     public float StaminaRefresh;
+    public GameObject debuffParticles;
+    public GameObject recoverParticles;
 
     [Header("Anim Bools")]
     public bool IsRepairing;
@@ -73,7 +75,7 @@ public class CompositeFighter : MonoBehaviour
 
     [Header("Audio")]
     public AudioSource _Audio;
-    public AudioClip _miss, _KO;
+    public AudioClip _miss, _KO, _debuff;
     
     [Header("Animator")]
     public Animator anim;
@@ -758,9 +760,15 @@ public class CompositeFighter : MonoBehaviour
     IEnumerator Exausted()
     {
         IsDebuffed = true;
+        _Audio.PlayOneShot(_debuff);
+        debuffParticles.SetActive(true);
         yield return new WaitForSeconds(DebuffTime);
         Stamina = MaxStamina / 2;
+        debuffParticles.SetActive(false);
         IsDebuffed = false;
+        recoverParticles.SetActive(true);
+        yield return new WaitForSeconds(2.5f);
+        recoverParticles.SetActive(false);
     }
 
     public void Pause()
