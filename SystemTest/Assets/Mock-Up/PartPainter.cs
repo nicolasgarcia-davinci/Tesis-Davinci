@@ -14,7 +14,7 @@ public class PartPainter : MonoBehaviour
     public int Index;
     public bool IsInColum1;
     public bool IsInColum2;
-    public GameObject Asambler;
+    public PartSelector Asambler;
     public GameObject Palet1;
     public GameObject Palet2;
     public PartColor[] Column1;
@@ -154,7 +154,7 @@ public class PartPainter : MonoBehaviour
         Palet2.gameObject.SetActive(false);
         IsInColum2 = false;
 
-        Asambler.gameObject.SetActive(true);
+        Asambler.Enter();
     }
     public void CycleUp()
     {

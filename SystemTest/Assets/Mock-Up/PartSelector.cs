@@ -18,6 +18,8 @@ public class PartSelector : MonoBehaviour
     public GameObject CompFighter;
 
     public PartsToPaint ListToPaint;
+
+    public MiniDisplay[] miniDisplays;
     
     public int SIndex;
     public int HIndex;
@@ -38,18 +40,31 @@ public class PartSelector : MonoBehaviour
     public bool LegsSelected;
     public bool ChestSelected;
 
-    public bool NeedsToZero;
+    public bool IsOn;
+
     void Start()
     {
         Zero();
+        Display.SetRarmDisplay(rArms[RAIndex].life, rArms[RAIndex].Aspeed, rArms[RAIndex].PartName);
+        miniDisplays[0].DisplayMini(RAIndex);
+        Display.SetLarmDisplay(lArms[LAIndex].life, lArms[LAIndex].Aspeed, lArms[LAIndex].PartName);
+        miniDisplays[0].DisplayMini(LAIndex);
+        Display.SetLegDisplay(legs[LIndex].life, legs[LIndex].Aspeed, legs[LIndex].PartName);
+        miniDisplays[0].DisplayMini(LIndex);
+        Display.SetHeadDisplay(heads[HIndex].life, heads[HIndex].Aspeed, heads[HIndex].PartName);
+        miniDisplays[0].DisplayMini(HIndex);
+        Display.SetChestDisplay(chests[ChIndex].life, chests[ChIndex].Aspeed, chests[ChIndex].PartName);
+        miniDisplays[0].DisplayMini(ChIndex);
     }
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.E)) SelectUp();
-        if (Input.GetKeyDown(KeyCode.Q)) OpenColors();
+        if(!IsOn) return;
+        if(Input.GetKeyDown(KeyCode.DownArrow)) SelectUp();
+        if(Input.GetKeyDown(KeyCode.UpArrow)) SelectDown();
+        if (Input.GetKeyDown(KeyCode.E)) OpenColors();
         if (Input.GetKeyDown(KeyCode.RightArrow)) SelectRight();
         if(Input.GetKeyDown(KeyCode.LeftArrow)) SelectLeft();
-        if(NeedsToZero) Zero();
+        if(Input.GetKeyDown(KeyCode.Space)) Finish();
     }
 
     public void OpenColors()
@@ -60,7 +75,38 @@ public class PartSelector : MonoBehaviour
         if (LegsSelected) ColorPalet.GetLeg(legs[LIndex]);
         if (HeadSelected) ColorPalet.GetHead(heads[HIndex]);
         if (ChestSelected) ColorPalet.GetChest(chests[ChIndex]);
-        TheSlector.gameObject.SetActive(false);
+        IsOn = false;
+    }
+
+    public void Finish()
+    {
+        ListToPaint.Clean();
+
+        LifeTraker.Instance.RarmIndex = RAIndex;
+        ListToPaint.Rarms.Add(rArms[RAIndex]);
+
+        LifeTraker.Instance.LarmIndex = LAIndex;
+        ListToPaint.Larms.Add(lArms[LAIndex]);
+
+        LifeTraker.Instance.LegsIndex = LIndex;
+        ListToPaint.Legs.Add(legs[LIndex]);
+
+        LifeTraker.Instance.HeadIndex = HIndex;
+        ListToPaint.Heads.Add(heads[HIndex]);
+
+        LifeTraker.Instance.ChestIndex = ChIndex;
+        ListToPaint.Chests.Add(chests[ChIndex]);
+
+        Zero();
+
+        CompFighter.SetActive(true);
+        TheSlector.SetActive(false);
+
+        return;
+    }
+    public void Enter()
+    {
+        IsOn = true;
     }
 
     public void Zero()
@@ -73,9 +119,7 @@ public class PartSelector : MonoBehaviour
 
         Selectors[SIndex].gameObject.SetActive(true);
 
-
         Highlight();
-        NeedsToZero = false;
     }
 
     public void Highlight()
@@ -139,37 +183,24 @@ public class PartSelector : MonoBehaviour
     public void SelectUp()
     {
         SIndex++;
+        if (SIndex > Selectors.Length - 1) SIndex--; 
         
         foreach (var p in Selectors)
         {
             p.gameObject.SetActive(false);
         }
 
-        if (SIndex > Selectors.Length-1)
+        Highlight();
+    }
+    public void SelectDown()
+    {
+        SIndex--;
+        if (SIndex < 0) SIndex = 0;
+
+        foreach (var p in Selectors)
         {
-            ListToPaint.Clean();
-
-            LifeTraker.Instance.RarmIndex = RAIndex;
-            ListToPaint.Rarms.Add(rArms[RAIndex]); 
-
-            LifeTraker.Instance.LarmIndex = LAIndex;
-            ListToPaint.Larms.Add(lArms[LAIndex]);
-
-            LifeTraker.Instance.LegsIndex = LIndex;
-            ListToPaint.Legs.Add(legs[LIndex]);
-
-            LifeTraker.Instance.HeadIndex = HIndex;
-            ListToPaint.Heads.Add(heads[HIndex]);
-
-            LifeTraker.Instance.ChestIndex = ChIndex;
-            ListToPaint.Chests.Add(chests[ChIndex]);
-
-            Zero();
-            CompFighter.SetActive(true);
-            TheSlector.SetActive(false);
-            return;
+            p.gameObject.SetActive(false);
         }
-
 
         Highlight();
     }
@@ -179,7 +210,7 @@ public class PartSelector : MonoBehaviour
         {
             RAIndex++;
 
-            if (RAIndex > LifeTraker.Instance.Dificulty-1)
+            if (RAIndex > LifeTraker.Instance.Dificulty - 1)
             { 
                 RAIndex=LifeTraker.Instance.Dificulty - 1;
                 return;
@@ -197,7 +228,8 @@ public class PartSelector : MonoBehaviour
             }
 
             rArms[RAIndex].gameObject.SetActive(true);
-            Display.SetDisplay(rArms[RAIndex].life, rArms[RAIndex].Aspeed, rArms[RAIndex].PartName);
+            Display.SetRarmDisplay(rArms[RAIndex].life, rArms[RAIndex].Aspeed, rArms[RAIndex].PartName);
+            miniDisplays[0].DisplayMini(RAIndex);
             return;
         }
         if (LarmsSelected)
@@ -222,7 +254,8 @@ public class PartSelector : MonoBehaviour
             }
 
             lArms[LAIndex].gameObject.SetActive(true);
-            Display.SetDisplay(lArms[LAIndex].life, lArms[LAIndex].Aspeed, lArms[LAIndex].PartName);
+            Display.SetLarmDisplay(lArms[LAIndex].life, lArms[LAIndex].Aspeed, lArms[LAIndex].PartName);
+            miniDisplays[1].DisplayMini(LAIndex);
             return;
         }
         if (HeadSelected)
@@ -247,7 +280,8 @@ public class PartSelector : MonoBehaviour
             }
 
             heads[HIndex].gameObject.SetActive(true);
-            Display.SetDisplay(heads[HIndex].life, heads[HIndex].Aspeed, heads[HIndex].PartName);
+            Display.SetHeadDisplay(heads[HIndex].life, heads[HIndex].Aspeed, heads[HIndex].PartName);
+            miniDisplays[3].DisplayMini(HIndex);
             return;
         }
         if (LegsSelected)
@@ -272,7 +306,8 @@ public class PartSelector : MonoBehaviour
             }
 
             legs[LIndex].gameObject.SetActive(true);
-            Display.SetDisplay(legs[LIndex].life, legs[LIndex].Aspeed, legs[LIndex].PartName);
+            Display.SetLegDisplay(legs[LIndex].life, legs[LIndex].Aspeed, legs[LIndex].PartName);
+            miniDisplays[2].DisplayMini(LIndex);
             return;
         }
         if (ChestSelected)
@@ -297,7 +332,8 @@ public class PartSelector : MonoBehaviour
             }
 
             chests[ChIndex].gameObject.SetActive(true);
-            Display.SetDisplay(chests[ChIndex].life, chests[ChIndex].Aspeed, chests[ChIndex].PartName);
+            Display.SetChestDisplay(chests[ChIndex].life, chests[ChIndex].Aspeed, chests[ChIndex].PartName);
+            miniDisplays[4].DisplayMini(ChIndex);
         }
     }
     public void SelectLeft()
@@ -317,7 +353,8 @@ public class PartSelector : MonoBehaviour
             }
 
             rArms[RAIndex].gameObject.SetActive(true);
-            Display.SetDisplay(rArms[RAIndex].life, rArms[RAIndex].Aspeed, rArms[RAIndex].PartName);
+            Display.SetRarmDisplay(rArms[RAIndex].life, rArms[RAIndex].Aspeed, rArms[RAIndex].PartName);
+            miniDisplays[0].DisplayMini(RAIndex);
             return;
         }
 
@@ -337,7 +374,8 @@ public class PartSelector : MonoBehaviour
             }
 
             lArms[LAIndex].gameObject.SetActive(true);
-            Display.SetDisplay(lArms[LAIndex].life, lArms[LAIndex].Aspeed, lArms[LAIndex].PartName);
+            Display.SetLarmDisplay(lArms[LAIndex].life, lArms[LAIndex].Aspeed, lArms[LAIndex].PartName);
+            miniDisplays[1].DisplayMini(LAIndex);
             return;
         }
         if (HeadSelected)
@@ -356,7 +394,8 @@ public class PartSelector : MonoBehaviour
             }
 
             heads[HIndex].gameObject.SetActive(true);
-            Display.SetDisplay(heads[HIndex].life, heads[HIndex].Aspeed, heads[HIndex].PartName);
+            Display.SetHeadDisplay(heads[HIndex].life, heads[HIndex].Aspeed, heads[HIndex].PartName);
+            miniDisplays[3].DisplayMini(HIndex);
             return;
         }
 
@@ -376,7 +415,8 @@ public class PartSelector : MonoBehaviour
             }
 
             legs[LIndex].gameObject.SetActive(true);
-            Display.SetDisplay(legs[LIndex].life, legs[LIndex].Aspeed, legs[LIndex].PartName);
+            Display.SetLegDisplay(legs[LIndex].life, legs[LIndex].Aspeed, legs[LIndex].PartName);
+            miniDisplays[2].DisplayMini(LIndex);
             return;
         }
         if (ChestSelected)
@@ -395,7 +435,8 @@ public class PartSelector : MonoBehaviour
             }
 
             chests[ChIndex].gameObject.SetActive(true);
-            Display.SetDisplay(chests[ChIndex].life, chests[ChIndex].Aspeed, chests[ChIndex].PartName);
+            Display.SetChestDisplay(chests[ChIndex].life, chests[ChIndex].Aspeed, chests[ChIndex].PartName);
+            miniDisplays[4].DisplayMini(ChIndex);
         }
     }
 }
