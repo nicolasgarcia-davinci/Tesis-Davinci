@@ -353,6 +353,7 @@ MonoBehaviour:
   Maxlife: 30
   Damage: 10
   Aspeed: 0
+  isBroken: 0
   AttackSound: {fileID: 8300000, guid: ba0aefe70ed92434eb97ad95ef9785be, type: 3}
   ParticleContainer: {fileID: 9212867467886191577}
   components:
@@ -10950,6 +10951,7 @@ MonoBehaviour:
   Maxlife: 50
   Damage: 10
   Aspeed: 0
+  isBroken: 0
   AttackSound: {fileID: 8300000, guid: fa2b8ac799ba0b1449eaafa7207786ec, type: 3}
   ParticleContainer: {fileID: 4185419192861572366}
   components:
@@ -15918,6 +15920,7 @@ MonoBehaviour:
   Maxlife: 50
   Damage: 10
   Aspeed: 0
+  isBroken: 0
   AttackSound: {fileID: 8300000, guid: fa2b8ac799ba0b1449eaafa7207786ec, type: 3}
   ParticleContainer: {fileID: 5502610603594789448}
   components:
@@ -26507,6 +26510,7 @@ MonoBehaviour:
   Maxlife: 50
   Damage: 0
   Aspeed: 0
+  isBroken: 0
   AttackSound: {fileID: 0}
   ParticleContainer: {fileID: 0}
   components:
@@ -26903,6 +26907,7 @@ MonoBehaviour:
   Maxlife: 30
   Damage: 10
   Aspeed: 0
+  isBroken: 0
   AttackSound: {fileID: 8300000, guid: fa2b8ac799ba0b1449eaafa7207786ec, type: 3}
   ParticleContainer: {fileID: 2530278456545554963}
   components:
@@ -27313,6 +27318,7 @@ MonoBehaviour:
   Maxlife: 50
   Damage: 10
   Aspeed: 0
+  isBroken: 0
   AttackSound: {fileID: 8300000, guid: ba0aefe70ed92434eb97ad95ef9785be, type: 3}
   ParticleContainer: {fileID: 1385972350103547320}
   components:
@@ -42577,6 +42583,7 @@ MonoBehaviour:
   Maxlife: 50
   Damage: 10
   Aspeed: 0
+  isBroken: 0
   AttackSound: {fileID: 8300000, guid: ba0aefe70ed92434eb97ad95ef9785be, type: 3}
   ParticleContainer: {fileID: 4185419192861572366}
   components:
@@ -47673,6 +47680,8 @@ MonoBehaviour:
   Stamina: 0
   MaxStamina: 50
   StaminaRefresh: 2
+  debuffParticles: {fileID: 0}
+  recoverParticles: {fileID: 0}
   IsRepairing: 0
   IsDying: 0
   IsEnemy: 1
@@ -47707,6 +47716,7 @@ MonoBehaviour:
   _Audio: {fileID: 4007108223767644830}
   _miss: {fileID: 8300000, guid: ad8c2bd6ecfce054297fd964fb91d60c, type: 3}
   _KO: {fileID: 8300000, guid: 591a787cdbecda5459380aa474c91292, type: 3}
+  _debuff: {fileID: 0}
   anim: {fileID: 1631326225437601361}
   RarmsHitWave: {fileID: 3186467108188793340}
   LarmsHitWave: {fileID: 6873420019072391581}
@@ -47757,8 +47767,8 @@ MonoBehaviour:
   RedBar: {fileID: 0}
   StamminaBar: {fileID: 0}
   DamageToTake: 0
-  warning: {fileID: 0}
-  WarningTime: 0
+  warning: {fileID: 264737468951849039}
+  WarningTime: 0.3
 --- !u!82 &4007108223767644830
 AudioSource:
   m_ObjectHideFlags: 0
@@ -58664,6 +58674,7 @@ MonoBehaviour:
   Maxlife: 30
   Damage: 10
   Aspeed: 0
+  isBroken: 0
   AttackSound: {fileID: 8300000, guid: ba0aefe70ed92434eb97ad95ef9785be, type: 3}
   ParticleContainer: {fileID: 2530278456545554963}
   components:
@@ -84056,6 +84067,7 @@ MonoBehaviour:
   Maxlife: 50
   Damage: 0
   Aspeed: 0
+  isBroken: 0
   AttackSound: {fileID: 0}
   ParticleContainer: {fileID: 0}
   components:
@@ -84336,6 +84348,7 @@ MonoBehaviour:
   Maxlife: 30
   Damage: 10
   Aspeed: 0
+  isBroken: 0
   AttackSound: {fileID: 8300000, guid: fa2b8ac799ba0b1449eaafa7207786ec, type: 3}
   ParticleContainer: {fileID: 5670525406656119221}
   components:

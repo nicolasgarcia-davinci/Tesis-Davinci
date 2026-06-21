@@ -468,35 +468,36 @@ public class CompositeFighter : MonoBehaviour
         if (attacker.IsAttackingRight)
         {
             PartDamage(attacker.Larm.Damage, CLeft, attacker.Larm.AttackSound, ref Larm, IsDodgingRight, ref LarmBoom,
-                "Get Hit Left", LarmsHitWave, LarmSpark, LarmCrash);
+                "Get Hit Left", LarmsHitWave, LarmSpark, LarmCrash, attacker.Larm.isBroken);
             //LeftDamage(attacker.Rarm.Damage, attacker.Rarm.AttackSound);
             return;
         }
         if (attacker.IsAttackingLeft)
         {
             PartDamage(attacker.Rarm.Damage, CRight, attacker.Rarm.AttackSound, ref Rarm, IsDodgingLeft, ref RarmBoom,
-                "Get Hit Right", RarmsHitWave, RarmSpark, RarmCrash);
+                "Get Hit Right", RarmsHitWave, RarmSpark, RarmCrash, attacker.Rarm.isBroken);
             //RightDamage(attacker.Larm.Damage, attacker.Larm.AttackSound);
             return;
         }
         if (attacker.IsAttackingUp)
         {
             PartDamage(attacker.Head.Damage, CHead, attacker.Head.AttackSound, ref Head, IsDodgingUp, ref HeadBoom,
-                "Get Hit Up", HeadHitWave, HeadSpark, HeadCrash);
+                "Get Hit Up", HeadHitWave, HeadSpark, HeadCrash, attacker.Head.isBroken);
             //HeadDamage(attacker.Head.Damage, attacker.Head.AttackSound);
             return;
         }
         if (attacker.IsAttackingDown)
         {
             PartDamage(attacker.Leg.Damage, CRight, attacker.Leg.AttackSound, ref Leg, IsDodgingDown, ref LegsBoom,
-                "Get Hit Down", LegsHitWave, LegsSpark, LegsCrash);
+                "Get Hit Down", LegsHitWave, LegsSpark, LegsCrash, attacker.Leg.isBroken);
             //LegsDamage(attacker.Leg.Damage, attacker.Leg.AttackSound);
             return;
         }
     }
 
     public void PartDamage(float damage, float currentLife, AudioClip hit, ref Part partHit, bool hitPart,
-        ref bool partDestroyed, string animHit, GameObject HitWave, GameObject[] Sparks, GameObject[] Crash)
+        ref bool partDestroyed, string animHit, GameObject HitWave, GameObject[] Sparks, GameObject[] Crash
+        ,bool isbroken)
     {
         Debug.Log("Jaja llame a la funcion de Necro " + this.name);
 
@@ -531,11 +532,17 @@ public class CompositeFighter : MonoBehaviour
             FightControler.Instance.stopFrameHigh();
             partHit.DeActiveParts();
             PartCount--;
+            if(isbroken==true) DamageToTake = (damage/2 + partHit.Maxlife);
             DamageToTake = (damage + partHit.Maxlife);
             Debug.Log(DamageToTake);
             return;
         }
-        else DamageToTake = damage;
+        else if (isbroken==true)
+             {
+                DamageToTake = damage/2;
+             } else DamageToTake = damage;
+
+
         if (!IsEnemy)
         {
             Debug.Log("BrazoChotoDerecho");

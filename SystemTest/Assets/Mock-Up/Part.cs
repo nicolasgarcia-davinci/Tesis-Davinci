@@ -10,6 +10,7 @@ public class Part : MonoBehaviour
     public float Maxlife;
     public int Damage;
     public float Aspeed;
+    public bool isBroken;
     public AudioClip AttackSound;
 
     public GameObject ParticleContainer;
@@ -40,5 +41,11 @@ public class Part : MonoBehaviour
         {
             part.gameObject.SetActive(false);
         }
+    }
+
+    public void Update()
+    {
+        if(life <= 0) isBroken = true;
+        if(life >= 0) isBroken = false;
     }
 }

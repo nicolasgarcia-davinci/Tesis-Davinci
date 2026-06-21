@@ -6,29 +6,69 @@ public class AIControler : MonoBehaviour
 {
     public CompositeFighter Character;
     public float _timer;
+    public float _flashDuration;
     public float _AttackInterval;
+    public float _DefAttackInterval;
     [Range(0, 100)] public int _DodgeChance;
     public bool IsPaused;
+    public bool isBoss;
+    public bool RageMode;
+    public int NumOfRage;
+    public Material AttackMat;
+    public Vector2 attackDir;
 
     void Start()
     {
         FightControler.Instance._Enemy = Character;
         FightControler.Instance._Controler = this;
+        _AttackInterval=_DefAttackInterval;
     }
 
 
     void Update()
     {
         if (IsPaused) return;
+        if(isBoss && Character.OverAllHealth <= Character.CChest/2 && !RageMode && NumOfRage==0) EnterRageMode();
+        if(isBoss && Character.OverAllHealth <= Character.CChest/4 && !RageMode && NumOfRage==1) EnterRageMode();
+        if(isBoss && Character.Stamina<=0) ExitRageMode();
         _timer += Time.deltaTime;
         if (_timer>=_AttackInterval)
         {
             _timer = 0;
             float attackNum = Random.Range(0,100);
-            if (attackNum <= 25 && Character.Head.life > 0) Character.Attack(Character.Head.AttName, Character.Head.ParticleContainer, ref Character.IsAttackingUp);
-            if (attackNum <= 50 && attackNum > 25 && Character.Rarm.life > 0) Character.Attack(Character.Rarm.AttName, Character.Rarm.ParticleContainer, ref Character.IsAttackingRight);
-            if (attackNum <= 75 && attackNum > 50 && Character.Larm.life > 0) Character.Attack(Character.Larm.AttName, Character.Larm.ParticleContainer, ref Character.IsAttackingLeft);
-            if (attackNum <= 100 && attackNum > 75 && Character.Leg.life > 0) Character.Attack(Character.Leg.AttName, Character.Leg.ParticleContainer, ref Character.IsAttackingDown);
+            if (attackNum <= 25)
+            {
+                Character.Attack(Character.Head.AttName, Character.Head.ParticleContainer, ref Character.IsAttackingUp);
+                attackDir = new Vector2(0, 1);
+                AttackMat.SetVector("_Direction", attackDir);
+                StartCoroutine(InvertFlash());
+                return;
+            }
+            if (attackNum <= 50 && attackNum > 25)
+            {
+                Character.Attack(Character.Rarm.AttName, Character.Rarm.ParticleContainer, ref Character.IsAttackingRight);
+                attackDir = new Vector2(1, 0);
+                AttackMat.SetVector("_Direction", attackDir);
+                StartCoroutine(Flash());
+                StartCoroutine(InvertFlash());
+                return;
+            }
+            if (attackNum <= 75 && attackNum > 50)
+            {
+                Character.Attack(Character.Larm.AttName, Character.Larm.ParticleContainer, ref Character.IsAttackingLeft);
+                attackDir = new Vector2(1, 0);
+                AttackMat.SetVector("_Direction", attackDir);
+                StartCoroutine(Flash());
+                return;
+            }
+            if (attackNum <= 100 && attackNum > 75)
+            {
+                Character.Attack(Character.Leg.AttName, Character.Leg.ParticleContainer, ref Character.IsAttackingDown);
+                attackDir = new Vector2(0, 1);
+                AttackMat.SetVector("_Direction", attackDir);
+                StartCoroutine(Flash());
+                return;
+            }
         }
     }
 
@@ -61,6 +101,40 @@ public class AIControler : MonoBehaviour
             }
         }
     }
+
+    public void EnterRageMode()
+    {
+        RageMode = true;
+        NumOfRage ++;
+        _AttackInterval = 0;
+    }
+    public void ExitRageMode()
+    {
+        RageMode = false;
+        _AttackInterval = _DefAttackInterval;
+    }
+
+    public IEnumerator Flash()
+    {
+        AttackMat.SetFloat("_Edge_Softness", 13f);
+        AttackMat.SetFloat("_Progres", 0.5f);
+        yield return new WaitForSeconds (_flashDuration);
+        attackDir = new Vector2(0, 0);
+        AttackMat.SetVector("_Direction", attackDir);
+        AttackMat.SetFloat("_Edge_Softness", 0);
+        AttackMat.SetFloat("_Progres", 0);
+    }
+    public IEnumerator InvertFlash()
+    {
+        AttackMat.SetFloat("_Edge_Softness", -13f);
+        AttackMat.SetFloat("_Progres", 0.5f);
+        yield return new WaitForSeconds(_flashDuration);
+        attackDir = new Vector2(0, 0);
+        AttackMat.SetVector("_Direction", attackDir); 
+        AttackMat.SetFloat("_Edge_Softness", 0);
+        AttackMat.SetFloat("_Progres", 0);
+    }
+
     public void Pause()
     {
         IsPaused = true;

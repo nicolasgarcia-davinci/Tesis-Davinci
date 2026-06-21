@@ -36,6 +36,13 @@ public class LoadManager : MonoBehaviour
         LifeTraker.Instance.Reset();
         SceneManager.LoadSceneAsync(6);
     }
+
+    public void LoadBoss()
+    {
+        LifeTraker.Instance.ResetTimer = true;
+        LifeTraker.Instance.Reset();
+        SceneManager.LoadSceneAsync(7);
+    }
     public void LoadMenu()
     {
         SceneManager.LoadSceneAsync(0);
@@ -83,6 +90,11 @@ public class LoadManager : MonoBehaviour
             LoadAlley();
         }
         else if (lvl == 3)
+        {
+            LifeTraker.Instance.Dificulty = lvl;
+            LoadBoss();
+        }
+        else if (lvl == 4)
         {
             LifeTraker.Instance.Dificulty = lvl;
             LoadGym();

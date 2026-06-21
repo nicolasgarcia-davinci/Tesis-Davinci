@@ -6,6 +6,8 @@ public class LifeTraker : MonoBehaviour
 {
     public static LifeTraker Instance;
 
+    public Material flash;
+
     [Header("Player Body Health")]
     public float MaxHealt;
     public float pOverHealt;
@@ -66,6 +68,13 @@ public class LifeTraker : MonoBehaviour
         {
             Destroy(this);
         }
+    }
+    public void Start()
+    {
+        Vector2 attackDir = new Vector2(0, 0);
+        flash.SetVector("_Direction", attackDir);
+        flash.SetFloat("_Edge_Softness", 0);
+        flash.SetFloat("_Progres", 0);
     }
     public void UpdateLife()
     {
