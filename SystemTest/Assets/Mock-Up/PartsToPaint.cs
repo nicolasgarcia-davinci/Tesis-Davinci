@@ -10,6 +10,10 @@ public class PartsToPaint : MonoBehaviour
     public List<Leg> Legs;
     public List<Chest> Chests;
 
+    public void Start()
+    {
+        PaintThem();
+    }
     public void Clean()
     {
         Rarms = new List<Arm>();
