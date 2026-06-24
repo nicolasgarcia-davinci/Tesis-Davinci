@@ -11,6 +11,8 @@ public class FightControler : MonoBehaviour
     public CompositeFighter _Player;
     public CompositeFighter _Enemy;
 
+    public Reactions TheCrowd;
+
     public AIControler _Controler;
     public PlayerControler _Control;
 
@@ -87,6 +89,13 @@ public class FightControler : MonoBehaviour
     public void Halt()
     {
         _RT.Stop();
+    }
+
+    public void CallCrowd(CompositeFighter victim)
+    {
+        if(TheCrowd==null)return;
+        if (victim.IsEnemy) TheCrowd.Celebrate();
+        if (!victim.IsEnemy) TheCrowd.Hakle();
     }
     public void stopFrame()
     {

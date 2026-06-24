@@ -61,7 +61,7 @@ Transform:
   m_GameObject: {fileID: 59717160948752032}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
-  m_LocalPosition: {x: 0.00027, y: 0.00792, z: -0}
+  m_LocalPosition: {x: 0.00027, y: 0.00792, z: 0}
   m_LocalScale: {x: 0.0001, y: 0.0001, z: 0.0001}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -195,14 +195,17 @@ MonoBehaviour:
   PartName: 
   AttName: Drill Left Attack
   life: 0
+  Maxlife: 0
   Damage: 0
   Aspeed: 0
+  isBroken: 0
   AttackSound: {fileID: 0}
   ParticleContainer: {fileID: 0}
   components:
   - {fileID: 4443437702737850008}
   - {fileID: 1631933971543611768}
   - {fileID: 823480713834865448}
+  isLeft: 0
 --- !u!1 &354735525773474363
 GameObject:
   m_ObjectHideFlags: 0
@@ -510,7 +513,7 @@ Transform:
   m_GameObject: {fileID: 1298426481947467572}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0.7071068, w: 0}
-  m_LocalPosition: {x: 0, y: 0.00864, z: -0}
+  m_LocalPosition: {x: 0, y: 0.00864, z: 0}
   m_LocalScale: {x: 0.0017813827, y: 0.00470846, z: 0.0019743626}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -968,8 +971,10 @@ MonoBehaviour:
   PartName: 
   AttName: Drill Down Attack
   life: 0
+  Maxlife: 0
   Damage: 0
   Aspeed: 0
+  isBroken: 0
   AttackSound: {fileID: 0}
   ParticleContainer: {fileID: 0}
   components:
@@ -1008,7 +1013,7 @@ Transform:
   m_Children:
   - {fileID: 721948676931803397}
   m_Father: {fileID: 5823498805407651791}
-  m_LocalEulerAnglesHint: {x: -81.34689, y: -165.7231, z: 75.87908}
+  m_LocalEulerAnglesHint: {x: -81.346825, y: -165.72314, z: 75.87915}
 --- !u!1 &1852714957047104885
 GameObject:
   m_ObjectHideFlags: 0
@@ -1040,7 +1045,7 @@ Transform:
   m_Children:
   - {fileID: 8823751870853861309}
   m_Father: {fileID: 5472566119305155527}
-  m_LocalEulerAnglesHint: {x: 10.548857, y: -163.29889, z: 3.1440167}
+  m_LocalEulerAnglesHint: {x: 10.548859, y: -163.29889, z: 3.1440167}
 --- !u!1 &2116824304018164869
 GameObject:
   m_ObjectHideFlags: 0
@@ -1074,7 +1079,7 @@ Transform:
   - {fileID: 3411348185298610948}
   - {fileID: 2621422122338634222}
   m_Father: {fileID: 8959075250831308907}
-  m_LocalEulerAnglesHint: {x: -3.8216085, y: 0.0548098, z: -1.6434605}
+  m_LocalEulerAnglesHint: {x: -3.8216088, y: 0.054809026, z: -1.6434612}
 --- !u!1 &2445785703189555921
 GameObject:
   m_ObjectHideFlags: 0
@@ -1189,7 +1194,7 @@ Transform:
   m_Children:
   - {fileID: 4222914627612966338}
   m_Father: {fileID: 5472566119305155527}
-  m_LocalEulerAnglesHint: {x: 0.000008110849, y: 90, z: -11.002319}
+  m_LocalEulerAnglesHint: {x: 0.000007683962, y: 90, z: -11.002312}
 --- !u!1 &2618484097925781790
 GameObject:
   m_ObjectHideFlags: 0
@@ -1221,7 +1226,7 @@ Transform:
   m_Children:
   - {fileID: 6286760980010722667}
   m_Father: {fileID: 5472566119305155527}
-  m_LocalEulerAnglesHint: {x: 0.0000051226416, y: -90, z: 95.45445}
+  m_LocalEulerAnglesHint: {x: -0.0000017075472, y: -89.999985, z: 95.45444}
 --- !u!1 &2629840490439621275
 GameObject:
   m_ObjectHideFlags: 0
@@ -1253,7 +1258,7 @@ Transform:
   m_Children:
   - {fileID: 8098513531653847149}
   m_Father: {fileID: 5472566119305155527}
-  m_LocalEulerAnglesHint: {x: 82.57595, y: -8.557851, z: 153.96101}
+  m_LocalEulerAnglesHint: {x: 82.57595, y: -8.557845, z: 153.96101}
 --- !u!1 &2714373334788521933
 GameObject:
   m_ObjectHideFlags: 0
@@ -1368,7 +1373,7 @@ Transform:
   m_Children:
   - {fileID: 6512310103847828755}
   m_Father: {fileID: 6286760980010722667}
-  m_LocalEulerAnglesHint: {x: -0.00000811609, y: 0.00000056239656, z: 60.39556}
+  m_LocalEulerAnglesHint: {x: -0.0000090118365, y: 0.0000007558341, z: 60.395554}
 --- !u!1 &2771127256018836360
 GameObject:
   m_ObjectHideFlags: 0
@@ -1684,7 +1689,7 @@ Transform:
   - {fileID: 1710799586613860505}
   - {fileID: 4432946089538942221}
   m_Father: {fileID: 721948676931803397}
-  m_LocalEulerAnglesHint: {x: 0.000009658902, y: 0.000010655967, z: 95.67348}
+  m_LocalEulerAnglesHint: {x: 0.000009681368, y: 0.000010700878, z: 95.67347}
 --- !u!1 &3244435876118347296
 GameObject:
   m_ObjectHideFlags: 0
@@ -1853,7 +1858,7 @@ Transform:
   m_Children:
   - {fileID: 1094586313802543621}
   m_Father: {fileID: 4222914627612966338}
-  m_LocalEulerAnglesHint: {x: -0.000009307187, y: -0.0000007560409, z: -60.39557}
+  m_LocalEulerAnglesHint: {x: -0.000009123562, y: 0.0000017525826, z: -60.395554}
 --- !u!1 &3704033897073864082
 GameObject:
   m_ObjectHideFlags: 0
@@ -1951,7 +1956,7 @@ Transform:
   - {fileID: 3972145299908727768}
   - {fileID: 7368387628993417505}
   m_Father: {fileID: 58044815749523494}
-  m_LocalEulerAnglesHint: {x: 40.8757, y: -3.4376452, z: -2.2075894}
+  m_LocalEulerAnglesHint: {x: 40.875698, y: -3.4376178, z: -2.2075877}
 --- !u!1 &3910382515895379170
 GameObject:
   m_ObjectHideFlags: 0
@@ -2082,14 +2087,17 @@ MonoBehaviour:
   PartName: 
   AttName: Boxer Left Attack
   life: 50
+  Maxlife: 0
   Damage: 10
   Aspeed: 0
+  isBroken: 0
   AttackSound: {fileID: 0}
   ParticleContainer: {fileID: 0}
   components:
   - {fileID: 1561731824337973348}
   - {fileID: 7631510460406898695}
   - {fileID: 2771127256018836360}
+  isLeft: 0
 --- !u!1 &4103096027015918751
 GameObject:
   m_ObjectHideFlags: 0
@@ -2117,7 +2125,7 @@ Transform:
   m_GameObject: {fileID: 4103096027015918751}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
-  m_LocalPosition: {x: -0, y: 0.00661, z: -0}
+  m_LocalPosition: {x: 0, y: 0.00661, z: 0}
   m_LocalScale: {x: 0.0001, y: 0.0001, z: 0.0001}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2289,7 +2297,7 @@ Transform:
   - {fileID: 8149292627671896960}
   - {fileID: 197913914500667907}
   m_Father: {fileID: 4667523905084916358}
-  m_LocalEulerAnglesHint: {x: -3.8216066, y: -0.054810483, z: 1.6434594}
+  m_LocalEulerAnglesHint: {x: -3.8216097, y: -0.0548078, z: 1.6434608}
 --- !u!1 &4557760441167082627
 GameObject:
   m_ObjectHideFlags: 0
@@ -2554,7 +2562,7 @@ Transform:
   - {fileID: 1802478851874555750}
   - {fileID: 586613956293155099}
   m_Father: {fileID: 5472566119305155527}
-  m_LocalEulerAnglesHint: {x: 82.55515, y: -0.000065014465, z: -0.000069312875}
+  m_LocalEulerAnglesHint: {x: 82.55515, y: -0.00006501448, z: -0.00006931289}
 --- !u!1 &4966988411146142480
 GameObject:
   m_ObjectHideFlags: 0
@@ -7606,8 +7614,10 @@ MonoBehaviour:
   PartName: 
   AttName: Boxer Up Attack
   life: 50
+  Maxlife: 0
   Damage: 10
   Aspeed: 0
+  isBroken: 0
   AttackSound: {fileID: 0}
   ParticleContainer: {fileID: 0}
   components:
@@ -7773,8 +7783,10 @@ MonoBehaviour:
   PartName: 
   AttName: Boxer Down Attack
   life: 50
+  Maxlife: 0
   Damage: 10
   Aspeed: 0
+  isBroken: 0
   AttackSound: {fileID: 0}
   ParticleContainer: {fileID: 0}
   components:
@@ -7927,7 +7939,7 @@ Transform:
   m_Children:
   - {fileID: 1321221364802114881}
   m_Father: {fileID: 5472566119305155527}
-  m_LocalEulerAnglesHint: {x: 10.453225, y: 163.30421, z: -3.114841}
+  m_LocalEulerAnglesHint: {x: 10.453226, y: 163.3042, z: -3.114842}
 --- !u!1 &6205910214632720551
 GameObject:
   m_ObjectHideFlags: 0
@@ -7959,7 +7971,7 @@ Transform:
   m_Children:
   - {fileID: 7881293448622754036}
   m_Father: {fileID: 1097527166089698961}
-  m_LocalEulerAnglesHint: {x: 7.411153, y: 2.6507804, z: 38.154087}
+  m_LocalEulerAnglesHint: {x: 7.4111533, y: 2.6507804, z: 38.154087}
 --- !u!1 &6390324158103533366
 GameObject:
   m_ObjectHideFlags: 0
@@ -7993,7 +8005,7 @@ Transform:
   - {fileID: 2026749342158830157}
   - {fileID: 4548102848893579048}
   m_Father: {fileID: 4221103016421962718}
-  m_LocalEulerAnglesHint: {x: -55.61832, y: 0.66916007, z: 69.703514}
+  m_LocalEulerAnglesHint: {x: -55.61831, y: 0.669163, z: 69.703514}
 --- !u!1 &6432901703548490752
 GameObject:
   m_ObjectHideFlags: 0
@@ -8028,7 +8040,7 @@ Transform:
   - {fileID: 7656342654517766050}
   - {fileID: 8121410488406521290}
   m_Father: {fileID: 2580805311943039885}
-  m_LocalEulerAnglesHint: {x: -65.917336, y: 90.0842, z: -5.904131}
+  m_LocalEulerAnglesHint: {x: -65.91725, y: 90.084175, z: -5.904093}
 --- !u!1 &6468405107520872108
 GameObject:
   m_ObjectHideFlags: 0
@@ -8100,7 +8112,7 @@ Transform:
   m_Children:
   - {fileID: 5524803886595082627}
   m_Father: {fileID: 1097527166089698961}
-  m_LocalEulerAnglesHint: {x: 6.964871, y: 0.000014517006, z: 0.00000009715357}
+  m_LocalEulerAnglesHint: {x: 6.964871, y: 0.000013617234, z: 0.000000013582523}
 --- !u!1 &6672471911131309859
 GameObject:
   m_ObjectHideFlags: 0
@@ -8132,7 +8144,7 @@ Transform:
   m_Children:
   - {fileID: 1097527166089698961}
   m_Father: {fileID: 5823498805407651791}
-  m_LocalEulerAnglesHint: {x: 0.8671798, y: 0.0000004870847, z: 0.000005456429}
+  m_LocalEulerAnglesHint: {x: 0.8671813, y: 0.0000004870858, z: 0.000005456429}
 --- !u!1 &6681389855397747483
 GameObject:
   m_ObjectHideFlags: 0
@@ -13215,14 +13227,17 @@ MonoBehaviour:
   PartName: 
   AttName: Drill Right Attack
   life: 0
+  Maxlife: 0
   Damage: 0
   Aspeed: 0
+  isBroken: 0
   AttackSound: {fileID: 0}
   ParticleContainer: {fileID: 0}
   components:
   - {fileID: 726928073290086679}
   - {fileID: 8209622663364218149}
   - {fileID: 1426269378192231313}
+  isLeft: 0
 --- !u!1 &7132370441370494259
 GameObject:
   m_ObjectHideFlags: 0
@@ -13257,7 +13272,7 @@ Transform:
   - {fileID: 7662629428331710661}
   - {fileID: 5463397008394476429}
   m_Father: {fileID: 5865614499715191500}
-  m_LocalEulerAnglesHint: {x: -23.77295, y: -9.018788, z: -42.25424}
+  m_LocalEulerAnglesHint: {x: -23.772919, y: -9.018807, z: -42.2542}
 --- !u!1 &7172234807271173103
 GameObject:
   m_ObjectHideFlags: 0
@@ -13406,7 +13421,7 @@ Transform:
   - {fileID: 2105612671438496553}
   - {fileID: 6570921930552427934}
   m_Father: {fileID: 6781175689004431447}
-  m_LocalEulerAnglesHint: {x: -0.0000006181934, y: 0.0000038436933, z: -0.31210423}
+  m_LocalEulerAnglesHint: {x: -0.0000010598967, y: -0.000000370642, z: -0.31210497}
 --- !u!1 &7550568761833713217
 GameObject:
   m_ObjectHideFlags: 0
@@ -18444,7 +18459,7 @@ Transform:
   - {fileID: 7267750207396697503}
   - {fileID: 6351569613894932198}
   m_Father: {fileID: 8820964094834772103}
-  m_LocalEulerAnglesHint: {x: 0.00000027668565, y: 0.00001531799, z: -49.882854}
+  m_LocalEulerAnglesHint: {x: 0.0000020924097, y: 0.000016745136, z: -49.882854}
 --- !u!1 &7614533229568938688
 GameObject:
   m_ObjectHideFlags: 0
@@ -18478,7 +18493,7 @@ Transform:
   - {fileID: 8585119496357049524}
   - {fileID: 6345132176556459419}
   m_Father: {fileID: 7881293448622754036}
-  m_LocalEulerAnglesHint: {x: -0.000049645798, y: -0.000041268744, z: 52.989967}
+  m_LocalEulerAnglesHint: {x: -0.00004922548, y: -0.000040992574, z: 52.98992}
 --- !u!1 &7631510460406898695
 GameObject:
   m_ObjectHideFlags: 0
@@ -23878,14 +23893,17 @@ MonoBehaviour:
   PartName: 
   AttName: Boxer Right Attack
   life: 50
+  Maxlife: 0
   Damage: 10
   Aspeed: 0
+  isBroken: 0
   AttackSound: {fileID: 0}
   ParticleContainer: {fileID: 0}
   components:
   - {fileID: 5300944450485857083}
   - {fileID: 3196886537989843053}
   - {fileID: 7353917664177644528}
+  isLeft: 0
 --- !u!1 &8409228559282251810
 GameObject:
   m_ObjectHideFlags: 0
@@ -28921,7 +28939,7 @@ Transform:
   m_Children:
   - {fileID: 2343715200053524578}
   m_Father: {fileID: 5472566119305155527}
-  m_LocalEulerAnglesHint: {x: 82.57595, y: 8.557851, z: -153.96101}
+  m_LocalEulerAnglesHint: {x: 82.57595, y: 8.557845, z: -153.96101}
 --- !u!1 &8623536556983608880
 GameObject:
   m_ObjectHideFlags: 0
@@ -29016,7 +29034,7 @@ Transform:
   m_Children:
   - {fileID: 6237654493522628307}
   m_Father: {fileID: 7465730766514874916}
-  m_LocalEulerAnglesHint: {x: -39.59488, y: 0.0000132957175, z: -119.60443}
+  m_LocalEulerAnglesHint: {x: -39.594883, y: 0.000008863812, z: -119.60443}
 --- !u!1 &8845354781633496500
 GameObject:
   m_ObjectHideFlags: 0
@@ -29110,7 +29128,7 @@ Transform:
   m_Children:
   - {fileID: 6781175689004431447}
   m_Father: {fileID: 5823498805407651791}
-  m_LocalEulerAnglesHint: {x: -81.34686, y: 165.7233, z: -75.879265}
+  m_LocalEulerAnglesHint: {x: -81.34686, y: 165.72318, z: -75.879135}
 --- !u!1 &9127420936000906696
 GameObject:
   m_ObjectHideFlags: 0
@@ -29189,8 +29207,10 @@ MonoBehaviour:
   PartName: 
   AttName: Drill Up Attack
   life: 0
+  Maxlife: 0
   Damage: 0
   Aspeed: 0
+  isBroken: 0
   AttackSound: {fileID: 0}
   ParticleContainer: {fileID: 0}
   components:

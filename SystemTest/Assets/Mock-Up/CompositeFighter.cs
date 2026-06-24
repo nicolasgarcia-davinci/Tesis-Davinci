@@ -535,6 +535,7 @@ public class CompositeFighter : MonoBehaviour
             if(isbroken==true) DamageToTake = (damage/2 + partHit.Maxlife);
             DamageToTake = (damage + partHit.Maxlife);
             Debug.Log(DamageToTake);
+            FightControler.Instance.CallCrowd(this);
             return;
         }
         else if (isbroken==true)
