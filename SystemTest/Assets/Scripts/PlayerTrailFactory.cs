@@ -48,7 +48,7 @@ public class PlayerTrailFactory : Factory<GameObject>
 
         other.SetActive(true);
 
-        other.transform.position = _playerPos.position - new Vector3(0, 1, 0);
+        other.transform.position = _playerPos.position - new Vector3(0, 0.25f, 0);
         other.transform.eulerAngles = _playerPos.eulerAngles + new Vector3(180 , 0, 0);
 
         Mesh mesh = new Mesh();
