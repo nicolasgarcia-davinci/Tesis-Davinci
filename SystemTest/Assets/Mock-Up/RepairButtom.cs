@@ -44,7 +44,7 @@ public class RepairButtom : MonoBehaviour
         {
             _label.text = _labelText;
             _lifebar.UpdateLife(LifeTraker.Instance.pHead, LifeTraker.Instance.maxHeadHealth);
-            _percentil.text= GetPercentil(LifeTraker.Instance.pHead, LifeTraker.Instance.maxHeadHealth).ToString()+ "%";
+            _percentil.text = GetPercentil(LifeTraker.Instance.pHead, LifeTraker.Instance.maxHeadHealth).ToString()+ "%";
         }
         if (_thisType == HealPart.HealRightArm && _HealMenu.HealUses > 0)
         {
