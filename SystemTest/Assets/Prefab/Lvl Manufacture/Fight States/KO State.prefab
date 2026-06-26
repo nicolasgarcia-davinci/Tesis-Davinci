@@ -124,7 +124,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _labelText: Back To Menu
   _label: {fileID: 3311153523212113997}
-  _selector: {fileID: 2885565718026192282}
+  _pulsControl: {fileID: 0}
   _miMenu: {fileID: 3957492381026640811}
   _Display: {fileID: 0}
   activationdelay: 0
@@ -609,7 +609,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _labelText: Quit
   _label: {fileID: 4533312096907414896}
-  _selector: {fileID: 5007072032706216553}
+  _pulsControl: {fileID: 0}
   _miMenu: {fileID: 0}
   _Display: {fileID: 0}
   activationdelay: 0
@@ -1039,7 +1039,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _labelText: Next Level
   _label: {fileID: 943447665668099057}
-  _selector: {fileID: 6075527639512973206}
+  _pulsControl: {fileID: 0}
   _miMenu: {fileID: 0}
   _Display: {fileID: 0}
   activationdelay: 0
@@ -1068,7 +1068,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4192354262243532232
 Transform:
   m_ObjectHideFlags: 0
@@ -1345,8 +1345,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190335
-  m_fontColor: {r: 1, g: 0, b: 0, a: 1}
+    rgba: 4294704948
+  m_fontColor: {r: 0.2028302, g: 1, b: 0.98514813, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2816,7 +2816,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _labelText: Quit
   _label: {fileID: 9041109741877614100}
-  _selector: {fileID: 4087578235250072455}
+  _pulsControl: {fileID: 0}
   _miMenu: {fileID: 3957492381026640811}
   _Display: {fileID: 0}
   activationdelay: 0
@@ -4660,7 +4660,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _labelText: Back To Menu
   _label: {fileID: 2319628695045959185}
-  _selector: {fileID: 327140648445266636}
+  _pulsControl: {fileID: 0}
   _miMenu: {fileID: 0}
   _Display: {fileID: 0}
   activationdelay: 0
@@ -4865,6 +4865,10 @@ PrefabInstance:
     - target: {fileID: 2133789070248699209, guid: 063276774c28ae048825255b05a5abd4, type: 3}
       propertyPath: m_Name
       value: Player Esqueleto Knock Out
+      objectReference: {fileID: 0}
+    - target: {fileID: 2133789070248699209, guid: 063276774c28ae048825255b05a5abd4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2321554470184928325, guid: 063276774c28ae048825255b05a5abd4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -5730,6 +5734,10 @@ PrefabInstance:
     - target: {fileID: 4708427349345847522, guid: 0f12f44e1cecc5c47934179e85eaffcd, type: 3}
       propertyPath: m_Name
       value: Enemy Esqueleto Knock Out Test
+      objectReference: {fileID: 0}
+    - target: {fileID: 4708427349345847522, guid: 0f12f44e1cecc5c47934179e85eaffcd, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7761364156862850748, guid: 0f12f44e1cecc5c47934179e85eaffcd, type: 3}
       propertyPath: _timer
