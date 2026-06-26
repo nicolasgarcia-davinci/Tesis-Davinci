@@ -9,7 +9,7 @@ public class ButtomAction : MonoBehaviour
 {
     [SerializeField] string _labelText;
     [SerializeField] TextMeshProUGUI _label;
-    public GloveAnim _selector;
+    public Animator _pulsControl;
     public MenuNavigation _miMenu;
     public MenuRobo _Display;
     public float activationdelay;
@@ -74,12 +74,10 @@ public class ButtomAction : MonoBehaviour
 
     public IEnumerator Action()
     {
-        _selector.Hit();
+        _pulsControl.SetTrigger("Click");
         Sound.PlayOneShot(ActSound);
 
         yield return new WaitForSeconds(activationdelay);
-
-        _selector.gameObject.SetActive(false);
 
         if (_thisType == ButtomType.NavButtom)
         {
@@ -125,10 +123,8 @@ public class ButtomAction : MonoBehaviour
         if(_thisType==ButtomType.Play) LoadManager.Instance.LoadEnter();
         if(_thisType==ButtomType.Asambley)
         {
-            _selector.gameObject.SetActive(false);
             _isSelected = false;
             _Activated = false;
-            //Debug.Log("assbly");
             Asambley.SetActive(true);
             _miMenu.gameObject.SetActive(false);
         }
@@ -136,12 +132,12 @@ public class ButtomAction : MonoBehaviour
 
     public virtual void Select()
     {
-        _selector.gameObject.SetActive(true);
+        _pulsControl.SetBool("Selected", true);
         _isSelected = true;
     }
     public void DeSelect()
     {
-        _selector.gameObject.SetActive(false);
+        _pulsControl.SetBool("Selected", false);
         _isSelected = false;
     }
 
