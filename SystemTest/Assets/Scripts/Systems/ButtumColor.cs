@@ -46,11 +46,9 @@ public class ButtumColor : ButtomAction
     }
     public IEnumerator SetColor()
     {
-        _selector.Hit();
+        _pulsControl.SetTrigger("Click");
 
         yield return new WaitForSeconds(activationdelay);
-
-        _selector.gameObject.SetActive(false);
 
         if (_thisType == ButtomType.Color1)
         {
