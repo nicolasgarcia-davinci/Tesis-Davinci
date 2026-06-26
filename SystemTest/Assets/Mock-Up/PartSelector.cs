@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PartSelector : MonoBehaviour
 {
-    public Animator[] Parts;
+    public GameObject[] Selectors;
 
     public StatDisplay Display;
 
@@ -111,18 +111,20 @@ public class PartSelector : MonoBehaviour
 
     public void Zero()
     {
-        foreach (var p in Parts)
+        foreach (var p in Selectors)
         {
-            p.SetBool("Selected", false);
+            p.gameObject.SetActive(false);
         }
         SIndex = 0;
+
+        Selectors[SIndex].gameObject.SetActive(true);
 
         Highlight();
     }
 
     public void Highlight()
     {
-        Parts[SIndex].SetBool("Selected", true);
+        Selectors[SIndex].gameObject.SetActive(true);
 
         if (SIndex == 0)
         {
@@ -181,11 +183,11 @@ public class PartSelector : MonoBehaviour
     public void SelectUp()
     {
         SIndex++;
-        if (SIndex > Parts.Length - 1) SIndex--; 
+        if (SIndex > Selectors.Length - 1) SIndex--; 
         
-        foreach (var p in Parts)
+        foreach (var p in Selectors)
         {
-            p.SetBool("Selected", false);
+            p.gameObject.SetActive(false);
         }
 
         Highlight();
@@ -195,9 +197,9 @@ public class PartSelector : MonoBehaviour
         SIndex--;
         if (SIndex < 0) SIndex = 0;
 
-        foreach (var p in Parts)
+        foreach (var p in Selectors)
         {
-            p.SetBool("Selected", false);
+            p.gameObject.SetActive(false);
         }
 
         Highlight();
@@ -237,11 +239,13 @@ public class PartSelector : MonoBehaviour
             if (LAIndex > LifeTraker.Instance.Dificulty-1)
             {
                 LAIndex = LifeTraker.Instance.Dificulty-1;
+                return;
             }
 
             if (LAIndex > lArms.Length - 1)
             {
                 LAIndex = lArms.Length - 1;
+                return;
             }
 
             foreach (var p in lArms)
@@ -261,11 +265,13 @@ public class PartSelector : MonoBehaviour
             if (HIndex > LifeTraker.Instance.Dificulty - 1)
             {
                 HIndex = LifeTraker.Instance.Dificulty - 1;
+                return;
             }
 
             if (HIndex > heads.Length - 1)
             {
                 HIndex = heads.Length - 1;
+                return;
             }
             
             foreach (var p in heads)
@@ -285,11 +291,13 @@ public class PartSelector : MonoBehaviour
             if (LIndex > LifeTraker.Instance.Dificulty - 1)
             {
                 LIndex = LifeTraker.Instance.Dificulty - 1;
+                return;
             }
 
             if (LIndex > legs.Length - 1)
             {
                 LIndex = legs.Length - 1;
+                return;
             }
             
             foreach (var p in legs)
@@ -309,11 +317,13 @@ public class PartSelector : MonoBehaviour
             if (ChIndex > LifeTraker.Instance.Dificulty - 1)
             {
                 ChIndex = LifeTraker.Instance.Dificulty - 1;
+                return;
             }
 
             if (ChIndex > chests.Length - 1)
             {
                 ChIndex = chests.Length - 1;
+                return;
             }
 
             foreach (var p in chests)

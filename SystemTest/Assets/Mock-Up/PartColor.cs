@@ -17,23 +17,19 @@ public class PartColor : MonoBehaviour
     public bool IsChest;
     public PartPainter painter;
     public PainterOption _thisType;
-
+    public GloveAnim _selector;
     public float activationdelay;
     public bool _isSelected;
     public bool _Activated;
-
-    public Animator _pulsControl;
     public AudioSource Sound;
     public AudioClip ActSound;
 
     public Color color;
     public Image colorCatalog;
-    public Image Back;
 
     void Start()
     {
         colorCatalog.color = color;
-        Back.color = color;
     }
 
 
@@ -47,7 +43,7 @@ public class PartColor : MonoBehaviour
     }
     public void Select()
     {
-        _pulsControl.SetBool("Selected", true);
+        _selector.gameObject.SetActive(true);
         _isSelected = true;
         if (_thisType == PainterOption.Color1)
         {
@@ -116,7 +112,7 @@ public class PartColor : MonoBehaviour
     }
     public void DeSelect()
     {
-        _pulsControl.SetBool("Selected", false);
+        _selector.gameObject.SetActive(false);
         _isSelected = false;
     }
     public void Clean()
@@ -134,10 +130,12 @@ public class PartColor : MonoBehaviour
     }
     public IEnumerator Action()
     {
-        _pulsControl.SetTrigger("Click");
+        _selector.Hit();
         Sound.PlayOneShot(ActSound);
 
         yield return new WaitForSeconds(activationdelay);
+
+        _selector.gameObject.SetActive(false);
 
         if (_thisType == PainterOption.Color1)
         {
