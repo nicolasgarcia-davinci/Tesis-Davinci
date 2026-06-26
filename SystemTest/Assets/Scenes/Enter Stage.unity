@@ -3126,6 +3126,8 @@ GameObject:
   - component: {fileID: 280972151}
   - component: {fileID: 280972150}
   - component: {fileID: 280972149}
+  - component: {fileID: 280972153}
+  - component: {fileID: 280972152}
   m_Layer: 0
   m_Name: Enemy Camara
   m_TagString: MainCamera
@@ -3243,6 +3245,53 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 270, z: 0}
+--- !u!114 &280972152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 280972148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a54776af6afbe00489b863c4db862db4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RRIng: {fileID: 280972153}
+  Current: 0
+  Lock: {fileID: 1455714578}
+  lab: {fileID: 280115561}
+  Transparency: {r: 1, g: 1, b: 1, a: 1}
+  toTranparent: 0
+  CanEnter: 1
+  BlinkInterval: 0.75
+  transparancyRate: 0.0015
+  label:
+  - {fileID: 8449708510106667870}
+  - {fileID: 487844828}
+  - {fileID: 5786956733106488249}
+  - {fileID: 1434810858}
+--- !u!95 &280972153
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 280972148}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 25d06fcc760cf1d4297de19121595227, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &281666459
 GameObject:
   m_ObjectHideFlags: 0
@@ -6646,8 +6695,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 576618253}
-  - component: {fileID: 576618252}
-  - component: {fileID: 576618254}
   m_Layer: 0
   m_Name: Rotating Ring
   m_TagString: Untagged
@@ -6655,27 +6702,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!95 &576618252
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 576618251}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 25d06fcc760cf1d4297de19121595227, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!4 &576618253
 Transform:
   m_ObjectHideFlags: 0
@@ -6695,32 +6721,6 @@ Transform:
   - {fileID: 437645452}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &576618254
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 576618251}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a54776af6afbe00489b863c4db862db4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  RRIng: {fileID: 576618252}
-  Current: 0
-  Lock: {fileID: 1455714578}
-  lab: {fileID: 280115561}
-  Transparency: {r: 1, g: 1, b: 1, a: 1}
-  toTranparent: 0
-  CanEnter: 1
-  BlinkInterval: 0.75
-  transparancyRate: 0.0015
-  label:
-  - {fileID: 8449708510106667870}
-  - {fileID: 487844828}
-  - {fileID: 5786956733106488249}
-  - {fileID: 1434810858}
 --- !u!1 &583178904
 GameObject:
   m_ObjectHideFlags: 0
