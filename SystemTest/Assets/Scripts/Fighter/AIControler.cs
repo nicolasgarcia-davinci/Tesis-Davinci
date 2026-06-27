@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AIControler : MonoBehaviour
 {
-    public CompositeFighter Character;
+    public CompEnemy Character;
     public float _timer;
     public float _flashDuration;
     public float _AttackInterval;
@@ -131,6 +131,15 @@ public class AIControler : MonoBehaviour
         yield return new WaitForSeconds(_flashDuration);
         attackDir = new Vector2(0, 0);
         AttackMat.SetVector("_Direction", attackDir); 
+        AttackMat.SetFloat("_Edge_Softness", 0);
+        AttackMat.SetFloat("_Progres", 0);
+    }
+
+    public void TurnWarningOff()
+    {
+        _timer = 0;
+        attackDir = new Vector2(0, 0);
+        AttackMat.SetVector("_Direction", attackDir);
         AttackMat.SetFloat("_Edge_Softness", 0);
         AttackMat.SetFloat("_Progres", 0);
     }

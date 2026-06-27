@@ -45,7 +45,7 @@ public class FightControler : MonoBehaviour
     }
     public void SetDownFighter(CompositeFighter loser)
     {
-        if (!loser.IsEnemy)
+        if (loser != _Enemy)
         {
             LifeTraker.Instance.IsEnemy = false;
             LifeTraker.Instance.PlayerKO++;
@@ -94,8 +94,8 @@ public class FightControler : MonoBehaviour
     public void CallCrowd(CompositeFighter victim)
     {
         if(TheCrowd==null)return;
-        if (victim.IsEnemy) TheCrowd.Celebrate();
-        if (!victim.IsEnemy) TheCrowd.Hakle();
+        if (victim == _Enemy) TheCrowd.Celebrate();
+        if (victim == _Player) TheCrowd.Hakle();
     }
     public void stopFrame()
     {
@@ -166,6 +166,9 @@ public class FightControler : MonoBehaviour
     public void ExitStage()
     {
         UI_Enter.Play("Exit");
+        _Controler.TurnWarningOff();
+        _Player.TurnDebbOff();
+        _Enemy.TurnDebbOff();
         _Player.IsRepairing = true;
         _Enemy.IsRepairing = true;
         _Player.ExitStage();
@@ -187,7 +190,6 @@ public class FightControler : MonoBehaviour
         _RT.Pause();
         PauseMenu.SetActive(true);
         IsPaused = true;
-        //Pixelation.Instance.Pixelate();
     }
     public void UnPause()
     {
@@ -196,7 +198,6 @@ public class FightControler : MonoBehaviour
         _RT.UnPause();
         PauseMenu.SetActive(false);
         IsPaused = false;
-        //Pixelation.Instance.HighDefinition();
     }
 
 }

@@ -16080,7 +16080,7 @@ GameObject:
   - component: {fileID: 7362065128588451377}
   - component: {fileID: 4940397780558464824}
   m_Layer: 0
-  m_Name: Breack Particles (2)
+  m_Name: Breack Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47460,9 +47460,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1958256340253101159}
-  - component: {fileID: 5113871636808284087}
   - component: {fileID: 4007108223767644830}
   - component: {fileID: 1631326225437601361}
+  - component: {fileID: 1435455145937605173}
   m_Layer: 0
   m_Name: Esqueleto Fighter
   m_TagString: Untagged
@@ -47504,142 +47504,6 @@ Transform:
   - {fileID: 7797931772391643358}
   m_Father: {fileID: 2314111863854887688}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5113871636808284087
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4319217452043021276}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36772bd3352f58d4d82c9491f88f4af9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  RarmCollection:
-  - {fileID: 7799110433919790004}
-  - {fileID: 5672915367228561895}
-  - {fileID: 4808072062924262451}
-  LarmCollection:
-  - {fileID: 7380796824437042536}
-  - {fileID: 7864548348330710322}
-  - {fileID: 4231422559412883609}
-  LegCollection:
-  - {fileID: 4156582092632050207}
-  - {fileID: 3074257376423984886}
-  - {fileID: 4004590644271316785}
-  HeadCollection:
-  - {fileID: 4877160955972126633}
-  - {fileID: 5807479547134513463}
-  - {fileID: 3321999890360041784}
-  ChestCollection:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  Rarm: {fileID: 7799110433919790004}
-  Larm: {fileID: 7380796824437042536}
-  Leg: {fileID: 4156582092632050207}
-  Head: {fileID: 4877160955972126633}
-  Chest: {fileID: 0}
-  PartCount: 0
-  CHead: 0
-  CRight: 0
-  CLeft: 0
-  CLegs: 0
-  CChest: 0
-  hasBeenSet: 0
-  Stamina: 0
-  MaxStamina: 50
-  StaminaRefresh: 2
-  debuffParticles: {fileID: 8675736606583216481}
-  recoverParticles: {fileID: 8461030073717692765}
-  IsRepairing: 0
-  IsDying: 0
-  IsEnemy: 1
-  DificultyMultyplyer: 0
-  IsDodgingRight: 0
-  IsDodgingLeft: 0
-  IsDodgingUp: 0
-  IsDodgingDown: 0
-  IsDodging: 0
-  matAlphaName: 
-  spawnTransform: {fileID: 0}
-  _dodgeTime: 0
-  _refreshRate: 0
-  _delayDestroy: 0
-  trailFactory: {fileID: 0}
-  trailMesh:
-    activeTime: 0
-    meshRefreshRate: 0
-    positionToSpawn: {fileID: 0}
-    meshDelayDestroy: 0
-    mat: {fileID: 0}
-    shaderVarRef: 
-    shaderVarRate: 0
-    shaderVarRefreshRate: 0
-  IsAttackingRight: 0
-  IsAttackingLeft: 0
-  IsAttackingUp: 0
-  IsAttackingDown: 0
-  IsAttacking: 0
-  IsDebuffed: 0
-  DebuffTime: 5
-  _Audio: {fileID: 4007108223767644830}
-  _miss: {fileID: 8300000, guid: ad8c2bd6ecfce054297fd964fb91d60c, type: 3}
-  _KO: {fileID: 8300000, guid: 591a787cdbecda5459380aa474c91292, type: 3}
-  _debuff: {fileID: 8300000, guid: c8af66645801440409a024608436de8a, type: 3}
-  anim: {fileID: 1631326225437601361}
-  RarmsHitWave: {fileID: 3186467108188793340}
-  LarmsHitWave: {fileID: 6873420019072391581}
-  LegsHitWave: {fileID: 5785584379383434236}
-  HeadHitWave: {fileID: 7421113998699407528}
-  RarmCrash:
-  - {fileID: 6134800942597867651}
-  - {fileID: 6547244904684979529}
-  - {fileID: 2284007846478294537}
-  LarmCrash:
-  - {fileID: 741472336133309937}
-  - {fileID: 6091593380768305569}
-  - {fileID: 7735317426659543383}
-  LegsCrash:
-  - {fileID: 3656917537432058814}
-  - {fileID: 6332108889021609935}
-  - {fileID: 1962962411974220411}
-  HeadCrash:
-  - {fileID: 5616665352799963183}
-  - {fileID: 3871839039042937727}
-  - {fileID: 5765241546752691263}
-  RarmSpark:
-  - {fileID: 5778202808764029931}
-  - {fileID: 5339186145062321004}
-  - {fileID: 5410030505506924761}
-  LarmSpark:
-  - {fileID: 7207412279635767138}
-  - {fileID: 3473164659523587892}
-  - {fileID: 2372650820924981949}
-  LegsSpark:
-  - {fileID: 5201140130382909056}
-  - {fileID: 8914626423258513170}
-  - {fileID: 4581671473684011983}
-  HeadSpark:
-  - {fileID: 5829014501115542233}
-  HeadBoom: 0
-  RarmBoom: 0
-  LarmBoom: 0
-  LegsBoom: 0
-  OverAllHealth: 50
-  lightBlow: 0.1
-  heavyBlow: 0.5
-  HeadDisplay: {fileID: 0}
-  RightArmDisplay: {fileID: 0}
-  LeftArmDisplay: {fileID: 0}
-  LegsDisplay: {fileID: 0}
-  LifeBar: {fileID: 0}
-  RedBar: {fileID: 0}
-  StamminaBar: {fileID: 0}
-  DamageToTake: 0
-  warning: {fileID: 264737468951849039}
-  WarningTime: 0.3
 --- !u!82 &4007108223767644830
 AudioSource:
   m_ObjectHideFlags: 0
@@ -47757,6 +47621,138 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1435455145937605173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4319217452043021276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bc30aeeed82ff4499e9a0f7c62073dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RarmCollection:
+  - {fileID: 7799110433919790004}
+  - {fileID: 5672915367228561895}
+  - {fileID: 4808072062924262451}
+  LarmCollection:
+  - {fileID: 7380796824437042536}
+  - {fileID: 7864548348330710322}
+  - {fileID: 4231422559412883609}
+  LegCollection:
+  - {fileID: 4156582092632050207}
+  - {fileID: 3074257376423984886}
+  - {fileID: 4004590644271316785}
+  HeadCollection:
+  - {fileID: 4877160955972126633}
+  - {fileID: 5807479547134513463}
+  - {fileID: 3321999890360041784}
+  ChestCollection:
+  - {fileID: 6943370885687888124}
+  - {fileID: 815042542115153013}
+  - {fileID: 5648274609295931754}
+  Rarm: {fileID: 0}
+  Larm: {fileID: 0}
+  Leg: {fileID: 0}
+  Head: {fileID: 0}
+  Chest: {fileID: 0}
+  PartCount: 4
+  CHead: 0
+  CRight: 0
+  CLeft: 0
+  CLegs: 0
+  CChest: 0
+  hasBeenSet: 0
+  Stamina: 0
+  MaxStamina: 50
+  StaminaRefresh: 2
+  debuffParticles: {fileID: 8675736606583216481}
+  recoverParticles: {fileID: 8461030073717692765}
+  IsRepairing: 0
+  IsDying: 0
+  IsDodgingRight: 0
+  IsDodgingLeft: 0
+  IsDodgingUp: 0
+  IsDodgingDown: 0
+  IsDodging: 0
+  matAlphaName: 
+  spawnTransform: {fileID: 0}
+  _dodgeTime: 0
+  _refreshRate: 0
+  _delayDestroy: 0
+  trailFactory: {fileID: 0}
+  trailMesh:
+    activeTime: 0
+    meshRefreshRate: 0
+    positionToSpawn: {fileID: 0}
+    meshDelayDestroy: 0
+    mat: {fileID: 0}
+    shaderVarRef: 
+    shaderVarRate: 0
+    shaderVarRefreshRate: 0
+  IsAttackingRight: 0
+  IsAttackingLeft: 0
+  IsAttackingUp: 0
+  IsAttackingDown: 0
+  IsAttacking: 0
+  IsDebuffed: 0
+  DebuffTime: 5
+  _Audio: {fileID: 4007108223767644830}
+  _miss: {fileID: 8300000, guid: ad8c2bd6ecfce054297fd964fb91d60c, type: 3}
+  _KO: {fileID: 8300000, guid: 591a787cdbecda5459380aa474c91292, type: 3}
+  _debuff: {fileID: 8300000, guid: c8af66645801440409a024608436de8a, type: 3}
+  anim: {fileID: 1631326225437601361}
+  RarmsHitWave: {fileID: 3186467108188793340}
+  LarmsHitWave: {fileID: 6873420019072391581}
+  LegsHitWave: {fileID: 5785584379383434236}
+  HeadHitWave: {fileID: 7421113998699407528}
+  RarmCrash:
+  - {fileID: 6134800942597867651}
+  - {fileID: 2284007846478294537}
+  - {fileID: 6547244904684979529}
+  LarmCrash:
+  - {fileID: 741472336133309937}
+  - {fileID: 6091593380768305569}
+  - {fileID: 7735317426659543383}
+  LegsCrash:
+  - {fileID: 3656917537432058814}
+  - {fileID: 6332108889021609935}
+  - {fileID: 1962962411974220411}
+  HeadCrash:
+  - {fileID: 5616665352799963183}
+  - {fileID: 3871839039042937727}
+  - {fileID: 5765241546752691263}
+  RarmSpark:
+  - {fileID: 5778202808764029931}
+  - {fileID: 5339186145062321004}
+  - {fileID: 5410030505506924761}
+  LarmSpark:
+  - {fileID: 7207412279635767138}
+  - {fileID: 3473164659523587892}
+  - {fileID: 2372650820924981949}
+  LegsSpark:
+  - {fileID: 5201140130382909056}
+  - {fileID: 8914626423258513170}
+  - {fileID: 4581671473684011983}
+  HeadSpark:
+  - {fileID: 5829014501115542233}
+  HeadBoom: 0
+  RarmBoom: 0
+  LarmBoom: 0
+  LegsBoom: 0
+  OverAllHealth: 50
+  lightBlow: 0.1
+  heavyBlow: 0.5
+  LifeBar: {fileID: 0}
+  RedBar: {fileID: 0}
+  StamminaBar: {fileID: 0}
+  DamageToTake: 0
+  IsEnemy: 1
+  DificultyMultyplyer: 0
+  warning: {fileID: 264737468951849039}
+  WarningTime: 0.3
 --- !u!1 &4427384371868691080
 GameObject:
   m_ObjectHideFlags: 0
@@ -74370,7 +74366,7 @@ GameObject:
   - component: {fileID: 5596570757985882352}
   - component: {fileID: 720883468490345097}
   m_Layer: 0
-  m_Name: Breack Particles (1)
+  m_Name: Breack Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -101607,6 +101603,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ed18bb05b959ec04788dcc086cfd0563, type: 3}
+--- !u!114 &5648274609295931754 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6549453149950734100, guid: ed18bb05b959ec04788dcc086cfd0563, type: 3}
+  m_PrefabInstance: {fileID: 1479123672312665726}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 749b4c7a75499a248a6b50bdf97377f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &7797931772391643358 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8696792300676943520, guid: ed18bb05b959ec04788dcc086cfd0563, type: 3}
@@ -102134,6 +102141,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20d870cdf03fad841836530a94813a4d, type: 3}
+--- !u!114 &815042542115153013 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5347380757631230987, guid: 20d870cdf03fad841836530a94813a4d, type: 3}
+  m_PrefabInstance: {fileID: 4718130460780429438}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 749b4c7a75499a248a6b50bdf97377f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1070751107338475392 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5739337299200612350, guid: 20d870cdf03fad841836530a94813a4d, type: 3}
@@ -102470,6 +102488,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2017757537102080413, guid: 2c773e876f5586348b49e6183997b606, type: 3}
   m_PrefabInstance: {fileID: 5299827199778274657}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6943370885687888124 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3014891439311811997, guid: 2c773e876f5586348b49e6183997b606, type: 3}
+  m_PrefabInstance: {fileID: 5299827199778274657}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 749b4c7a75499a248a6b50bdf97377f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5627874642452703576
 PrefabInstance:
   m_ObjectHideFlags: 0

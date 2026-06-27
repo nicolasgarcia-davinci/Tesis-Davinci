@@ -44,10 +44,6 @@ public class CompositeFighter : MonoBehaviour
     public bool IsRepairing;
     public bool IsDying;
 
-    [Header("Enemy?")]
-    public bool IsEnemy;
-    public float DificultyMultyplyer;
-
     [Header("Dodge")]
     public bool IsDodgingRight;
     public bool IsDodgingLeft;
@@ -86,11 +82,6 @@ public class CompositeFighter : MonoBehaviour
     public GameObject LegsHitWave;
     public GameObject HeadHitWave;
 
-    //[Header("Attack Trails")]
-    //public GameObject RarmsAttackTrail;
-    //public GameObject LarmsAttackTrail;
-    //public GameObject LegsAttackTrail;
-
     [Header("Crash Collection")]
     public GameObject[] RarmCrash;
     public GameObject[] LarmCrash;
@@ -117,10 +108,6 @@ public class CompositeFighter : MonoBehaviour
     [SerializeField] float heavyBlow;
 
     [Header("OverAllHealth")]
-    public PartDisplay HeadDisplay;
-    public PartDisplay RightArmDisplay;
-    public PartDisplay LeftArmDisplay;
-    public PartDisplay LegsDisplay;
     public LifeBar LifeBar;
     public LifeBar RedBar;
     public LifeBar StamminaBar;
@@ -131,81 +118,51 @@ public class CompositeFighter : MonoBehaviour
 
     public float DamageToTake;
 
-    [Header("Attack Warning")]
-    public GameObject warning;
-    public float WarningTime;
-
-    void Start()
+    public virtual void Start()
     {
         Stamina = MaxStamina;
         StamminaBar.UpdateLife(Stamina, MaxStamina);
         anim = GetComponent<Animator>();
-        if (!IsEnemy)
-        {
-            trailMesh = new MeshTrail(this, trailFactory.Pool, trailFactory.playerSkRenderer, trailFactory.trailMat, matAlphaName, _dodgeTime)
-                .setTime(_refreshRate, _delayDestroy).setPos(this.transform);
-            Rarm = RarmCollection[LifeTraker.Instance.RarmIndex];
-            Larm = LarmCollection[LifeTraker.Instance.LarmIndex];
-            Leg = LegCollection[LifeTraker.Instance.LegsIndex];
-            Head = HeadCollection[LifeTraker.Instance.HeadIndex];
-            Chest = ChestCollection[LifeTraker.Instance.ChestIndex];
-            LifeTraker.Instance.pOverHealt = (Rarm.life + Larm.life + Leg.life  +Head.life + Chest.life);
-            LifeTraker.Instance.MaxHealt = LifeTraker.Instance.pOverHealt;
-            OverAllHealth = LifeTraker.Instance.pOverHealt;
+ 
+        trailMesh = new MeshTrail(this, trailFactory.Pool, trailFactory.playerSkRenderer, trailFactory.trailMat, matAlphaName, _dodgeTime)
+            .setTime(_refreshRate, _delayDestroy).setPos(this.transform);
+        Rarm = RarmCollection[LifeTraker.Instance.RarmIndex];
+        Larm = LarmCollection[LifeTraker.Instance.LarmIndex];
+        Leg = LegCollection[LifeTraker.Instance.LegsIndex];
+        Head = HeadCollection[LifeTraker.Instance.HeadIndex];
+        Chest = ChestCollection[LifeTraker.Instance.ChestIndex];
+        LifeTraker.Instance.pOverHealt = (Rarm.life + Larm.life + Leg.life  +Head.life + Chest.life);
+        LifeTraker.Instance.MaxHealt = LifeTraker.Instance.pOverHealt;
+        OverAllHealth = LifeTraker.Instance.pOverHealt;
 
-            Rarm.ActiveParts();
-            Rarm.FullColor(ColorCordination.Instance.Rightcolor1, ColorCordination.Instance.Rightcolor2);
-            Larm.ActiveParts();
-            Larm.FullColor(ColorCordination.Instance.Leftcolor1, ColorCordination.Instance.Leftcolor2);
-            Leg.ActiveParts();
-            Leg.FullColor(ColorCordination.Instance.Legscolor1, ColorCordination.Instance.Legscolor2);
-            Head.ActiveParts();
-            Head.FullColor(ColorCordination.Instance.Headcolor1, ColorCordination.Instance.Headcolor2);
-            Chest.ActiveParts();
-            Chest.FullColor(ColorCordination.Instance.Chestcolor1, ColorCordination.Instance.Chestcolor2);
+        Rarm.ActiveParts();
+        Rarm.FullColor(ColorCordination.Instance.Rightcolor1, ColorCordination.Instance.Rightcolor2);
+        Larm.ActiveParts();
+        Larm.FullColor(ColorCordination.Instance.Leftcolor1, ColorCordination.Instance.Leftcolor2);
+        Leg.ActiveParts();
+        Leg.FullColor(ColorCordination.Instance.Legscolor1, ColorCordination.Instance.Legscolor2);
+        Head.ActiveParts();
+        Head.FullColor(ColorCordination.Instance.Headcolor1, ColorCordination.Instance.Headcolor2);
+        Chest.ActiveParts();
+        Chest.FullColor(ColorCordination.Instance.Chestcolor1, ColorCordination.Instance.Chestcolor2);
 
-            LifeTraker.Instance.pRight = Rarm.life;
-            LifeTraker.Instance.pLeft = Larm.life;
-            LifeTraker.Instance.pLegs = Leg.life;
-            LifeTraker.Instance.pHead = Head.life;
-            LifeTraker.Instance.maxHeadHealth = Head.life;
-            LifeTraker.Instance.maxRarmHealth = Rarm.life;
-            LifeTraker.Instance.maxLarmHealth = Larm.life;
-            LifeTraker.Instance.maxLegsHealth = Leg.life;
+        LifeTraker.Instance.pRight = Rarm.life;
+        LifeTraker.Instance.pLeft = Larm.life;
+        LifeTraker.Instance.pLegs = Leg.life;
+        LifeTraker.Instance.pHead = Head.life;
+        LifeTraker.Instance.maxHeadHealth = Head.life;
+        LifeTraker.Instance.maxRarmHealth = Rarm.life;
+        LifeTraker.Instance.maxLarmHealth = Larm.life;
+        LifeTraker.Instance.maxLegsHealth = Leg.life;
 
-            CHead = Head.life;
-            CRight = Rarm.life;
-            CLeft = Larm.life;
-            CLegs = Leg.life;
-            CChest = OverAllHealth;
-        }
-        else
-        {
-            DificultyMultyplyer = LifeTraker.Instance.Dificulty;
-            Rarm.ActiveParts();
-            Larm.ActiveParts();
-            Leg.ActiveParts();
-            Head.ActiveParts();
-            Chest.ActiveParts();
-
-            LifeTraker.Instance.eRight = Rarm.life;
-            LifeTraker.Instance.eLeft = Larm.life;
-            LifeTraker.Instance.eLegs = Leg.life;
-            LifeTraker.Instance.eHead = Head.life;
-            LifeTraker.Instance.eOverHealt = (Rarm.life + Larm.life + Leg.life + Head.life + Chest.life) * DificultyMultyplyer;
-            LifeTraker.Instance.eMaxHealt = LifeTraker.Instance.eOverHealt;
-            OverAllHealth = LifeTraker.Instance.eOverHealt;
-
-            CHead = Head.life;
-            CRight = Rarm.life;
-            CLeft = Larm.life;
-            CLegs = Leg.life;
-            CChest = OverAllHealth;
-        }
-        //LifeBar.ProgresiveEnter(OverAllHealth, CChest);
+        CHead = Head.life;
+        CRight = Rarm.life;
+        CLeft = Larm.life;
+        CLegs = Leg.life;
+        CChest = OverAllHealth;
     }
 
-    public void Set()
+    public virtual void Set()
     {
         hasBeenSet = true;
         ResetBools();
@@ -213,22 +170,11 @@ public class CompositeFighter : MonoBehaviour
         StamminaBar.UpdateLife(Stamina, MaxStamina);
         IsRepairing = false;
 
-        if (!IsEnemy)
-        { 
-            OverAllHealth = LifeTraker.Instance.pOverHealt;
-            Rarm.life = LifeTraker.Instance.pRight;
-            Larm.life = LifeTraker.Instance.pLeft;
-            Leg.life  = LifeTraker.Instance.pLegs;
-            Head.life = LifeTraker.Instance.pHead;
-        }
-        else
-        {
-            OverAllHealth = LifeTraker.Instance.eOverHealt;
-            Rarm.life = LifeTraker.Instance.eRight;
-            Larm.life = LifeTraker.Instance.eLeft;
-            Leg.life = LifeTraker.Instance.eLegs;
-            Head.life = LifeTraker.Instance.eHead;  
-        }
+        OverAllHealth = LifeTraker.Instance.pOverHealt;
+        Rarm.life = LifeTraker.Instance.pRight;
+        Larm.life = LifeTraker.Instance.pLeft;
+        Leg.life  = LifeTraker.Instance.pLegs;
+        Head.life = LifeTraker.Instance.pHead;
 
         PartCount = 1;
 
@@ -263,11 +209,6 @@ public class CompositeFighter : MonoBehaviour
             Head.ActiveParts();
             DeActivateParticle(HeadSpark);
         }
-
-        HeadDisplay.UpdateDisplay(Head.life, CHead);
-        RightArmDisplay.UpdateDisplay(Rarm.life, CRight);
-        LeftArmDisplay.UpdateDisplay(Larm.life, CLeft);
-        LegsDisplay.UpdateDisplay(Leg.life, CLegs);
         EnterLife();
     }
 
@@ -291,9 +232,8 @@ public class CompositeFighter : MonoBehaviour
         anim.ResetTrigger("DoedgeLeft");
         anim.ResetTrigger("DoedgeDown");
     }
-    public void FireCutscene()
+    public virtual void FireCutscene()
     {
-        if(!IsEnemy)
         StageCam.Instance.ResumeCam();
     }
 
@@ -303,9 +243,9 @@ public class CompositeFighter : MonoBehaviour
         RedBar.lifeBar.fillAmount = 0;
         anim.SetTrigger("Enter Stage");
     }
-    public void FightStart()
+    public virtual void FightStart()
     {
-        if(!IsEnemy) FightControler.Instance.EnterStage();
+        FightControler.Instance.EnterStage();
     }
     public void ExitFight()
     {
@@ -345,7 +285,6 @@ public class CompositeFighter : MonoBehaviour
         if (!IsAttacking && !IsDodging && !IsRepairing && !IsDying)
         {
             dodge = true;
-            //if(!IsEnemy) trailMesh?.CallTrail();
             anim.SetTrigger(animation);
         }
     }
@@ -409,7 +348,6 @@ public class CompositeFighter : MonoBehaviour
             StamminaBar.UpdateLife(Stamina, MaxStamina);
             if (!IsDebuffed && Stamina <= 0) StartCoroutine(Exausted());
             StartCoroutine(ManageVFX(trail, 0.75f));
-            //anim.speed = Stamina / MaxStamina;
             anim.Play(animation);
             IsAttacking = true;
             partAttack = true;
@@ -495,7 +433,7 @@ public class CompositeFighter : MonoBehaviour
         }
     }
 
-    public void PartDamage(float damage, float currentLife, AudioClip hit, ref Part partHit, bool hitPart,
+    public virtual void PartDamage(float damage, float currentLife, AudioClip hit, ref Part partHit, bool hitPart,
         ref bool partDestroyed, string animHit, GameObject HitWave, GameObject[] Sparks, GameObject[] Crash
         ,bool isbroken)
     {
@@ -504,7 +442,7 @@ public class CompositeFighter : MonoBehaviour
         if (hitPart)
         {
             _Audio.PlayOneShot(_miss);
-            if(!IsEnemy) trailMesh?.CallTrail();
+            trailMesh?.CallTrail();
             Stamina += 10;
             return;
         }
@@ -515,12 +453,9 @@ public class CompositeFighter : MonoBehaviour
         if (partHit.life > 0)
             partHit.life -= damage;
 
-        //RarmsHitSpark.gameObject.SetActive(true);
         StartCoroutine(WaveVFX(HitWave, 0.5f));
 
         LifeTraker.Instance.UpdateLife();
-
-        RightArmDisplay.UpdateDisplay(partHit.life, currentLife);
 
         FightControler.Instance.stopFrame();
 
@@ -539,17 +474,18 @@ public class CompositeFighter : MonoBehaviour
             return;
         }
         else if (isbroken==true)
-             {
-                DamageToTake = damage/2;
-             } else DamageToTake = damage;
-
-
-        if (!IsEnemy)
         {
-            Debug.Log("BrazoChotoDerecho");
-            LifeTraker.Instance.UpdateLife();
-        }
-        
+                DamageToTake = damage/2;
+        } else DamageToTake = damage;
+
+        Debug.Log("BrazoChotoDerecho");
+        LifeTraker.Instance.UpdateLife();
+    }
+
+    public void TurnDebbOff()
+    {
+        debuffParticles.SetActive(false);
+        recoverParticles.SetActive(false);
     }
 
     #region Viejo Daño
@@ -694,7 +630,7 @@ public class CompositeFighter : MonoBehaviour
     }*/
     #endregion
 
-    public void BattleHealth()
+    public virtual void BattleHealth()
     {
         OverAllHealth -= DamageToTake;
 
@@ -703,8 +639,7 @@ public class CompositeFighter : MonoBehaviour
 
         if (OverAllHealth<=0)
         {
-            if(IsEnemy) LifeTraker.Instance.ePartCount=PartCount;
-            if(!IsEnemy) LifeTraker.Instance.PartCount=PartCount;
+            LifeTraker.Instance.PartCount=PartCount;
             FightControler.Instance.Halt();
             IsDying = true;
             ExitFight();
@@ -741,36 +676,26 @@ public class CompositeFighter : MonoBehaviour
         }
     }
 
-    public void CallCam()
+    private void CallCam()
     {
-        if (!IsEnemy)
-        {
-            LifeTraker.Instance.RundCounter++;
-            LifeTraker.Instance.ResetTimer = true;
-            LoadManager.Instance.LoadIntermision();
-            StageState.Instance.ResetRepair = true;
-            StageCam.Instance.GoToRepairCam();
-        }
+       LifeTraker.Instance.RundCounter++;
+       LifeTraker.Instance.ResetTimer = true;
+       LoadManager.Instance.LoadIntermision();
+       StageState.Instance.ResetRepair = true;
+       StageCam.Instance.GoToRepairCam();
     }
-    public void FlashWarning()
+    public virtual void FlashWarning()
     {
-        if (IsEnemy) StartCoroutine(Warning());
+        return;
     }
 
-
-    IEnumerator Warning()
-    {
-        warning.SetActive(true);
-        yield return new WaitForSeconds(WarningTime);
-        warning.SetActive(false);
-    }
-    IEnumerator ManageVFX(GameObject vfx, float i)
+    public virtual IEnumerator ManageVFX(GameObject vfx, float i)
     {
         vfx.SetActive(true);
         yield return new WaitForSeconds(i);
         vfx.SetActive(false);
     }
-    IEnumerator WaveVFX(GameObject vfx, float i)
+    public virtual IEnumerator WaveVFX(GameObject vfx, float i)
     {
         vfx.SetActive(true);
         yield return new WaitForSeconds(i);
@@ -779,7 +704,7 @@ public class CompositeFighter : MonoBehaviour
 
     float timer;
 
-    IEnumerator Exausted()
+    public virtual IEnumerator Exausted()
     {
         IsDebuffed = true;
         _Audio.PlayOneShot(_debuff);

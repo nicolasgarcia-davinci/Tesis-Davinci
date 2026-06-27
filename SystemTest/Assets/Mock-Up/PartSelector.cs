@@ -226,6 +226,7 @@ public class PartSelector : MonoBehaviour
             }
 
             rArms[RAIndex].gameObject.SetActive(true);
+            rArms[RAIndex].SetColor();
             Display.SetRarmDisplay(rArms[RAIndex].life, rArms[RAIndex].Damage);
             miniDisplays[0].DisplayMini(RAIndex);
             return;
@@ -250,6 +251,7 @@ public class PartSelector : MonoBehaviour
             }
 
             lArms[LAIndex].gameObject.SetActive(true);
+            lArms[LAIndex].SetColor();
             Display.SetLarmDisplay(lArms[LAIndex].life, lArms[LAIndex].Damage);
             miniDisplays[1].DisplayMini(LAIndex);
             return;
@@ -274,6 +276,7 @@ public class PartSelector : MonoBehaviour
             }
 
             heads[HIndex].gameObject.SetActive(true);
+            heads[HIndex].SetColor();
             Display.SetHeadDisplay(heads[HIndex].life, heads[HIndex].Damage);
             miniDisplays[3].DisplayMini(HIndex);
             return;
@@ -298,6 +301,7 @@ public class PartSelector : MonoBehaviour
             }
 
             legs[LIndex].gameObject.SetActive(true);
+            legs[LIndex].SetColor();
             Display.SetLegDisplay(legs[LIndex].life, legs[LIndex].Damage);
             miniDisplays[2].DisplayMini(LIndex);
             return;
@@ -322,6 +326,7 @@ public class PartSelector : MonoBehaviour
             }
 
             chests[ChIndex].gameObject.SetActive(true);
+            chests[ChIndex].SetColor();
             Display.SetChestDisplay(chests[ChIndex].life, chests[ChIndex].Damage);
             miniDisplays[4].DisplayMini(ChIndex);
         }
@@ -343,6 +348,7 @@ public class PartSelector : MonoBehaviour
             }
 
             rArms[RAIndex].gameObject.SetActive(true);
+            rArms[RAIndex].SetColor();
             Display.SetRarmDisplay(rArms[RAIndex].life, rArms[RAIndex].Damage);
             miniDisplays[0].DisplayMini(RAIndex);
             return;
@@ -364,6 +370,7 @@ public class PartSelector : MonoBehaviour
             }
 
             lArms[LAIndex].gameObject.SetActive(true);
+            lArms[LAIndex].SetColor();
             Display.SetLarmDisplay(lArms[LAIndex].life, lArms[LAIndex].Damage);
             miniDisplays[1].DisplayMini(LAIndex);
             return;
@@ -384,6 +391,7 @@ public class PartSelector : MonoBehaviour
             }
 
             heads[HIndex].gameObject.SetActive(true);
+            heads[HIndex].SetColor();
             Display.SetHeadDisplay(heads[HIndex].life, heads[HIndex].Damage);
             miniDisplays[3].DisplayMini(HIndex);
             return;
@@ -405,6 +413,7 @@ public class PartSelector : MonoBehaviour
             }
 
             legs[LIndex].gameObject.SetActive(true);
+            legs[LIndex].SetColor();
             Display.SetLegDisplay(legs[LIndex].life, legs[LIndex].Damage);
             miniDisplays[2].DisplayMini(LIndex);
             return;
@@ -425,6 +434,7 @@ public class PartSelector : MonoBehaviour
             }
 
             chests[ChIndex].gameObject.SetActive(true);
+            chests[ChIndex].SetColor();
             Display.SetChestDisplay(chests[ChIndex].life, chests[ChIndex].Damage);
             miniDisplays[4].DisplayMini(ChIndex);
         }
