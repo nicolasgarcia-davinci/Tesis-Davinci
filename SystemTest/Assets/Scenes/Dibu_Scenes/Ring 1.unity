@@ -6368,11 +6368,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7633a5ed9b4abb5438645a309cb7eb00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PartName: 
   AttName: Drill Down Attack
   life: 0
+  Maxlife: 0
   Damage: 0
-  Aspeed: 0
+  isBroken: 0
   AttackSound: {fileID: 0}
   ParticleContainer: {fileID: 0}
   components:
@@ -7027,17 +7027,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 033010281b3c9f946bab82bd51625f27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PartName: 
   AttName: Boxer Left Attack
   life: 50
+  Maxlife: 0
   Damage: 10
-  Aspeed: 0
+  isBroken: 0
   AttackSound: {fileID: 0}
   ParticleContainer: {fileID: 0}
   components:
   - {fileID: 1380168378}
   - {fileID: 39061924}
   - {fileID: 392602733}
+  isLeft: 0
 --- !u!4 &132425097
 Transform:
   m_ObjectHideFlags: 0
@@ -13110,11 +13111,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7633a5ed9b4abb5438645a309cb7eb00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PartName: 
   AttName: Boxer Down Attack
   life: 50
+  Maxlife: 0
   Damage: 10
-  Aspeed: 0
+  isBroken: 0
   AttackSound: {fileID: 0}
   ParticleContainer: {fileID: 0}
   components:
@@ -24419,17 +24420,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 033010281b3c9f946bab82bd51625f27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PartName: 
   AttName: Drill Right Attack
   life: 0
+  Maxlife: 0
   Damage: 0
-  Aspeed: 0
+  isBroken: 0
   AttackSound: {fileID: 0}
   ParticleContainer: {fileID: 0}
   components:
   - {fileID: 1622437946}
   - {fileID: 636062370}
   - {fileID: 347584769}
+  isLeft: 0
 --- !u!1 &450091747
 GameObject:
   m_ObjectHideFlags: 0
@@ -24701,11 +24703,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ba0733d5e536884c81ea8678410a268, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PartName: 
   AttName: Drill Up Attack
   life: 0
+  Maxlife: 0
   Damage: 0
-  Aspeed: 0
+  isBroken: 0
   AttackSound: {fileID: 0}
   ParticleContainer: {fileID: 0}
   components:
@@ -24740,9 +24742,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28e0506f52e3c3848b3023db52daabea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  body: {fileID: 1456321555}
-  Player: {fileID: 2100000, guid: 8dd75b1e921287743b13e2b3c450f144, type: 2}
-  Enemy: {fileID: 2100000, guid: 2c8e4f92fbcd461468ed0c219c8b62af, type: 2}
+  RarmCollection: []
+  LarmCollection: []
+  LegCollection: []
+  HeadCollection: []
+  ChestCollection: []
+  Rarm: {fileID: 0}
+  Larm: {fileID: 0}
+  Leg: {fileID: 0}
+  Head: {fileID: 0}
+  Chest: {fileID: 0}
 --- !u!95 &477891821
 Animator:
   serializedVersion: 5
@@ -31638,17 +31647,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 033010281b3c9f946bab82bd51625f27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PartName: 
   AttName: Drill Right Attack
   life: 0
+  Maxlife: 0
   Damage: 0
-  Aspeed: 0
+  isBroken: 0
   AttackSound: {fileID: 0}
   ParticleContainer: {fileID: 0}
   components:
   - {fileID: 4816924106938028263}
   - {fileID: 4598912591587719259}
   - {fileID: 266480270426743271}
+  isLeft: 0
 --- !u!1001 &635538403
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -37535,17 +37545,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 033010281b3c9f946bab82bd51625f27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PartName: 
   AttName: Boxer Right Attack
   life: 50
+  Maxlife: 0
   Damage: 10
-  Aspeed: 0
+  isBroken: 0
   AttackSound: {fileID: 0}
   ParticleContainer: {fileID: 0}
   components:
   - {fileID: 989433050}
   - {fileID: 1193124469}
   - {fileID: 904009137}
+  isLeft: 0
 --- !u!1 &676720519
 GameObject:
   m_ObjectHideFlags: 0
@@ -60458,11 +60469,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ba0733d5e536884c81ea8678410a268, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PartName: 
   AttName: Drill Up Attack
   life: 0
+  Maxlife: 0
   Damage: 0
-  Aspeed: 0
+  isBroken: 0
   AttackSound: {fileID: 0}
   ParticleContainer: {fileID: 0}
   components:
@@ -66420,6 +66431,7 @@ MonoBehaviour:
   Leg: {fileID: 1383004362}
   Head: {fileID: 1814277663}
   Chest: {fileID: 0}
+  PartCount: 0
   CHead: 0
   CRight: 0
   CLeft: 0
@@ -66429,9 +66441,12 @@ MonoBehaviour:
   Stamina: 0
   MaxStamina: 100
   StaminaRefresh: 2
+  debuffParticles: {fileID: 0}
+  recoverParticles: {fileID: 0}
   IsRepairing: 0
   IsDying: 0
   IsEnemy: 1
+  DificultyMultyplyer: 0
   IsDodgingRight: 0
   IsDodgingLeft: 0
   IsDodgingUp: 0
@@ -66462,6 +66477,7 @@ MonoBehaviour:
   _Audio: {fileID: 994544853}
   _miss: {fileID: 0}
   _KO: {fileID: 0}
+  _debuff: {fileID: 0}
   anim: {fileID: 994544852}
   RarmsHitWave: {fileID: 0}
   LarmsHitWave: {fileID: 0}
@@ -66512,6 +66528,8 @@ MonoBehaviour:
   RedBar: {fileID: 0}
   StamminaBar: {fileID: 0}
   DamageToTake: 0
+  warning: {fileID: 0}
+  WarningTime: 0
 --- !u!95 &994544852
 Animator:
   serializedVersion: 5
@@ -67577,17 +67595,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 033010281b3c9f946bab82bd51625f27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PartName: 
   AttName: Drill Left Attack
   life: 0
+  Maxlife: 0
   Damage: 0
-  Aspeed: 0
+  isBroken: 0
   AttackSound: {fileID: 0}
   ParticleContainer: {fileID: 0}
   components:
   - {fileID: 6255771649753683340}
   - {fileID: 5164122727050784939}
   - {fileID: 3827107384019277069}
+  isLeft: 0
 --- !u!1 &1136551066
 GameObject:
   m_ObjectHideFlags: 0
@@ -67888,11 +67907,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7633a5ed9b4abb5438645a309cb7eb00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PartName: 
   AttName: Boxer Down Attack
   life: 50
+  Maxlife: 0
   Damage: 10
-  Aspeed: 0
+  isBroken: 0
   AttackSound: {fileID: 0}
   ParticleContainer: {fileID: 0}
   components:
@@ -68434,11 +68453,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ba0733d5e536884c81ea8678410a268, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PartName: 
   AttName: Boxer Up Attack
   life: 50
+  Maxlife: 0
   Damage: 10
-  Aspeed: 0
+  isBroken: 0
   AttackSound: {fileID: 0}
   ParticleContainer: {fileID: 0}
   components:
@@ -68570,17 +68589,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 033010281b3c9f946bab82bd51625f27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PartName: 
   AttName: Drill Left Attack
   life: 0
+  Maxlife: 0
   Damage: 0
-  Aspeed: 0
+  isBroken: 0
   AttackSound: {fileID: 0}
   ParticleContainer: {fileID: 0}
   components:
   - {fileID: 1264944703}
   - {fileID: 2046997659}
   - {fileID: 1933630351}
+  isLeft: 0
 --- !u!1 &1193124469
 GameObject:
   m_ObjectHideFlags: 0
@@ -75394,11 +75414,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ba0733d5e536884c81ea8678410a268, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PartName: 
   AttName: Boxer Up Attack
   life: 50
+  Maxlife: 0
   Damage: 10
-  Aspeed: 0
+  isBroken: 0
   AttackSound: {fileID: 0}
   ParticleContainer: {fileID: 0}
   components:
@@ -76007,11 +76027,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7633a5ed9b4abb5438645a309cb7eb00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PartName: 
   AttName: Boxer Down Attack
   life: 50
+  Maxlife: 0
   Damage: 10
-  Aspeed: 0
+  isBroken: 0
   AttackSound: {fileID: 0}
   ParticleContainer: {fileID: 0}
   components:
@@ -76487,11 +76507,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7633a5ed9b4abb5438645a309cb7eb00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PartName: 
   AttName: Drill Down Attack
   life: 0
+  Maxlife: 0
   Damage: 0
-  Aspeed: 0
+  isBroken: 0
   AttackSound: {fileID: 0}
   ParticleContainer: {fileID: 0}
   components:
@@ -77715,17 +77735,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 033010281b3c9f946bab82bd51625f27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PartName: 
   AttName: Drill Right Attack
   life: 0
+  Maxlife: 0
   Damage: 0
-  Aspeed: 0
+  isBroken: 0
   AttackSound: {fileID: 0}
   ParticleContainer: {fileID: 0}
   components:
   - {fileID: 790711536}
   - {fileID: 1369178687}
   - {fileID: 737128060}
+  isLeft: 0
 --- !u!4 &1568651469
 Transform:
   m_ObjectHideFlags: 0
@@ -88854,17 +88875,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 033010281b3c9f946bab82bd51625f27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PartName: 
   AttName: Boxer Left Attack
   life: 50
+  Maxlife: 0
   Damage: 10
-  Aspeed: 0
+  isBroken: 0
   AttackSound: {fileID: 0}
   ParticleContainer: {fileID: 0}
   components:
   - {fileID: 766745213}
   - {fileID: 1123698901}
   - {fileID: 932409611}
+  isLeft: 0
 --- !u!1 &1719962879
 GameObject:
   m_ObjectHideFlags: 0
@@ -89405,17 +89427,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 033010281b3c9f946bab82bd51625f27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PartName: 
   AttName: Boxer Left Attack
   life: 50
+  Maxlife: 0
   Damage: 10
-  Aspeed: 0
+  isBroken: 0
   AttackSound: {fileID: 0}
   ParticleContainer: {fileID: 0}
   components:
   - {fileID: 1786201377}
   - {fileID: 1576032445}
   - {fileID: 1818494536}
+  isLeft: 0
 --- !u!1 &1806056684
 GameObject:
   m_ObjectHideFlags: 0
@@ -89445,11 +89468,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7633a5ed9b4abb5438645a309cb7eb00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PartName: 
   AttName: Drill Down Attack
   life: 0
+  Maxlife: 0
   Damage: 0
-  Aspeed: 0
+  isBroken: 0
   AttackSound: {fileID: 0}
   ParticleContainer: {fileID: 0}
   components:
@@ -89516,17 +89539,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 033010281b3c9f946bab82bd51625f27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PartName: 
   AttName: Boxer Right Attack
   life: 50
+  Maxlife: 0
   Damage: 10
-  Aspeed: 0
+  isBroken: 0
   AttackSound: {fileID: 0}
   ParticleContainer: {fileID: 0}
   components:
   - {fileID: 1231202214}
   - {fileID: 544248562}
   - {fileID: 1272243815}
+  isLeft: 0
 --- !u!1001 &1810373337
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -89650,11 +89674,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ba0733d5e536884c81ea8678410a268, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PartName: 
   AttName: Boxer Up Attack
   life: 50
+  Maxlife: 0
   Damage: 10
-  Aspeed: 0
+  isBroken: 0
   AttackSound: {fileID: 0}
   ParticleContainer: {fileID: 0}
   components:
@@ -90431,11 +90455,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ba0733d5e536884c81ea8678410a268, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PartName: 
   AttName: Drill Up Attack
   life: 0
+  Maxlife: 0
   Damage: 0
-  Aspeed: 0
+  isBroken: 0
   AttackSound: {fileID: 0}
   ParticleContainer: {fileID: 0}
   components:
@@ -96687,17 +96711,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 033010281b3c9f946bab82bd51625f27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PartName: 
   AttName: Drill Left Attack
   life: 0
+  Maxlife: 0
   Damage: 0
-  Aspeed: 0
+  isBroken: 0
   AttackSound: {fileID: 0}
   ParticleContainer: {fileID: 0}
   components:
   - {fileID: 2012007394}
   - {fileID: 210182400}
   - {fileID: 895324747}
+  isLeft: 0
 --- !u!4 &1984345617
 Transform:
   m_ObjectHideFlags: 0
@@ -102013,17 +102038,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 033010281b3c9f946bab82bd51625f27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PartName: 
   AttName: Boxer Right Attack
   life: 50
+  Maxlife: 0
   Damage: 10
-  Aspeed: 0
+  isBroken: 0
   AttackSound: {fileID: 0}
   ParticleContainer: {fileID: 0}
   components:
   - {fileID: 854117769}
   - {fileID: 601392447}
   - {fileID: 1291401027}
+  isLeft: 0
 --- !u!4 &2020784927
 Transform:
   m_ObjectHideFlags: 0
@@ -113821,17 +113847,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 033010281b3c9f946bab82bd51625f27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PartName: 
   AttName: Drill Left Attack
   life: 0
+  Maxlife: 0
   Damage: 0
-  Aspeed: 0
+  isBroken: 0
   AttackSound: {fileID: 0}
   ParticleContainer: {fileID: 0}
   components:
   - {fileID: 6255771649753683340}
   - {fileID: 5164122727050784939}
   - {fileID: 3827107384019277069}
+  isLeft: 0
 --- !u!33 &354812563102024543
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -125129,7 +125156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _labelText: Back To Menu
   _label: {fileID: 1293256418670083882}
-  _selector: {fileID: 8748728631072149996}
+  _pulsControl: {fileID: 0}
   _miMenu: {fileID: 6515882944444248276}
   _Display: {fileID: 0}
   activationdelay: 0
@@ -131216,11 +131243,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ba0733d5e536884c81ea8678410a268, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PartName: 
   AttName: Boxer Up Attack
   life: 50
+  Maxlife: 0
   Damage: 10
-  Aspeed: 0
+  isBroken: 0
   AttackSound: {fileID: 0}
   ParticleContainer: {fileID: 0}
   components:
@@ -131944,17 +131971,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 033010281b3c9f946bab82bd51625f27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PartName: 
   AttName: Boxer Right Attack
   life: 50
+  Maxlife: 0
   Damage: 10
-  Aspeed: 0
+  isBroken: 0
   AttackSound: {fileID: 0}
   ParticleContainer: {fileID: 0}
   components:
   - {fileID: 6870716496292283536}
   - {fileID: 3120329011709934358}
   - {fileID: 7483314071769592735}
+  isLeft: 0
 --- !u!4 &1328872957817254541
 Transform:
   m_ObjectHideFlags: 0
@@ -132436,7 +132464,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _labelText: Next Level
   _label: {fileID: 3877310105339558814}
-  _selector: {fileID: 5119029380372731932}
+  _pulsControl: {fileID: 0}
   _miMenu: {fileID: 0}
   _Display: {fileID: 0}
   activationdelay: 0
@@ -137471,7 +137499,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _labelText: Quit
   _label: {fileID: 923128439482133785}
-  _selector: {fileID: 8568517827832052116}
+  _pulsControl: {fileID: 0}
   _miMenu: {fileID: 1949954272224846566}
   _Display: {fileID: 0}
   activationdelay: 0
@@ -137569,11 +137597,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7633a5ed9b4abb5438645a309cb7eb00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PartName: 
   AttName: Boxer Down Attack
   life: 50
+  Maxlife: 0
   Damage: 10
-  Aspeed: 0
+  isBroken: 0
   AttackSound: {fileID: 0}
   ParticleContainer: {fileID: 0}
   components:
@@ -144632,17 +144660,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 033010281b3c9f946bab82bd51625f27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PartName: 
   AttName: Drill Right Attack
   life: 0
+  Maxlife: 0
   Damage: 0
-  Aspeed: 0
+  isBroken: 0
   AttackSound: {fileID: 0}
   ParticleContainer: {fileID: 0}
   components:
   - {fileID: 4816924106938028263}
   - {fileID: 4598912591587719259}
   - {fileID: 266480270426743271}
+  isLeft: 0
 --- !u!1 &2343562515400996614
 GameObject:
   m_ObjectHideFlags: 0
@@ -160925,6 +160954,63 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4097614553120262715}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &3094247759123630527
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5159181415849690766, guid: 146ddcc143fdd4941805a24729e66a2f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 5159181415849690766, guid: 146ddcc143fdd4941805a24729e66a2f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5159181415849690766, guid: 146ddcc143fdd4941805a24729e66a2f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 3.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5159181415849690766, guid: 146ddcc143fdd4941805a24729e66a2f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.95315206
+      objectReference: {fileID: 0}
+    - target: {fileID: 5159181415849690766, guid: 146ddcc143fdd4941805a24729e66a2f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.29261816
+      objectReference: {fileID: 0}
+    - target: {fileID: 5159181415849690766, guid: 146ddcc143fdd4941805a24729e66a2f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.069437385
+      objectReference: {fileID: 0}
+    - target: {fileID: 5159181415849690766, guid: 146ddcc143fdd4941805a24729e66a2f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.03247121
+      objectReference: {fileID: 0}
+    - target: {fileID: 5159181415849690766, guid: 146ddcc143fdd4941805a24729e66a2f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -33.594
+      objectReference: {fileID: 0}
+    - target: {fileID: 5159181415849690766, guid: 146ddcc143fdd4941805a24729e66a2f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 10.47
+      objectReference: {fileID: 0}
+    - target: {fileID: 5159181415849690766, guid: 146ddcc143fdd4941805a24729e66a2f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -7.071
+      objectReference: {fileID: 0}
+    - target: {fileID: 7731930051472993441, guid: 146ddcc143fdd4941805a24729e66a2f, type: 3}
+      propertyPath: m_Name
+      value: Confetti
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 146ddcc143fdd4941805a24729e66a2f, type: 3}
 --- !u!1 &3097536978688418364
 GameObject:
   m_ObjectHideFlags: 0
@@ -161710,17 +161796,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 033010281b3c9f946bab82bd51625f27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PartName: 
   AttName: Boxer Left Attack
   life: 50
+  Maxlife: 0
   Damage: 10
-  Aspeed: 0
+  isBroken: 0
   AttackSound: {fileID: 0}
   ParticleContainer: {fileID: 0}
   components:
   - {fileID: 5444803839814710478}
   - {fileID: 2734954697582051672}
   - {fileID: 840650655751565554}
+  isLeft: 0
 --- !u!198 &3388536299727900124
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -171693,7 +171780,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _labelText: Back To Menu
   _label: {fileID: 1733305243466679265}
-  _selector: {fileID: 7593930778066536371}
+  _pulsControl: {fileID: 0}
   _miMenu: {fileID: 0}
   _Display: {fileID: 0}
   activationdelay: 0
@@ -171852,7 +171939,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _labelText: Quit
   _label: {fileID: 969129859791692705}
-  _selector: {fileID: 3644247422853045257}
+  _pulsControl: {fileID: 0}
   _miMenu: {fileID: 0}
   _Display: {fileID: 0}
   activationdelay: 0
@@ -176829,11 +176916,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ba0733d5e536884c81ea8678410a268, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PartName: 
   AttName: Drill Up Attack
   life: 0
+  Maxlife: 0
   Damage: 0
-  Aspeed: 0
+  isBroken: 0
   AttackSound: {fileID: 0}
   ParticleContainer: {fileID: 0}
   components:
@@ -179005,9 +179092,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Character: {fileID: 994544851}
   _timer: 0
+  _flashDuration: 0
   _AttackInterval: 5
+  _DefAttackInterval: 0
   _DodgeChance: 50
   IsPaused: 0
+  isBoss: 0
+  RageMode: 0
+  NumOfRage: 0
+  AttackMat: {fileID: 0}
+  attackDir: {x: 0, y: 0}
 --- !u!4 &4493416131820344227
 Transform:
   m_ObjectHideFlags: 0
@@ -181412,11 +181506,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98d31dd8885a7bd40be180bb7563b394, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  body: {fileID: 7679840963297141118}
-  Player: {fileID: 2100000, guid: 8dd75b1e921287743b13e2b3c450f144, type: 2}
-  Enemy: {fileID: 2100000, guid: 2c8e4f92fbcd461468ed0c219c8b62af, type: 2}
   Win: {fileID: 1251337295167580658}
   Lose: {fileID: 6820806480008453712}
+  RarmCollection: []
+  LarmCollection: []
+  LegCollection: []
+  HeadCollection: []
+  ChestCollection: []
+  Rarm: {fileID: 0}
+  Larm: {fileID: 0}
+  Leg: {fileID: 0}
+  Head: {fileID: 0}
+  Chest: {fileID: 0}
 --- !u!95 &5230758805492990463
 Animator:
   serializedVersion: 5
@@ -196551,7 +196652,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _labelText: Back To Menu
   _label: {fileID: 5805177079733775640}
-  _selector: {fileID: 4038332769230635998}
+  _pulsControl: {fileID: 0}
   _miMenu: {fileID: 1949954272224846566}
   _Display: {fileID: 0}
   activationdelay: 0
@@ -197452,7 +197553,7 @@ PrefabInstance:
     - target: {fileID: 2968432105980930317, guid: 997ebcc6575199c4d86a7779e440e67d, type: 3}
       propertyPath: Sound
       value: 
-      objectReference: {fileID: 5636858216224285052}
+      objectReference: {fileID: 0}
     - target: {fileID: 2968432105980930317, guid: 997ebcc6575199c4d86a7779e440e67d, type: 3}
       propertyPath: ActSound
       value: 
@@ -197460,7 +197561,7 @@ PrefabInstance:
     - target: {fileID: 5397545310374206482, guid: 997ebcc6575199c4d86a7779e440e67d, type: 3}
       propertyPath: Sound
       value: 
-      objectReference: {fileID: 5636858216224285051}
+      objectReference: {fileID: 0}
     - target: {fileID: 5397545310374206482, guid: 997ebcc6575199c4d86a7779e440e67d, type: 3}
       propertyPath: ActSound
       value: 
@@ -197468,7 +197569,7 @@ PrefabInstance:
     - target: {fileID: 6485887818476068163, guid: 997ebcc6575199c4d86a7779e440e67d, type: 3}
       propertyPath: Sound
       value: 
-      objectReference: {fileID: 5636858216224285050}
+      objectReference: {fileID: 0}
     - target: {fileID: 6485887818476068163, guid: 997ebcc6575199c4d86a7779e440e67d, type: 3}
       propertyPath: ActSound
       value: 
@@ -197536,320 +197637,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5830063480021378579, guid: 997ebcc6575199c4d86a7779e440e67d, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 5636858216224285050}
-    - targetCorrespondingSourceObject: {fileID: 4129275593941556575, guid: 997ebcc6575199c4d86a7779e440e67d, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 5636858216224285051}
-    - targetCorrespondingSourceObject: {fileID: 5668502545030607123, guid: 997ebcc6575199c4d86a7779e440e67d, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 5636858216224285052}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 997ebcc6575199c4d86a7779e440e67d, type: 3}
---- !u!1 &5636858216224285047 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5830063480021378579, guid: 997ebcc6575199c4d86a7779e440e67d, type: 3}
-  m_PrefabInstance: {fileID: 5636858216224285046}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &5636858216224285048 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5668502545030607123, guid: 997ebcc6575199c4d86a7779e440e67d, type: 3}
-  m_PrefabInstance: {fileID: 5636858216224285046}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &5636858216224285049 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4129275593941556575, guid: 997ebcc6575199c4d86a7779e440e67d, type: 3}
-  m_PrefabInstance: {fileID: 5636858216224285046}
-  m_PrefabAsset: {fileID: 0}
---- !u!82 &5636858216224285050
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5636858216224285047}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 1932116080009746235, guid: 52c6c16ae32769740871c24bffe89d8d, type: 2}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
---- !u!82 &5636858216224285051
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5636858216224285049}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 1932116080009746235, guid: 52c6c16ae32769740871c24bffe89d8d, type: 2}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
---- !u!82 &5636858216224285052
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5636858216224285048}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 1932116080009746235, guid: 52c6c16ae32769740871c24bffe89d8d, type: 2}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!1 &5636920113642715152
 GameObject:
   m_ObjectHideFlags: 0
@@ -203918,7 +203707,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _labelText: Next Level
   _label: {fileID: 8407174769310198188}
-  _selector: {fileID: 461832327768574510}
+  _pulsControl: {fileID: 0}
   _miMenu: {fileID: 0}
   _Display: {fileID: 0}
   activationdelay: 0
@@ -204712,7 +204501,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _labelText: Quit
   _label: {fileID: 5597178819169697579}
-  _selector: {fileID: 4002518671977114534}
+  _pulsControl: {fileID: 0}
   _miMenu: {fileID: 6515882944444248276}
   _Display: {fileID: 0}
   activationdelay: 0
@@ -227612,11 +227401,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7633a5ed9b4abb5438645a309cb7eb00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PartName: 
   AttName: Drill Down Attack
   life: 0
+  Maxlife: 0
   Damage: 0
-  Aspeed: 0
+  isBroken: 0
   AttackSound: {fileID: 0}
   ParticleContainer: {fileID: 0}
   components:
@@ -234155,8 +233944,6 @@ MonoBehaviour:
   _stageTheme: {fileID: 0}
   Lose: {fileID: 8300000, guid: 1c982fa6dc29d07498e0b14aa277b9d4, type: 3}
   DDMachine: {fileID: 0}
-  enemyLight: {fileID: 0}
-  playerLight: {fileID: 0}
   gameCanvas: {fileID: 706483094225756596}
   gameKoState: {fileID: 2000253635}
 --- !u!224 &7840117970294231516
@@ -239433,6 +239220,7 @@ MonoBehaviour:
   Leg: {fileID: 0}
   Head: {fileID: 0}
   Chest: {fileID: 0}
+  PartCount: 0
   CHead: 0
   CRight: 0
   CLeft: 0
@@ -239442,9 +239230,12 @@ MonoBehaviour:
   Stamina: 0
   MaxStamina: 100
   StaminaRefresh: 2
+  debuffParticles: {fileID: 0}
+  recoverParticles: {fileID: 0}
   IsRepairing: 0
   IsDying: 0
   IsEnemy: 0
+  DificultyMultyplyer: 0
   IsDodgingRight: 0
   IsDodgingLeft: 0
   IsDodgingUp: 0
@@ -239475,6 +239266,7 @@ MonoBehaviour:
   _Audio: {fileID: 7667564808855253216}
   _miss: {fileID: 0}
   _KO: {fileID: 0}
+  _debuff: {fileID: 0}
   anim: {fileID: 8012810488319688111}
   RarmsHitWave: {fileID: 0}
   LarmsHitWave: {fileID: 0}
@@ -239525,6 +239317,8 @@ MonoBehaviour:
   RedBar: {fileID: 0}
   StamminaBar: {fileID: 0}
   DamageToTake: 0
+  warning: {fileID: 0}
+  WarningTime: 0
 --- !u!95 &8012810488319688111
 Animator:
   serializedVersion: 5
@@ -239929,7 +239723,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _labelText: Quit
   _label: {fileID: 5481367205973864851}
-  _selector: {fileID: 8354256124532117051}
+  _pulsControl: {fileID: 0}
   _miMenu: {fileID: 0}
   _Display: {fileID: 0}
   activationdelay: 0
@@ -240118,7 +239912,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _labelText: Back To Menu
   _label: {fileID: 6444475114266350035}
-  _selector: {fileID: 2882796176465745281}
+  _pulsControl: {fileID: 0}
   _miMenu: {fileID: 0}
   _Display: {fileID: 0}
   activationdelay: 0
@@ -247039,6 +246833,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _Player: {fileID: 0}
   _Enemy: {fileID: 0}
+  TheCrowd: {fileID: 0}
   _Controler: {fileID: 0}
   _Control: {fileID: 0}
   _RT: {fileID: 676752463676898396}
@@ -262501,5 +262296,6 @@ SceneRoots:
   - {fileID: 5272431956803669601}
   - {fileID: 1646373887}
   - {fileID: 33663809}
+  - {fileID: 3094247759123630527}
   - {fileID: 110672620}
   - {fileID: 1487464460}
