@@ -45,15 +45,15 @@ public class PartSelector : MonoBehaviour
     void Start()
     {
         Zero();
-        Display.SetRarmDisplay(rArms[RAIndex].life, rArms[RAIndex].Aspeed, rArms[RAIndex].PartName);
+        Display.SetRarmDisplay(rArms[RAIndex].life, rArms[RAIndex].Damage);
         miniDisplays[0].DisplayMini(RAIndex);
-        Display.SetLarmDisplay(lArms[LAIndex].life, lArms[LAIndex].Aspeed, lArms[LAIndex].PartName);
+        Display.SetLarmDisplay(lArms[LAIndex].life, lArms[LAIndex].Damage);
         miniDisplays[0].DisplayMini(LAIndex);
-        Display.SetLegDisplay(legs[LIndex].life, legs[LIndex].Aspeed, legs[LIndex].PartName);
+        Display.SetLegDisplay(legs[LIndex].life, legs[LIndex].Damage);
         miniDisplays[0].DisplayMini(LIndex);
-        Display.SetHeadDisplay(heads[HIndex].life, heads[HIndex].Aspeed, heads[HIndex].PartName);
+        Display.SetHeadDisplay(heads[HIndex].life, heads[HIndex].Damage);
         miniDisplays[0].DisplayMini(HIndex);
-        Display.SetChestDisplay(chests[ChIndex].life, chests[ChIndex].Aspeed, chests[ChIndex].PartName);
+        Display.SetChestDisplay(chests[ChIndex].life, chests[ChIndex].Damage);
         miniDisplays[0].DisplayMini(ChIndex);
     }
     void Update()
@@ -226,7 +226,7 @@ public class PartSelector : MonoBehaviour
             }
 
             rArms[RAIndex].gameObject.SetActive(true);
-            Display.SetRarmDisplay(rArms[RAIndex].life, rArms[RAIndex].Aspeed, rArms[RAIndex].PartName);
+            Display.SetRarmDisplay(rArms[RAIndex].life, rArms[RAIndex].Damage);
             miniDisplays[0].DisplayMini(RAIndex);
             return;
         }
@@ -250,7 +250,7 @@ public class PartSelector : MonoBehaviour
             }
 
             lArms[LAIndex].gameObject.SetActive(true);
-            Display.SetLarmDisplay(lArms[LAIndex].life, lArms[LAIndex].Aspeed, lArms[LAIndex].PartName);
+            Display.SetLarmDisplay(lArms[LAIndex].life, lArms[LAIndex].Damage);
             miniDisplays[1].DisplayMini(LAIndex);
             return;
         }
@@ -274,7 +274,7 @@ public class PartSelector : MonoBehaviour
             }
 
             heads[HIndex].gameObject.SetActive(true);
-            Display.SetHeadDisplay(heads[HIndex].life, heads[HIndex].Aspeed, heads[HIndex].PartName);
+            Display.SetHeadDisplay(heads[HIndex].life, heads[HIndex].Damage);
             miniDisplays[3].DisplayMini(HIndex);
             return;
         }
@@ -298,7 +298,7 @@ public class PartSelector : MonoBehaviour
             }
 
             legs[LIndex].gameObject.SetActive(true);
-            Display.SetLegDisplay(legs[LIndex].life, legs[LIndex].Aspeed, legs[LIndex].PartName);
+            Display.SetLegDisplay(legs[LIndex].life, legs[LIndex].Damage);
             miniDisplays[2].DisplayMini(LIndex);
             return;
         }
@@ -322,7 +322,7 @@ public class PartSelector : MonoBehaviour
             }
 
             chests[ChIndex].gameObject.SetActive(true);
-            Display.SetChestDisplay(chests[ChIndex].life, chests[ChIndex].Aspeed, chests[ChIndex].PartName);
+            Display.SetChestDisplay(chests[ChIndex].life, chests[ChIndex].Damage);
             miniDisplays[4].DisplayMini(ChIndex);
         }
     }
@@ -343,7 +343,7 @@ public class PartSelector : MonoBehaviour
             }
 
             rArms[RAIndex].gameObject.SetActive(true);
-            Display.SetRarmDisplay(rArms[RAIndex].life, rArms[RAIndex].Aspeed, rArms[RAIndex].PartName);
+            Display.SetRarmDisplay(rArms[RAIndex].life, rArms[RAIndex].Damage);
             miniDisplays[0].DisplayMini(RAIndex);
             return;
         }
@@ -364,7 +364,7 @@ public class PartSelector : MonoBehaviour
             }
 
             lArms[LAIndex].gameObject.SetActive(true);
-            Display.SetLarmDisplay(lArms[LAIndex].life, lArms[LAIndex].Aspeed, lArms[LAIndex].PartName);
+            Display.SetLarmDisplay(lArms[LAIndex].life, lArms[LAIndex].Damage);
             miniDisplays[1].DisplayMini(LAIndex);
             return;
         }
@@ -384,7 +384,7 @@ public class PartSelector : MonoBehaviour
             }
 
             heads[HIndex].gameObject.SetActive(true);
-            Display.SetHeadDisplay(heads[HIndex].life, heads[HIndex].Aspeed, heads[HIndex].PartName);
+            Display.SetHeadDisplay(heads[HIndex].life, heads[HIndex].Damage);
             miniDisplays[3].DisplayMini(HIndex);
             return;
         }
@@ -405,7 +405,7 @@ public class PartSelector : MonoBehaviour
             }
 
             legs[LIndex].gameObject.SetActive(true);
-            Display.SetLegDisplay(legs[LIndex].life, legs[LIndex].Aspeed, legs[LIndex].PartName);
+            Display.SetLegDisplay(legs[LIndex].life, legs[LIndex].Damage);
             miniDisplays[2].DisplayMini(LIndex);
             return;
         }
@@ -425,7 +425,7 @@ public class PartSelector : MonoBehaviour
             }
 
             chests[ChIndex].gameObject.SetActive(true);
-            Display.SetChestDisplay(chests[ChIndex].life, chests[ChIndex].Aspeed, chests[ChIndex].PartName);
+            Display.SetChestDisplay(chests[ChIndex].life, chests[ChIndex].Damage);
             miniDisplays[4].DisplayMini(ChIndex);
         }
     }

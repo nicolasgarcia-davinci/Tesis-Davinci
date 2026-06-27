@@ -4,12 +4,10 @@ using UnityEngine;
 
 public class Part : MonoBehaviour
 {
-    public string PartName;
     public string AttName;
     public float life;
     public float Maxlife;
     public int Damage;
-    public float Aspeed;
     public bool isBroken;
     public AudioClip AttackSound;
 
