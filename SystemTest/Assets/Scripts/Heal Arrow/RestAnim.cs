@@ -7,18 +7,18 @@ public class RestAnim : MonoBehaviour
     public Animator Anim;
 
     [Header("Part Collection")]
-    public Arm[] RarmCollection;
-    public Arm[] LarmCollection;
-    public Leg[] LegCollection;
-    public Head[] HeadCollection;
-    public Chest[] ChestCollection;
+    public Part[] RarmCollection;
+    public Part[] LarmCollection;
+    public Part[] LegCollection;
+    public Part[] HeadCollection;
+    public Part[] ChestCollection;
 
     [Header("Active Parts")]
-    public Arm Rarm;
-    public Arm Larm;
-    public Leg Leg;
-    public Head Head;
-    public Chest Chest;
+    public Part Rarm;
+    public Part Larm;
+    public Part Leg;
+    public Part Head;
+    public Part Chest;
 
     [Header("Particles")]
     public GameObject HeadGlich;
@@ -30,23 +30,23 @@ public class RestAnim : MonoBehaviour
     {
         Rarm = RarmCollection[LifeTraker.Instance.RarmIndex];
         Rarm.ActiveParts();
-        Rarm.SetColor();
+        Rarm.FullColor(ColorCordination.Instance.Rightcolor1, ColorCordination.Instance.Rightcolor2);
 
         Larm = LarmCollection[LifeTraker.Instance.LarmIndex];
         Larm.ActiveParts();
-        Larm.SetColor();
+        Larm.FullColor(ColorCordination.Instance.Leftcolor1, ColorCordination.Instance.Leftcolor2);
 
         Leg = LegCollection[LifeTraker.Instance.LegsIndex];
         Leg.ActiveParts();
-        Leg.SetColor();
+        Leg.FullColor(ColorCordination.Instance.Legscolor1, ColorCordination.Instance.Legscolor2);
 
         Head = HeadCollection[LifeTraker.Instance.HeadIndex];
         Head.ActiveParts();
-        Head.SetColor();
+        Head.FullColor(ColorCordination.Instance.Headcolor1, ColorCordination.Instance.Headcolor2);
 
         Chest = ChestCollection[LifeTraker.Instance.ChestIndex];
         Chest.ActiveParts();
-        Chest.SetColor();
+        Chest.FullColor(ColorCordination.Instance.Chestcolor1, ColorCordination.Instance.Chestcolor2);
     }
 
     public void SetBody()

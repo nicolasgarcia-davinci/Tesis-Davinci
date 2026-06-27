@@ -100,7 +100,11 @@ public class ButtomAction : MonoBehaviour
             LoadManager.Instance.LoadMenu();
         }else if (_thisType == ButtomType.LoadMenu && !LifeTraker.Instance.IsEnemy) LoadManager.Instance.LoadMenu();
 
-        if (_thisType == ButtomType.Quit) Application.Quit();
+        if (_thisType == ButtomType.Quit)
+        {
+            LifeTraker.Instance.Dificulty = newDif;
+            Application.Quit();
+        } 
 
         if (_thisType == ButtomType.Return)
         {
@@ -111,6 +115,8 @@ public class ButtomAction : MonoBehaviour
         if (_thisType == ButtomType.Continue)
         {
                 LifeTraker.Instance.Dificulty = newDif;
+            if(newDif==2 && !LifeTraker.Instance.HasUnlockDrill) LifeTraker.Instance.UnlockDrill=true;
+            if(newDif==3 && !LifeTraker.Instance.HasUnlockClaw) LifeTraker.Instance.UnlockClaw=true;
                 LoadManager.Instance.Garage();
         }
 

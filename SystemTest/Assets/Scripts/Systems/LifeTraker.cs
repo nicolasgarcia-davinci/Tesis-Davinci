@@ -54,6 +54,12 @@ public class LifeTraker : MonoBehaviour
     [Header("Reset Round Timer?")]
     public bool ResetTimer;
 
+    [Header("Unlocks")]
+    public bool UnlockDrill;
+    public bool UnlockClaw;
+    public bool HasUnlockClaw;
+    public bool HasUnlockDrill;
+
     private void Awake()
     {
         Cursor.lockState = CursorLockMode.Locked;

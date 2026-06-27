@@ -8,7 +8,7 @@ public class EnterRound : MonoBehaviour
     [SerializeField] TextMeshProUGUI RoundMessage;
     [SerializeField] TMP_FontAsset RoundFont;
     
-    public void Again()
+    public virtual void Again()
     {
         if (LifeTraker.Instance.ResetTimer)
         {

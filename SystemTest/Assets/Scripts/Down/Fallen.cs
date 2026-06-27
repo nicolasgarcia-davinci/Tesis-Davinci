@@ -10,22 +10,22 @@ public class Fallen : MonoBehaviour
     public Animator _fallen;
 
     [Header("Part Collection")]
-    public Arm[] RarmCollection;
-    public Arm[] LarmCollection;
-    public Leg[] LegCollection;
-    public Head[] HeadCollection;
+    public Part[] RarmCollection;
+    public Part[] LarmCollection;
+    public Part[] LegCollection;
+    public Part[] HeadCollection;
 
     [Header("Active Parts")]
-    public Arm Rarm;
-    public Arm Larm;
-    public Leg Leg;
-    public Head Head;
+    public Part Rarm;
+    public Part Larm;
+    public Part Leg;
+    public Part Head;
 
     [Header("Enemie Parts")]
-    public Arm ERarm;
-    public Arm ELarm;
-    public Leg ELeg;
-    public Head EHead;
+    public Part ERarm;
+    public Part ELarm;
+    public Part ELeg;
+    public Part EHead;
 
     public bool _gameOver;
     public bool _isEnemy;
@@ -123,10 +123,10 @@ public class Fallen : MonoBehaviour
     }
     public void ColorChange()
     {
-        Rarm.SetColor();
-        Larm.SetColor();
-        Leg.SetColor();
-        Head.SetColor();
+        Rarm.FullColor(ColorCordination.Instance.Rightcolor1, ColorCordination.Instance.Rightcolor2);
+        Larm.FullColor(ColorCordination.Instance.Leftcolor1, ColorCordination.Instance.Leftcolor2);
+        Leg.FullColor(ColorCordination.Instance.Legscolor1, ColorCordination.Instance.Legscolor2);
+        Head.FullColor(ColorCordination.Instance.Headcolor1, ColorCordination.Instance.Headcolor2);
     }
     public void GetUp()
     {

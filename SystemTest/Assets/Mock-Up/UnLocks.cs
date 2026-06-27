@@ -15,8 +15,8 @@ public class UnLocks : MonoBehaviour
     public float transparancyRate;
     void Start()
     {
-        if (LifeTraker.Instance.Dificulty == 2) UnlockMesage.text = "You Have Unlocked the Drill Set";
-        if (LifeTraker.Instance.Dificulty == 3) UnlockMesage.text = "You Have Unlocked the ?? Set";
+        if (LifeTraker.Instance.UnlockDrill) UnlockMesage.text = "You Have Unlocked the Drill Set";
+        if (LifeTraker.Instance.UnlockClaw) UnlockMesage.text = "You Have Unlocked the Claw Set";
     }
 
     void Update()
@@ -25,6 +25,8 @@ public class UnLocks : MonoBehaviour
         { 
             Menu.gameObject.SetActive(true);
             Menu.act1();
+            LifeTraker.Instance.UnlockClaw=false;
+            LifeTraker.Instance.UnlockDrill=false;
             gameObject.SetActive(false);
         }
         if (toTranparent)
