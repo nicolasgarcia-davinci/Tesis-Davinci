@@ -24,6 +24,12 @@ public class Winner : MonoBehaviour
     {
         if (LifeTraker.Instance.IsEnemy)
         {
+            Rarm.DeActiveParts();
+            Larm.DeActiveParts();
+            Leg.DeActiveParts();
+            Head.DeActiveParts();
+            Chest.DeActiveParts();
+
             Rarm = RarmCollection[LifeTraker.Instance.RarmIndex];
             Larm = LarmCollection[LifeTraker.Instance.LarmIndex];
             Leg = LegCollection[LifeTraker.Instance.LegsIndex];
@@ -42,6 +48,7 @@ public class Winner : MonoBehaviour
             Chest.FullColor(ColorCordination.Instance.Chestcolor1, ColorCordination.Instance.Chestcolor2);
 
             Win.SetActive(true);
+            return;
         }
         if (!LifeTraker.Instance.IsEnemy)
         {

@@ -71,6 +71,8 @@ public class FightControler : MonoBehaviour
         LifeTraker.Instance.eLeft      = _Enemy.Larm.life;
         LifeTraker.Instance.eLegs      = _Enemy.Leg.life;
 
+        _Controler.TurnWarningOff();
+
         StageCam.Instance.GoToKOCam();
     }
 
@@ -142,6 +144,7 @@ public class FightControler : MonoBehaviour
             StageState.Instance.RoundEnter = false;
             Timer.SetActive(true);
             ActivateControlers();
+            _Controler.IsPaused = false;
             _Player.Set();
             _Enemy.Set();
             _RT.LaunchTimer();
@@ -161,6 +164,7 @@ public class FightControler : MonoBehaviour
         _Player.SkipIntro();
         _Enemy.SkipIntro();
         _stageTheme.CallSong();
+        _Controler.IsPaused = false;
     }
 
     public void ExitStage()

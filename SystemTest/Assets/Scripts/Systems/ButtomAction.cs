@@ -14,6 +14,7 @@ public class ButtomAction : MonoBehaviour
     public MenuRobo _Display;
     public float activationdelay;
     [Range(.02f, 1f)] public float Volume;
+    [Range(.02f, 0.10f)] public float VolumeVariant;
     public Slider VolumeSlider;
     public bool _isSelected;
     public bool _Activated;
@@ -31,6 +32,9 @@ public class ButtomAction : MonoBehaviour
 
         if (VolumeSlider!=null)
         {
+            if (_thisType == ButtomType.MVolume) Volume = StageSound.instance.InicialMasterAudio;
+            if (_thisType == ButtomType.SVolume) Volume = StageSound.instance.InicialMusicAudio;
+            if (_thisType == ButtomType.EVolume) Volume = StageSound.instance.InicialSoundAudio;
             VolumeSlider.value = Volume;
         }
 
@@ -49,7 +53,7 @@ public class ButtomAction : MonoBehaviour
         {
             if (_thisType == ButtomType.EVolume || _thisType == ButtomType.SVolume || _thisType == ButtomType.MVolume)
             {
-                Volume-= 0.01f;
+                Volume-= VolumeVariant;
                 if (Volume <= 0) Volume = 0.01f;
                 VolumeSlider.value = Volume;
                 if (_thisType == ButtomType.MVolume) StageSound.instance.GameMixer.SetFloat("MasterVolume", Mathf.Log10(Volume) * 20);
@@ -62,7 +66,7 @@ public class ButtomAction : MonoBehaviour
         {
             if (_thisType == ButtomType.EVolume || _thisType == ButtomType.SVolume || _thisType == ButtomType.MVolume)
             {
-                Volume += 0.01f;
+                Volume += VolumeVariant;
                 if (Volume > 1) Volume = 1;
                 VolumeSlider.value = Volume;
                 if (_thisType == ButtomType.MVolume) StageSound.instance.GameMixer.SetFloat("MasterVolume", Mathf.Log10(Volume) * 20);

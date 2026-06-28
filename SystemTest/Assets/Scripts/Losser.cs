@@ -26,9 +26,17 @@ public class Losser : MonoBehaviour
             Leg.ActiveParts();
             Head.ActiveParts();
             Chest.ActiveParts();
+            return;
         }
+
         if (!LifeTraker.Instance.IsEnemy)
         {
+            Rarm.DeActiveParts();
+            Larm.DeActiveParts();
+            Leg.DeActiveParts();
+            Head.DeActiveParts();
+            Chest.DeActiveParts();
+
             Rarm = RarmCollection[LifeTraker.Instance.RarmIndex];
             Larm = LarmCollection[LifeTraker.Instance.LarmIndex];
             Leg = LegCollection[LifeTraker.Instance.LegsIndex];

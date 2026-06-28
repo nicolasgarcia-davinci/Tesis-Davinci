@@ -5,15 +5,20 @@ using UnityEngine;
 public class Boss : CompEnemy
 {
     [SerializeField] int NumOfChanges;
+    public GameObject Sayian;
 
     public override void Set()
     {
+        ResetBools();
+        Stamina = MaxStamina;
+        StamminaBar.UpdateLife(Stamina, MaxStamina);
+        IsRepairing = false;
+
         OverAllHealth = LifeTraker.Instance.eOverHealt;
         Rarm.life = LifeTraker.Instance.eRight;
         Larm.life = LifeTraker.Instance.eLeft;
         Leg.life = LifeTraker.Instance.eLegs;
         Head.life = LifeTraker.Instance.eHead;
-        IsRepairing = false;
 
         if (Rarm.life <= 0 && NumOfChanges>0)
         {
@@ -86,5 +91,13 @@ public class Boss : CompEnemy
         Head = HeadCollection[ChangeTo];
         Head.life = Head.Maxlife;
         LifeTraker.Instance.eHead = Head.life;
+    }
+    public void GoBerserk()
+    {
+        Sayian.SetActive(true);
+    }
+    public void ChillPill()
+    {
+        Sayian.SetActive(false);
     }
 }

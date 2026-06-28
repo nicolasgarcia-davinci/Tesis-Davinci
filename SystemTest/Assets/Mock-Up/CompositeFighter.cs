@@ -30,9 +30,6 @@ public class CompositeFighter : MonoBehaviour
     public float CLegs;
     public float CChest;
 
-    [Header("Has To Set?")]
-    public bool hasBeenSet=false;
-
     [Header("Eneregy System")]
     public float Stamina;
     public float MaxStamina;
@@ -164,7 +161,6 @@ public class CompositeFighter : MonoBehaviour
 
     public virtual void Set()
     {
-        hasBeenSet = true;
         ResetBools();
         Stamina = MaxStamina;
         StamminaBar.UpdateLife(Stamina, MaxStamina);

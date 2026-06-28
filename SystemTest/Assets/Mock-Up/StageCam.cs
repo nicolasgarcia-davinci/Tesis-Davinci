@@ -12,6 +12,8 @@ public class StageCam : MonoBehaviour
     public GameObject Repair;
     public GameObject KO;
     public GameObject Controls;
+
+    public JumboTron BossScreen;
     
     
     public static StageCam Instance;
@@ -124,7 +126,8 @@ public class StageCam : MonoBehaviour
     {
         StageState.Instance.RoundEnter = true;
         Fight.SetActive(true);
-        FightCurtain.SetActive(true);
+        if (FightCurtain != null) FightCurtain.SetActive(true);
+        else BossScreen.CalllText();
     }
     public void TurnOnKO()
     {

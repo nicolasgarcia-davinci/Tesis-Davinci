@@ -17,7 +17,7 @@ public class EnterRound : MonoBehaviour
         }
     }
 
-    public void CurtainCall()
+    public virtual void CurtainCall()
     {
         FightControler.Instance.CallFighters();
         this.gameObject.SetActive(false);
