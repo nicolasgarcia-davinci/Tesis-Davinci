@@ -20,7 +20,6 @@ public class FightControler : MonoBehaviour
     public GameObject PauseMenu;
     public GameObject Timer;
     public GameObject Controlers;
-    public bool IsPaused;
 
     public Animator UI_Enter;
 
@@ -111,19 +110,6 @@ public class FightControler : MonoBehaviour
     }
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            if (IsPaused)
-            {
-                UnPause();
-                return;
-            }
-            if (!IsPaused)
-            {
-                Pause();
-                return;
-            }
-        }
         if (StageState.Instance.ResetFight)
         {
             SkipIntro();
@@ -191,7 +177,6 @@ public class FightControler : MonoBehaviour
         _Controler.Pause();
         _RT.Pause();
         PauseMenu.SetActive(true);
-        IsPaused = true;
     }
     public void UnPause()
     {
@@ -199,7 +184,6 @@ public class FightControler : MonoBehaviour
         _Controler.UnPause();
         _RT.UnPause();
         PauseMenu.SetActive(false);
-        IsPaused = false;
     }
 
 }

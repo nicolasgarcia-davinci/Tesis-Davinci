@@ -481,6 +481,7 @@ public class CompositeFighter : MonoBehaviour
 
     public void TurnDebbOff()
     {
+        StopAllCoroutines();
         debuffParticles.SetActive(false);
         recoverParticles.SetActive(false);
     }

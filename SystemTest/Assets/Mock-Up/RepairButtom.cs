@@ -77,6 +77,8 @@ public class RepairButtom : MonoBehaviour
 
     public float GetPercentil(float current, float max)
     {  
+        if(current<=0) return 0;
+        if(current>=max) return 100;
         return (current/max)*100; 
     }
     public IEnumerator Action()

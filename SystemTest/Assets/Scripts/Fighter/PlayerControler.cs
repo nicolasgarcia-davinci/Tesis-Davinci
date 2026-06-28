@@ -25,6 +25,10 @@ public class PlayerControler : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.D)) Character.Dodge("DoedgeRight", ref Character.IsDodgingRight);
         if (Input.GetKeyDown(KeyCode.A)) Character.Dodge("DoedgeLeft", ref Character.IsDodgingLeft);
         if (Input.GetKeyDown(KeyCode.S)) Character.Dodge("DoedgeDown", ref Character.IsDodgingDown);
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            FightControler.Instance.Pause();
+        }
     }
     public void Pause()
     {
