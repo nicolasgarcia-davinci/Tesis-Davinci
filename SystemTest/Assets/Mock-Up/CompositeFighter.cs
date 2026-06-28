@@ -675,7 +675,6 @@ public class CompositeFighter : MonoBehaviour
 
     private void CallCam()
     {
-       LifeTraker.Instance.RundCounter++;
        LifeTraker.Instance.ResetTimer = true;
        LoadManager.Instance.LoadIntermision();
        StageState.Instance.ResetRepair = true;

@@ -41,6 +41,7 @@ public class StageCam : MonoBehaviour
     public void GoToRound2()
     {
         StageState.Instance.ResetFight = false;
+        LifeTraker.Instance.RundCounter++;
         _animator.Play("Round 2");
     }
     public void GoToRepairCam()
