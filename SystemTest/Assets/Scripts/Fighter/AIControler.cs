@@ -29,7 +29,7 @@ public class AIControler : MonoBehaviour
     {
         if (IsPaused) return;
         if(isBoss && Character.OverAllHealth <= Character.CChest/2 && !RageMode && NumOfRage==0) EnterRageMode();
-        if(isBoss && Character.OverAllHealth <= Character.CChest/4 && !RageMode && NumOfRage==1) EnterRageMode();
+        if(isBoss && Character.OverAllHealth <= Character.CChest/3 && !RageMode && NumOfRage==1) EnterRageMode();
         if(isBoss && Character.Stamina<=0) ExitRageMode();
         _timer += Time.deltaTime;
         if (_timer>=_AttackInterval)
@@ -139,6 +139,7 @@ public class AIControler : MonoBehaviour
     {
         _timer = 0;
         attackDir = new Vector2(0, 0);
+        StopAllCoroutines();
         AttackMat.SetVector("_Direction", attackDir);
         AttackMat.SetFloat("_Edge_Softness", 0);
         AttackMat.SetFloat("_Progres", 0);

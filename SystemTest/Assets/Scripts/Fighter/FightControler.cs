@@ -167,8 +167,6 @@ public class FightControler : MonoBehaviour
     {
         UI_Enter.Play("Exit");
         _Controler.TurnWarningOff();
-        _Player.TurnDebbOff();
-        _Enemy.TurnDebbOff();
         _Player.IsRepairing = true;
         _Enemy.IsRepairing = true;
         _Player.ExitStage();

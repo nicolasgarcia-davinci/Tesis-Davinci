@@ -214,6 +214,7 @@ public class CompositeFighter : MonoBehaviour
 
     public void ExitStage()
     {
+        TurnDebbOff();
         anim.Play("DescansoEntry V2");
     }
 

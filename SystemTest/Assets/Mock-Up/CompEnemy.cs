@@ -27,7 +27,7 @@ public class CompEnemy : CompositeFighter
         LifeTraker.Instance.eLeft = Larm.life;
         LifeTraker.Instance.eLegs = Leg.life;
         LifeTraker.Instance.eHead = Head.life;
-        LifeTraker.Instance.eOverHealt = (Rarm.life + Larm.life + Leg.life + Head.life + Chest.life) * DificultyMultyplyer;
+        LifeTraker.Instance.eOverHealt = (Rarm.life + Larm.life + Leg.life + Head.life + Chest.life);
         LifeTraker.Instance.eMaxHealt = LifeTraker.Instance.eOverHealt;
         OverAllHealth = LifeTraker.Instance.eOverHealt;
 
@@ -44,38 +44,27 @@ public class CompEnemy : CompositeFighter
         Larm.life = LifeTraker.Instance.eLeft;
         Leg.life = LifeTraker.Instance.eLegs;
         Head.life = LifeTraker.Instance.eHead;
+        IsRepairing = false;
         PartCount = 1;
 
         if (Rarm.life > 0)
         {
             PartCount++;
-            RarmBoom = false;
-            Rarm.ActiveParts();
-            DeActivateParticle(RarmSpark);
         }
 
         if (Larm.life > 0)
         {
             PartCount++;
-            LarmBoom = false;
-            Larm.ActiveParts();
-            DeActivateParticle(LarmSpark);
         }
 
         if (Leg.life > 0)
         {
             PartCount++;
-            LegsBoom = false;
-            Leg.ActiveParts();
-            DeActivateParticle(LegsSpark);
         }
 
         if (Head.life > 0)
         {
             PartCount++;
-            HeadBoom = false;
-            Head.ActiveParts();
-            DeActivateParticle(HeadSpark);
         }
         EnterLife();
     }
