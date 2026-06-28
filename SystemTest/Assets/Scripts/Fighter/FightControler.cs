@@ -20,6 +20,7 @@ public class FightControler : MonoBehaviour
     public GameObject PauseMenu;
     public GameObject Timer;
     public GameObject Controlers;
+    public GameObject Confetti;
 
     public Animator UI_Enter;
 
@@ -135,6 +136,7 @@ public class FightControler : MonoBehaviour
             _Enemy.Set();
             _RT.LaunchTimer();
             _stageTheme.CallSong();
+            if(Confetti != null) StartCoroutine(ConfettiOpen());
         }
     }
 
@@ -185,5 +187,12 @@ public class FightControler : MonoBehaviour
         _RT.UnPause();
         PauseMenu.SetActive(false);
     }
-
+    
+    public IEnumerator ConfettiOpen()
+    {
+        yield return new WaitForSeconds(4f);
+        Confetti.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        Confetti.SetActive(false);
+    }
 }
