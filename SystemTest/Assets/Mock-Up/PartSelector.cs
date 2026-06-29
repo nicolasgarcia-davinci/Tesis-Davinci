@@ -40,6 +40,8 @@ public class PartSelector : MonoBehaviour
     public bool LegsSelected;
     public bool ChestSelected;
 
+    public ConsoleControls Screen;
+
     public bool IsOn;
 
     void Start()
@@ -98,6 +100,8 @@ public class PartSelector : MonoBehaviour
         ListToPaint.Chests.Add(chests[ChIndex]);
 
         Zero();
+
+        Screen.ConsoleExit();
 
         CompFighter.SetActive(true);
         TheSlector.SetActive(false);
