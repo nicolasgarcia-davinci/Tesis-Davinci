@@ -1438,6 +1438,62 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1409835865392257020, guid: 3d3c5ec51e690764a86157c6821339ed, type: 3}
   m_PrefabInstance: {fileID: 514913281}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &577262738
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 577262740}
+  - component: {fileID: 577262739}
+  m_Layer: 0
+  m_Name: Decal Projector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &577262739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 577262738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0777d029ed3dffa4692f417d4aba19ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 2100000, guid: 0a1ff78dea62180428b783dcab7fa3af, type: 2}
+  m_DrawDistance: 1000
+  m_FadeScale: 1
+  m_StartAngleFade: 180
+  m_EndAngleFade: 180
+  m_UVScale: {x: 1, y: 1}
+  m_UVBias: {x: 0, y: 0}
+  m_DecalLayerMask: 1
+  m_ScaleMode: 0
+  m_Offset: {x: 0, y: 0, z: 0.5}
+  m_Size: {x: 3, y: 3, z: 1}
+  m_FadeFactor: 1
+--- !u!4 &577262740
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 577262738}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.04326144, y: -0.6347606, z: 0.03563134, w: 0.7706737}
+  m_LocalPosition: {x: 49.6, y: 5.16, z: 60.12}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: -1.229, y: -79.02, z: 6.308}
 --- !u!1001 &702975615
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3969,6 +4025,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 7.158
       objectReference: {fileID: 0}
+    - target: {fileID: 4490606011541632160, guid: 435a4d6c9e0683b4cba0241040027355, type: 3}
+      propertyPath: StageMusic
+      value: 
+      objectReference: {fileID: 8300000, guid: d1fd1e5b4fbfd0743bce763c95b2ea3d, type: 3}
     - target: {fileID: 4630191351545972358, guid: 435a4d6c9e0683b4cba0241040027355, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: -59.091084
@@ -8518,3 +8578,4 @@ SceneRoots:
   - {fileID: 1229879661}
   - {fileID: 1854630236}
   - {fileID: 4255791099607624568}
+  - {fileID: 577262740}
