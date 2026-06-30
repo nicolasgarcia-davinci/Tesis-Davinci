@@ -101,7 +101,7 @@ public class PartSelector : MonoBehaviour
 
         Zero();
 
-        Screen.ConsoleExit();
+        //Screen.ConsoleExit();
 
         CompFighter.SetActive(true);
         TheSlector.SetActive(false);
