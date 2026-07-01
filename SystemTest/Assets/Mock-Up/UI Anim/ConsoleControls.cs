@@ -2,20 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ConsoleControls : MonoBehaviour
+public class ConsoleControls : ConsoleMenu
 {
-    public Animator Controls;
-    public AudioSource KeySounds;
-    public AudioClip Key , Accion , Enter;
-
-    private void Update()
+    public GameObject MainConsole;
+    public bool IsColoring;
+    public override void Update()
     {
         if(Input.GetKeyDown(KeyCode.UpArrow)) ClickUp();
         if(Input.GetKeyDown(KeyCode.DownArrow)) ClickDown();
         if(Input.GetKeyDown(KeyCode.RightArrow)) ClickRight();
         if(Input.GetKeyDown(KeyCode.LeftArrow)) ClickLeft();
-        if(Input.GetKeyDown(KeyCode.Space)) ClickSpace();
-        if(Input.GetKeyDown(KeyCode.E)) ClickE();
+        if (Input.GetKeyDown(KeyCode.Space)) ClickSpace();
+        if (Input.GetKeyDown(KeyCode.E)) ClickE();
     }
     public void ClickRight()
     {
@@ -37,27 +35,22 @@ public class ConsoleControls : MonoBehaviour
         Controls.SetTrigger("ClickDown");
         KeySounds.PlayOneShot(Key);
     }
-    public void ClickSpace()
-    {
-        Controls.SetTrigger("ClickSpace");
-        KeySounds.PlayOneShot(Accion);
-    }
+    
     public void ClickE()
     {
+        IsColoring = true;
         Controls.SetTrigger("ClickE");
         KeySounds.PlayOneShot(Key);
     }
-    public void ConsoleExit()
+    public void ClickSpace()
     {
-        Controls.SetTrigger("Exit");
-        KeySounds.PlayOneShot(Enter);
+        Controls.SetTrigger("ClickSpace");
+        if (!IsColoring)
+            Controls.SetTrigger("Exit");
     }
-    public void ConsoleEnter()
+    public void BackToMain()
     {
-        KeySounds.PlayOneShot(Enter);
-    }
-    public void EndScreen()
-    {
-        gameObject.SetActive(false);
+        Debug.Log("dada");
+        MainConsole.SetActive(true);
     }
 }

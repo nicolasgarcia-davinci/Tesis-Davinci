@@ -25,6 +25,8 @@ public class PartColor : MonoBehaviour
     public Animator _pulsControl;
     public AudioSource Sound;
     public AudioClip ActSound;
+    public ConsoleControls controls;
+    public PartSelector selector;
 
     public Color color;
     public Image colorCatalog;
@@ -146,7 +148,9 @@ public class PartColor : MonoBehaviour
         }
         if (_thisType == PainterOption.Color2)
         {
+            selector.IsOn = true;
             _Activated = false;
+            controls.IsColoring = false;
             painter.End();
         }
         if (_thisType == PainterOption.Pass)
@@ -156,7 +160,9 @@ public class PartColor : MonoBehaviour
         }
         if (_thisType == PainterOption.End)
         {
+            selector.IsOn = true;
             _Activated = false;
+            controls.IsColoring = false;
             painter.End();
         }
     }

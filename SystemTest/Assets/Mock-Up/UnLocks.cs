@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class UnLocks : MonoBehaviour
 {
-    public MenuNavigation Menu;
+    public GameObject Console;
     public TextMeshProUGUI UnlockMesage;
     public TextMeshProUGUI Instruction;
     public Color Transparency;
@@ -23,8 +23,7 @@ public class UnLocks : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         { 
-            Menu.gameObject.SetActive(true);
-            Menu.act1();
+            Console.SetActive(true);
             LifeTraker.Instance.UnlockClaw=false;
             LifeTraker.Instance.UnlockDrill=false;
             gameObject.SetActive(false);

@@ -9,9 +9,7 @@ public class PartSelector : MonoBehaviour
 
     public StatDisplay Display;
 
-    public MenuNavigation _asMenu;
-
-    public GameObject TheSlector;
+    //public GameObject TheSlector;
 
     public PartPainter ColorPalet;
 
@@ -40,8 +38,6 @@ public class PartSelector : MonoBehaviour
     public bool LegsSelected;
     public bool ChestSelected;
 
-    public ConsoleControls Screen;
-
     public bool IsOn;
 
     void Start()
@@ -63,8 +59,8 @@ public class PartSelector : MonoBehaviour
         if(!IsOn) return;
         if(Input.GetKeyDown(KeyCode.DownArrow)) SelectUp();
         if(Input.GetKeyDown(KeyCode.UpArrow)) SelectDown();
-        if (Input.GetKeyDown(KeyCode.E)) OpenColors();
-        if (Input.GetKeyDown(KeyCode.RightArrow)) SelectRight();
+        if(Input.GetKeyDown(KeyCode.E)) OpenColors();
+        if(Input.GetKeyDown(KeyCode.RightArrow)) SelectRight();
         if(Input.GetKeyDown(KeyCode.LeftArrow)) SelectLeft();
         if(Input.GetKeyDown(KeyCode.Space)) Finish();
     }
@@ -101,10 +97,8 @@ public class PartSelector : MonoBehaviour
 
         Zero();
 
-        //Screen.ConsoleExit();
-
         CompFighter.SetActive(true);
-        TheSlector.SetActive(false);
+        //TheSlector.SetActive(false);
 
         return;
     }

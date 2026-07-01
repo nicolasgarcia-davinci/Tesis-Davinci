@@ -8,6 +8,7 @@ public class ButtumColor : ButtomAction
     public Color color;
     public Image colorCatalog;
 
+
     public PartsToPaint partsToPaint;
     public void Awake()
     {

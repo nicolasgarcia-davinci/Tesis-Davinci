@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -10,6 +11,8 @@ public class ButtomAction : MonoBehaviour
     [SerializeField] string _labelText;
     [SerializeField] TextMeshProUGUI _label;
     public Animator _pulsControl;
+    public Animator _Console;
+    public ConsoleMenu _MenuConsole;
     public MenuNavigation _miMenu;
     public MenuRobo _Display;
     public float activationdelay;
@@ -79,6 +82,7 @@ public class ButtomAction : MonoBehaviour
     public IEnumerator Action()
     {
         _pulsControl.SetTrigger("Click");
+        if (_Console != null) _Console.SetTrigger("ClickSpace");
         Sound.PlayOneShot(ActSound);
 
         yield return new WaitForSeconds(activationdelay);
@@ -130,13 +134,15 @@ public class ButtomAction : MonoBehaviour
             LoadManager.Instance.Garage();
         }
 
-        if(_thisType==ButtomType.Play) LoadManager.Instance.LoadEnter();
-        if(_thisType==ButtomType.Asambley)
+        if (_thisType == ButtomType.Play) LoadManager.Instance.LoadEnter();
+
+        if (_thisType==ButtomType.Asambley)
         {
             _isSelected = false;
             _Activated = false;
             Asambley.SetActive(true);
             _miMenu.gameObject.SetActive(false);
+            _MenuConsole.SetExit();
         }
     }
 
