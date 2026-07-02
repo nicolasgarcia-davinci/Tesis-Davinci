@@ -27,7 +27,7 @@ public class ConsoleControls : ConsoleMenu
     }
     public void ClickUp()
     {
-        Controls.SetTrigger("ClickUp");
+        Controls.SetTrigger("ClickUP");
         KeySounds.PlayOneShot(Key);
     }
     public void ClickDown()

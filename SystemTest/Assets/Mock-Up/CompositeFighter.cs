@@ -68,7 +68,7 @@ public class CompositeFighter : MonoBehaviour
 
     [Header("Audio")]
     public AudioSource _Audio;
-    public AudioClip _miss, _KO, _debuff;
+    public AudioClip _miss, _KO, _debuff, _breakPart;
     
     [Header("Animator")]
     public Animator anim;
@@ -103,6 +103,7 @@ public class CompositeFighter : MonoBehaviour
     [Header("Freeze Frame")]
     [SerializeField] float lightBlow;
     [SerializeField] float heavyBlow;
+    [SerializeField] private Material impactMaterial;
 
     [Header("OverAllHealth")]
     public LifeBar LifeBar;
@@ -658,7 +659,17 @@ public class CompositeFighter : MonoBehaviour
     public void FreezeFrameHigh()
     {
         StartCoroutine(BreakStop(heavyBlow));
+        StartCoroutine(ImpactFrame(heavyBlow));
     }
+
+    public IEnumerator ImpactFrame(float duration)
+    {
+        impactMaterial.SetFloat("_Enable", 1f);
+        _Audio.PlayOneShot(_breakPart);
+        yield return new WaitForSeconds(duration);
+        impactMaterial.SetFloat("_Enable", 0f);
+    }
+
     public void ActivateParticle(GameObject[] set)
     {
         foreach (GameObject item in set)
