@@ -22,6 +22,7 @@ public class MeshTrail
 
     bool isTrailActive = false;
     private SkinnedMeshRenderer[] _skinnedMeshRenderers;
+    private Coroutine _coroutine;
     //arriba son cosas del codigo default
     MonoBehaviour _myView;
     ObjectPool<GameObject> _pool;
@@ -66,8 +67,14 @@ public class MeshTrail
 
     public void CallTrail()
     {
-        _myView.StartCoroutine(ActivateTrail());
+       _coroutine = _myView.StartCoroutine(ActivateTrail());
     }
+
+    public void StopTrail()
+    {
+        _myView.StopCoroutine(_coroutine);
+    }
+
 
     public IEnumerator ActivateTrail()
     {

@@ -115,6 +115,7 @@ public class CompositeFighter : MonoBehaviour
     public Action CharacterUpEvent = delegate { };
 
     public float DamageToTake;
+    [SerializeField] MonoBehaviour _trailRoutineHolder;
 
     public virtual void Start()
     {
