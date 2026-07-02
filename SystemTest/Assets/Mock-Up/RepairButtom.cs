@@ -27,6 +27,15 @@ public class RepairButtom : MonoBehaviour
             _Activated = true;
             StartCoroutine(Action());
         }
+        if(IT._timer <= 0)
+        {
+            LifeTraker.Instance.ResetTimer = true;
+            StageState.Instance.ResetFight = true;
+            StageSound.instance.Mute();
+            RepariBot.ExitRepair();
+            StageCam.Instance.GoToRound2();
+            IT.Stop();
+        }
     }
     public void Select()
     {

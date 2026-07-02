@@ -121,7 +121,7 @@ public class FightControler : MonoBehaviour
     {
         _Player.EnterStage();
         _Enemy.EnterStage();
-        UI_Enter.SetTrigger("Enter");
+        UI_Enter.Play("Enter");
     }
 
     public void EnterStage()
@@ -157,7 +157,7 @@ public class FightControler : MonoBehaviour
 
     public void ExitStage()
     {
-        UI_Enter.Play("Exit");
+        UI_Enter.Play("ToRepair");
         _Controler.TurnWarningOff();
         _Player.IsRepairing = true;
         _Enemy.IsRepairing = true;
@@ -171,7 +171,6 @@ public class FightControler : MonoBehaviour
     public void DeActivateControlers()
     {
         Controlers.SetActive(false);
-        UI_Enter.Play("Exit");
     }
     public void Pause()
     {

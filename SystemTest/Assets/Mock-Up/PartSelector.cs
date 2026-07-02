@@ -38,6 +38,8 @@ public class PartSelector : MonoBehaviour
     public bool LegsSelected;
     public bool ChestSelected;
 
+    public GameObject[] PartsHighlight;
+
     public bool IsOn;
 
     void Start()
@@ -113,12 +115,22 @@ public class PartSelector : MonoBehaviour
         {
             p.SetBool("Selected", false);
         }
+
         SIndex = 0;
 
         Highlight();
     }
 
-    public void Highlight()
+    public void ActivateHighkight(int index)
+    {
+        foreach (GameObject Hight in PartsHighlight)
+        {
+            Hight.SetActive(false);
+        }
+        PartsHighlight[index].SetActive(true);
+    }
+
+public void Highlight()
     {
         Parts[SIndex].SetBool("Selected", true);
 
@@ -131,6 +143,7 @@ public class PartSelector : MonoBehaviour
             ChestSelected = false;
             rArms[RAIndex].gameObject.SetActive(true);
             rArms[RAIndex].SetColor();
+            ActivateHighkight(SIndex);
         }
 
         if (SIndex == 1)
@@ -142,6 +155,7 @@ public class PartSelector : MonoBehaviour
             ChestSelected = false;
             lArms[LAIndex].gameObject.SetActive(true);
             lArms[LAIndex].SetColor();
+            ActivateHighkight(SIndex);
         }
 
         if (SIndex == 2)
@@ -153,6 +167,7 @@ public class PartSelector : MonoBehaviour
             ChestSelected = false;
             legs[LIndex].gameObject.SetActive(true);
             legs[LIndex].SetColor();
+            ActivateHighkight(SIndex);
         }
 
         if (SIndex == 3)
@@ -164,6 +179,7 @@ public class PartSelector : MonoBehaviour
             ChestSelected = false;
             heads[HIndex].gameObject.SetActive(true);
             heads[HIndex].SetColor();
+            ActivateHighkight(SIndex);
         }
         if (SIndex == 4)
         {
@@ -174,6 +190,7 @@ public class PartSelector : MonoBehaviour
             ChestSelected = true;
             chests[ChIndex].gameObject.SetActive(true);
             chests[ChIndex].SetColor();
+            ActivateHighkight(SIndex);
         }
     }
     public void SelectUp()
