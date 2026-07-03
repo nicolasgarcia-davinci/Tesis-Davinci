@@ -79,7 +79,7 @@ public class CompEnemy : CompositeFighter
     }
     public override void PartDamage(float damage, float currentLife, AudioClip hit, ref Part partHit, bool hitPart,
         ref bool partDestroyed, string animHit, GameObject HitWave, GameObject[] Sparks, GameObject[] Crash
-        , bool isbroken)
+        , bool isbroken, bool BuffState)
     {
         Debug.Log("Jaja llame a la funcion de Necro " + this.name);
 
@@ -108,16 +108,19 @@ public class CompEnemy : CompositeFighter
             ActivateParticle(Crash);
             ActivateParticle(Sparks);
             FightControler.Instance.stopFrameHigh();
+            FightControler.Instance.FlashOrigin(this);
             partHit.DeActiveParts();
             PartCount--;
-            if (isbroken == true) DamageToTake = (damage / 2 + partHit.Maxlife);
+            if (BuffState) damage = damage * 2;
+            if (isbroken) DamageToTake = (damage / 2 + partHit.Maxlife);
             DamageToTake = (damage + partHit.Maxlife);
             Debug.Log(DamageToTake);
             FightControler.Instance.CallCrowd(this);
             return;
         }
-        else if (isbroken == true)
+        else if (isbroken)
         {
+            if (BuffState) damage = damage * 2;
             DamageToTake = damage / 2;
         }
         else DamageToTake = damage;

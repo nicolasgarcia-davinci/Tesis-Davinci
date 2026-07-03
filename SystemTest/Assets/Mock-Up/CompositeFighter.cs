@@ -63,8 +63,12 @@ public class CompositeFighter : MonoBehaviour
     public bool IsAttackingUp;
     public bool IsAttackingDown;
     public bool IsAttacking;
+
+    [Header("Buff//Debuf")]
     public bool IsDebuffed;
+    public bool IsBuffed;
     public float DebuffTime;
+    public float BuffTime;
 
     [Header("Audio")]
     public AudioSource _Audio;
@@ -407,28 +411,28 @@ public class CompositeFighter : MonoBehaviour
         if (attacker.IsAttackingRight)
         {
             PartDamage(attacker.Larm.Damage, CLeft, attacker.Larm.AttackSound, ref Larm, IsDodgingRight, ref LarmBoom,
-                "Get Hit Left", LarmsHitWave, LarmSpark, LarmCrash, attacker.Larm.isBroken);
+                "Get Hit Left", LarmsHitWave, LarmSpark, LarmCrash, attacker.Larm.isBroken, attacker.IsBuffed);
             //LeftDamage(attacker.Rarm.Damage, attacker.Rarm.AttackSound);
             return;
         }
         if (attacker.IsAttackingLeft)
         {
             PartDamage(attacker.Rarm.Damage, CRight, attacker.Rarm.AttackSound, ref Rarm, IsDodgingLeft, ref RarmBoom,
-                "Get Hit Right", RarmsHitWave, RarmSpark, RarmCrash, attacker.Rarm.isBroken);
+                "Get Hit Right", RarmsHitWave, RarmSpark, RarmCrash, attacker.Rarm.isBroken, attacker.IsBuffed);
             //RightDamage(attacker.Larm.Damage, attacker.Larm.AttackSound);
             return;
         }
         if (attacker.IsAttackingUp)
         {
             PartDamage(attacker.Head.Damage, CHead, attacker.Head.AttackSound, ref Head, IsDodgingUp, ref HeadBoom,
-                "Get Hit Up", HeadHitWave, HeadSpark, HeadCrash, attacker.Head.isBroken);
+                "Get Hit Up", HeadHitWave, HeadSpark, HeadCrash, attacker.Head.isBroken, attacker.IsBuffed);
             //HeadDamage(attacker.Head.Damage, attacker.Head.AttackSound);
             return;
         }
         if (attacker.IsAttackingDown)
         {
             PartDamage(attacker.Leg.Damage, CRight, attacker.Leg.AttackSound, ref Leg, IsDodgingDown, ref LegsBoom,
-                "Get Hit Down", LegsHitWave, LegsSpark, LegsCrash, attacker.Leg.isBroken);
+                "Get Hit Down", LegsHitWave, LegsSpark, LegsCrash, attacker.Leg.isBroken, attacker.IsBuffed);
             //LegsDamage(attacker.Leg.Damage, attacker.Leg.AttackSound);
             return;
         }
@@ -436,7 +440,7 @@ public class CompositeFighter : MonoBehaviour
 
     public virtual void PartDamage(float damage, float currentLife, AudioClip hit, ref Part partHit, bool hitPart,
         ref bool partDestroyed, string animHit, GameObject HitWave, GameObject[] Sparks, GameObject[] Crash
-        ,bool isbroken)
+        ,bool isbroken, bool BuffState)
     {
         Debug.Log("Jaja llame a la funcion de Necro " + this.name);
 
@@ -445,6 +449,8 @@ public class CompositeFighter : MonoBehaviour
             _Audio.PlayOneShot(_miss);
             trailMesh?.CallTrail();
             Stamina += 10;
+            StopCoroutine(ActivateBuffState());
+            StartCoroutine(ActivateBuffState());
             return;
         }
 
@@ -466,16 +472,19 @@ public class CompositeFighter : MonoBehaviour
             ActivateParticle(Crash);
             ActivateParticle(Sparks);
             FightControler.Instance.stopFrameHigh();
+            FightControler.Instance.FlashOrigin(this);
             partHit.DeActiveParts();
             PartCount--;
-            if(isbroken==true) DamageToTake = (damage/2 + partHit.Maxlife);
+            if (BuffState) damage = damage * 2;
+            if (isbroken) DamageToTake = (damage/2 + partHit.Maxlife);
             DamageToTake = (damage + partHit.Maxlife);
             Debug.Log(DamageToTake);
             FightControler.Instance.CallCrowd(this);
             return;
         }
-        else if (isbroken==true)
+        else if (isbroken)
         {
+            if (BuffState) damage = damage * 2;
                 DamageToTake = damage/2;
         } else DamageToTake = damage;
 
@@ -662,7 +671,18 @@ public class CompositeFighter : MonoBehaviour
     public void FreezeFrameHigh()
     {
         StartCoroutine(BreakStop(heavyBlow));
+    }
+
+    public void ActivateIMPACT()
+    {
         StartCoroutine(ImpactFrame(heavyBlow));
+    }
+
+    public IEnumerator ActivateBuffState()
+    {
+        IsBuffed = true;
+        yield return new WaitForSeconds(BuffTime);
+        IsBuffed = false;
     }
 
     public IEnumerator ImpactFrame(float duration)

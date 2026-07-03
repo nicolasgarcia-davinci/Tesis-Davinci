@@ -8,7 +8,6 @@ public class RotatingRing : MonoBehaviour
 {
     public Animator RRIng;
     public int Current;
-    public GameObject Lock;
     public TextMeshProUGUI lab;
     public Color Transparency;
     public bool toTranparent;
@@ -93,12 +92,10 @@ public class RotatingRing : MonoBehaviour
     {
         if (Current >= LifeTraker.Instance.Dificulty)
         {
-            Lock.SetActive(true);
             CanEnter = false;
         }
         else
         {
-            Lock.SetActive(false);
             CanEnter = true;
         } 
     }

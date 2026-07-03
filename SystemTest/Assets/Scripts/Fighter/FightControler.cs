@@ -164,6 +164,11 @@ public class FightControler : MonoBehaviour
         _Player.ExitStage();
         _Enemy.ExitStage();
     }
+    public void FlashOrigin(CompositeFighter TheImpact)
+    {
+        if (TheImpact == _Enemy) _Enemy.ActivateIMPACT();
+        if (TheImpact == _Player) _Player.ActivateIMPACT();
+    }
     public void ActivateControlers()
     {
         Controlers.SetActive(true);

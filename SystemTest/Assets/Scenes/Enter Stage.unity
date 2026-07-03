@@ -1154,7 +1154,7 @@ GameObject:
   - component: {fileID: 87569253}
   - component: {fileID: 87569252}
   m_Layer: 0
-  m_Name: Rodilla_D
+  m_Name: Rodilla_D Wolve
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1668,6 +1668,7 @@ Transform:
   - {fileID: 1535883334}
   - {fileID: 403524209}
   - {fileID: 1667728965}
+  - {fileID: 2027735075}
   m_Father: {fileID: 437645452}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!114 &141516834
@@ -1683,6 +1684,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 141516835}
+  Right: {fileID: 1004996566}
+  Left: {fileID: 2090797132}
+  Down: {fileID: 2039131943}
+  Up: {fileID: 403524210}
+  Center: {fileID: 2027735076}
+  bodyPaint: {fileID: 1179948242}
+  LockColor: {r: 0, g: 0, b: 0, a: 0}
+  minDif: 4
 --- !u!95 &141516835
 Animator:
   serializedVersion: 5
@@ -2141,7 +2150,7 @@ GameObject:
   - component: {fileID: 188095586}
   - component: {fileID: 188095585}
   m_Layer: 0
-  m_Name: Muslo_I
+  m_Name: Muslo_I Wolve
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4083,7 +4092,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RRIng: {fileID: 280972153}
   Current: 0
-  Lock: {fileID: 1455714578}
   lab: {fileID: 280115561}
   Transparency: {r: 1, g: 1, b: 1, a: 1}
   toTranparent: 0
@@ -4854,15 +4862,10 @@ Transform:
   m_Children:
   - {fileID: 1841586962}
   - {fileID: 1982521030}
-  - {fileID: 583178905}
   - {fileID: 623733892}
-  - {fileID: 1069966781}
   - {fileID: 219886842}
-  - {fileID: 1312369205}
   - {fileID: 1602793257}
-  - {fileID: 500557642}
   - {fileID: 1935021821}
-  - {fileID: 538326724}
   - {fileID: 1699733625}
   m_Father: {fileID: 914378658}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
@@ -4879,6 +4882,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 347072134}
+  Right: {fileID: 1602793258}
+  Left: {fileID: 623733893}
+  Down: {fileID: 219886843}
+  Up: {fileID: 1935021822}
+  Center: {fileID: 1699733626}
+  bodyPaint: {fileID: 1982521031}
+  LockColor: {r: 0, g: 0, b: 0, a: 1}
+  minDif: 2
 --- !u!95 &347072134
 Animator:
   serializedVersion: 5
@@ -5421,59 +5432,6 @@ Transform:
   - {fileID: 762536639}
   m_Father: {fileID: 998194208}
   m_LocalEulerAnglesHint: {x: 6.9648724, y: 0.000012280387, z: 77.74033}
---- !u!1 &394252880
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 394252881}
-  - component: {fileID: 394252882}
-  m_Layer: 0
-  m_Name: Drill Head
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &394252881
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 394252880}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.12631577, y: 0, z: 0}
-  m_LocalScale: {x: 2.6315787, y: 2.6315787, z: 2.6315787}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1135227129}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &394252882
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 394252880}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ba0733d5e536884c81ea8678410a268, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AttName: Drill Up Attack
-  life: 0
-  Maxlife: 0
-  Damage: 0
-  isBroken: 0
-  AttackSound: {fileID: 0}
-  ParticleContainer: {fileID: 0}
-  components:
-  - {fileID: 918993302}
 --- !u!1 &398097869
 GameObject:
   m_ObjectHideFlags: 0
@@ -6320,7 +6278,7 @@ GameObject:
   - component: {fileID: 473676764}
   - component: {fileID: 473676763}
   m_Layer: 0
-  m_Name: Guante Derecho
+  m_Name: Garra
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6546,62 +6504,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 487844827}
---- !u!1 &488546147
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 488546148}
-  - component: {fileID: 488546149}
-  m_Layer: 0
-  m_Name: Right Drill Arm
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &488546148
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 488546147}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.12631577, y: 0, z: 0}
-  m_LocalScale: {x: 2.6315787, y: 2.6315787, z: 2.6315787}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1135227129}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &488546149
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 488546147}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 033010281b3c9f946bab82bd51625f27, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AttName: Drill Right Attack
-  life: 0
-  Maxlife: 0
-  Damage: 0
-  isBroken: 0
-  AttackSound: {fileID: 0}
-  ParticleContainer: {fileID: 0}
-  components:
-  - {fileID: 1640900661}
-  - {fileID: 144412331}
-  - {fileID: 398097869}
-  isLeft: 0
 --- !u!1 &496586872
 GameObject:
   m_ObjectHideFlags: 0
@@ -6685,59 +6587,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 496586872}
   m_Mesh: {fileID: -3758573805739257388, guid: 647a567df8231244baf512035a2168b0, type: 3}
---- !u!1 &500557641
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 500557642}
-  - component: {fileID: 500557643}
-  m_Layer: 0
-  m_Name: Boxer Head
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &500557642
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 500557641}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.63430655, y: -0.5748, z: 0.16422872}
-  m_LocalScale: {x: 0.4, y: 0.39999998, z: 0.4}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 347072132}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &500557643
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 500557641}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ba0733d5e536884c81ea8678410a268, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AttName: Boxer Up Attack
-  life: 0
-  Maxlife: 0
-  Damage: 0
-  isBroken: 0
-  AttackSound: {fileID: 0}
-  ParticleContainer: {fileID: 0}
-  components:
-  - {fileID: 1767405131}
 --- !u!1 &502041795
 GameObject:
   m_ObjectHideFlags: 0
@@ -7363,59 +7212,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 531524349}
   m_CullTransparentMesh: 1
---- !u!1 &538326723
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 538326724}
-  - component: {fileID: 538326725}
-  m_Layer: 0
-  m_Name: Boxer Chest
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &538326724
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 538326723}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 347072132}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &538326725
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 538326723}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a0e43b524eeda54bbeb2760f5f4620e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AttName: 
-  life: 0
-  Maxlife: 0
-  Damage: 0
-  isBroken: 0
-  AttackSound: {fileID: 0}
-  ParticleContainer: {fileID: 0}
-  components:
-  - {fileID: 884868633}
 --- !u!1 &544792206
 GameObject:
   m_ObjectHideFlags: 0
@@ -8028,62 +7824,6 @@ Transform:
   - {fileID: 437645452}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &583178904
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 583178905}
-  - component: {fileID: 583178906}
-  m_Layer: 0
-  m_Name: Left Boxer Arm
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &583178905
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 583178904}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.63430655, y: -0.5748, z: 0.16422872}
-  m_LocalScale: {x: 0.4, y: 0.39999998, z: 0.4}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 347072132}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &583178906
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 583178904}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 033010281b3c9f946bab82bd51625f27, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AttName: Boxer Left Attack
-  life: 0
-  Maxlife: 0
-  Damage: 0
-  isBroken: 0
-  AttackSound: {fileID: 0}
-  ParticleContainer: {fileID: 0}
-  components:
-  - {fileID: 203142600}
-  - {fileID: 1154143578}
-  - {fileID: 897164288}
-  isLeft: 0
 --- !u!1 &584293586
 GameObject:
   m_ObjectHideFlags: 0
@@ -8484,62 +8224,6 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!1 &595312289
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 595312290}
-  - component: {fileID: 595312291}
-  m_Layer: 0
-  m_Name: Left Drill Arm
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &595312290
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 595312289}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.12631577, y: 0, z: 0}
-  m_LocalScale: {x: 2.6315787, y: 2.6315787, z: 2.6315787}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1135227129}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &595312291
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 595312289}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 033010281b3c9f946bab82bd51625f27, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AttName: Drill Left Attack
-  life: 0
-  Maxlife: 0
-  Damage: 0
-  isBroken: 0
-  AttackSound: {fileID: 0}
-  ParticleContainer: {fileID: 0}
-  components:
-  - {fileID: 1242219760}
-  - {fileID: 1654268846}
-  - {fileID: 269952559}
-  isLeft: 0
 --- !u!1 &605931340
 GameObject:
   m_ObjectHideFlags: 0
@@ -8795,62 +8479,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 625812972}
   m_Mesh: {fileID: -3758573805739257388, guid: 647a567df8231244baf512035a2168b0, type: 3}
---- !u!1 &629839417
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 629839418}
-  - component: {fileID: 629839419}
-  m_Layer: 0
-  m_Name: Left Boxer Arm
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &629839418
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 629839417}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.12631577, y: 0, z: 0}
-  m_LocalScale: {x: 2.6315787, y: 2.6315787, z: 2.6315787}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1817061582}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &629839419
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 629839417}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 033010281b3c9f946bab82bd51625f27, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AttName: Boxer Left Attack
-  life: 0
-  Maxlife: 0
-  Damage: 0
-  isBroken: 0
-  AttackSound: {fileID: 0}
-  ParticleContainer: {fileID: 0}
-  components:
-  - {fileID: 2024024764}
-  - {fileID: 1234582204}
-  - {fileID: 945612480}
-  isLeft: 0
 --- !u!1 &635510747
 GameObject:
   m_ObjectHideFlags: 0
@@ -8966,7 +8594,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 205.3
+  m_fontSize: 205.15
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -12892,7 +12520,7 @@ GameObject:
   - component: {fileID: 920695501}
   - component: {fileID: 920695502}
   m_Layer: 0
-  m_Name: Right Drill Arm
+  m_Name: Right Claw
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12933,9 +12561,9 @@ MonoBehaviour:
   AttackSound: {fileID: 0}
   ParticleContainer: {fileID: 0}
   components:
-  - {fileID: 1349780209}
-  - {fileID: 389947259}
-  - {fileID: 1568403527}
+  - {fileID: 473676761}
+  - {fileID: 1385113903}
+  - {fileID: 1409486854}
   isLeft: 0
 --- !u!43 &925789180
 Mesh:
@@ -13250,7 +12878,7 @@ GameObject:
   - component: {fileID: 945612483}
   - component: {fileID: 945612482}
   m_Layer: 0
-  m_Name: Bicep_I
+  m_Name: Bicep_I Wolve
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14844,62 +14472,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 159336492}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1069966780
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1069966781}
-  - component: {fileID: 1069966782}
-  m_Layer: 0
-  m_Name: Leg Boxer
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1069966781
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1069966780}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.63430655, y: -0.5748, z: 0.16422872}
-  m_LocalScale: {x: 0.4, y: 0.39999998, z: 0.4}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 347072132}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1069966782
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1069966780}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7633a5ed9b4abb5438645a309cb7eb00, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AttName: Boxer Down Attack
-  life: 0
-  Maxlife: 0
-  Damage: 0
-  isBroken: 0
-  AttackSound: {fileID: 0}
-  ParticleContainer: {fileID: 0}
-  components:
-  - {fileID: 781508639}
-  - {fileID: 584293586}
-  - {fileID: 900554511}
-  - {fileID: 1992830361}
 --- !u!1 &1076787296
 GameObject:
   m_ObjectHideFlags: 0
@@ -15768,13 +15340,10 @@ Transform:
   - {fileID: 508449526}
   - {fileID: 244108549}
   - {fileID: 339369757}
-  - {fileID: 595312290}
   - {fileID: 1257751836}
-  - {fileID: 1460253876}
   - {fileID: 1462504274}
-  - {fileID: 488546148}
   - {fileID: 299995218}
-  - {fileID: 394252881}
+  - {fileID: 1874805943}
   m_Father: {fileID: 2183913474586789505}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!114 &1135227130
@@ -15790,6 +15359,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 1135227131}
+  Right: {fileID: 1462504275}
+  Left: {fileID: 339369758}
+  Down: {fileID: 1257751837}
+  Up: {fileID: 299995219}
+  Center: {fileID: 1874805944}
+  bodyPaint: {fileID: 244108550}
+  LockColor: {r: 0, g: 0, b: 0, a: 1}
+  minDif: 1
 --- !u!95 &1135227131
 Animator:
   serializedVersion: 5
@@ -16155,62 +15732,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1165110540}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1167309057
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1167309058}
-  - component: {fileID: 1167309059}
-  m_Layer: 0
-  m_Name: Right Boxer Arm
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1167309058
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1167309057}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.12631577, y: 0, z: 0}
-  m_LocalScale: {x: 2.6315787, y: 2.6315787, z: 2.6315787}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1817061582}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1167309059
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1167309057}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 033010281b3c9f946bab82bd51625f27, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AttName: Boxer Right Attack
-  life: 0
-  Maxlife: 0
-  Damage: 0
-  isBroken: 0
-  AttackSound: {fileID: 0}
-  ParticleContainer: {fileID: 0}
-  components:
-  - {fileID: 473676761}
-  - {fileID: 1385113903}
-  - {fileID: 1409486854}
-  isLeft: 0
 --- !u!1 &1168322715
 GameObject:
   m_ObjectHideFlags: 0
@@ -17097,7 +16618,7 @@ GameObject:
   - component: {fileID: 1234582207}
   - component: {fileID: 1234582206}
   m_Layer: 0
-  m_Name: Antebrazo_I
+  m_Name: Antebrazo_I Wolve
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18416,62 +17937,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f3131f62b1d61c41a1b0a0a8cc551a3, type: 3}
---- !u!1 &1312369204
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1312369205}
-  - component: {fileID: 1312369206}
-  m_Layer: 0
-  m_Name: Right Boxer Arm
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1312369205
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1312369204}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.63430655, y: -0.5748, z: 0.16422872}
-  m_LocalScale: {x: 0.4, y: 0.39999998, z: 0.4}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 347072132}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1312369206
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1312369204}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 033010281b3c9f946bab82bd51625f27, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AttName: Boxer Right Attack
-  life: 0
-  Maxlife: 0
-  Damage: 0
-  isBroken: 0
-  AttackSound: {fileID: 0}
-  ParticleContainer: {fileID: 0}
-  components:
-  - {fileID: 390574915}
-  - {fileID: 1676973442}
-  - {fileID: 1590547500}
-  isLeft: 0
 --- !u!1 &1315807989
 GameObject:
   m_ObjectHideFlags: 0
@@ -18705,62 +18170,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1320082711}
   m_Mesh: {fileID: -3758573805739257388, guid: 647a567df8231244baf512035a2168b0, type: 3}
---- !u!1 &1322049279
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1322049280}
-  - component: {fileID: 1322049281}
-  m_Layer: 0
-  m_Name: Leg Boxer
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1322049280
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1322049279}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.12631577, y: 0, z: 0}
-  m_LocalScale: {x: 2.6315787, y: 2.6315787, z: 2.6315787}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1817061582}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1322049281
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1322049279}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7633a5ed9b4abb5438645a309cb7eb00, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AttName: Boxer Down Attack
-  life: 0
-  Maxlife: 0
-  Damage: 0
-  isBroken: 0
-  AttackSound: {fileID: 0}
-  ParticleContainer: {fileID: 0}
-  components:
-  - {fileID: 1941301361}
-  - {fileID: 188095583}
-  - {fileID: 87569250}
-  - {fileID: 1893080193}
 --- !u!1 &1327262676
 GameObject:
   m_ObjectHideFlags: 0
@@ -19480,7 +18889,7 @@ GameObject:
   - component: {fileID: 1385113906}
   - component: {fileID: 1385113905}
   m_Layer: 0
-  m_Name: Antebrazo_D
+  m_Name: Antebrazo_D Wolve
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19731,7 +19140,7 @@ GameObject:
   - component: {fileID: 1409486857}
   - component: {fileID: 1409486856}
   m_Layer: 0
-  m_Name: Bicep_D
+  m_Name: Bicep_D Wolve
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19814,7 +19223,6 @@ GameObject:
   - component: {fileID: 1415091797}
   - component: {fileID: 1415091796}
   - component: {fileID: 1415091795}
-  - component: {fileID: 1415091799}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -19903,7 +19311,6 @@ RectTransform:
   - {fileID: 1434810856}
   - {fileID: 1381404624}
   - {fileID: 280115560}
-  - {fileID: 1455714579}
   - {fileID: 1656529304}
   - {fileID: 1760484644}
   m_Father: {fileID: 0}
@@ -19913,23 +19320,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &1415091799
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1415091794}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc70fa9dd4ea59f49b4137e583b9806c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lab: {fileID: 280115561}
-  Transparency: {r: 1, g: 1, b: 1, a: 1}
-  toTranparent: 0
-  BlinkInterval: 0.75
-  transparancyRate: 0.0015
 --- !u!1 &1418036923
 GameObject:
   m_ObjectHideFlags: 0
@@ -20414,137 +19804,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 61910647}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1455714578
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1455714579}
-  - component: {fileID: 1455714581}
-  - component: {fileID: 1455714580}
-  m_Layer: 5
-  m_Name: Image
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!224 &1455714579
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1455714578}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.62875, y: 0.62875, z: 0.62875}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1415091798}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.597, y: 0.37251413}
-  m_AnchorMax: {x: 0.597, y: 0.37251413}
-  m_AnchoredPosition: {x: 282, y: 136}
-  m_SizeDelta: {x: 429, y: 633}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1455714580
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1455714578}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 0da21aef6b80f9846895ee49e7f146f4, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1455714581
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1455714578}
-  m_CullTransparentMesh: 1
---- !u!1 &1460253875
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1460253876}
-  - component: {fileID: 1460253877}
-  m_Layer: 0
-  m_Name: Leg Drill
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1460253876
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1460253875}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.12631577, y: 0, z: 0}
-  m_LocalScale: {x: 2.6315787, y: 2.6315787, z: 2.6315787}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1135227129}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1460253877
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1460253875}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7633a5ed9b4abb5438645a309cb7eb00, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AttName: Drill Down Attack
-  life: 0
-  Maxlife: 0
-  Damage: 0
-  isBroken: 0
-  AttackSound: {fileID: 0}
-  ParticleContainer: {fileID: 0}
-  components:
-  - {fileID: 2034728382}
-  - {fileID: 1525401438}
-  - {fileID: 847295649}
-  - {fileID: 820378566}
 --- !u!1 &1462504273
 GameObject:
   m_ObjectHideFlags: 0
@@ -22418,7 +21677,7 @@ GameObject:
   - component: {fileID: 1583345792}
   - component: {fileID: 1583345793}
   m_Layer: 0
-  m_Name: Drill Head
+  m_Name: Wolve Chest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22448,10 +21707,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1583345791}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ba0733d5e536884c81ea8678410a268, type: 3}
+  m_Script: {fileID: 11500000, guid: 1a0e43b524eeda54bbeb2760f5f4620e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AttName: Drill Up Attack
+  AttName: 
   life: 0
   Maxlife: 0
   Damage: 0
@@ -22459,7 +21718,7 @@ MonoBehaviour:
   AttackSound: {fileID: 0}
   ParticleContainer: {fileID: 0}
   components:
-  - {fileID: 0}
+  - {fileID: 2075641955}
 --- !u!1 &1588236286
 GameObject:
   m_ObjectHideFlags: 0
@@ -23891,7 +23150,7 @@ GameObject:
   - component: {fileID: 1684443053}
   - component: {fileID: 1684443052}
   m_Layer: 0
-  m_Name: Casco
+  m_Name: Casco Wolve
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24172,7 +23431,7 @@ GameObject:
   - component: {fileID: 1722514029}
   - component: {fileID: 1722514030}
   m_Layer: 0
-  m_Name: Boxer Head
+  m_Name: Wolve Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25212,11 +24471,8 @@ Transform:
   m_Children:
   - {fileID: 2062684352}
   - {fileID: 464158227}
-  - {fileID: 629839418}
   - {fileID: 2106155833}
-  - {fileID: 1322049280}
   - {fileID: 1938399993}
-  - {fileID: 1167309058}
   - {fileID: 920695501}
   - {fileID: 1722514029}
   - {fileID: 1583345792}
@@ -25235,6 +24491,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 1817061584}
+  Right: {fileID: 920695502}
+  Left: {fileID: 2106155834}
+  Down: {fileID: 1938399994}
+  Up: {fileID: 1722514030}
+  Center: {fileID: 1583345793}
+  bodyPaint: {fileID: 464158228}
+  LockColor: {r: 0, g: 0, b: 0, a: 1}
+  minDif: 3
 --- !u!95 &1817061584
 Animator:
   serializedVersion: 5
@@ -26067,6 +25331,59 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1428762251}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 166.1}
+--- !u!1 &1874805942
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1874805943}
+  - component: {fileID: 1874805944}
+  m_Layer: 0
+  m_Name: Boxer Chest
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1874805943
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1874805942}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.12631577, y: 0, z: 0}
+  m_LocalScale: {x: 2.6315787, y: 2.6315787, z: 2.6315787}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1135227129}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1874805944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1874805942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a0e43b524eeda54bbeb2760f5f4620e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AttName: 
+  life: 0
+  Maxlife: 0
+  Damage: 0
+  isBroken: 0
+  AttackSound: {fileID: 0}
+  ParticleContainer: {fileID: 0}
+  components:
+  - {fileID: 2138407646}
 --- !u!1 &1877962208
 GameObject:
   m_ObjectHideFlags: 0
@@ -26245,7 +25562,7 @@ GameObject:
   - component: {fileID: 1893080196}
   - component: {fileID: 1893080195}
   m_Layer: 0
-  m_Name: Muslo_D
+  m_Name: Muslo_D Wolve
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26808,7 +26125,7 @@ GameObject:
   - component: {fileID: 1938399993}
   - component: {fileID: 1938399994}
   m_Layer: 0
-  m_Name: Leg Drill
+  m_Name: Wolve Leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26849,10 +26166,10 @@ MonoBehaviour:
   AttackSound: {fileID: 0}
   ParticleContainer: {fileID: 0}
   components:
-  - {fileID: 713216180}
-  - {fileID: 952168008}
-  - {fileID: 1361823468}
-  - {fileID: 1165110540}
+  - {fileID: 1941301361}
+  - {fileID: 188095583}
+  - {fileID: 87569250}
+  - {fileID: 1893080193}
 --- !u!1 &1940548269
 GameObject:
   m_ObjectHideFlags: 0
@@ -26982,7 +26299,7 @@ GameObject:
   - component: {fileID: 1941301364}
   - component: {fileID: 1941301363}
   m_Layer: 0
-  m_Name: Rodilla_I
+  m_Name: Rodilla_I Wolve
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28144,7 +27461,7 @@ GameObject:
   - component: {fileID: 2024024767}
   - component: {fileID: 2024024766}
   m_Layer: 0
-  m_Name: Guante Izquierdo
+  m_Name: Garras
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28215,6 +27532,59 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2024024764}
   m_Mesh: {fileID: 4300000, guid: 2ef1885da3fc7f44391b67168e920ebd, type: 2}
+--- !u!1 &2027735074
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2027735075}
+  - component: {fileID: 2027735076}
+  m_Layer: 0
+  m_Name: Boxer Chest
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2027735075
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2027735074}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.12631577, y: 0, z: 0}
+  m_LocalScale: {x: 2.6315787, y: 2.6315787, z: 2.6315787}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 141516833}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2027735076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2027735074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a0e43b524eeda54bbeb2760f5f4620e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AttName: 
+  life: 0
+  Maxlife: 0
+  Damage: 0
+  isBroken: 0
+  AttackSound: {fileID: 0}
+  ParticleContainer: {fileID: 0}
+  components:
+  - {fileID: 1815547938}
 --- !u!1 &2034728382
 GameObject:
   m_ObjectHideFlags: 0
@@ -28828,7 +28198,7 @@ GameObject:
   - component: {fileID: 2075641958}
   - component: {fileID: 2075641957}
   m_Layer: 0
-  m_Name: Pecho
+  m_Name: Pecho Wolve
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29150,7 +28520,7 @@ GameObject:
   - component: {fileID: 2106155833}
   - component: {fileID: 2106155834}
   m_Layer: 0
-  m_Name: Left Drill Arm
+  m_Name: Left Claw
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29191,9 +28561,9 @@ MonoBehaviour:
   AttackSound: {fileID: 0}
   ParticleContainer: {fileID: 0}
   components:
-  - {fileID: 655471224}
-  - {fileID: 1132267588}
-  - {fileID: 648615966}
+  - {fileID: 2024024764}
+  - {fileID: 1234582204}
+  - {fileID: 945612480}
   isLeft: 0
 --- !u!43 &2107029510
 Mesh:
@@ -43235,7 +42605,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 127.1
+  m_fontSize: 127
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
