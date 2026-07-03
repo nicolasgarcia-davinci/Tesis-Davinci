@@ -16,6 +16,7 @@ public class CompEnemy : CompositeFighter
         Stamina = MaxStamina;
         StamminaBar.UpdateLife(Stamina, MaxStamina);
         anim = GetComponent<Animator>();
+        impactColor = Color.red;
 
         Rarm.ActiveParts();
         Larm.ActiveParts();

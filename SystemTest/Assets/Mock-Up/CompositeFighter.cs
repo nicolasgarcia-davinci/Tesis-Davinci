@@ -103,7 +103,8 @@ public class CompositeFighter : MonoBehaviour
     [Header("Freeze Frame")]
     [SerializeField] float lightBlow;
     [SerializeField] float heavyBlow;
-    [SerializeField] private Material impactMaterial;
+    [SerializeField] protected Material impactMaterial;
+    [SerializeField] protected Color impactColor;
 
     [Header("OverAllHealth")]
     public LifeBar LifeBar;
@@ -122,6 +123,7 @@ public class CompositeFighter : MonoBehaviour
         Stamina = MaxStamina;
         StamminaBar.UpdateLife(Stamina, MaxStamina);
         anim = GetComponent<Animator>();
+        impactColor = Color.blue;
  
         trailMesh = new MeshTrail(this, trailFactory.Pool, trailFactory.playerSkRenderer, trailFactory.trailMat, matAlphaName, _dodgeTime)
             .setTime(_refreshRate, _delayDestroy).setPos(this.transform);
@@ -665,7 +667,9 @@ public class CompositeFighter : MonoBehaviour
 
     public IEnumerator ImpactFrame(float duration)
     {
+        Debug.Log("hola soy yo");
         impactMaterial.SetFloat("_Enable", 1f);
+        impactMaterial.SetColor("_ImpactColor", impactColor);
         _Audio.PlayOneShot(_breakPart);
         yield return new WaitForSeconds(duration);
         impactMaterial.SetFloat("_Enable", 0f);
