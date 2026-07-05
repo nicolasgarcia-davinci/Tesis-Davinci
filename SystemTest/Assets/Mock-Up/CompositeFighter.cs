@@ -720,11 +720,15 @@ public class CompositeFighter : MonoBehaviour
 
     public IEnumerator ActivateBuffState()
     {
+        recoverParticles.SetActive(true);
+        Signals[4].SetActive(true);
         IsBuffed = true;
         Signals[6].SetActive(true);
         yield return new WaitForSeconds(BuffTime);
         IsBuffed = false;
         Signals[6].SetActive(false);
+        recoverParticles.SetActive(false);
+        Signals[4].SetActive(false);
     }
 
     public IEnumerator ImpactFrame(float duration)
@@ -795,7 +799,9 @@ public class CompositeFighter : MonoBehaviour
         debuffParticles.SetActive(false);
         Signals[5].SetActive(false);
         IsDebuffed = false;
-        recoverParticles.SetActive(true);
+        timer = 0;
+        #region No existe
+        /*recoverParticles.SetActive(true);
         Signals[4].SetActive(true);
 
         while (timer <= DebuffTime + 2.5f)
@@ -806,8 +812,9 @@ public class CompositeFighter : MonoBehaviour
         }
 
         recoverParticles.SetActive(false);
-        Signals[4].SetActive(false);
-        timer = 0;
+        Signals[4].SetActive(false);*/
+        #endregion
+
     }
 
     public void Pause()
