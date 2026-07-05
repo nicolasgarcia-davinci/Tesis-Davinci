@@ -13,8 +13,14 @@ public class ConsoleControls : ConsoleMenu
         if(Input.GetKeyDown(KeyCode.DownArrow)) ClickDown();
         if(Input.GetKeyDown(KeyCode.RightArrow)) ClickRight();
         if(Input.GetKeyDown(KeyCode.LeftArrow)) ClickLeft();
-        if (Input.GetKeyDown(KeyCode.Space)) ClickSpace();
+        if (Input.GetKeyDown(KeyCode.Space)&& PartSelector.IsOn) ClickSpace();
+        if (Input.GetKeyDown(KeyCode.Space)&& !PartSelector.IsOn) StartCoroutine(ActivateDisplay()); ;
         if (Input.GetKeyDown(KeyCode.E)) ClickE();
+    }
+    public IEnumerator ActivateDisplay()
+    {
+        yield return new WaitForSeconds(0.3f);
+        PartSelector.IsOn = true;
     }
     public void ClickRight()
     {
@@ -53,9 +59,5 @@ public class ConsoleControls : ConsoleMenu
     {
         Debug.Log("dada");
         MainConsole.SetActive(true);
-    }
-    public void SelectorOn()
-    {
-        PartSelector.IsOn = true;
     }
 }

@@ -7,6 +7,7 @@ using UnityEngine;
 public class UnLocks : MonoBehaviour
 {
     public GameObject Console;
+    public PartSelector TheOne;
     public GameObject[] UnLockPart;
     public TextMeshProUGUI UnlockMesage;
     public TextMeshProUGUI Instruction;
@@ -35,6 +36,7 @@ public class UnLocks : MonoBehaviour
             Console.SetActive(true);
             LifeTraker.Instance.UnlockClaw=false;
             LifeTraker.Instance.UnlockDrill=false;
+            TheOne.Enter();
             gameObject.SetActive(false);
         }
         if (toTranparent)
