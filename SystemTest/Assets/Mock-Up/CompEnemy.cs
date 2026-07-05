@@ -116,10 +116,7 @@ public class CompEnemy : CompositeFighter
             partDestroyed = true;
             ActivateParticle(Crash);
             ActivateParticle(Sparks);
-            if (partHit.name == "Right") Signals[0].SetActive(true);
-            if (partHit.name == "Left") Signals[1].SetActive(true);
-            if (partHit.name == "Leg") Signals[2].SetActive(true);
-            if (partHit.name == "Head") Signals[3].SetActive(true);
+            PartBlincker(partHit);
             FightControler.Instance.stopFrameHigh();
             FightControler.Instance.FlashOrigin(this);
             partHit.DeActiveParts();

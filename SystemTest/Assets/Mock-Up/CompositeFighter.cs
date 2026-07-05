@@ -485,10 +485,7 @@ public class CompositeFighter : MonoBehaviour
             partDestroyed = true;
             ActivateParticle(Crash);
             ActivateParticle(Sparks);
-            if(partHit.PartName == "Right") Signals[0].SetActive(true);
-            if(partHit.PartName == "Left") Signals[1].SetActive(true);
-            if(partHit.PartName == "Leg") Signals[2].SetActive(true);
-            if(partHit.PartName == "Head") Signals[3].SetActive(true);
+            PartBlincker(partHit);
             FightControler.Instance.stopFrameHigh();
             FightControler.Instance.FlashOrigin(this);
             partHit.DeActiveParts();
@@ -532,6 +529,14 @@ public class CompositeFighter : MonoBehaviour
         Larm.ParticleContainer.SetActive(false);
         Leg.ParticleContainer.SetActive(false);
         Head.ParticleContainer.SetActive(false);
+    }
+
+    public void PartBlincker(Part Blink)
+    {
+        if(Blink==Rarm) Signals[0].SetActive(true);
+        if(Blink==Larm) Signals[1].SetActive(true);
+        if(Blink==Leg) Signals[2].SetActive(true);
+        if(Blink==Head) Signals[3].SetActive(true);
     }
 
     #region Viejo Daño
