@@ -44,6 +44,32 @@ public class PartSelector : MonoBehaviour
 
     void Start()
     {
+        foreach (var p in rArms)
+        {
+            p.gameObject.SetActive(false);
+        }
+        foreach (var p in lArms)
+        {
+            p.gameObject.SetActive(false);
+        }
+        foreach (var p in legs)
+        {
+            p.gameObject.SetActive(false);
+        }
+        foreach (var p in heads)
+        {
+            p.gameObject.SetActive(false);
+        }
+        foreach (var p in chests)
+        {
+            p.gameObject.SetActive(false);
+        }
+        rArms[LifeTraker.Instance.RarmIndex].gameObject.SetActive(true);
+        lArms[LifeTraker.Instance.LarmIndex].gameObject.SetActive(true);
+        legs[LifeTraker.Instance.LegsIndex].gameObject.SetActive(true);
+        heads[LifeTraker.Instance.HeadIndex].gameObject.SetActive(true);
+        chests[LifeTraker.Instance.ChestIndex].gameObject.SetActive(true);
+
         Zero();
         Display.SetRarmDisplay(rArms[RAIndex].life, rArms[RAIndex].Damage);
         miniDisplays[0].DisplayMini(RAIndex);

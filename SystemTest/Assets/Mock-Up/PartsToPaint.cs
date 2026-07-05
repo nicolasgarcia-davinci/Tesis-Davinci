@@ -1,9 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PartsToPaint : MonoBehaviour
 {
+    public PartSelector PartsOnDisplay;
+
     public List<Arm> Rarms;
     public List<Arm> Larms;
     public List<Head> Heads;
@@ -12,6 +15,14 @@ public class PartsToPaint : MonoBehaviour
 
     public void Start()
     {
+        Clean();
+
+        Rarms.Add(PartsOnDisplay.rArms[LifeTraker.Instance.RarmIndex]);
+        Larms.Add(PartsOnDisplay.lArms[LifeTraker.Instance.LarmIndex]);
+        Heads.Add(PartsOnDisplay.heads[LifeTraker.Instance.HeadIndex]);
+        Legs.Add(PartsOnDisplay.legs[LifeTraker.Instance.LegsIndex]);
+        Chests.Add(PartsOnDisplay.chests[LifeTraker.Instance.ChestIndex]);
+
         PaintThem();
     }
     public void Clean()

@@ -133,7 +133,6 @@ public class CompositeFighter : MonoBehaviour
         impactColor = Color.red;
         Signals[4].SetActive(false);
         Signals[5].SetActive(false);
-        Signals[6].SetActive(false);
 
         trailMesh = new MeshTrail(this, trailFactory.Pool, trailFactory.playerSkRenderer, trailFactory.trailMat, matAlphaName, _dodgeTime)
             .setTime(_refreshRate, _delayDestroy).setPos(this.transform);
@@ -720,15 +719,13 @@ public class CompositeFighter : MonoBehaviour
 
     public IEnumerator ActivateBuffState()
     {
-        recoverParticles.SetActive(true);
-        Signals[4].SetActive(true);
         IsBuffed = true;
-        Signals[6].SetActive(true);
+        Signals[4].SetActive(true);
+        recoverParticles.SetActive(true);
         yield return new WaitForSeconds(BuffTime);
-        IsBuffed = false;
-        Signals[6].SetActive(false);
         recoverParticles.SetActive(false);
         Signals[4].SetActive(false);
+        IsBuffed = false;
     }
 
     public IEnumerator ImpactFrame(float duration)

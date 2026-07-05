@@ -7,17 +7,6 @@ public class MenuControler : MonoBehaviour
     public MenuNavigation[] Menues;
     public AudioRequester _stageTheme;
 
-    void Start()
-    {
-        //_stageTheme.CallSong();
-    }
-
-
-    void Update()
-    {
-        
-    }
-
     public void ChangeWindow(int Close, int Open)
     {
         foreach(MenuNavigation menu in Menues)

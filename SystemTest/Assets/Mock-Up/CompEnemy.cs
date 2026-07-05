@@ -19,7 +19,6 @@ public class CompEnemy : CompositeFighter
         impactColor = Color.blue;
         Signals[4].SetActive(false);
         Signals[5].SetActive(false);
-        Signals[6].SetActive(false);
 
         Rarm.ActiveParts();
         Larm.ActiveParts();

@@ -5,6 +5,7 @@ using UnityEngine;
 public class ConsoleControls : ConsoleMenu
 {
     public GameObject MainConsole;
+    public PartSelector PartSelector;
     public bool IsColoring;
     public override void Update()
     {
@@ -52,5 +53,9 @@ public class ConsoleControls : ConsoleMenu
     {
         Debug.Log("dada");
         MainConsole.SetActive(true);
+    }
+    public void SelectorOn()
+    {
+        PartSelector.IsOn = true;
     }
 }
