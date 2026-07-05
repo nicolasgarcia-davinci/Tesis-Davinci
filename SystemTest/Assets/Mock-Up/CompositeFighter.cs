@@ -34,8 +34,18 @@ public class CompositeFighter : MonoBehaviour
     public float Stamina;
     public float MaxStamina;
     public float StaminaRefresh;
+
+    [Header("Buff/Debuff Particles")]
     public GameObject debuffParticles;
+    public GameObject SmokeParticles;
     public GameObject recoverParticles;
+    public GameObject SayianParticles;
+
+    [Header("Buff//Debuf")]
+    public bool IsDebuffed;
+    public bool IsBuffed;
+    public float DebuffTime;
+    public float BuffTime;
 
     [Header("Anim Bools")]
     public bool IsRepairing;
@@ -64,12 +74,6 @@ public class CompositeFighter : MonoBehaviour
     public bool IsAttackingUp;
     public bool IsAttackingDown;
     public bool IsAttacking;
-
-    [Header("Buff//Debuf")]
-    public bool IsDebuffed;
-    public bool IsBuffed;
-    public float DebuffTime;
-    public float BuffTime;
 
     [Header("Audio")]
     public AudioSource _Audio;
@@ -116,6 +120,7 @@ public class CompositeFighter : MonoBehaviour
     public LifeBar RedBar;
     public LifeBar LOCKBar;
     public LifeBar StamminaBar;
+    public float NegativeBar;
     public GameObject[] Signals;
 
     [Header("Dying")]
@@ -130,7 +135,7 @@ public class CompositeFighter : MonoBehaviour
         Stamina = MaxStamina;
         StamminaBar.UpdateLife(Stamina, MaxStamina);
         anim = GetComponent<Animator>();
-        impactColor = Color.red;
+
         Signals[4].SetActive(false);
         Signals[5].SetActive(false);
 
@@ -170,11 +175,14 @@ public class CompositeFighter : MonoBehaviour
         CLeft = Larm.life;
         CLegs = Leg.life;
         CChest = OverAllHealth;
+
+        ResetBreak();
     }
 
     public virtual void Set()
     {
         ResetBools();
+        ResetBreak();
         Stamina = MaxStamina;
         StamminaBar.UpdateLife(Stamina, MaxStamina);
         IsRepairing = false;
@@ -190,7 +198,7 @@ public class CompositeFighter : MonoBehaviour
         if (Rarm.life > 0)
         {
             PartCount++;
-            LOCKBar.UpdateLife((5-PartCount),5f);
+            //LOCKBar.UpdateLife((5-PartCount),5f);
             RarmBoom = false;
             Rarm.ActiveParts();
             DeActivateParticle(RarmSpark);
@@ -200,7 +208,7 @@ public class CompositeFighter : MonoBehaviour
         if (Larm.life > 0)
         {
             PartCount++;
-            LOCKBar.UpdateLife((5 - PartCount), 5f);
+            //LOCKBar.UpdateLife((5 - PartCount), 5f);
             LarmBoom = false;
             Larm.ActiveParts();
             DeActivateParticle(LarmSpark);
@@ -210,7 +218,7 @@ public class CompositeFighter : MonoBehaviour
         if (Leg.life > 0)
         {
             PartCount++;
-            LOCKBar.UpdateLife((5 - PartCount), 5f);
+            //LOCKBar.UpdateLife((5 - PartCount), 5f);
             LegsBoom = false;
             Leg.ActiveParts();
             DeActivateParticle(LegsSpark);
@@ -220,12 +228,16 @@ public class CompositeFighter : MonoBehaviour
         if (Head.life > 0)
         {
             PartCount++;
-            LOCKBar.UpdateLife((5 - PartCount), 5f);
+            //LOCKBar.UpdateLife((5 - PartCount), 5f);
             HeadBoom = false;
             Head.ActiveParts();
             DeActivateParticle(HeadSpark);
             Signals[3].SetActive(false);
         }
+        if (Rarm.life <= 0) BREAKBAR(Rarm);
+        if (Larm.life <= 0) BREAKBAR(Larm);
+        if (Leg.life <= 0) BREAKBAR(Leg);
+        if (Head.life <= 0) BREAKBAR(Head);
         EnterLife();
     }
 
@@ -489,7 +501,7 @@ public class CompositeFighter : MonoBehaviour
             FightControler.Instance.FlashOrigin(this);
             partHit.DeActiveParts();
             PartCount--;
-            LOCKBar.UpdateLife((5 - PartCount), 5f);
+            //LOCKBar.UpdateLife((5 - PartCount), 5f);
             if (BuffState) 
             {
                 damage = damage * 2;
@@ -517,7 +529,10 @@ public class CompositeFighter : MonoBehaviour
         StopAllCoroutines();
         debuffParticles.SetActive(false);
         recoverParticles.SetActive(false);
+        //SmokeParticles.SetActive(false);
+        //SayianParticles.SetActive(false);
         IsBuffed = false;
+        IsDebuffed = false;
         impactMaterial.SetFloat("_Enable", 0f);
         ExitTrials();
     }
@@ -536,6 +551,7 @@ public class CompositeFighter : MonoBehaviour
         if(Blink==Larm) Signals[1].SetActive(true);
         if(Blink==Leg) Signals[2].SetActive(true);
         if(Blink==Head) Signals[3].SetActive(true);
+        BREAKBAR(Blink);
     }
 
     #region Viejo Daño
@@ -722,8 +738,9 @@ public class CompositeFighter : MonoBehaviour
         IsBuffed = true;
         Signals[4].SetActive(true);
         recoverParticles.SetActive(true);
+        //SayianParticles.SetActive(true);
         yield return new WaitForSeconds(BuffTime);
-        recoverParticles.SetActive(false);
+        //SayianParticles.SetActive(false);
         Signals[4].SetActive(false);
         IsBuffed = false;
     }
@@ -784,6 +801,7 @@ public class CompositeFighter : MonoBehaviour
         IsDebuffed = true;
         _Audio.PlayOneShot(_debuff);
         debuffParticles.SetActive(true);
+        //SmokeParticles.SetActive(true);
         Signals[5].SetActive(true);
 
         while (timer <= DebuffTime)
@@ -794,6 +812,7 @@ public class CompositeFighter : MonoBehaviour
 
         Stamina = MaxStamina * 0.5f;
         debuffParticles.SetActive(false);
+        //SmokeParticles.SetActive(false);
         Signals[5].SetActive(false);
         IsDebuffed = false;
         timer = 0;
@@ -823,6 +842,26 @@ public class CompositeFighter : MonoBehaviour
     {
         anim.speed = 1;
         IsPaused = false;
+    }
+
+    public void BREAKBAR(Part oops)
+    {
+        if (oops.life>0)
+        {
+            NegativeBar -= oops.Maxlife;
+            if( NegativeBar < 0 ) NegativeBar = 0;
+            LOCKBar.UpdateLife(NegativeBar, OverAllHealth);
+            Debug.Log("repair part");
+            return;
+        } 
+        NegativeBar += oops.Maxlife;
+        Debug.Log("Broken");
+        LOCKBar.UpdateLife(NegativeBar, OverAllHealth);
+    }
+
+    public void ResetBreak()
+    {
+        LOCKBar.UpdateLife(0, OverAllHealth);
     }
 
 }

@@ -16,7 +16,7 @@ public class CompEnemy : CompositeFighter
         Stamina = MaxStamina;
         StamminaBar.UpdateLife(Stamina, MaxStamina);
         anim = GetComponent<Animator>();
-        impactColor = Color.blue;
+
         Signals[4].SetActive(false);
         Signals[5].SetActive(false);
 
@@ -39,9 +39,12 @@ public class CompEnemy : CompositeFighter
         CLeft = Larm.life;
         CLegs = Leg.life;
         CChest = OverAllHealth;
+        ResetBreak();
     }
     public override void Set()
     {
+        ResetBreak();
+
         OverAllHealth = LifeTraker.Instance.eOverHealt;
         Rarm.life = LifeTraker.Instance.eRight;
         Larm.life = LifeTraker.Instance.eLeft;
@@ -74,7 +77,11 @@ public class CompEnemy : CompositeFighter
             Signals[3].SetActive(false);
         }
 
-        LOCKBar.UpdateLife((5 - PartCount), 5f);
+        if (Rarm.life <= 0) BREAKBAR(Rarm);
+        if (Larm.life <= 0) BREAKBAR(Larm);
+        if (Leg.life <= 0) BREAKBAR(Leg);
+        if (Head.life <= 0) BREAKBAR(Head);
+        //LOCKBar.UpdateLife((5 - PartCount), 5f);
         EnterLife();
     }
     public override void FireCutscene()
@@ -120,7 +127,7 @@ public class CompEnemy : CompositeFighter
             FightControler.Instance.FlashOrigin(this);
             partHit.DeActiveParts();
             PartCount--;
-            LOCKBar.UpdateLife((5 - PartCount), 5f);
+            //LOCKBar.UpdateLife((5 - PartCount), 5f);
             if (BuffState) damage = damage * 2;
             if (isbroken) DamageToTake = (damage / 2 + partHit.Maxlife);
             DamageToTake = (damage + partHit.Maxlife);

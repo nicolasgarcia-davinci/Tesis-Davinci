@@ -10,6 +10,7 @@ public class Boss : CompEnemy
     public override void Set()
     {
         ResetBools();
+        ResetBreak();
         Stamina = MaxStamina;
         StamminaBar.UpdateLife(Stamina, MaxStamina);
         IsRepairing = false;
@@ -58,7 +59,11 @@ public class Boss : CompEnemy
             DeActivateParticle(HeadSpark);
         }
 
-        LOCKBar.UpdateLife((5 - PartCount), 5f);
+        //LOCKBar.UpdateLife((5 - PartCount), 5f);
+        if (Rarm.life <= 0) BREAKBAR(Rarm);
+        if (Larm.life <= 0) BREAKBAR(Larm);
+        if (Leg.life <= 0) BREAKBAR(Leg);
+        if (Head.life <= 0) BREAKBAR(Head);
         LifeTraker.Instance.eOverHealt = (Rarm.life + Larm.life + Leg.life + Head.life + Chest.life);
         OverAllHealth = LifeTraker.Instance.eOverHealt;
         EnterLife();
