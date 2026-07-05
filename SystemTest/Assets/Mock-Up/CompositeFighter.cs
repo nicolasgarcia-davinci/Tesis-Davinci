@@ -72,7 +72,7 @@ public class CompositeFighter : MonoBehaviour
 
     [Header("Audio")]
     public AudioSource _Audio;
-    public AudioClip _miss, _KO, _debuff, _breakPart;
+    public AudioClip _miss, _KO, _debuff, _breakPart, _buffedHit;
     
     [Header("Animator")]
     public Animator anim;
@@ -475,7 +475,12 @@ public class CompositeFighter : MonoBehaviour
             FightControler.Instance.FlashOrigin(this);
             partHit.DeActiveParts();
             PartCount--;
-            if (BuffState) damage = damage * 2;
+            if (BuffState) 
+            {
+                damage = damage * 2;
+                ActivateIMPACT();
+                _Audio.PlayOneShot(_buffedHit);
+            }
             if (isbroken) DamageToTake = (damage/2 + partHit.Maxlife);
             DamageToTake = (damage + partHit.Maxlife);
             Debug.Log(DamageToTake);
@@ -687,7 +692,6 @@ public class CompositeFighter : MonoBehaviour
 
     public IEnumerator ImpactFrame(float duration)
     {
-        Debug.Log("hola soy yo");
         impactMaterial.SetFloat("_Enable", 1f);
         impactMaterial.SetColor("_ImpactColor", impactColor);
         _Audio.PlayOneShot(_breakPart);
