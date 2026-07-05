@@ -72,6 +72,7 @@ public class FightControler : MonoBehaviour
         LifeTraker.Instance.eLegs      = _Enemy.Leg.life;
 
         _Controler.TurnWarningOff();
+        UI_Enter.Play("Exit");
 
         StageCam.Instance.GoToKOCam();
     }

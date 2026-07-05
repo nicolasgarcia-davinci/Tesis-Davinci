@@ -39,6 +39,6 @@ public class ConsoleMenu : MonoBehaviour
     public void SetMenu()
     {
         Menu.gameObject.SetActive(true);
-        Menu.act1();
+        Menu.act2();
     }
 }

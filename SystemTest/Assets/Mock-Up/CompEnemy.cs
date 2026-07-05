@@ -16,7 +16,10 @@ public class CompEnemy : CompositeFighter
         Stamina = MaxStamina;
         StamminaBar.UpdateLife(Stamina, MaxStamina);
         anim = GetComponent<Animator>();
-        impactColor = Color.red;
+        impactColor = Color.blue;
+        Signals[4].SetActive(false);
+        Signals[5].SetActive(false);
+        Signals[6].SetActive(false);
 
         Rarm.ActiveParts();
         Larm.ActiveParts();
@@ -46,27 +49,33 @@ public class CompEnemy : CompositeFighter
         Leg.life = LifeTraker.Instance.eLegs;
         Head.life = LifeTraker.Instance.eHead;
         IsRepairing = false;
-        PartCount = 1;
+        PartCount = 1f;
 
         if (Rarm.life > 0)
         {
             PartCount++;
-        }
+            Signals[0].SetActive(false);
+        } 
 
         if (Larm.life > 0)
         {
             PartCount++;
+            Signals[1].SetActive(false);
         }
 
         if (Leg.life > 0)
         {
             PartCount++;
+            Signals[2].SetActive(false);
         }
 
         if (Head.life > 0)
         {
             PartCount++;
+            Signals[3].SetActive(false);
         }
+
+        LOCKBar.UpdateLife((5 - PartCount), 5f);
         EnterLife();
     }
     public override void FireCutscene()
@@ -107,10 +116,15 @@ public class CompEnemy : CompositeFighter
             partDestroyed = true;
             ActivateParticle(Crash);
             ActivateParticle(Sparks);
+            if (partHit.name == "Right") Signals[0].SetActive(true);
+            if (partHit.name == "Left") Signals[1].SetActive(true);
+            if (partHit.name == "Leg") Signals[2].SetActive(true);
+            if (partHit.name == "Head") Signals[3].SetActive(true);
             FightControler.Instance.stopFrameHigh();
             FightControler.Instance.FlashOrigin(this);
             partHit.DeActiveParts();
             PartCount--;
+            LOCKBar.UpdateLife((5 - PartCount), 5f);
             if (BuffState) damage = damage * 2;
             if (isbroken) DamageToTake = (damage / 2 + partHit.Maxlife);
             DamageToTake = (damage + partHit.Maxlife);

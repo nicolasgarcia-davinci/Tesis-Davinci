@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Part : MonoBehaviour
 {
+    public string PartName;
     public string AttName;
     public float life;
     public float Maxlife;

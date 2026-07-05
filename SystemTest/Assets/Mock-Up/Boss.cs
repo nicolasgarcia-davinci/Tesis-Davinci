@@ -20,6 +20,8 @@ public class Boss : CompEnemy
         Leg.life = LifeTraker.Instance.eLegs;
         Head.life = LifeTraker.Instance.eHead;
 
+        PartCount = 1f;
+
         if (Rarm.life <= 0 && NumOfChanges>0)
         {
             ChangeRarm();
@@ -56,6 +58,7 @@ public class Boss : CompEnemy
             DeActivateParticle(HeadSpark);
         }
 
+        LOCKBar.UpdateLife((5 - PartCount), 5f);
         LifeTraker.Instance.eOverHealt = (Rarm.life + Larm.life + Leg.life + Head.life + Chest.life);
         OverAllHealth = LifeTraker.Instance.eOverHealt;
         EnterLife();

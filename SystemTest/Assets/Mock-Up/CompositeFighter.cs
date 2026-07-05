@@ -8,7 +8,7 @@ using UnityEngine.VFX;
 
 public class CompositeFighter : MonoBehaviour
 {
-    [Header ("Part Collection")]
+    [Header("Part Collection")]
     public Part[] RarmCollection;
     public Part[] LarmCollection;
     public Part[] LegCollection;
@@ -21,7 +21,7 @@ public class CompositeFighter : MonoBehaviour
     public Part Leg;
     public Part Head;
     public Part Chest;
-    public int PartCount;
+    public float PartCount;
 
     [Header("Current Health")]
     public float CHead;
@@ -40,6 +40,7 @@ public class CompositeFighter : MonoBehaviour
     [Header("Anim Bools")]
     public bool IsRepairing;
     public bool IsDying;
+    public bool IsPaused;
 
     [Header("Dodge")]
     public bool IsDodgingRight;
@@ -73,7 +74,7 @@ public class CompositeFighter : MonoBehaviour
     [Header("Audio")]
     public AudioSource _Audio;
     public AudioClip _miss, _KO, _debuff, _breakPart, _buffedHit;
-    
+
     [Header("Animator")]
     public Animator anim;
 
@@ -110,10 +111,12 @@ public class CompositeFighter : MonoBehaviour
     [SerializeField] protected Material impactMaterial;
     [SerializeField] protected Color impactColor;
 
-    [Header("OverAllHealth")]
+    [Header("BARS & SIGNALS")]
     public LifeBar LifeBar;
     public LifeBar RedBar;
+    public LifeBar LOCKBar;
     public LifeBar StamminaBar;
+    public GameObject[] Signals;
 
     [Header("Dying")]
     public Action IsDyingEvent = delegate { };
@@ -127,8 +130,11 @@ public class CompositeFighter : MonoBehaviour
         Stamina = MaxStamina;
         StamminaBar.UpdateLife(Stamina, MaxStamina);
         anim = GetComponent<Animator>();
-        impactColor = Color.blue;
- 
+        impactColor = Color.red;
+        Signals[4].SetActive(false);
+        Signals[5].SetActive(false);
+        Signals[6].SetActive(false);
+
         trailMesh = new MeshTrail(this, trailFactory.Pool, trailFactory.playerSkRenderer, trailFactory.trailMat, matAlphaName, _dodgeTime)
             .setTime(_refreshRate, _delayDestroy).setPos(this.transform);
         Rarm = RarmCollection[LifeTraker.Instance.RarmIndex];
@@ -180,38 +186,46 @@ public class CompositeFighter : MonoBehaviour
         Leg.life  = LifeTraker.Instance.pLegs;
         Head.life = LifeTraker.Instance.pHead;
 
-        PartCount = 1;
+        PartCount = 1f;
 
         if (Rarm.life > 0)
         {
-            PartCount++; 
+            PartCount++;
+            LOCKBar.UpdateLife((5-PartCount),5f);
             RarmBoom = false;
             Rarm.ActiveParts();
             DeActivateParticle(RarmSpark);
+            Signals[0].SetActive(false);
         }
 
         if (Larm.life > 0)
         {
             PartCount++;
+            LOCKBar.UpdateLife((5 - PartCount), 5f);
             LarmBoom = false;
             Larm.ActiveParts();
             DeActivateParticle(LarmSpark);
+            Signals[1].SetActive(false);
         }
 
         if (Leg.life > 0)
         {
             PartCount++;
+            LOCKBar.UpdateLife((5 - PartCount), 5f);
             LegsBoom = false;
             Leg.ActiveParts();
             DeActivateParticle(LegsSpark);
+            Signals[2].SetActive(false);
         }
 
         if (Head.life > 0)
         {
             PartCount++;
+            LOCKBar.UpdateLife((5 - PartCount), 5f);
             HeadBoom = false;
             Head.ActiveParts();
             DeActivateParticle(HeadSpark);
+            Signals[3].SetActive(false);
         }
         EnterLife();
     }
@@ -278,7 +292,7 @@ public class CompositeFighter : MonoBehaviour
 
     void Update()
     {
-        if (Stamina < MaxStamina && !IsDebuffed)
+        if (Stamina < MaxStamina && !IsDebuffed && !IsPaused)
         {
             Stamina += StaminaRefresh * Time.deltaTime;
             StamminaBar.UpdateLife(Stamina,MaxStamina);
@@ -471,10 +485,15 @@ public class CompositeFighter : MonoBehaviour
             partDestroyed = true;
             ActivateParticle(Crash);
             ActivateParticle(Sparks);
+            if(partHit.PartName == "Right") Signals[0].SetActive(true);
+            if(partHit.PartName == "Left") Signals[1].SetActive(true);
+            if(partHit.PartName == "Leg") Signals[2].SetActive(true);
+            if(partHit.PartName == "Head") Signals[3].SetActive(true);
             FightControler.Instance.stopFrameHigh();
             FightControler.Instance.FlashOrigin(this);
             partHit.DeActiveParts();
             PartCount--;
+            LOCKBar.UpdateLife((5 - PartCount), 5f);
             if (BuffState) 
             {
                 damage = damage * 2;
@@ -502,6 +521,17 @@ public class CompositeFighter : MonoBehaviour
         StopAllCoroutines();
         debuffParticles.SetActive(false);
         recoverParticles.SetActive(false);
+        IsBuffed = false;
+        impactMaterial.SetFloat("_Enable", 0f);
+        ExitTrials();
+    }
+
+    public void ExitTrials()
+    {
+        Rarm.ParticleContainer.SetActive(false);
+        Larm.ParticleContainer.SetActive(false);
+        Leg.ParticleContainer.SetActive(false);
+        Head.ParticleContainer.SetActive(false);
     }
 
     #region Viejo Daño
@@ -686,8 +716,10 @@ public class CompositeFighter : MonoBehaviour
     public IEnumerator ActivateBuffState()
     {
         IsBuffed = true;
+        Signals[6].SetActive(true);
         yield return new WaitForSeconds(BuffTime);
         IsBuffed = false;
+        Signals[6].SetActive(false);
     }
 
     public IEnumerator ImpactFrame(float duration)
@@ -746,32 +778,42 @@ public class CompositeFighter : MonoBehaviour
         IsDebuffed = true;
         _Audio.PlayOneShot(_debuff);
         debuffParticles.SetActive(true);
+        Signals[5].SetActive(true);
+
         while (timer <= DebuffTime)
         {
             timer += Time.deltaTime;
             yield return null;
         }
+
         Stamina = MaxStamina * 0.5f;
         debuffParticles.SetActive(false);
+        Signals[5].SetActive(false);
         IsDebuffed = false;
         recoverParticles.SetActive(true);
+        Signals[4].SetActive(true);
+
         while (timer <= DebuffTime + 2.5f)
         {
             timer += Time.deltaTime;
             Debug.Log(timer);
             yield return null;
         }
+
         recoverParticles.SetActive(false);
+        Signals[4].SetActive(false);
         timer = 0;
     }
 
     public void Pause()
     {
         anim.speed = 0;
+        IsPaused = true;
     }
     public void UnPause()
     {
         anim.speed = 1;
+        IsPaused = false;
     }
 
 }
