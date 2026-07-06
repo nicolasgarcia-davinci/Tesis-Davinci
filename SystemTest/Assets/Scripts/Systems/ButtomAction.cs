@@ -123,8 +123,8 @@ public class ButtomAction : MonoBehaviour
         if (_thisType == ButtomType.Continue)
         {
             if (newDif > LifeTraker.Instance.Dificulty) LifeTraker.Instance.Dificulty = newDif;
-            if (newDif==2 && !LifeTraker.Instance.HasUnlockDrill) LifeTraker.Instance.UnlockDrill=true;
-            if (newDif==3 && !LifeTraker.Instance.HasUnlockClaw) LifeTraker.Instance.UnlockClaw=true;
+            if (newDif==3 && !LifeTraker.Instance.HasUnlockDrill) LifeTraker.Instance.UnlockDrill=true;
+            if (newDif==4 && !LifeTraker.Instance.HasUnlockClaw) LifeTraker.Instance.UnlockClaw=true;
                 LoadManager.Instance.Garage();
         }
 
