@@ -185,6 +185,7 @@ public class CompositeFighter : MonoBehaviour
         StamminaBar.UpdateLife(Stamina, MaxStamina);
         IsRepairing = false;
 
+        LifeTraker.Instance.pOverHealt = (Rarm.life + Larm.life + Leg.life + Head.life + Chest.life);
         OverAllHealth = LifeTraker.Instance.pOverHealt;
         Rarm.life = LifeTraker.Instance.pRight;
         Larm.life = LifeTraker.Instance.pLeft;
@@ -515,7 +516,11 @@ public class CompositeFighter : MonoBehaviour
         }
         else if (isbroken)
         {
-            if (BuffState) damage = damage * 2;
+            if (BuffState)
+            {
+                damage = damage * 2;
+                _Audio.PlayOneShot(_buffedHit);
+            } 
                 DamageToTake = damage/2;
         } else DamageToTake = damage;
 

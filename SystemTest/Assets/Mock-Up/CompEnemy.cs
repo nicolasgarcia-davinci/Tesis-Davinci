@@ -116,7 +116,11 @@ public class CompEnemy : CompositeFighter
             FightControler.Instance.FlashOrigin(this);
             partHit.DeActiveParts();
             //LOCKBar.UpdateLife((5 - PartCount), 5f);
-            if (BuffState) damage = damage * 2;
+            if (BuffState)
+            {
+                damage = damage * 2;
+                _Audio.PlayOneShot(_buffedHit);
+            }
             if (isbroken) DamageToTake = (damage / 2 + partHit.Maxlife);
             DamageToTake = (damage + partHit.Maxlife);
             Debug.Log(DamageToTake);
@@ -125,7 +129,11 @@ public class CompEnemy : CompositeFighter
         }
         else if (isbroken)
         {
-            if (BuffState) damage = damage * 2;
+            if (BuffState)
+            {
+                damage = damage * 2;
+                _Audio.PlayOneShot(_buffedHit);
+            }
             DamageToTake = damage / 2;
         }
         else DamageToTake = damage;
