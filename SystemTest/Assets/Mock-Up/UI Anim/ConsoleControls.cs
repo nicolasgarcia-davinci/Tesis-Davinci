@@ -60,4 +60,9 @@ public class ConsoleControls : ConsoleMenu
         Debug.Log("dada");
         MainConsole.SetActive(true);
     }
+
+    public void Exit()
+    {
+        PartSelector.IsOn=false;
+    }
 }

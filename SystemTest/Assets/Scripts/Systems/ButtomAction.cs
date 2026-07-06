@@ -138,7 +138,7 @@ public class ButtomAction : MonoBehaviour
 
         if (_thisType==ButtomType.Asambley)
         {
-            _isSelected = false;
+            DeSelect();
             _Activated = false;
             Asambley.SetActive(true);
             _miMenu.gameObject.SetActive(false);

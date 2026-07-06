@@ -51,31 +51,14 @@ public class CompEnemy : CompositeFighter
         Leg.life = LifeTraker.Instance.eLegs;
         Head.life = LifeTraker.Instance.eHead;
         IsRepairing = false;
-        PartCount = 1f;
 
-        if (Rarm.life > 0)
-        {
-            PartCount++;
-            Signals[0].SetActive(false);
-        } 
+        if (Rarm.life > 0) Signals[0].SetActive(false);
 
-        if (Larm.life > 0)
-        {
-            PartCount++;
-            Signals[1].SetActive(false);
-        }
+        if (Larm.life > 0) Signals[1].SetActive(false);
 
-        if (Leg.life > 0)
-        {
-            PartCount++;
-            Signals[2].SetActive(false);
-        }
+        if (Leg.life > 0) Signals[2].SetActive(false);
 
-        if (Head.life > 0)
-        {
-            PartCount++;
-            Signals[3].SetActive(false);
-        }
+        if (Head.life > 0) Signals[3].SetActive(false);
 
         if (Rarm.life <= 0) BREAKBAR(Rarm);
         if (Larm.life <= 0) BREAKBAR(Larm);
@@ -102,9 +85,11 @@ public class CompEnemy : CompositeFighter
         {
             _Audio.PlayOneShot(_miss);
             Stamina += 10;
+            IsBuffed = true;
             return;
         }
 
+        IsBuffed = false;
         anim.Play(animHit);
         ResetBools();
         _Audio.PlayOneShot(hit);
@@ -120,13 +105,13 @@ public class CompEnemy : CompositeFighter
         if (partHit.life <= 0 && !partDestroyed)
         {
             partDestroyed = true;
+            ActivateIMPACT();
             ActivateParticle(Crash);
             ActivateParticle(Sparks);
             PartBlincker(partHit);
             FightControler.Instance.stopFrameHigh();
             FightControler.Instance.FlashOrigin(this);
             partHit.DeActiveParts();
-            PartCount--;
             //LOCKBar.UpdateLife((5 - PartCount), 5f);
             if (BuffState) damage = damage * 2;
             if (isbroken) DamageToTake = (damage / 2 + partHit.Maxlife);
@@ -151,7 +136,6 @@ public class CompEnemy : CompositeFighter
 
         if (OverAllHealth <= 0)
         {
-            LifeTraker.Instance.ePartCount = PartCount;
             FightControler.Instance.Halt();
             IsDying = true;
             ExitFight();
@@ -170,5 +154,25 @@ public class CompEnemy : CompositeFighter
         warning.SetActive(true);
         yield return new WaitForSeconds(WarningTime);
         warning.SetActive(false);
+    }
+    public override void BREAKBAR(Part oops)
+    {
+        if (oops.life > 0)
+        {
+            NegativeBar -= oops.Maxlife;
+            if (NegativeBar < 0) NegativeBar = 0;
+            LOCKBar.UpdateLife(NegativeBar, LifeTraker.Instance.eOverHealt);
+            float nresult = NegativeBar / LifeTraker.Instance.eOverHealt;
+            Debug.Log("repair part" + nresult);
+            return;
+        }
+        NegativeBar += oops.Maxlife;
+        LOCKBar.UpdateLife(NegativeBar, LifeTraker.Instance.eOverHealt);
+    }
+
+    public override void ResetBreak()
+    {
+        NegativeBar = 0;
+        LOCKBar.UpdateLife(0f, LifeTraker.Instance.eOverHealt);
     }
 }

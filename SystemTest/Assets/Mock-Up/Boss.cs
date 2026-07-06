@@ -21,12 +21,9 @@ public class Boss : CompEnemy
         Leg.life = LifeTraker.Instance.eLegs;
         Head.life = LifeTraker.Instance.eHead;
 
-        PartCount = 1f;
-
         if (Rarm.life <= 0 && NumOfChanges>0)
         {
             ChangeRarm();
-            PartCount++;
             RarmBoom = false;
             Rarm.ActiveParts();
             DeActivateParticle(RarmSpark);
@@ -35,7 +32,6 @@ public class Boss : CompEnemy
         if (Larm.life <= 0 && NumOfChanges > 0)
         {
             ChangeLarm();
-            PartCount++;
             LarmBoom = false;
             Larm.ActiveParts();
             DeActivateParticle(LarmSpark);
@@ -44,7 +40,6 @@ public class Boss : CompEnemy
         if (Leg.life <= 0 && NumOfChanges > 0)
         {
             ChangeLegs();
-            PartCount++;
             LegsBoom = false;
             Leg.ActiveParts();
             DeActivateParticle(LegsSpark);
@@ -53,7 +48,6 @@ public class Boss : CompEnemy
         if (Head.life <= 0 && NumOfChanges > 0)
         {
             ChangeHeads();
-            PartCount++;
             HeadBoom = false;
             Head.ActiveParts();
             DeActivateParticle(HeadSpark);

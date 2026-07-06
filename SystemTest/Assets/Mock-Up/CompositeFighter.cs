@@ -21,7 +21,6 @@ public class CompositeFighter : MonoBehaviour
     public Part Leg;
     public Part Head;
     public Part Chest;
-    public float PartCount;
 
     [Header("Current Health")]
     public float CHead;
@@ -45,7 +44,6 @@ public class CompositeFighter : MonoBehaviour
     public bool IsDebuffed;
     public bool IsBuffed;
     public float DebuffTime;
-    public float BuffTime;
 
     [Header("Anim Bools")]
     public bool IsRepairing;
@@ -193,12 +191,8 @@ public class CompositeFighter : MonoBehaviour
         Leg.life  = LifeTraker.Instance.pLegs;
         Head.life = LifeTraker.Instance.pHead;
 
-        PartCount = 1f;
-
         if (Rarm.life > 0)
         {
-            PartCount++;
-            //LOCKBar.UpdateLife((5-PartCount),5f);
             RarmBoom = false;
             Rarm.ActiveParts();
             DeActivateParticle(RarmSpark);
@@ -207,8 +201,6 @@ public class CompositeFighter : MonoBehaviour
 
         if (Larm.life > 0)
         {
-            PartCount++;
-            //LOCKBar.UpdateLife((5 - PartCount), 5f);
             LarmBoom = false;
             Larm.ActiveParts();
             DeActivateParticle(LarmSpark);
@@ -217,8 +209,6 @@ public class CompositeFighter : MonoBehaviour
 
         if (Leg.life > 0)
         {
-            PartCount++;
-            //LOCKBar.UpdateLife((5 - PartCount), 5f);
             LegsBoom = false;
             Leg.ActiveParts();
             DeActivateParticle(LegsSpark);
@@ -227,8 +217,6 @@ public class CompositeFighter : MonoBehaviour
 
         if (Head.life > 0)
         {
-            PartCount++;
-            //LOCKBar.UpdateLife((5 - PartCount), 5f);
             HeadBoom = false;
             Head.ActiveParts();
             DeActivateParticle(HeadSpark);
@@ -307,6 +295,18 @@ public class CompositeFighter : MonoBehaviour
         {
             Stamina += StaminaRefresh * Time.deltaTime;
             StamminaBar.UpdateLife(Stamina,MaxStamina);
+        }
+        if(IsBuffed)
+        {
+            Signals[4].SetActive(true);
+            recoverParticles.SetActive(true);
+            //SayianParticles.SetActive(true);
+        }
+        if (!IsBuffed)
+        {
+            Signals[4].SetActive(false);
+            recoverParticles.SetActive(false);
+            //SayianParticles.SetActive(false);
         }
     }
 
@@ -474,11 +474,11 @@ public class CompositeFighter : MonoBehaviour
             _Audio.PlayOneShot(_miss);
             trailMesh?.CallTrail();
             Stamina += 10;
-            StopCoroutine(ActivateBuffState());
-            StartCoroutine(ActivateBuffState());
+            IsBuffed = true;
             return;
         }
 
+        IsBuffed = false;
         anim.Play(animHit);
         ResetBools();
         _Audio.PlayOneShot(hit);
@@ -494,18 +494,17 @@ public class CompositeFighter : MonoBehaviour
         if (partHit.life <= 0 && !partDestroyed)
         {
             partDestroyed = true;
+            ActivateIMPACT();
             ActivateParticle(Crash);
             ActivateParticle(Sparks);
             PartBlincker(partHit);
             FightControler.Instance.stopFrameHigh();
             FightControler.Instance.FlashOrigin(this);
             partHit.DeActiveParts();
-            PartCount--;
             //LOCKBar.UpdateLife((5 - PartCount), 5f);
             if (BuffState) 
             {
                 damage = damage * 2;
-                ActivateIMPACT();
                 _Audio.PlayOneShot(_buffedHit);
             }
             if (isbroken) DamageToTake = (damage/2 + partHit.Maxlife);
@@ -526,6 +525,7 @@ public class CompositeFighter : MonoBehaviour
 
     public void TurnDebbOff()
     {
+        anim.speed = 1;
         StopAllCoroutines();
         debuffParticles.SetActive(false);
         recoverParticles.SetActive(false);
@@ -705,7 +705,6 @@ public class CompositeFighter : MonoBehaviour
 
         if (OverAllHealth<=0)
         {
-            LifeTraker.Instance.PartCount=PartCount;
             FightControler.Instance.Halt();
             IsDying = true;
             ExitFight();
@@ -731,18 +730,6 @@ public class CompositeFighter : MonoBehaviour
     public void ActivateIMPACT()
     {
         StartCoroutine(ImpactFrame(heavyBlow));
-    }
-
-    public IEnumerator ActivateBuffState()
-    {
-        IsBuffed = true;
-        Signals[4].SetActive(true);
-        recoverParticles.SetActive(true);
-        //SayianParticles.SetActive(true);
-        yield return new WaitForSeconds(BuffTime);
-        //SayianParticles.SetActive(false);
-        Signals[4].SetActive(false);
-        IsBuffed = false;
     }
 
     public IEnumerator ImpactFrame(float duration)
@@ -833,6 +820,11 @@ public class CompositeFighter : MonoBehaviour
 
     }
 
+    public void BuffOff()
+    {
+        IsBuffed = false;
+    }
+
     public void Pause()
     {
         anim.speed = 0;
@@ -844,24 +836,26 @@ public class CompositeFighter : MonoBehaviour
         IsPaused = false;
     }
 
-    public void BREAKBAR(Part oops)
+    public virtual void BREAKBAR(Part oops)
     {
         if (oops.life>0)
         {
             NegativeBar -= oops.Maxlife;
             if( NegativeBar < 0 ) NegativeBar = 0;
-            LOCKBar.UpdateLife(NegativeBar, OverAllHealth);
-            Debug.Log("repair part");
+            LOCKBar.UpdateLife(NegativeBar, LifeTraker.Instance.pOverHealt);
+            float nresult = NegativeBar / LifeTraker.Instance.pOverHealt;
+            Debug.Log("repair part"+ nresult);
             return;
         } 
         NegativeBar += oops.Maxlife;
-        Debug.Log("Broken");
-        LOCKBar.UpdateLife(NegativeBar, OverAllHealth);
+
+        LOCKBar.UpdateLife(NegativeBar, LifeTraker.Instance.pOverHealt);
     }
 
-    public void ResetBreak()
+    public virtual void ResetBreak()
     {
-        LOCKBar.UpdateLife(0, OverAllHealth);
+        NegativeBar = 0;
+        LOCKBar.UpdateLife(0f, LifeTraker.Instance.pOverHealt);
     }
 
 }
