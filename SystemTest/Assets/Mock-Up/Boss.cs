@@ -15,7 +15,6 @@ public class Boss : CompEnemy
         StamminaBar.UpdateLife(Stamina, MaxStamina);
         IsRepairing = false;
 
-        OverAllHealth = LifeTraker.Instance.eOverHealt;
         Rarm.life = LifeTraker.Instance.eRight;
         Larm.life = LifeTraker.Instance.eLeft;
         Leg.life = LifeTraker.Instance.eLegs;
@@ -53,13 +52,14 @@ public class Boss : CompEnemy
             DeActivateParticle(HeadSpark);
         }
 
-        //LOCKBar.UpdateLife((5 - PartCount), 5f);
+        LifeTraker.Instance.eOverHealt = (Rarm.life + Larm.life + Leg.life + Head.life + Chest.life);
+        OverAllHealth = LifeTraker.Instance.eOverHealt;
+
         if (Rarm.life <= 0) BREAKBAR(Rarm);
         if (Larm.life <= 0) BREAKBAR(Larm);
         if (Leg.life <= 0) BREAKBAR(Leg);
         if (Head.life <= 0) BREAKBAR(Head);
-        LifeTraker.Instance.eOverHealt = (Rarm.life + Larm.life + Leg.life + Head.life + Chest.life);
-        OverAllHealth = LifeTraker.Instance.eOverHealt;
+
         EnterLife();
     }
     public void ChangeRarm()

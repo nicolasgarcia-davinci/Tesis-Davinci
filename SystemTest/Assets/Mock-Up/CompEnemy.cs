@@ -45,11 +45,14 @@ public class CompEnemy : CompositeFighter
     {
         ResetBreak();
 
-        OverAllHealth = LifeTraker.Instance.eOverHealt;
         Rarm.life = LifeTraker.Instance.eRight;
         Larm.life = LifeTraker.Instance.eLeft;
         Leg.life = LifeTraker.Instance.eLegs;
         Head.life = LifeTraker.Instance.eHead;
+
+        LifeTraker.Instance.eOverHealt = (Rarm.life + Larm.life + Leg.life + Head.life + Chest.life);
+        OverAllHealth = LifeTraker.Instance.eOverHealt;
+
         IsRepairing = false;
 
         if (Rarm.life > 0) Signals[0].SetActive(false);
@@ -64,7 +67,7 @@ public class CompEnemy : CompositeFighter
         if (Larm.life <= 0) BREAKBAR(Larm);
         if (Leg.life <= 0) BREAKBAR(Leg);
         if (Head.life <= 0) BREAKBAR(Head);
-        //LOCKBar.UpdateLife((5 - PartCount), 5f);
+
         EnterLife();
     }
     public override void FireCutscene()
@@ -161,18 +164,16 @@ public class CompEnemy : CompositeFighter
         {
             NegativeBar -= oops.Maxlife;
             if (NegativeBar < 0) NegativeBar = 0;
-            LOCKBar.UpdateLife(NegativeBar, LifeTraker.Instance.eOverHealt);
-            float nresult = NegativeBar / LifeTraker.Instance.eOverHealt;
-            Debug.Log("repair part" + nresult);
+            LOCKBar.UpdateLife(NegativeBar, LifeTraker.Instance.eMaxHealt);
             return;
         }
         NegativeBar += oops.Maxlife;
-        LOCKBar.UpdateLife(NegativeBar, LifeTraker.Instance.eOverHealt);
+        LOCKBar.UpdateLife(NegativeBar, LifeTraker.Instance.eMaxHealt);
     }
 
     public override void ResetBreak()
     {
         NegativeBar = 0;
-        LOCKBar.UpdateLife(0f, LifeTraker.Instance.eOverHealt);
+        LOCKBar.UpdateLife(0f, LifeTraker.Instance.eMaxHealt);
     }
 }

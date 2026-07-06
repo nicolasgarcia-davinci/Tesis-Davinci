@@ -842,20 +842,18 @@ public class CompositeFighter : MonoBehaviour
         {
             NegativeBar -= oops.Maxlife;
             if( NegativeBar < 0 ) NegativeBar = 0;
-            LOCKBar.UpdateLife(NegativeBar, LifeTraker.Instance.pOverHealt);
-            float nresult = NegativeBar / LifeTraker.Instance.pOverHealt;
-            Debug.Log("repair part"+ nresult);
+            LOCKBar.UpdateLife(NegativeBar, LifeTraker.Instance.MaxHealt);
             return;
         } 
         NegativeBar += oops.Maxlife;
 
-        LOCKBar.UpdateLife(NegativeBar, LifeTraker.Instance.pOverHealt);
+        LOCKBar.UpdateLife(NegativeBar, LifeTraker.Instance.MaxHealt);
     }
 
     public virtual void ResetBreak()
     {
         NegativeBar = 0;
-        LOCKBar.UpdateLife(0f, LifeTraker.Instance.pOverHealt);
+        LOCKBar.UpdateLife(0f, LifeTraker.Instance.MaxHealt);
     }
 
 }
