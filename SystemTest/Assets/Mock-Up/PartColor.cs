@@ -165,9 +165,14 @@ public class PartColor : MonoBehaviour
             controls.IsColoring = false;
             painter.End();
         }
+        if(_thisType == PainterOption.Back)
+        {
+            _Activated = false;
+            painter.backColumn();
+        }
     }
 }
 public enum PainterOption
 {
-    Color1, Color2, Pass, End
+    Color1, Color2, Pass, End, Back
 }

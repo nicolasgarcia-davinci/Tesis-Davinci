@@ -7,20 +7,21 @@ public class ConsoleControls : ConsoleMenu
     public GameObject MainConsole;
     public PartSelector PartSelector;
     public bool IsColoring;
+
     public override void Update()
     {
         if(Input.GetKeyDown(KeyCode.UpArrow)) ClickUp();
         if(Input.GetKeyDown(KeyCode.DownArrow)) ClickDown();
         if(Input.GetKeyDown(KeyCode.RightArrow)) ClickRight();
         if(Input.GetKeyDown(KeyCode.LeftArrow)) ClickLeft();
-        if (Input.GetKeyDown(KeyCode.Space)&& PartSelector.IsOn) ClickSpace();
-        if (Input.GetKeyDown(KeyCode.Space)&& !PartSelector.IsOn) StartCoroutine(ActivateDisplay()); ;
+        if (Input.GetKeyDown(KeyCode.Space) && PartSelector.IsOn) ClickSpace();
         if (Input.GetKeyDown(KeyCode.E)) ClickE();
     }
-    public IEnumerator ActivateDisplay()
+
+    public void ActivateScreen()
     {
-        yield return new WaitForSeconds(0.3f);
-        PartSelector.IsOn = true;
+        if(!LifeTraker.Instance.UnlockClaw && !LifeTraker.Instance.UnlockDrill)
+            PartSelector.IsOn = true;
     }
     public void ClickRight()
     {

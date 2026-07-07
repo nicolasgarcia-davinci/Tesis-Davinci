@@ -81,6 +81,7 @@ public class ButtomAction : MonoBehaviour
 
     public IEnumerator Action()
     {
+        if(newDif > LifeTraker.Instance.Dificulty) LifeTraker.Instance.Dificulty = newDif;
         _pulsControl.SetTrigger("Click");
         if (_Console != null) _Console.SetTrigger("ClickSpace");
         Sound.PlayOneShot(ActSound);
@@ -102,15 +103,13 @@ public class ButtomAction : MonoBehaviour
 
         if (_thisType == ButtomType.LoadStage) LoadManager.Instance.Garage();
 
-        if (_thisType == ButtomType.LoadMenu && LifeTraker.Instance.IsEnemy)
+        if (_thisType == ButtomType.LoadMenu)
         {
-            if(newDif > LifeTraker.Instance.Dificulty) LifeTraker.Instance.Dificulty = newDif;
             LoadManager.Instance.LoadMenu();
-        }else if (_thisType == ButtomType.LoadMenu && !LifeTraker.Instance.IsEnemy) LoadManager.Instance.LoadMenu();
+        }
 
         if (_thisType == ButtomType.Quit)
         {
-            if(newDif > LifeTraker.Instance.Dificulty) LifeTraker.Instance.Dificulty = newDif;
             Application.Quit();
         } 
 
@@ -122,7 +121,6 @@ public class ButtomAction : MonoBehaviour
 
         if (_thisType == ButtomType.Continue)
         {
-            if (newDif > LifeTraker.Instance.Dificulty) LifeTraker.Instance.Dificulty = newDif;
             if (newDif==3 && !LifeTraker.Instance.HasUnlockDrill) LifeTraker.Instance.UnlockDrill=true;
             if (newDif==4 && !LifeTraker.Instance.HasUnlockClaw) LifeTraker.Instance.UnlockClaw=true;
                 LoadManager.Instance.Garage();
@@ -130,8 +128,7 @@ public class ButtomAction : MonoBehaviour
 
         if (_thisType == ButtomType.NextLvl)
         {
-            if (newDif > LifeTraker.Instance.Dificulty) LifeTraker.Instance.Dificulty = newDif;
-            LoadManager.Instance.Garage();
+            LoadManager.Instance.LoadEnter();
         }
 
         if (_thisType == ButtomType.Play) LoadManager.Instance.LoadEnter();

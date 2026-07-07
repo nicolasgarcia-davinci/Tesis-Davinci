@@ -143,6 +143,79 @@ public class PartPainter : MonoBehaviour
         Index = 0;
         Column2[Index].Select();
     }
+    public void backColumn()
+    {
+        if (IsInColum1)
+        {
+            IsInColum1 = false;
+            Index = 0;
+            foreach (var col in Column1)
+            {
+                col.DeSelect();
+                col.Clean();
+            }
+            Palet1.gameObject.SetActive(false);
+            Asambler.CallActivation();
+        }
+
+        if (IsInColum2)
+        {
+            Palet1.gameObject.SetActive(true);
+
+            foreach (var col in Column2)
+            {
+                if (col.IsRArm)
+                {
+                    foreach (var col2 in Column1)
+                    {
+                        col2.RArmToPaint = col.RArmToPaint;
+                        col2.IsRArm = true;
+                    }
+                }
+                if (col.IsLArm)
+                {
+                    foreach (var col2 in Column1)
+                    {
+                        col2.LArmToPaint = col.LArmToPaint;
+                        col2.IsLArm = true;
+                    }
+                }
+                if (col.IsLeg)
+                {
+                    foreach (var col2 in Column1)
+                    {
+                        col2.LegToPaint = col.LegToPaint;
+                        col2.IsLeg = true;
+                    }
+                }
+                if (col.IsHead)
+                {
+                    foreach (var col2 in Column1)
+                    {
+                        col2.HeadToPaint = col.HeadToPaint;
+                        col2.IsHead = true;
+                    }
+                }
+                if (col.IsChest)
+                {
+                    foreach (var col2 in Column1)
+                    {
+                        col2.ChestToPaint = col.ChestToPaint;
+                        col2.IsChest = true;
+                    }
+                }
+                col.DeSelect();
+                col.Clean();
+            }
+
+            IsInColum1 = true;
+            IsInColum2 = false;
+            Index = 0;
+            Column1[Index].Select();
+
+            Palet2.gameObject.SetActive(false);
+        }
+    }
 
     public void End()
     {
@@ -154,7 +227,7 @@ public class PartPainter : MonoBehaviour
         Palet2.gameObject.SetActive(false);
         IsInColum2 = false;
 
-        Asambler.Enter();
+        Asambler.CallActivation();
     }
     public void CycleUp()
     {

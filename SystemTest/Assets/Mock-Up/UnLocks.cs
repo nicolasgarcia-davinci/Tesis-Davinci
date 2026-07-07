@@ -36,7 +36,7 @@ public class UnLocks : MonoBehaviour
             Console.SetActive(true);
             LifeTraker.Instance.UnlockClaw=false;
             LifeTraker.Instance.UnlockDrill=false;
-            TheOne.Enter();
+            TheOne.CallActivation();
             gameObject.SetActive(false);
         }
         if (toTranparent)

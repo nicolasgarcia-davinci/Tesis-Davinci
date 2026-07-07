@@ -130,10 +130,6 @@ public class PartSelector : MonoBehaviour
 
         return;
     }
-    public void Enter()
-    {
-        IsOn = true;
-    }
 
     public void Zero()
     {
@@ -245,13 +241,14 @@ public void Highlight()
     }
     public void SelectRight()
     {
+        if(LifeTraker.Instance.Dificulty<3) return;
         if(RarmsSelected)
         {
             RAIndex++;
 
-            if (RAIndex > LifeTraker.Instance.Dificulty - 1)
+            if (RAIndex > LifeTraker.Instance.Dificulty - 2)
             { 
-                RAIndex=LifeTraker.Instance.Dificulty - 1;
+                RAIndex=LifeTraker.Instance.Dificulty - 2;
                 return;
             }
             
@@ -276,9 +273,9 @@ public void Highlight()
         {
             LAIndex++;
 
-            if (LAIndex > LifeTraker.Instance.Dificulty-1)
+            if (LAIndex > LifeTraker.Instance.Dificulty - 2)
             {
-                LAIndex = LifeTraker.Instance.Dificulty-1;
+                LAIndex = LifeTraker.Instance.Dificulty - 2;
             }
 
             if (LAIndex > lArms.Length - 1)
@@ -301,9 +298,9 @@ public void Highlight()
         {
             HIndex++;
 
-            if (HIndex > LifeTraker.Instance.Dificulty - 1)
+            if (HIndex > LifeTraker.Instance.Dificulty - 2)
             {
-                HIndex = LifeTraker.Instance.Dificulty - 1;
+                HIndex = LifeTraker.Instance.Dificulty - 2;
             }
 
             if (HIndex > heads.Length - 1)
@@ -326,9 +323,9 @@ public void Highlight()
         {
             LIndex++;
 
-            if (LIndex > LifeTraker.Instance.Dificulty - 1)
+            if (LIndex > LifeTraker.Instance.Dificulty - 2)
             {
-                LIndex = LifeTraker.Instance.Dificulty - 1;
+                LIndex = LifeTraker.Instance.Dificulty - 2;
             }
 
             if (LIndex > legs.Length - 1)
@@ -351,9 +348,9 @@ public void Highlight()
         {
             ChIndex++;
 
-            if (ChIndex > LifeTraker.Instance.Dificulty - 1)
+            if (ChIndex > LifeTraker.Instance.Dificulty - 2)
             {
-                ChIndex = LifeTraker.Instance.Dificulty - 1;
+                ChIndex = LifeTraker.Instance.Dificulty - 2;
             }
 
             if (ChIndex > chests.Length - 1)
@@ -479,5 +476,14 @@ public void Highlight()
             Display.SetChestDisplay(chests[ChIndex].life, chests[ChIndex].Damage);
             miniDisplays[4].DisplayMini(ChIndex);
         }
+    }
+    public void CallActivation()
+    {
+        StartCoroutine(Activation());
+    }
+    public IEnumerator Activation()
+    {
+        yield return new WaitForSeconds (0.3f);
+        IsOn = true;
     }
 }

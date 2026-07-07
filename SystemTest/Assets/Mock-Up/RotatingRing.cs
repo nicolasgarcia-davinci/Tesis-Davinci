@@ -18,7 +18,22 @@ public class RotatingRing : MonoBehaviour
     public LabelAnim[] label;
     void Start()
     {
-        EnterLabel1();
+        if (LifeTraker.Instance.Dificulty == 3)
+        {
+            RRIng.Play("RTLv3");
+            Current = 2;
+            EnterLabel3();
+        }
+        if (LifeTraker.Instance.Dificulty == 2)
+        {
+            RRIng.Play("RTLv2");
+            Current = 1;
+            EnterLabel2();
+        }
+        if (LifeTraker.Instance.Dificulty == 1)
+        {
+            EnterLabel1();
+        }
         StartCoroutine(TextFlash());
         CanEnter = true;
     }
