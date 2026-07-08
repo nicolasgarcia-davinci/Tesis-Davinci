@@ -12,6 +12,7 @@ public class RotatingRing : MonoBehaviour
     public Color Transparency;
     public bool toTranparent;
     public bool CanEnter;
+    public bool Entering;
     public float BlinkInterval;
     public float transparancyRate;
 
@@ -22,13 +23,11 @@ public class RotatingRing : MonoBehaviour
         {
             RRIng.Play("RTLv3");
             Current = 2;
-            EnterLabel3();
         }
         if (LifeTraker.Instance.Dificulty == 2)
         {
             RRIng.Play("RTLv2");
             Current = 1;
-            EnterLabel2();
         }
         if (LifeTraker.Instance.Dificulty == 1)
         {
@@ -40,6 +39,7 @@ public class RotatingRing : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape)) LoadManager.Instance.Garage();
         if (Input.GetKeyDown(KeyCode.UpArrow)) RotateUp();
         if (Input.GetKeyDown(KeyCode.DownArrow)) RotateDown();
         if (Input.GetKeyDown(KeyCode.Space) && CanEnter) LoadManager.Instance.ToLVL(Current + 1); ;
@@ -115,14 +115,46 @@ public class RotatingRing : MonoBehaviour
         } 
     }
 
-    public void EnterLabel1() { label[0].Enter(); }
-    public void EnterLabel2() { label[1].Enter(); }
-    public void EnterLabel3() { label[2].Enter(); }
-    public void EnterLabel4() { label[3].Enter(); }
-    public void ExitLabel1() { label[0].Exit(); }
-    public void ExitLabel2() { label[1].Exit(); }
-    public void ExitLabel3() { label[2].Exit(); }
-    public void ExitLabel4() { label[3].Exit(); }
+    public void EnterLabel1()
+    {
+        Entering = false;
+        label[0].Enter();
+    }
+    public void EnterLabel2()
+    {
+        Entering=false;
+        label[1].Enter();
+    }
+    public void EnterLabel3() 
+    {
+        Entering = false;
+        label[2].Enter();
+    }
+    public void EnterLabel4() 
+    {
+        Entering = false;
+        label[3].Enter();
+    }
+    public void ExitLabel1() 
+    {
+        if (Entering) return;
+        label[0].Exit();
+    }
+    public void ExitLabel2() 
+    {
+        if(Entering) return;
+        label[1].Exit();
+    }
+    public void ExitLabel3() 
+    {
+        if (Entering) return;
+        label[2].Exit(); 
+    }
+    public void ExitLabel4() 
+    {
+        if (Entering) return;
+        label[3].Exit(); 
+    }
     public IEnumerator TextFlash()
     {
         toTranparent = true;

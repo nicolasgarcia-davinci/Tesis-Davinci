@@ -88,16 +88,16 @@ public class ButtomAction : MonoBehaviour
 
         yield return new WaitForSeconds(activationdelay);
 
+        _Activated = false;
+
         if (_thisType == ButtomType.NavButtom)
         {
-            _Activated = false;
             _isSelected = false;
             ChangeMenu();
         }
 
         if (_thisType == ButtomType.Resume)
         {
-            _Activated = false;
             FightControler.Instance.UnPause();
         }
 
@@ -115,7 +115,6 @@ public class ButtomAction : MonoBehaviour
 
         if (_thisType == ButtomType.Return)
         {
-            _Activated = false;
             ChangeMenu();
         }
 
@@ -136,7 +135,6 @@ public class ButtomAction : MonoBehaviour
         if (_thisType==ButtomType.Asambley)
         {
             DeSelect();
-            _Activated = false;
             Asambley.SetActive(true);
             _miMenu.gameObject.SetActive(false);
             _MenuConsole.SetExit();

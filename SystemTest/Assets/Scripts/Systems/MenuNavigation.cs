@@ -46,6 +46,7 @@ public class MenuNavigation : MonoBehaviour
     }
     public void Menu(int target)
     {
+        Zero();
         _controler.ChangeWindow(ID,target);
     }
 
