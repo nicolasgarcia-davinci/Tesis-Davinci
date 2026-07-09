@@ -97,7 +97,7 @@ public class LoadManager : MonoBehaviour
         else if (lvl == 4)
         {
             LifeTraker.Instance.Dificulty = lvl;
-            LoadGym();
+            ENDGAME();
         }
     }
 

@@ -24,6 +24,8 @@ public class MenuNavigation : MonoBehaviour
             menu.DeSelect();
         }
         hasEnter = false;
+        Index=0;
+        act2();
     }
 
     void Update()

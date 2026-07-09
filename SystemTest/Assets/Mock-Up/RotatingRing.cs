@@ -31,7 +31,7 @@ public class RotatingRing : MonoBehaviour
         }
         if (LifeTraker.Instance.Dificulty == 1)
         {
-            EnterLabel1();
+            EnterLabel(1);
         }
         StartCoroutine(TextFlash());
         CanEnter = true;
@@ -115,46 +115,18 @@ public class RotatingRing : MonoBehaviour
         } 
     }
 
-    public void EnterLabel1()
+    public void EnterLabel(int index)
     {
         Entering = false;
-        label[0].Enter();
+        label[index-1].Enter();
     }
-    public void EnterLabel2()
-    {
-        Entering=false;
-        label[1].Enter();
-    }
-    public void EnterLabel3() 
-    {
-        Entering = false;
-        label[2].Enter();
-    }
-    public void EnterLabel4() 
-    {
-        Entering = false;
-        label[3].Enter();
-    }
-    public void ExitLabel1() 
+
+    public void ExitLabel(int index)
     {
         if (Entering) return;
-        label[0].Exit();
+        label[index - 1].Exit();
     }
-    public void ExitLabel2() 
-    {
-        if(Entering) return;
-        label[1].Exit();
-    }
-    public void ExitLabel3() 
-    {
-        if (Entering) return;
-        label[2].Exit(); 
-    }
-    public void ExitLabel4() 
-    {
-        if (Entering) return;
-        label[3].Exit(); 
-    }
+
     public IEnumerator TextFlash()
     {
         toTranparent = true;

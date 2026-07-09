@@ -89,34 +89,20 @@ public class ButtomAction : MonoBehaviour
         yield return new WaitForSeconds(activationdelay);
 
         _Activated = false;
+        _isSelected = false;
+        ResetMenu();
 
-        if (_thisType == ButtomType.NavButtom)
-        {
-            _isSelected = false;
-            ChangeMenu();
-        }
+        if (_thisType == ButtomType.NavButtom) ChangeMenu();
 
-        if (_thisType == ButtomType.Resume)
-        {
-            FightControler.Instance.UnPause();
-        }
+        if (_thisType == ButtomType.Resume) FightControler.Instance.UnPause();
 
         if (_thisType == ButtomType.LoadStage) LoadManager.Instance.Garage();
 
-        if (_thisType == ButtomType.LoadMenu)
-        {
-            LoadManager.Instance.LoadMenu();
-        }
+        if (_thisType == ButtomType.LoadMenu) LoadManager.Instance.LoadMenu();
 
-        if (_thisType == ButtomType.Quit)
-        {
-            Application.Quit();
-        } 
+        if (_thisType == ButtomType.Quit) Application.Quit();
 
-        if (_thisType == ButtomType.Return)
-        {
-            ChangeMenu();
-        }
+        if (_thisType == ButtomType.Return) ChangeMenu();
 
         if (_thisType == ButtomType.Continue)
         {
@@ -125,10 +111,7 @@ public class ButtomAction : MonoBehaviour
                 LoadManager.Instance.Garage();
         }
 
-        if (_thisType == ButtomType.NextLvl)
-        {
-            LoadManager.Instance.LoadEnter();
-        }
+        if (_thisType == ButtomType.NextLvl) LoadManager.Instance.LoadEnter();
 
         if (_thisType == ButtomType.Play) LoadManager.Instance.LoadEnter();
 
@@ -155,6 +138,11 @@ public class ButtomAction : MonoBehaviour
     public void ChangeMenu()
     {
         _miMenu.Menu(_targetID);
+    }
+
+    public void ResetMenu()
+    {
+        _miMenu.Zero();
     }
 }
 public enum ButtomType

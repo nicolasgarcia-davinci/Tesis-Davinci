@@ -51,17 +51,9 @@ public class ButtumColor : ButtomAction
 
         yield return new WaitForSeconds(activationdelay);
 
-        if (_thisType == ButtomType.Color1)
-        {
-            DeSelect();
-            _Activated = false;
-            ChangeMenu();
-        }
-        if (_thisType == ButtomType.Color2)
-        {
-            DeSelect();
-            _Activated = false;
-            ChangeMenu();
-        }
+        ResetMenu();
+        DeSelect();
+        _Activated = false;   
+        ChangeMenu();
     }
 }
