@@ -79,26 +79,13 @@ public class LoadManager : MonoBehaviour
 
     public void ToLVL( int lvl)
     {
-        if(lvl == 1)
-        {
-            LifeTraker.Instance.Dificulty = lvl;
-            LoadRing();
-        }
-        else if (lvl == 2)
-        {
-            LifeTraker.Instance.Dificulty = lvl;
-            LoadAlley();
-        }
-        else if (lvl == 3)
-        {
-            LifeTraker.Instance.Dificulty = lvl;
-            LoadBoss();
-        }
-        else if (lvl == 4)
-        {
-            LifeTraker.Instance.Dificulty = lvl;
-            ENDGAME();
-        }
+        if(lvl == 1) LoadRing();
+
+        else if (lvl == 2) LoadAlley();
+
+        else if (lvl == 3) LoadBoss();
+
+        else if (lvl == 4) ENDGAME();
     }
 
     public void Garage()

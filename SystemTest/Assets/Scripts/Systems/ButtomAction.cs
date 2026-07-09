@@ -14,7 +14,6 @@ public class ButtomAction : MonoBehaviour
     public Animator _Console;
     public ConsoleMenu _MenuConsole;
     public MenuNavigation _miMenu;
-    public MenuRobo _Display;
     public float activationdelay;
     [Range(.02f, 1f)] public float Volume;
     [Range(.02f, 0.10f)] public float VolumeVariant;
@@ -41,7 +40,7 @@ public class ButtomAction : MonoBehaviour
             VolumeSlider.value = Volume;
         }
 
-        _miMenu = GetComponentInParent<MenuNavigation>();
+        //_miMenu = GetComponentInParent<MenuNavigation>();
     }
 
     public virtual void Update()
@@ -84,6 +83,7 @@ public class ButtomAction : MonoBehaviour
         if(newDif > LifeTraker.Instance.Dificulty) LifeTraker.Instance.Dificulty = newDif;
         _pulsControl.SetTrigger("Click");
         if (_Console != null) _Console.SetTrigger("ClickSpace");
+
         Sound.PlayOneShot(ActSound);
 
         yield return new WaitForSeconds(activationdelay);

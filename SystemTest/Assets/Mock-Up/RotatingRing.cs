@@ -19,6 +19,11 @@ public class RotatingRing : MonoBehaviour
     public LabelAnim[] label;
     void Start()
     {
+        if (LifeTraker.Instance.Dificulty == 4)
+        {
+            RRIng.Play("RTLv4");
+            Current = 3;
+        }
         if (LifeTraker.Instance.Dificulty == 3)
         {
             RRIng.Play("RTLv3");
