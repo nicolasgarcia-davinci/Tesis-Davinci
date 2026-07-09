@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
+using UnityEditor.ShaderGraph;
 using UnityEngine;
 
 public class PartPainter : MonoBehaviour
@@ -15,6 +16,7 @@ public class PartPainter : MonoBehaviour
     public bool IsInColum1;
     public bool IsInColum2;
     public PartSelector Asambler;
+    public ConsoleControls controls;
     public GameObject Palet1;
     public GameObject Palet2;
     public PartColor[] Column1;
@@ -156,6 +158,7 @@ public class PartPainter : MonoBehaviour
             }
             Palet1.gameObject.SetActive(false);
             Asambler.CallActivation();
+            controls.IsColoring = false;
         }
 
         if (IsInColum2)
