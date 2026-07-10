@@ -505,20 +505,25 @@ public class CompositeFighter : MonoBehaviour
             //LOCKBar.UpdateLife((5 - PartCount), 5f);
             if (BuffState) 
             {
-                damage = damage * 2;
+                DamageToTake = (damage * 2 + partHit.Maxlife);
+                if (isbroken) DamageToTake = (damage + partHit.Maxlife);
                 _Audio.PlayOneShot(_buffedHit);
+                Debug.Log("Buff In effect");
+                LifeTraker.Instance.UpdateLife();
+                return;
             }
-            if (isbroken) DamageToTake = (damage/2 + partHit.Maxlife);
             DamageToTake = (damage + partHit.Maxlife);
-            Debug.Log(DamageToTake);
+            if (isbroken) DamageToTake = (damage/2 + partHit.Maxlife);
+            Debug.Log("Player took "+DamageToTake);
             FightControler.Instance.CallCrowd(this);
+            LifeTraker.Instance.UpdateLife();
             return;
         }
         else if (isbroken)
         {
             if (BuffState)
             {
-                damage = damage * 2;
+                DamageToTake = damage;
                 _Audio.PlayOneShot(_buffedHit);
             } 
                 DamageToTake = damage/2;
@@ -710,6 +715,7 @@ public class CompositeFighter : MonoBehaviour
 
         if (OverAllHealth<=0)
         {
+            anim.StopPlayback();
             FightControler.Instance.Halt();
             IsDying = true;
             ExitFight();

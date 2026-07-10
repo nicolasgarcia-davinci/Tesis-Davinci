@@ -118,12 +118,15 @@ public class CompEnemy : CompositeFighter
             //LOCKBar.UpdateLife((5 - PartCount), 5f);
             if (BuffState)
             {
-                damage = damage * 2;
+                DamageToTake = (damage * 2 + partHit.Maxlife);
+                if (isbroken) DamageToTake = (damage + partHit.Maxlife);
                 _Audio.PlayOneShot(_buffedHit);
+                Debug.Log("Buff In effect");
+                return;
             }
-            if (isbroken) DamageToTake = (damage / 2 + partHit.Maxlife);
             DamageToTake = (damage + partHit.Maxlife);
-            Debug.Log(DamageToTake);
+            if (isbroken) DamageToTake = (damage / 2 + partHit.Maxlife);
+            Debug.Log("Enemy took " + DamageToTake);
             FightControler.Instance.CallCrowd(this);
             return;
         }
@@ -147,6 +150,7 @@ public class CompEnemy : CompositeFighter
 
         if (OverAllHealth <= 0)
         {
+            anim.StopPlayback();
             FightControler.Instance.Halt();
             IsDying = true;
             ExitFight();

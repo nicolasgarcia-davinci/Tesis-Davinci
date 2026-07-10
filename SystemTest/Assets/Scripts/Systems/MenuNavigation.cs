@@ -25,7 +25,7 @@ public class MenuNavigation : MonoBehaviour
         }
         hasEnter = false;
         Index=0;
-        act2();
+        //act2();
     }
 
     void Update()
