@@ -457,7 +457,7 @@ public class CompositeFighter : MonoBehaviour
         }
         if (attacker.IsAttackingDown)
         {
-            PartDamage(attacker.Leg.Damage, CRight, attacker.Leg.AttackSound, ref Leg, IsDodgingDown, ref LegsBoom,
+            PartDamage(attacker.Leg.Damage, CLegs, attacker.Leg.AttackSound, ref Leg, IsDodgingDown, ref LegsBoom,
                 "Get Hit Down", LegsHitWave, LegsSpark, LegsCrash, attacker.Leg.isBroken, attacker.IsBuffed);
             //LegsDamage(attacker.Leg.Damage, attacker.Leg.AttackSound);
             return;
@@ -468,21 +468,21 @@ public class CompositeFighter : MonoBehaviour
         ref bool partDestroyed, string animHit, GameObject HitWave, GameObject[] Sparks, GameObject[] Crash
         ,bool isbroken, bool BuffState)
     {
-        Debug.Log("Jaja llame a la funcion de Necro " + this.name);
-
+    
         if (hitPart)
         {
             _Audio.PlayOneShot(_miss);
             trailMesh?.CallTrail();
             Stamina += 10;
             IsBuffed = true;
+            Debug.Log("Player Esquivo");
             return;
         }
 
+        Debug.Log("Player atacado");
         IsBuffed = false;
         anim.Play(animHit);
         ResetBools();
-        _Audio.PlayOneShot(hit);
         if (partHit.life > 0)
             partHit.life -= damage;
 
@@ -503,19 +503,25 @@ public class CompositeFighter : MonoBehaviour
             FightControler.Instance.FlashOrigin(this);
             partHit.DeActiveParts();
             //LOCKBar.UpdateLife((5 - PartCount), 5f);
-            if (BuffState) 
+            if (BuffState)
             {
+                Debug.Log("Buff In effect");
                 DamageToTake = (damage * 2 + partHit.Maxlife);
                 if (isbroken) DamageToTake = (damage + partHit.Maxlife);
                 _Audio.PlayOneShot(_buffedHit);
-                Debug.Log("Buff In effect");
+                Debug.Log("Parte atacada " + partHit.name);
+                Debug.Log(DamageToTake);
+                FightControler.Instance.CallCrowd(this);
                 LifeTraker.Instance.UpdateLife();
                 return;
             }
+            Debug.Log("Buff Not In effect");
             DamageToTake = (damage + partHit.Maxlife);
-            if (isbroken) DamageToTake = (damage/2 + partHit.Maxlife);
-            Debug.Log("Player took "+DamageToTake);
+            _Audio.PlayOneShot(hit);
+            if (isbroken) DamageToTake = (damage / 2 + partHit.Maxlife);
             FightControler.Instance.CallCrowd(this);
+            Debug.Log(DamageToTake);
+            Debug.Log("Parte atacada " + partHit.name);
             LifeTraker.Instance.UpdateLife();
             return;
         }
@@ -523,14 +529,36 @@ public class CompositeFighter : MonoBehaviour
         {
             if (BuffState)
             {
-                DamageToTake = damage;
+                Debug.Log("Buff Not In effect");
+                DamageToTake = damage * 2;
                 _Audio.PlayOneShot(_buffedHit);
-            } 
-                DamageToTake = damage/2;
-        } else DamageToTake = damage;
-
-        Debug.Log("BrazoChotoDerecho");
-        LifeTraker.Instance.UpdateLife();
+            }
+            if (!BuffState) Debug.Log("Buff Not In effect");
+            DamageToTake = damage / 2;
+            _Audio.PlayOneShot(hit);
+            Debug.Log("Parte atacada " + partHit.name);
+            Debug.Log(DamageToTake);
+            LifeTraker.Instance.UpdateLife();
+            return;
+        }
+        else
+        {
+            if (BuffState)
+            {
+                Debug.Log("Buff In effect");
+                _Audio.PlayOneShot(_buffedHit);
+                DamageToTake = damage * 2;
+            }
+            if (!BuffState)
+            {
+                Debug.Log("Buff Not In effect");
+                _Audio.PlayOneShot(hit);
+                DamageToTake = damage;
+            }
+            Debug.Log(DamageToTake);
+            Debug.Log("Parte atacada " + partHit.name);
+            LifeTraker.Instance.UpdateLife();
+        }
     }
 
     public void TurnDebbOff()
@@ -831,11 +859,6 @@ public class CompositeFighter : MonoBehaviour
 
     }
 
-    public void BuffOff()
-    {
-        IsBuffed = false;
-    }
-
     public void Pause()
     {
         anim.speed = 0;
@@ -865,6 +888,11 @@ public class CompositeFighter : MonoBehaviour
     {
         NegativeBar = 0;
         LOCKBar.UpdateLife(0f, LifeTraker.Instance.MaxHealt);
+    }
+
+    public void BuffOff()
+    {
+        IsBuffed = false;
     }
 
 }
