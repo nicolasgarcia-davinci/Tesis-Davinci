@@ -94,15 +94,28 @@ public class CompEnemy : CompositeFighter
         Debug.Log("Enemigo Atacado");
 
         IsBuffed = false;
+
+        if (BuffState)
+        {
+            Debug.Log("Buff In effect");
+            _Audio.PlayOneShot(_buffedHit);
+            damage = damage * 2;
+        }
+        else
+        {
+            Debug.Log("Buff Not In effect");
+            _Audio.PlayOneShot(hit);
+        }
+        if (isbroken) damage = damage / 2;
+
         anim.Play(animHit);
         ResetBools();
-        _Audio.PlayOneShot(hit);
+
         if (partHit.life > 0)
             partHit.life -= damage;
 
+        DamageToTake = damage;
         StartCoroutine(WaveVFX(HitWave, 0.5f));
-
-        LifeTraker.Instance.UpdateLife();
 
         FightControler.Instance.stopFrame();
 
@@ -117,58 +130,13 @@ public class CompEnemy : CompositeFighter
             FightControler.Instance.FlashOrigin(this);
             partHit.DeActiveParts();
             //LOCKBar.UpdateLife((5 - PartCount), 5f);
-            if (BuffState)
-            {
-                Debug.Log("Buff In effect");
-                DamageToTake = (damage * 2 + partHit.Maxlife);
-                if (isbroken) DamageToTake = (damage + partHit.Maxlife);
-                _Audio.PlayOneShot(_buffedHit);
-                Debug.Log("Parte atacada " + partHit.name);
-                Debug.Log(DamageToTake);
-                LifeTraker.Instance.UpdateLife();
-                return;
-            }
-            Debug.Log("Buff Not In effect");
             DamageToTake = (damage + partHit.Maxlife);
-            if (isbroken) DamageToTake = (damage / 2 + partHit.Maxlife);
+
             FightControler.Instance.CallCrowd(this);
-            Debug.Log("Parte atacada " + partHit.name);
-            Debug.Log(DamageToTake);
-            LifeTraker.Instance.UpdateLife();
-            return;
         }
-        else if (isbroken)
-        {
-            if (BuffState)
-            {
-                Debug.Log("Buff In effect");
-                damage = damage * 2;
-                _Audio.PlayOneShot(_buffedHit);
-            }
-            if (!BuffState) Debug.Log("Buff Not In effect");
-            DamageToTake = damage / 2;
-            Debug.Log("Parte atacada " + partHit.name);
-            Debug.Log(DamageToTake);
-            LifeTraker.Instance.UpdateLife();
-            return;
-        }
-        else
-        {
-            if (BuffState) 
-            {
-                Debug.Log("Buff In effect");
-                DamageToTake = damage*2;
-                _Audio.PlayOneShot(_buffedHit);
-            }
-            if (!BuffState) 
-            {
-                Debug.Log("Buff Not In effect");
-                DamageToTake = damage;
-            }
-            Debug.Log("Parte atacada " + partHit.name);
-            Debug.Log(DamageToTake);
-            LifeTraker.Instance.UpdateLife();
-        }
+        Debug.Log("Parte atacada " + partHit.name);
+        Debug.Log(DamageToTake);
+        LifeTraker.Instance.UpdateLife();
     }
     public override void BattleHealth()
     {
