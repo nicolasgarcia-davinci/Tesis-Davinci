@@ -217,8 +217,9 @@ public void Highlight()
     }
     public void SelectUp()
     {
+        print("up");
         SIndex++;
-        if (SIndex > Parts.Length - 1) SIndex--; 
+        if (SIndex > Parts.Length - 1) SIndex = 0; 
         
         foreach (var p in Parts)
         {
@@ -229,8 +230,9 @@ public void Highlight()
     }
     public void SelectDown()
     {
+        print("down");
         SIndex--;
-        if (SIndex < 0) SIndex = 0;
+        if (SIndex < 0) SIndex = Parts.Length - 1;
 
         foreach (var p in Parts)
         {
@@ -248,13 +250,13 @@ public void Highlight()
 
             if (RAIndex > LifeTraker.Instance.Dificulty - 2)
             { 
-                RAIndex=LifeTraker.Instance.Dificulty - 2;
+                RAIndex = 0;
                 return;
             }
             
             if (RAIndex > rArms.Length - 1)
             {
-                RAIndex = rArms.Length - 1;
+                RAIndex = 0;
                 return;
             }
 
@@ -275,12 +277,12 @@ public void Highlight()
 
             if (LAIndex > LifeTraker.Instance.Dificulty - 2)
             {
-                LAIndex = LifeTraker.Instance.Dificulty - 2;
+                LAIndex = 0;
             }
 
             if (LAIndex > lArms.Length - 1)
             {
-                LAIndex = lArms.Length - 1;
+                LAIndex = 0;
             }
 
             foreach (var p in lArms)
@@ -300,12 +302,12 @@ public void Highlight()
 
             if (HIndex > LifeTraker.Instance.Dificulty - 2)
             {
-                HIndex = LifeTraker.Instance.Dificulty - 2;
+                HIndex = 0;
             }
 
             if (HIndex > heads.Length - 1)
             {
-                HIndex = heads.Length - 1;
+                HIndex = 0;
             }
             
             foreach (var p in heads)
@@ -325,12 +327,12 @@ public void Highlight()
 
             if (LIndex > LifeTraker.Instance.Dificulty - 2)
             {
-                LIndex = LifeTraker.Instance.Dificulty - 2;
+                LIndex = 0;
             }
 
             if (LIndex > legs.Length - 1)
             {
-                LIndex = legs.Length - 1;
+                LIndex = 0;
             }
             
             foreach (var p in legs)
@@ -350,12 +352,12 @@ public void Highlight()
 
             if (ChIndex > LifeTraker.Instance.Dificulty - 2)
             {
-                ChIndex = LifeTraker.Instance.Dificulty - 2;
+                ChIndex = 0;
             }
 
             if (ChIndex > chests.Length - 1)
             {
-                ChIndex = chests.Length - 1;
+                ChIndex = 0;
             }
 
             foreach (var p in chests)
@@ -376,7 +378,7 @@ public void Highlight()
             RAIndex--;
             if (RAIndex < 0)
             {
-                RAIndex = 0;
+                RAIndex = LifeTraker.Instance.Dificulty - 2;
                 return;
             }
 
@@ -398,7 +400,7 @@ public void Highlight()
 
             if (LAIndex < 0)
             {
-                LAIndex = 0;
+                LAIndex = LifeTraker.Instance.Dificulty - 2;
                 return;
             }
 
@@ -419,7 +421,7 @@ public void Highlight()
 
             if (HIndex < 0)
             {
-                HIndex = 0;
+                HIndex = LifeTraker.Instance.Dificulty - 2;
                 return;
             }
 
@@ -441,7 +443,7 @@ public void Highlight()
 
             if (LIndex < 0)
             {
-                LIndex = 0;
+                LIndex = LifeTraker.Instance.Dificulty - 2;
                 return;
             }
 
@@ -462,7 +464,7 @@ public void Highlight()
 
             if (ChIndex < 0)
             {
-                ChIndex = 0;
+                ChIndex = LifeTraker.Instance.Dificulty - 2;
                 return;
             }
 
