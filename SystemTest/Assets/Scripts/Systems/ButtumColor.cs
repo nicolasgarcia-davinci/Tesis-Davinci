@@ -1,18 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 using UnityEngine.UI;
 
 public class ButtumColor : ButtomAction
 {
     public Color color;
+    public Color Block;
     public Image colorCatalog;
+
+    public int ReqScore;
 
 
     public PartsToPaint partsToPaint;
     public void Awake()
     {
         colorCatalog.color = color;
+        if (ReqScore > LifeTraker.Instance.RunScore)
+        {
+            colorCatalog.color = Block;
+            _CanBeSelected = false;
+             
+        } 
+    }
+
+    public override void Start()
+    {
+        if (_label != null) _label.text = ReqScore.ToString();
     }
     public override void Select()
     {

@@ -59,6 +59,7 @@ public class LifeTraker : MonoBehaviour
     public bool UnlockClaw;
     public bool HasUnlockClaw;
     public bool HasUnlockDrill;
+    public int RunScore;
 
     private void Awake()
     {

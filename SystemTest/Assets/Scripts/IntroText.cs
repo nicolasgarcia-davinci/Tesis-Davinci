@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,13 +10,13 @@ public class IntroText : MonoBehaviour
     public TextMeshProUGUI start;
     public Color Transparency;
     public Color endcolor;
-    public bool toTranparent; 
-    public bool HasEnded; 
+    public bool toTranparent;
+    public bool HasEnded;
     public float BlinkInterval;
     public float transparancyRate;
     public Animator menu;
     public MenuNavigation men;
-    public GameObject indicatorCanvas;
+    public StartGameBot[] Bots;
     void Start()
     {
         StartCoroutine(TextFlash());
@@ -23,15 +24,13 @@ public class IntroText : MonoBehaviour
 
     void Update()
     {
-        if (Input.anyKeyDown)
+        if (Input.anyKeyDown && !HasEnded)
         {
             HasEnded = true;
+            foreach (StartGameBot Dummy in Bots) Dummy.Ring();
             menu.SetBool("HasIntro", true);
             StopAllCoroutines();
             start.color = endcolor;
-
-            if(indicatorCanvas != null)
-                indicatorCanvas.SetActive(true);
 
             enabled = false;
         }

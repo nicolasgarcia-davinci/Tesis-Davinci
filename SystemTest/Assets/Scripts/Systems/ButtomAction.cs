@@ -9,7 +9,7 @@ using static UnityEngine.Rendering.DebugUI;
 public class ButtomAction : MonoBehaviour
 {
     [SerializeField] string _labelText;
-    [SerializeField] TextMeshProUGUI _label;
+    public TextMeshProUGUI _label;
     public Animator _pulsControl;
     public Animator _Console;
     public ConsoleMenu _MenuConsole;
@@ -20,15 +20,17 @@ public class ButtomAction : MonoBehaviour
     public Slider VolumeSlider;
     public bool _isSelected;
     public bool _Activated;
+    public bool _CanBeSelected = true;
     public int _targetID;
     public AudioSource Sound;
     public AudioClip ActSound;
     public GameObject Asambley;
     public int newDif;
+    public CamToSplit TheSpliter;
     public ButtomType _thisType;
 
     
-    public void Start()
+    public virtual void Start()
     {
         if(_label!=null) _label.text = _labelText;
 
@@ -106,6 +108,7 @@ public class ButtomAction : MonoBehaviour
 
         if (_thisType == ButtomType.Continue)
         {
+            LifeTraker.Instance.RunScore = 200;
             if (newDif==3 && !LifeTraker.Instance.HasUnlockDrill) LifeTraker.Instance.UnlockDrill=true;
             if (newDif==4 && !LifeTraker.Instance.HasUnlockClaw) LifeTraker.Instance.UnlockClaw=true;
                 LoadManager.Instance.Garage();
@@ -113,7 +116,11 @@ public class ButtomAction : MonoBehaviour
 
         if (_thisType == ButtomType.NextLvl) LoadManager.Instance.LoadEnter();
 
-        if (_thisType == ButtomType.Play) LoadManager.Instance.LoadEnter();
+        if (_thisType == ButtomType.Play)
+        {
+            _MenuConsole.SetExit();
+            TheSpliter.SplitIt();
+        } 
 
         if (_thisType==ButtomType.Asambley)
         {

@@ -7,6 +7,7 @@ using UnityEngine;
 public class RotatingRing : MonoBehaviour
 {
     public Animator RRIng;
+    public CamToSplit Spliter;
     public int Current;
     public TextMeshProUGUI lab;
     public Color Transparency;
@@ -15,6 +16,8 @@ public class RotatingRing : MonoBehaviour
     public bool Entering;
     public float BlinkInterval;
     public float transparancyRate;
+
+    public GameObject Lock;
 
     public LabelAnim[] label;
     void Start()
@@ -44,7 +47,7 @@ public class RotatingRing : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape)) LoadManager.Instance.Garage();
+        if (Input.GetKeyDown(KeyCode.Escape)) Spliter.BackToGarage();
         if (Input.GetKeyDown(KeyCode.UpArrow)) RotateUp();
         if (Input.GetKeyDown(KeyCode.DownArrow)) RotateDown();
         if (Input.GetKeyDown(KeyCode.Space) && CanEnter) LoadManager.Instance.ToLVL(Current + 1); ;
@@ -113,10 +116,12 @@ public class RotatingRing : MonoBehaviour
         if (Current >= LifeTraker.Instance.Dificulty)
         {
             CanEnter = false;
+            Lock.SetActive(true);
         }
         else
         {
             CanEnter = true;
+            Lock.SetActive(false);
         } 
     }
 

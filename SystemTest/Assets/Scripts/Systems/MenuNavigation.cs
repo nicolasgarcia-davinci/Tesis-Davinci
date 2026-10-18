@@ -56,7 +56,16 @@ public class MenuNavigation : MonoBehaviour
     {
         Index--;
         if (Index < 0) Index = _menu.Length-1;
-        foreach(ButtomAction button in _menu)
+
+        if (!_menu[Index]._CanBeSelected)
+        {
+            while (!_menu[Index]._CanBeSelected)
+            {
+                Index--;
+            }
+        }
+
+        foreach (ButtomAction button in _menu)
         {
             if (button == _menu[Index])
             {
@@ -69,6 +78,15 @@ public class MenuNavigation : MonoBehaviour
     {
         Index++;
         if (Index > _menu.Length-1) Index =0;
+
+        if (!_menu[Index]._CanBeSelected)
+        {
+            while (!_menu[Index]._CanBeSelected)
+            {
+                Index++;
+            }
+        }
+
         foreach (ButtomAction button in _menu)
         {
             if (button == _menu[Index])
