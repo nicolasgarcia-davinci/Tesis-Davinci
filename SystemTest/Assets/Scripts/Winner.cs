@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Winner : MonoBehaviour
 {
     public GameObject Win;
     public GameObject Lose;
+
+    public TextMeshProUGUI _score;
 
     [Header("Part Collection")]
     public Part[] RarmCollection;
@@ -60,5 +63,6 @@ public class Winner : MonoBehaviour
 
             Lose.SetActive(true);
         }
+        _score.text = ("Run Score:" +LifeTraker.Instance.RunScore.ToString());
     }
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -21,6 +22,7 @@ public class PartColor : MonoBehaviour
     public float activationdelay;
     public bool _isSelected;
     public bool _Activated;
+    public bool _CanBeSelected;
 
     public Animator _pulsControl;
     public AudioSource Sound;
@@ -29,6 +31,9 @@ public class PartColor : MonoBehaviour
     public PartSelector selector;
 
     public Color color;
+    public Color Block;
+    public int ReqScore;
+    public TextMeshProUGUI ReqText;
     public Image colorCatalog;
     public Image Back;
 
@@ -36,6 +41,15 @@ public class PartColor : MonoBehaviour
     {
         colorCatalog.color = color;
         Back.color = color;
+
+        if (ReqScore > LifeTraker.Instance.RunScore)
+        {
+            colorCatalog.color = Block;
+            Back.color = Block;
+            _CanBeSelected = false;
+            ReqText.text= ReqScore.ToString();
+
+        }
     }
 
 

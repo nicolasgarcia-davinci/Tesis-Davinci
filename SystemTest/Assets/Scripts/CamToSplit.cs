@@ -12,6 +12,8 @@ public class CamToSplit : MonoBehaviour
 
     public GameObject Selector;
     public GameObject GarageMenu;
+    public Transform oldcampos;
+    public Transform newcampos;
 
 
     public float panDegree;
@@ -31,6 +33,7 @@ public class CamToSplit : MonoBehaviour
         SplitCam.gameObject.SetActive(true);
         //StartCoroutine(Spliting());
         MainCam.rect = new Rect(-0.5f, 0, 1, 1);
+        MainCam.transform.position= newcampos.position;
         SplitCam.rect = new Rect(0.5f, 0, 1, 1);
         Selector.SetActive(true);
     }
@@ -57,6 +60,7 @@ public class CamToSplit : MonoBehaviour
         SplitCam.gameObject.SetActive(false);
         GarageMenu.SetActive(true);
         MainCam.rect = new Rect(0, 0, 1, 1);
+        MainCam.transform.position = oldcampos.position;
         SplitCam.rect = new Rect(1, 0, 1, 1);
     }
     public IEnumerator Merge()

@@ -9,6 +9,7 @@ public class ButtumColor : ButtomAction
     public Color color;
     public Color Block;
     public Image colorCatalog;
+    public Image backCatalog;
 
     public int ReqScore;
 
@@ -20,6 +21,7 @@ public class ButtumColor : ButtomAction
         if (ReqScore > LifeTraker.Instance.RunScore)
         {
             colorCatalog.color = Block;
+            backCatalog.color = Block;
             _CanBeSelected = false;
              
         } 

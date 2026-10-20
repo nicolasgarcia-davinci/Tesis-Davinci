@@ -701,6 +701,7 @@ public class CompositeFighter : MonoBehaviour
     public virtual void BattleHealth()
     {
         OverAllHealth -= DamageToTake;
+        FightControler.Instance.SubstractScore(DamageToTake);
 
         LifeBar.UpdateLife(OverAllHealth, CChest);
         RedBar.ProgresiveUpdate(OverAllHealth, CChest);

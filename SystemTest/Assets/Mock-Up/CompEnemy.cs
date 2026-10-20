@@ -141,6 +141,8 @@ public class CompEnemy : CompositeFighter
     public override void BattleHealth()
     {
         OverAllHealth -= DamageToTake;
+        FightControler.Instance.AddScore(DamageToTake);
+        Debug.Log("dadadadadad");
 
         LifeBar.UpdateLife(OverAllHealth, CChest);
         RedBar.ProgresiveUpdate(OverAllHealth, CChest);

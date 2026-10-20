@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
@@ -21,6 +22,10 @@ public class FightControler : MonoBehaviour
     public GameObject Timer;
     public GameObject Controlers;
     public GameObject Confetti;
+
+    public TextMeshProUGUI _ScoreBoard;
+    public float DifMultiplyer;
+    public float CurrentScore;
 
     public Animator UI_Enter;
 
@@ -189,6 +194,19 @@ public class FightControler : MonoBehaviour
         _Controler.UnPause();
         _RT.UnPause();
         PauseMenu.SetActive(false);
+    }
+
+    public void AddScore(float score)
+    {
+        CurrentScore += score * DifMultiplyer;
+        _ScoreBoard.text = ("Score: "+ CurrentScore.ToString());
+        LifeTraker.Instance.RunScore += score * DifMultiplyer;
+    }
+    public void SubstractScore(float score)
+    {
+        CurrentScore -= score;
+        _ScoreBoard.text = ("Score: " + CurrentScore.ToString());
+        LifeTraker.Instance.RunScore -= score;
     }
     
     public IEnumerator ConfettiOpen()

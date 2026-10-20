@@ -238,6 +238,15 @@ public class PartPainter : MonoBehaviour
         {
             Index--;
             if (Index < 0) Index = Column1.Length - 1;
+
+            if (!Column1[Index]._CanBeSelected)
+            {
+                while (!Column1[Index]._CanBeSelected)
+                {
+                    Index--;
+                }
+            }
+
             foreach (PartColor button in Column1)
             {
                 if (button == Column1[Index])
@@ -251,6 +260,15 @@ public class PartPainter : MonoBehaviour
         {
             Index--;
             if (Index < 0) Index = Column2.Length - 1;
+
+            if (!Column2[Index]._CanBeSelected)
+            {
+                while (!Column2[Index]._CanBeSelected)
+                {
+                    Index--;
+                }
+            }
+
             foreach (PartColor button in Column2)
             {
                 if (button == Column2[Index])
@@ -267,6 +285,14 @@ public class PartPainter : MonoBehaviour
         {
             Index++;
             if (Index > Column1.Length - 1) Index = 0;
+
+            if (!Column1[Index]._CanBeSelected)
+            {
+                while (!Column1[Index]._CanBeSelected)
+                {
+                    Index++;
+                }
+            }
             foreach (PartColor button in Column1)
             {
                 if (button == Column1[Index])
@@ -280,6 +306,15 @@ public class PartPainter : MonoBehaviour
         {
             Index++;
             if (Index > Column2.Length - 1) Index = 0;
+
+            if (!Column2[Index]._CanBeSelected)
+            {
+                while (!Column2[Index]._CanBeSelected)
+                {
+                    Index++;
+                }
+            }
+
             foreach (PartColor button in Column2)
             {
                 if (button == Column2[Index])

@@ -373,6 +373,7 @@ public void Highlight()
     }
     public void SelectLeft()
     {
+        if (LifeTraker.Instance.Dificulty == 1) return;
         if (RarmsSelected)
         {
             RAIndex--;

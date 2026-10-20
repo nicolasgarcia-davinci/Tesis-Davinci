@@ -13,7 +13,7 @@ OcclusionCullingSettings:
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 9
+  serializedVersion: 10
   m_Fog: 0
   m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FogMode: 3
@@ -38,13 +38,12 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 12
-  m_GIWorkflowMode: 1
+  serializedVersion: 13
+  m_BakeOnSceneLoad: 0
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -67,9 +66,6 @@ LightmapSettings:
     m_LightmapParameters: {fileID: 0}
     m_LightmapsBakeMode: 1
     m_TextureCompression: 1
-    m_FinalGather: 0
-    m_FinalGatherFiltering: 1
-    m_FinalGatherRayCount: 256
     m_ReflectionCompression: 2
     m_MixedBakeMode: 2
     m_BakeBackend: 1
@@ -261,9 +257,8 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 797208449}
   m_Enabled: 1
-  serializedVersion: 10
+  serializedVersion: 11
   m_Type: 0
-  m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 300
   m_Range: 52.15
@@ -313,8 +308,12 @@ Light:
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
+  m_ForceVisible: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+  m_LightUnit: 1
+  m_LuxAtDistance: 1
+  m_EnableSpotReflector: 1
 --- !u!4 &797208452
 Transform:
   m_ObjectHideFlags: 0
@@ -969,6 +968,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8517415406949711602, guid: 5b08346ca97a70d4b8f679e747eb961b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -123.09999
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1120,6 +1123,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 43458e93f588f78468dc1ae06c9bc278, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1284794847 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5287950558154269631, guid: 5b08346ca97a70d4b8f679e747eb961b, type: 3}
+  m_PrefabInstance: {fileID: 1033187449}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &1442369127 stripped
@@ -1288,7 +1302,7 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -3316209038747775882, guid: 9dad4c8375777e7439e460d67b805153, type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: bb26f0d1f1a9a2b48ba0bba03e642c34, type: 2}
     - target: {fileID: 919132149155446097, guid: 9dad4c8375777e7439e460d67b805153, type: 3}
@@ -1911,31 +1925,31 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1435455145937605173, guid: 6280d2a25b6844c4eb61310f56e63216, type: 3}
-      propertyPath: Signals.Array.data[0]
+      propertyPath: 'Signals.Array.data[0]'
       value: 
       objectReference: {fileID: 1033187450}
     - target: {fileID: 1435455145937605173, guid: 6280d2a25b6844c4eb61310f56e63216, type: 3}
-      propertyPath: Signals.Array.data[1]
+      propertyPath: 'Signals.Array.data[1]'
       value: 
       objectReference: {fileID: 1033187451}
     - target: {fileID: 1435455145937605173, guid: 6280d2a25b6844c4eb61310f56e63216, type: 3}
-      propertyPath: Signals.Array.data[2]
+      propertyPath: 'Signals.Array.data[2]'
       value: 
       objectReference: {fileID: 1033187452}
     - target: {fileID: 1435455145937605173, guid: 6280d2a25b6844c4eb61310f56e63216, type: 3}
-      propertyPath: Signals.Array.data[3]
+      propertyPath: 'Signals.Array.data[3]'
       value: 
       objectReference: {fileID: 1033187453}
     - target: {fileID: 1435455145937605173, guid: 6280d2a25b6844c4eb61310f56e63216, type: 3}
-      propertyPath: Signals.Array.data[4]
+      propertyPath: 'Signals.Array.data[4]'
       value: 
       objectReference: {fileID: 1033187454}
     - target: {fileID: 1435455145937605173, guid: 6280d2a25b6844c4eb61310f56e63216, type: 3}
-      propertyPath: Signals.Array.data[5]
+      propertyPath: 'Signals.Array.data[5]'
       value: 
       objectReference: {fileID: 1033187455}
     - target: {fileID: 1435455145937605173, guid: 6280d2a25b6844c4eb61310f56e63216, type: 3}
-      propertyPath: Signals.Array.data[6]
+      propertyPath: 'Signals.Array.data[6]'
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1508397707725482418, guid: 6280d2a25b6844c4eb61310f56e63216, type: 3}
@@ -2289,7 +2303,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 814251635151334521, guid: 5abdd4130b9e89c41885b03074308451, type: 3}
-      propertyPath: CollisionModule.m_Planes.Array.data[0]
+      propertyPath: 'CollisionModule.m_Planes.Array.data[0]'
       value: 
       objectReference: {fileID: 265111107887297162}
     - target: {fileID: 866137567169208996, guid: 5abdd4130b9e89c41885b03074308451, type: 3}
@@ -2297,7 +2311,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1130400005811571691, guid: 5abdd4130b9e89c41885b03074308451, type: 3}
-      propertyPath: CollisionModule.m_Planes.Array.data[0]
+      propertyPath: 'CollisionModule.m_Planes.Array.data[0]'
       value: 
       objectReference: {fileID: 265111107887297162}
     - target: {fileID: 1149845229915531666, guid: 5abdd4130b9e89c41885b03074308451, type: 3}
@@ -2389,7 +2403,7 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7528715178275938965}
     - target: {fileID: 1617261208220991761, guid: 5abdd4130b9e89c41885b03074308451, type: 3}
-      propertyPath: CollisionModule.m_Planes.Array.data[0]
+      propertyPath: 'CollisionModule.m_Planes.Array.data[0]'
       value: 
       objectReference: {fileID: 265111107887297162}
     - target: {fileID: 1854862450100427428, guid: 5abdd4130b9e89c41885b03074308451, type: 3}
@@ -2413,7 +2427,7 @@ PrefabInstance:
       value: -327.50354
       objectReference: {fileID: 0}
     - target: {fileID: 2375421930740987208, guid: 5abdd4130b9e89c41885b03074308451, type: 3}
-      propertyPath: CollisionModule.m_Planes.Array.data[0]
+      propertyPath: 'CollisionModule.m_Planes.Array.data[0]'
       value: 
       objectReference: {fileID: 265111107887297162}
     - target: {fileID: 2672679717466195916, guid: 5abdd4130b9e89c41885b03074308451, type: 3}
@@ -2473,11 +2487,11 @@ PrefabInstance:
       value: 20.813
       objectReference: {fileID: 0}
     - target: {fileID: 3684530336883532091, guid: 5abdd4130b9e89c41885b03074308451, type: 3}
-      propertyPath: CollisionModule.m_Planes.Array.data[0]
+      propertyPath: 'CollisionModule.m_Planes.Array.data[0]'
       value: 
       objectReference: {fileID: 265111107887297162}
     - target: {fileID: 3937453235591193294, guid: 5abdd4130b9e89c41885b03074308451, type: 3}
-      propertyPath: CollisionModule.m_Planes.Array.data[0]
+      propertyPath: 'CollisionModule.m_Planes.Array.data[0]'
       value: 
       objectReference: {fileID: 265111107887297162}
     - target: {fileID: 4192354262243532232, guid: 5abdd4130b9e89c41885b03074308451, type: 3}
@@ -2533,7 +2547,7 @@ PrefabInstance:
       value: 23.129
       objectReference: {fileID: 0}
     - target: {fileID: 6635959474444796837, guid: 5abdd4130b9e89c41885b03074308451, type: 3}
-      propertyPath: CollisionModule.m_Planes.Array.data[0]
+      propertyPath: 'CollisionModule.m_Planes.Array.data[0]'
       value: 
       objectReference: {fileID: 265111107887297162}
     - target: {fileID: 6852771334051242171, guid: 5abdd4130b9e89c41885b03074308451, type: 3}
@@ -2557,11 +2571,11 @@ PrefabInstance:
       value: -194.60612
       objectReference: {fileID: 0}
     - target: {fileID: 7239037408961470501, guid: 5abdd4130b9e89c41885b03074308451, type: 3}
-      propertyPath: CollisionModule.m_Planes.Array.data[0]
+      propertyPath: 'CollisionModule.m_Planes.Array.data[0]'
       value: 
       objectReference: {fileID: 265111107887297162}
     - target: {fileID: 7437625377245005783, guid: 5abdd4130b9e89c41885b03074308451, type: 3}
-      propertyPath: CollisionModule.m_Planes.Array.data[0]
+      propertyPath: 'CollisionModule.m_Planes.Array.data[0]'
       value: 
       objectReference: {fileID: 265111107887297162}
     m_RemovedComponents: []
@@ -2946,31 +2960,31 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8040483380897154506, guid: 09c662dad41235b4bbc2adfdb5891cb8, type: 3}
-      propertyPath: Signals.Array.data[0]
+      propertyPath: 'Signals.Array.data[0]'
       value: 
       objectReference: {fileID: 1033187465}
     - target: {fileID: 8040483380897154506, guid: 09c662dad41235b4bbc2adfdb5891cb8, type: 3}
-      propertyPath: Signals.Array.data[1]
+      propertyPath: 'Signals.Array.data[1]'
       value: 
       objectReference: {fileID: 1033187464}
     - target: {fileID: 8040483380897154506, guid: 09c662dad41235b4bbc2adfdb5891cb8, type: 3}
-      propertyPath: Signals.Array.data[2]
+      propertyPath: 'Signals.Array.data[2]'
       value: 
       objectReference: {fileID: 1033187463}
     - target: {fileID: 8040483380897154506, guid: 09c662dad41235b4bbc2adfdb5891cb8, type: 3}
-      propertyPath: Signals.Array.data[3]
+      propertyPath: 'Signals.Array.data[3]'
       value: 
       objectReference: {fileID: 1033187462}
     - target: {fileID: 8040483380897154506, guid: 09c662dad41235b4bbc2adfdb5891cb8, type: 3}
-      propertyPath: Signals.Array.data[4]
+      propertyPath: 'Signals.Array.data[4]'
       value: 
       objectReference: {fileID: 1033187457}
     - target: {fileID: 8040483380897154506, guid: 09c662dad41235b4bbc2adfdb5891cb8, type: 3}
-      propertyPath: Signals.Array.data[5]
+      propertyPath: 'Signals.Array.data[5]'
       value: 
       objectReference: {fileID: 1033187456}
     - target: {fileID: 8040483380897154506, guid: 09c662dad41235b4bbc2adfdb5891cb8, type: 3}
-      propertyPath: Signals.Array.data[6]
+      propertyPath: 'Signals.Array.data[6]'
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8057911230318469367, guid: 09c662dad41235b4bbc2adfdb5891cb8, type: 3}
@@ -3532,6 +3546,9 @@ MonoBehaviour:
   Timer: {fileID: 1899154739}
   Controlers: {fileID: 1683131522}
   Confetti: {fileID: 0}
+  _ScoreBoard: {fileID: 1284794847}
+  DifMultiplyer: 1
+  CurrentScore: 0
   UI_Enter: {fileID: 260733234}
   _stageTheme: {fileID: 1314254936844337609}
 --- !u!1001 &5771160287443031849
@@ -3599,7 +3616,7 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -3316209038747775882, guid: 9dad4c8375777e7439e460d67b805153, type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: bb26f0d1f1a9a2b48ba0bba03e642c34, type: 2}
     - target: {fileID: 919132149155446097, guid: 9dad4c8375777e7439e460d67b805153, type: 3}
@@ -3766,12 +3783,12 @@ MonoBehaviour:
   m_RequiresColorTexture: 0
   m_Version: 2
   m_TaaSettings:
-    quality: 3
-    frameInfluence: 0.1
-    jitterScale: 1
-    mipBias: 0
-    varianceClampScale: 0.9
-    contrastAdaptiveSharpening: 0
+    m_Quality: 3
+    m_FrameInfluence: 0.1
+    m_JitterScale: 1
+    m_MipBias: 0
+    m_VarianceClampScale: 0.9
+    m_ContrastAdaptiveSharpening: 0
 --- !u!114 &8742385828395404168
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3793,7 +3810,7 @@ MonoBehaviour:
   BossScreen: {fileID: 0}
 --- !u!95 &8742385828395404169
 Animator:
-  serializedVersion: 5
+  serializedVersion: 7
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -3807,6 +3824,7 @@ Animator:
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
