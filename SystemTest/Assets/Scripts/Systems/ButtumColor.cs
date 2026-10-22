@@ -7,9 +7,10 @@ using UnityEngine.UI;
 public class ButtumColor : ButtomAction
 {
     public Color color;
-    public Color Block;
+
     public Image colorCatalog;
-    public Image backCatalog;
+    public GameObject candado;
+
 
     public int ReqScore;
 
@@ -20,10 +21,8 @@ public class ButtumColor : ButtomAction
         colorCatalog.color = color;
         if (ReqScore > LifeTraker.Instance.RunScore)
         {
-            colorCatalog.color = Block;
-            backCatalog.color = Block;
+            candado.SetActive(true);
             _CanBeSelected = false;
-             
         } 
     }
 

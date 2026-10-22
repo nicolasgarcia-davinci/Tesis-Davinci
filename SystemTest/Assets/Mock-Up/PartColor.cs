@@ -31,21 +31,18 @@ public class PartColor : MonoBehaviour
     public PartSelector selector;
 
     public Color color;
-    public Color Block;
     public int ReqScore;
     public TextMeshProUGUI ReqText;
     public Image colorCatalog;
-    public Image Back;
+    public GameObject candado;
 
     void Start()
     {
         colorCatalog.color = color;
-        Back.color = color;
 
         if (ReqScore > LifeTraker.Instance.RunScore)
         {
-            colorCatalog.color = Block;
-            Back.color = Block;
+            candado.SetActive(true);
             _CanBeSelected = false;
             ReqText.text= ReqScore.ToString();
 
